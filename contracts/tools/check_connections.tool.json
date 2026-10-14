@@ -1,0 +1,46 @@
+{
+  "args": {
+    "additionalProperties": false,
+    "properties": {
+      "expected_revision": {
+        "maximum": 20,
+        "minimum": 0,
+        "type": "integer"
+      },
+      "repair": {
+        "type": "boolean"
+      }
+    },
+    "required": [
+      "expected_revision",
+      "repair"
+    ],
+    "type": "object"
+  },
+  "errors": [
+    {
+      "code": "REVISION_STALE",
+      "retryable": false,
+      "when": "expected_revision does not match the current project revision"
+    },
+    {
+      "code": "INVALID_ARGUMENTS",
+      "retryable": false,
+      "when": "arguments fail the contract's args schema"
+    }
+  ],
+  "legacy_names": [
+    "check_connections"
+  ],
+  "mutating": true,
+  "name": "check_connections",
+  "requires_review": true,
+  "result": {
+    "description": "Legacy response shape, byte-for-byte unchanged. Parity against backend/hardware/commands.py is asserted in phase v04.",
+    "type": "object"
+  },
+  "see_also": [],
+  "summary": "Check current structural connections and existing rail/LED diagnostics. Read-only by default. With repair=true and expected_revision, canonicalize recognized aliases and remove redundant self/duplicate wires only if a full recheck passes. Never guesses missing connections or fixes electrical intent; returns remaining findings and scope.",
+  "title": "Check Connections",
+  "version": 1
+}

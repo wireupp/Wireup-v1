@@ -1,0 +1,45 @@
+{
+  "channels": [
+    {
+      "channel": "pin.duty_cycle",
+      "confidence": "exact",
+      "formula": "count(high_edges) / count(edges)",
+      "inputs": [
+        "pin.edge"
+      ],
+      "solver": "mcu"
+    },
+    {
+      "channel": "pin.avg_voltage",
+      "confidence": "approximate",
+      "formula": "duty_cycle * vcc",
+      "inputs": [
+        "pin.duty_cycle",
+        "power.vcc"
+      ],
+      "note": "Assumes a linear load. Not valid for a strongly nonlinear load.",
+      "solver": "circuit"
+    },
+    {
+      "channel": "motor.angular_velocity",
+      "confidence": "exact",
+      "formula": "60 * rpm / (2 * pi)",
+      "inputs": [
+        "motor.rpm"
+      ],
+      "solver": "mechanics"
+    },
+    {
+      "channel": "heading.unit_vector",
+      "confidence": "exact",
+      "formula": "[cos(heading), sin(heading)]",
+      "inputs": [
+        "imu.heading_rad"
+      ],
+      "solver": "mechanics"
+    }
+  ],
+  "description": "How each derived channel is computed. A telemetry sample with quality='derived' MUST name an entry here, or the recorder rejects it. This is invariant I5 expressed as data.",
+  "generated_by": "scripts/gen-contracts.py",
+  "version": 1
+}

@@ -13,6 +13,7 @@
 
 import { readdirSync, readFileSync, existsSync, writeFileSync, mkdirSync } from 'node:fs';
 import { join, relative, dirname } from 'node:path';
+import { spawnSync } from 'node:child_process';
 
 const REPO_ROOT = process.cwd();
 const CASES_ROOT = join(REPO_ROOT, 'bench', 'cases');
@@ -41,6 +42,9 @@ function readJson(path) {
  * summary line and the exit code both account for it.
  */
 function evaluate(assertion, caseData) {
+  // A declared checker is authoritative for any assertion kind.
+  if (assertion.checker) return runChecker(assertion);
+
   switch (assertion.kind) {
     case 'artifacts_exist':
       return exists(join(caseData.dir, assertion.expected[0]))
@@ -71,6 +75,23 @@ function exists(p) {
     return existsSync(p);
   } catch {
     return false;
+  }
+}
+
+/**
+ * Run an assertion's declared checker command. Exit 0 passes, non-zero fails.
+ * The command is fixed in the case file, never taken from input, so this cannot be used
+ * to execute anything the repository did not already declare.
+ */
+function runChecker(assertion) {
+  const [cmd, ...args] = assertion.checker;
+  try {
+    const result = spawnSync(cmd, args, { cwd: REPO_ROOT, encoding: 'utf8' });
+    if (result.error) return { status: 'fail', note: result.error.message };
+    const note = (result.stderr || result.stdout || '').trim().split('\n').slice(-1)[0] || '';
+    return result.status === 0 ? { status: 'pass' } : { status: 'fail', note };
+  } catch (error) {
+    return { status: 'fail', note: String(error.message) };
   }
 }
 

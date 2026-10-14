@@ -1,0 +1,62 @@
+{
+  "args": {
+    "additionalProperties": false,
+    "properties": {
+      "color": {
+        "maxLength": 1000,
+        "minLength": 1,
+        "type": "string"
+      },
+      "expected_revision": {
+        "maximum": 20,
+        "minimum": 0,
+        "type": "integer"
+      },
+      "from": {
+        "type": "string"
+      },
+      "id": {
+        "maxLength": 1000,
+        "minLength": 1,
+        "type": "string"
+      },
+      "to": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "color",
+      "expected_revision",
+      "from",
+      "id",
+      "to"
+    ],
+    "type": "object"
+  },
+  "errors": [
+    {
+      "code": "REVISION_STALE",
+      "retryable": false,
+      "when": "expected_revision does not match the current project revision"
+    },
+    {
+      "code": "INVALID_ARGUMENTS",
+      "retryable": false,
+      "when": "arguments fail the contract's args schema"
+    }
+  ],
+  "legacy_names": [
+    "connect_wire"
+  ],
+  "mutating": true,
+  "name": "connect_wire",
+  "requires_review": true,
+  "result": {
+    "description": "Legacy response shape, byte-for-byte unchanged. Parity against backend/hardware/commands.py is asserted in phase v04.",
+    "type": "object"
+  },
+  "see_also": [],
+  "summary": "Connect two known component pins in the current project.",
+  "title": "Connect Wire",
+  "version": 1
+}

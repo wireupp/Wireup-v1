@@ -1,0 +1,43 @@
+{
+  "rows": [
+    {
+      "id": "meta/contracts",
+      "assertion": "A1_contracts_are_current (schema_valid)",
+      "status": "pass",
+      "note": ""
+    },
+    {
+      "id": "meta/contracts",
+      "assertion": "A2_every_simulated_kind_cites_existing_evidence (schema_valid)",
+      "status": "pass",
+      "note": ""
+    },
+    {
+      "id": "meta/contracts",
+      "assertion": "A3_capability_declares_limitations (capability_declared)",
+      "status": "pass",
+      "note": ""
+    },
+    {
+      "id": "meta/contracts",
+      "assertion": "A4_every_backend_tool_is_contracted (schema_valid)",
+      "status": "pass",
+      "note": ""
+    },
+    {
+      "id": "meta/contracts",
+      "assertion": "A5_telemetry_quality_rule_is_expressible (schema_valid)",
+      "status": "pass",
+      "note": ""
+    },
+    {
+      "id": "meta/contracts",
+      "assertion": "A6_ports_are_closed (schema_valid)",
+      "status": "pass",
+      "note": ""
+    }
+  ],
+  "passed": 6,
+  "failed": 0,
+  "skipped": 0
+}

@@ -1,0 +1,28 @@
+{
+  "args": {
+    "additionalProperties": false,
+    "properties": {},
+    "type": "object"
+  },
+  "errors": [
+    {
+      "code": "INVALID_ARGUMENTS",
+      "retryable": false,
+      "when": "arguments fail the contract's args schema"
+    }
+  ],
+  "legacy_names": [
+    "validate_circuit"
+  ],
+  "mutating": false,
+  "name": "validate_circuit",
+  "requires_review": false,
+  "result": {
+    "description": "Legacy response shape, byte-for-byte unchanged. Parity against backend/hardware/commands.py is asserted in phase v04.",
+    "type": "object"
+  },
+  "see_also": [],
+  "summary": "Inspect actual current wires and known rail/LED topology; return evidence and limited-validation warnings. Does not certify general electrical safety.",
+  "title": "Validate Circuit",
+  "version": 1
+}

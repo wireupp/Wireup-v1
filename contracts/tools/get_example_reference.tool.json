@@ -1,0 +1,31 @@
+{
+  "args": {
+    "additionalProperties": false,
+    "properties": {
+      "example_id": {
+        "type": "string"
+      }
+    },
+    "type": "object"
+  },
+  "errors": [
+    {
+      "code": "INVALID_ARGUMENTS",
+      "retryable": false,
+      "when": "arguments fail the contract's args schema"
+    }
+  ],
+  "legacy_names": [
+    "get_example_reference"
+  ],
+  "mutating": false,
+  "name": "get_example_reference",
+  "requires_review": false,
+  "result": {
+    "type": "object"
+  },
+  "see_also": [],
+  "summary": "Read one analyzed upstream prototype: exact parts, connections, firmware source and dependencies. Then build through the current project's tools; never claim the reference ran here.",
+  "title": "Get Example Reference",
+  "version": 1
+}

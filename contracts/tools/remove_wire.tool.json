@@ -1,0 +1,48 @@
+{
+  "args": {
+    "additionalProperties": false,
+    "properties": {
+      "expected_revision": {
+        "maximum": 20,
+        "minimum": 0,
+        "type": "integer"
+      },
+      "id": {
+        "maxLength": 1000,
+        "minLength": 1,
+        "type": "string"
+      }
+    },
+    "required": [
+      "expected_revision",
+      "id"
+    ],
+    "type": "object"
+  },
+  "errors": [
+    {
+      "code": "REVISION_STALE",
+      "retryable": false,
+      "when": "expected_revision does not match the current project revision"
+    },
+    {
+      "code": "INVALID_ARGUMENTS",
+      "retryable": false,
+      "when": "arguments fail the contract's args schema"
+    }
+  ],
+  "legacy_names": [
+    "remove_wire"
+  ],
+  "mutating": true,
+  "name": "remove_wire",
+  "requires_review": true,
+  "result": {
+    "description": "Legacy response shape, byte-for-byte unchanged. Parity against backend/hardware/commands.py is asserted in phase v04.",
+    "type": "object"
+  },
+  "see_also": [],
+  "summary": "Remove a wire from the current project.",
+  "title": "Remove Wire",
+  "version": 1
+}

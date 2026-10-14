@@ -1,0 +1,52 @@
+{
+  "args": {
+    "additionalProperties": false,
+    "properties": {
+      "expected_revision": {
+        "maximum": 20,
+        "minimum": 0,
+        "type": "integer"
+      }
+    },
+    "required": [
+      "expected_revision"
+    ],
+    "type": "object"
+  },
+  "errors": [
+    {
+      "code": "REVISION_STALE",
+      "retryable": false,
+      "when": "expected_revision does not match the current project revision"
+    },
+    {
+      "code": "COMPILER_BUSY",
+      "retryable": true,
+      "when": "the compiler gate is saturated"
+    },
+    {
+      "code": "COMPILE_ERROR",
+      "retryable": false,
+      "when": "the compiler rejected the source"
+    },
+    {
+      "code": "INVALID_ARGUMENTS",
+      "retryable": false,
+      "when": "arguments fail the contract's args schema"
+    }
+  ],
+  "legacy_names": [
+    "compile_firmware"
+  ],
+  "mutating": true,
+  "name": "compile_firmware",
+  "requires_review": true,
+  "result": {
+    "description": "Legacy response shape, byte-for-byte unchanged. Parity against backend/hardware/commands.py is asserted in phase v04.",
+    "type": "object"
+  },
+  "see_also": [],
+  "summary": "Compile current firmware and return actual diagnostics and an artifact; does not start simulation.",
+  "title": "Compile Firmware",
+  "version": 1
+}

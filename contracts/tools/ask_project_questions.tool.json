@@ -1,0 +1,34 @@
+{
+  "args": {
+    "additionalProperties": false,
+    "properties": {
+      "questions": {
+        "type": "array"
+      },
+      "summary": {
+        "type": "string"
+      }
+    },
+    "type": "object"
+  },
+  "errors": [
+    {
+      "code": "INVALID_ARGUMENTS",
+      "retryable": false,
+      "when": "arguments fail the contract's args schema"
+    }
+  ],
+  "legacy_names": [
+    "ask_project_questions"
+  ],
+  "mutating": false,
+  "name": "ask_project_questions",
+  "requires_review": false,
+  "result": {
+    "type": "object"
+  },
+  "see_also": [],
+  "summary": "Ask exactly 10 project-specific multiple-choice requirements questions. Board first when the project has no board selected. Pauses for user selection; performs no mutations.",
+  "title": "Ask Project Questions",
+  "version": 1
+}

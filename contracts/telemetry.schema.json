@@ -1,0 +1,102 @@
+{
+  "$id": "https://wireup.dev/contracts/telemetry.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "quality": {
+            "const": "unavailable"
+          }
+        },
+        "required": [
+          "quality"
+        ]
+      },
+      "then": {
+        "properties": {
+          "value": {
+            "type": "null"
+          }
+        }
+      }
+    }
+  ],
+  "description": "One measurement. The quality tag is load-bearing: an 'assumed' sample must never be presented as a measurement, and an 'unavailable' sample must carry a null value.",
+  "properties": {
+    "channel": {
+      "maxLength": 128,
+      "minLength": 1,
+      "type": "string"
+    },
+    "node": {
+      "description": "Node id, or '' for environment channels.",
+      "type": "string"
+    },
+    "project_id": {
+      "pattern": "^[a-f0-9]{32}$",
+      "type": "string"
+    },
+    "quality": {
+      "description": "measured: a solver observed the quantity. derived: computed from measured values and listed in contracts/derivations.json. assumed: a default was substituted. unavailable: not produced; value MUST be null.",
+      "enum": [
+        "measured",
+        "derived",
+        "assumed",
+        "unavailable"
+      ]
+    },
+    "seq": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "solver": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "source": {
+      "description": "Provenance for environment-derived values.",
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "t": {
+      "description": "Seconds of simulated time.",
+      "minimum": 0,
+      "type": "number"
+    },
+    "trial_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "unit": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "value": {
+      "type": [
+        "number",
+        "string",
+        "boolean",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "project_id",
+    "t",
+    "node",
+    "channel",
+    "value",
+    "quality",
+    "solver"
+  ],
+  "title": "Telemetry sample",
+  "type": "object"
+}

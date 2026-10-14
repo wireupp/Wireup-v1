@@ -1,0 +1,40 @@
+{
+  "args": {
+    "additionalProperties": false,
+    "properties": {
+      "board": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "limit": {
+        "type": "integer"
+      },
+      "query": {
+        "type": "string"
+      }
+    },
+    "type": "object"
+  },
+  "errors": [
+    {
+      "code": "INVALID_ARGUMENTS",
+      "retryable": false,
+      "when": "arguments fail the contract's args schema"
+    }
+  ],
+  "legacy_names": [
+    "search_example_requirements"
+  ],
+  "mutating": false,
+  "name": "search_example_requirements",
+  "requires_review": false,
+  "result": {
+    "type": "object"
+  },
+  "see_also": [],
+  "summary": "Search analyzed upstream prototypes for board, component, library, wiring and runtime requirements, including known capability gaps. A reference, never proof it runs here.",
+  "title": "Search Example Requirements",
+  "version": 1
+}

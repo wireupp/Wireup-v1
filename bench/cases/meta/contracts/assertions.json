@@ -1,0 +1,40 @@
+{
+  "assertions": [
+    {
+      "id": "A1_contracts_are_current",
+      "kind": "schema_valid",
+      "checker": ["python", "scripts/gen-contracts.py", "--check"],
+      "description": "Regenerating contracts/ produces byte-identical output. Nothing is hand-edited."
+    },
+    {
+      "id": "A2_every_simulated_kind_cites_existing_evidence",
+      "kind": "schema_valid",
+      "checker": ["node", "scripts/check-contracts.mjs"],
+      "description": "No kind may declare simulated:true without citing at least one executable spec that exists on disk, and every mutating tool contract must declare REVISION_STALE. This is the load-bearing honesty check (invariants I2 and I6)."
+    },
+    {
+      "id": "A3_capability_declares_limitations",
+      "kind": "capability_declared",
+      "checker": ["node", "scripts/check-contracts.mjs"],
+      "description": "contracts/capability.json must declare at least one unsupported entry with a specific required_to_support. An empty unsupported array is a claim that nothing is missing, and is a failure."
+    },
+    {
+      "id": "A4_every_backend_tool_is_contracted",
+      "kind": "schema_valid",
+      "checker": ["node", "scripts/check-contracts.mjs"],
+      "description": "Every tool name in backend/agent/schemas.py has a matching contracts/tools/<name>.tool.json."
+    },
+    {
+      "id": "A5_telemetry_quality_rule_is_expressible",
+      "kind": "schema_valid",
+      "checker": ["node", "scripts/check-contracts.mjs"],
+      "description": "telemetry.schema.json declares the four quality values and forces value=null when quality is unavailable. Invariant I5."
+    },
+    {
+      "id": "A6_ports_are_closed",
+      "kind": "schema_valid",
+      "checker": ["node", "scripts/check-contracts.mjs"],
+      "description": "Every compatible_with entry names a declared port type, and every kind port uses a declared type. Invariant I7."
+    }
+  ]
+}

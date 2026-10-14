@@ -1,0 +1,28 @@
+{
+  "args": {
+    "additionalProperties": false,
+    "properties": {},
+    "type": "object"
+  },
+  "errors": [
+    {
+      "code": "INVALID_ARGUMENTS",
+      "retryable": false,
+      "when": "arguments fail the contract's args schema"
+    }
+  ],
+  "legacy_names": [
+    "read_compiler_errors"
+  ],
+  "mutating": false,
+  "name": "read_compiler_errors",
+  "requires_review": false,
+  "result": {
+    "description": "Legacy response shape, byte-for-byte unchanged. Parity against backend/hardware/commands.py is asserted in phase v04.",
+    "type": "object"
+  },
+  "see_also": [],
+  "summary": "Read the latest compiler diagnostics; never compile implicitly.",
+  "title": "Read Compiler Errors",
+  "version": 1
+}

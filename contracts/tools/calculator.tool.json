@@ -1,0 +1,37 @@
+{
+  "args": {
+    "additionalProperties": false,
+    "properties": {
+      "expression": {
+        "maxLength": 1000,
+        "minLength": 1,
+        "type": "string"
+      }
+    },
+    "required": [
+      "expression"
+    ],
+    "type": "object"
+  },
+  "errors": [
+    {
+      "code": "INVALID_ARGUMENTS",
+      "retryable": false,
+      "when": "arguments fail the contract's args schema"
+    }
+  ],
+  "legacy_names": [
+    "calculator"
+  ],
+  "mutating": false,
+  "name": "calculator",
+  "requires_review": false,
+  "result": {
+    "description": "Legacy response shape, byte-for-byte unchanged. Parity against backend/hardware/commands.py is asserted in phase v04.",
+    "type": "object"
+  },
+  "see_also": [],
+  "summary": "Evaluate a bounded numeric expression, without requiring a project. No code or shell execution.",
+  "title": "Calculator",
+  "version": 1
+}

@@ -1,0 +1,48 @@
+{
+  "args": {
+    "additionalProperties": false,
+    "properties": {
+      "batch": {
+        "maxLength": 200,
+        "minLength": 1,
+        "type": "array"
+      },
+      "expected_revision": {
+        "maximum": 20,
+        "minimum": 0,
+        "type": "integer"
+      }
+    },
+    "required": [
+      "batch",
+      "expected_revision"
+    ],
+    "type": "object"
+  },
+  "errors": [
+    {
+      "code": "REVISION_STALE",
+      "retryable": false,
+      "when": "expected_revision does not match the current project revision"
+    },
+    {
+      "code": "INVALID_ARGUMENTS",
+      "retryable": false,
+      "when": "arguments fail the contract's args schema"
+    }
+  ],
+  "legacy_names": [
+    "wire_circuit"
+  ],
+  "mutating": true,
+  "name": "wire_circuit",
+  "requires_review": true,
+  "result": {
+    "description": "Legacy response shape, byte-for-byte unchanged. Parity against backend/hardware/commands.py is asserted in phase v04.",
+    "type": "object"
+  },
+  "see_also": [],
+  "summary": "Add a whole batch of exact pin connections atomically, with revision check and known rail-short validation. One invalid connection rejects all changes. Returns project, added wires, warnings and validation scope.",
+  "title": "Wire Circuit",
+  "version": 1
+}

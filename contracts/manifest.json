@@ -1,0 +1,296 @@
+{
+  "description": "Every contract file with the sha256 of its contents. A consumer that cannot reproduce these hashes has stale contracts.",
+  "files": [
+    {
+      "bytes": 31976,
+      "id": "capability.json",
+      "sha256": "5ab55f332fd1cf553918fb1c980a8982d59ffd3122d071c40428e965f47b59d8",
+      "version": 1
+    },
+    {
+      "bytes": 3004,
+      "id": "capability.schema.json",
+      "sha256": "07c31e573fbf65a2512f2778777ccef0356cdf53256266c06e82450fb2c05cd7",
+      "version": 1
+    },
+    {
+      "bytes": 1234,
+      "id": "derivations.json",
+      "sha256": "7793b8ba7f731d970d6e6867a4c7e0c1f07572eb1040dacb0de633c14d0d3dfa",
+      "version": 1
+    },
+    {
+      "bytes": 7693,
+      "id": "graph.schema.json",
+      "sha256": "7cf2da64e1e382b8fd82e6152d235f8216f46c4f1ee3c3b1056d419c11883c60",
+      "version": 1
+    },
+    {
+      "bytes": 364145,
+      "id": "kinds.json",
+      "sha256": "c7b2b876f412cfc48bca238c827e0b678d72b7b3b5fbc6d20c1ab3ef474699b7",
+      "version": 1
+    },
+    {
+      "bytes": 6044,
+      "id": "port-types.json",
+      "sha256": "7a4bd3c03e74e9779e171822fcca5db42b6c3cd53281d80d76388c60ace8a015",
+      "version": 1
+    },
+    {
+      "bytes": 2276,
+      "id": "telemetry.schema.json",
+      "sha256": "590edb63fdcddda2ffd8348bd16e059dcaddf480d6f9accd6eb2df01aec2f767",
+      "version": 1
+    },
+    {
+      "bytes": 1546,
+      "id": "tools/add_component.tool.json",
+      "sha256": "5e0e4142d3343b296a93f050fb0a3b3f2fd6aafa1bc121de192c084678cfad6f",
+      "version": 1
+    },
+    {
+      "bytes": 830,
+      "id": "tools/ask_project_questions.tool.json",
+      "sha256": "0c9e7c8da8b8d8f95754efbcbe9720da72b4f83e1781f2054eeb6a3965109194",
+      "version": 1
+    },
+    {
+      "bytes": 772,
+      "id": "tools/assess_project_feasibility.tool.json",
+      "sha256": "6a4dfbca628fd7e35dd760427861e3532c25414b0d75cbd63cf0e35d3918c251",
+      "version": 1
+    },
+    {
+      "bytes": 581,
+      "id": "tools/bom.build.tool.json",
+      "sha256": "b6f73b886d465fd242ac9123b1b1a640492a1dc90079e6180b6a66a9add31a54",
+      "version": 1
+    },
+    {
+      "bytes": 906,
+      "id": "tools/calculator.tool.json",
+      "sha256": "cf4c251c54165f558ec8702a1e980f3cfbf785c186b31254ad23ceb5f99ce37b",
+      "version": 1
+    },
+    {
+      "bytes": 591,
+      "id": "tools/capability.read.tool.json",
+      "sha256": "53a9e3ca9c3938c84b7324fa0e4b1f4938c784cf47dc4aaeedd5e9253e722268",
+      "version": 1
+    },
+    {
+      "bytes": 1404,
+      "id": "tools/check_connections.tool.json",
+      "sha256": "5c0310b42532c39c75e6c2f8d2010306e7bd13a557a7dbbb4e124fd9fa9096c1",
+      "version": 1
+    },
+    {
+      "bytes": 1333,
+      "id": "tools/compile_firmware.tool.json",
+      "sha256": "70f78ba2a1785b444aef88d7f1e9d6511cdbb3c0c1433153cc3ee4f700b31655",
+      "version": 1
+    },
+    {
+      "bytes": 1406,
+      "id": "tools/connect_wire.tool.json",
+      "sha256": "ac36221e16fef23704bf1882113bb334778e06608b0a2f35e38fbfc8529b9168",
+      "version": 1
+    },
+    {
+      "bytes": 699,
+      "id": "tools/edge.connect.tool.json",
+      "sha256": "da228e30fa2c547737980dab1c68b2b0389a3fcc94e9a29312dfa392181c7d38",
+      "version": 1
+    },
+    {
+      "bytes": 688,
+      "id": "tools/edge.remove.tool.json",
+      "sha256": "90676789cf07214de0f342cd12cbadea4d24ea24c312a60b04127a65b8b64eed",
+      "version": 1
+    },
+    {
+      "bytes": 1412,
+      "id": "tools/edit_firmware.tool.json",
+      "sha256": "9df74cfbec49bb92acaa3cbe1d88d44aeecc0fdbdec2f8dfe0a8fa98a5157a03",
+      "version": 1
+    },
+    {
+      "bytes": 1187,
+      "id": "tools/generate_firmware.tool.json",
+      "sha256": "8e4a38e2c2a855bec13505b963afe2d73b90083a7dc1f93a2f3b9c6ee83de205",
+      "version": 1
+    },
+    {
+      "bytes": 784,
+      "id": "tools/get_example_reference.tool.json",
+      "sha256": "20c2f391c1338ce48365345e1377563cfbf5b444d62652f947b962ae1020437d",
+      "version": 1
+    },
+    {
+      "bytes": 1440,
+      "id": "tools/modify_component.tool.json",
+      "sha256": "3d32f9e217bcff56aa14821b861e1133e4cb37d16b9ffe2e9fc56d25221e44dd",
+      "version": 1
+    },
+    {
+      "bytes": 699,
+      "id": "tools/node.add.tool.json",
+      "sha256": "fe9541a2af386746dd6a3832cb0ef04de9f1e157688646cf6221e3f77e7bc811",
+      "version": 1
+    },
+    {
+      "bytes": 722,
+      "id": "tools/node.modify.tool.json",
+      "sha256": "28b95d2c16065a34b0a32bd943606512d54bc539ca4a844f3a179f753c125a10",
+      "version": 1
+    },
+    {
+      "bytes": 710,
+      "id": "tools/node.remove.tool.json",
+      "sha256": "c9971edd91ce6a4728149a88c52b7c9f5d2bf7746329f330b1655f75a8e999ae",
+      "version": 1
+    },
+    {
+      "bytes": 737,
+      "id": "tools/project.create.tool.json",
+      "sha256": "f962fbbd26a62bc2b0adc36ada4365bb9aeccfee6ea3b2e9fd7240f2e9bd996c",
+      "version": 1
+    },
+    {
+      "bytes": 696,
+      "id": "tools/project.delete.tool.json",
+      "sha256": "60b4d76cf642bb8ee430b7a3fea2326bc8605249da232f0a35d61d01961a4fc9",
+      "version": 1
+    },
+    {
+      "bytes": 591,
+      "id": "tools/project.export.tool.json",
+      "sha256": "2d4b3e303eac9a1a5dffef13a2126c71ccafea05e9bc4a4f73fe5313cdf57739",
+      "version": 1
+    },
+    {
+      "bytes": 560,
+      "id": "tools/project.read.tool.json",
+      "sha256": "eb21f64a708898a8e5fbe6a23d2dc24b5d69c530b28dc1c7c2d44b662f56410f",
+      "version": 1
+    },
+    {
+      "bytes": 740,
+      "id": "tools/read_compiler_errors.tool.json",
+      "sha256": "d8573e2d37e33423545358fc7556467aa6f4a666c2d41704f6ec0f808dce0166",
+      "version": 1
+    },
+    {
+      "bytes": 710,
+      "id": "tools/read_firmware.tool.json",
+      "sha256": "85165b08637b3850ed32e9a5d5201214b28f2b33aea5c1c00926db5da4ac3377",
+      "version": 1
+    },
+    {
+      "bytes": 748,
+      "id": "tools/read_project.tool.json",
+      "sha256": "5a4d22ff4de648df506a57af638f3d90cf7379035a1f85f889b659c2dcd35242",
+      "version": 1
+    },
+    {
+      "bytes": 1071,
+      "id": "tools/read_simulation_results.tool.json",
+      "sha256": "ff84c073acf44985b113dc9bada8f08ba4dd37b9ffc8ef39c48fabe966c4a0ae",
+      "version": 1
+    },
+    {
+      "bytes": 1174,
+      "id": "tools/remove_component.tool.json",
+      "sha256": "7699d50bf059646104ee9610239502003568aaf45b85876bbe6644d119a9d751",
+      "version": 1
+    },
+    {
+      "bytes": 1131,
+      "id": "tools/remove_wire.tool.json",
+      "sha256": "4eed6e45bb5e45da04b53ad97269d3668e5d577b9d2100caff679d4a507f177d",
+      "version": 1
+    },
+    {
+      "bytes": 556,
+      "id": "tools/room.list.tool.json",
+      "sha256": "258f9f996d53350066aa7326192f655933e45ecc53fe7e953d4c29649dc74d74",
+      "version": 1
+    },
+    {
+      "bytes": 1226,
+      "id": "tools/run_simulation.tool.json",
+      "sha256": "4e89567aabab9a41263a49125dbe0055d1fcfe605189fd8d3114eaca159aa6d5",
+      "version": 1
+    },
+    {
+      "bytes": 1004,
+      "id": "tools/search_components.tool.json",
+      "sha256": "f7e2270b68301186bf3683143eb6711bee6445d2360d2bd44343a94ed156bc8c",
+      "version": 1
+    },
+    {
+      "bytes": 939,
+      "id": "tools/search_example_requirements.tool.json",
+      "sha256": "f9d283dc7e535cc87e70802e57620108e2268963548b988209daa816e110306d",
+      "version": 1
+    },
+    {
+      "bytes": 571,
+      "id": "tools/session.create.tool.json",
+      "sha256": "43e668cd20d70ba5b06eaa16cb6445282b1ef3ecc712576e510a48c611d77322",
+      "version": 1
+    },
+    {
+      "bytes": 1052,
+      "id": "tools/stop_simulation.tool.json",
+      "sha256": "e5eb7afd18b4969d00ad37f93b09a72b0fcd1f5c99b0034fffdca97be4150b24",
+      "version": 1
+    },
+    {
+      "bytes": 587,
+      "id": "tools/telemetry.read.tool.json",
+      "sha256": "914ea07d901666f49e732f2cc0938b2488f0b8c4266aacc870bbb547ad0bedd3",
+      "version": 1
+    },
+    {
+      "bytes": 558,
+      "id": "tools/trial.read.tool.json",
+      "sha256": "05dba4a10155fd8ba5789cc946615f5253e720d6c67a904e9db6710245388bfb",
+      "version": 1
+    },
+    {
+      "bytes": 576,
+      "id": "tools/trial.run.tool.json",
+      "sha256": "6c88a16d8441a36c801aebf4d82b395ce8f02a6a83cdabd01afd3b2c6b12caee",
+      "version": 1
+    },
+    {
+      "bytes": 573,
+      "id": "tools/trial.sweep.tool.json",
+      "sha256": "b27282c4bb585218594983641dab1bfb465659712275d675bd9c00f1b8fbc05f",
+      "version": 1
+    },
+    {
+      "bytes": 815,
+      "id": "tools/validate_circuit.tool.json",
+      "sha256": "bf6a24ba230965100e533937488272312084217a0a15303132ec5f70d7aa3450",
+      "version": 1
+    },
+    {
+      "bytes": 1311,
+      "id": "tools/wire_circuit.tool.json",
+      "sha256": "d3a095d485fd58b9bcced50e1e5f38d7a152d3b11a84bed28b7e919b5c58f527",
+      "version": 1
+    },
+    {
+      "bytes": 3517,
+      "id": "trial.schema.json",
+      "sha256": "5a0a85218d4733251ade8df9cd5f2f83fc1477e3a239a7a9f951e4f8d1c5cf6d",
+      "version": 1
+    }
+  ],
+  "generated_by": "scripts/gen-contracts.py",
+  "generator_version": 2,
+  "version": 1
+}

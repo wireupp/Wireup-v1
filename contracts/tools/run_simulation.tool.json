@@ -1,0 +1,47 @@
+{
+  "args": {
+    "additionalProperties": false,
+    "properties": {
+      "artifact_id": {
+        "maxLength": 1000,
+        "minLength": 1,
+        "type": "string"
+      }
+    },
+    "required": [
+      "artifact_id"
+    ],
+    "type": "object"
+  },
+  "errors": [
+    {
+      "code": "RUNTIME_UNAVAILABLE",
+      "retryable": false,
+      "when": "no runtime is connected, or the board has no configured runtime"
+    },
+    {
+      "code": "RUNTIME_NOT_ACKNOWLEDGED",
+      "retryable": true,
+      "when": "the browser runtime did not acknowledge the command in time"
+    },
+    {
+      "code": "INVALID_ARGUMENTS",
+      "retryable": false,
+      "when": "arguments fail the contract's args schema"
+    }
+  ],
+  "legacy_names": [
+    "run_simulation"
+  ],
+  "mutating": false,
+  "name": "run_simulation",
+  "requires_review": false,
+  "result": {
+    "description": "Legacy response shape, byte-for-byte unchanged. Parity against backend/hardware/commands.py is asserted in phase v04.",
+    "type": "object"
+  },
+  "see_also": [],
+  "summary": "Start the current artifact in the connected browser, requiring acknowledgement.",
+  "title": "Run Simulation",
+  "version": 1
+}

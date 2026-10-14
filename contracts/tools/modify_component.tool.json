@@ -1,0 +1,64 @@
+{
+  "args": {
+    "additionalProperties": false,
+    "properties": {
+      "expected_revision": {
+        "maximum": 20,
+        "minimum": 0,
+        "type": "integer"
+      },
+      "id": {
+        "maxLength": 1000,
+        "minLength": 1,
+        "type": "string"
+      },
+      "properties": {
+        "type": "object"
+      },
+      "rotation": {
+        "type": "number"
+      },
+      "x": {
+        "type": "number"
+      },
+      "y": {
+        "type": "number"
+      }
+    },
+    "required": [
+      "expected_revision",
+      "id",
+      "properties",
+      "rotation",
+      "x",
+      "y"
+    ],
+    "type": "object"
+  },
+  "errors": [
+    {
+      "code": "REVISION_STALE",
+      "retryable": false,
+      "when": "expected_revision does not match the current project revision"
+    },
+    {
+      "code": "INVALID_ARGUMENTS",
+      "retryable": false,
+      "when": "arguments fail the contract's args schema"
+    }
+  ],
+  "legacy_names": [
+    "modify_component"
+  ],
+  "mutating": true,
+  "name": "modify_component",
+  "requires_review": true,
+  "result": {
+    "description": "Legacy response shape, byte-for-byte unchanged. Parity against backend/hardware/commands.py is asserted in phase v04.",
+    "type": "object"
+  },
+  "see_also": [],
+  "summary": "Change a component position, rotation, or properties.",
+  "title": "Modify Component",
+  "version": 1
+}

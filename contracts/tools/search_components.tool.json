@@ -1,0 +1,43 @@
+{
+  "args": {
+    "additionalProperties": false,
+    "properties": {
+      "limit": {
+        "maximum": 20,
+        "minimum": 0,
+        "type": "integer"
+      },
+      "query": {
+        "maxLength": 1000,
+        "minLength": 1,
+        "type": "string"
+      }
+    },
+    "required": [
+      "limit",
+      "query"
+    ],
+    "type": "object"
+  },
+  "errors": [
+    {
+      "code": "INVALID_ARGUMENTS",
+      "retryable": false,
+      "when": "arguments fail the contract's args schema"
+    }
+  ],
+  "legacy_names": [
+    "search_components"
+  ],
+  "mutating": false,
+  "name": "search_components",
+  "requires_review": false,
+  "result": {
+    "description": "Legacy response shape, byte-for-byte unchanged. Parity against backend/hardware/commands.py is asserted in phase v04.",
+    "type": "object"
+  },
+  "see_also": [],
+  "summary": "Search the component catalog for exact types and supported pins.",
+  "title": "Search Components",
+  "version": 1
+}

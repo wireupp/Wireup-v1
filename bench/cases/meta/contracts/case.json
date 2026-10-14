@@ -1,0 +1,8 @@
+{
+  "id": "meta/contracts",
+  "domain": "meta",
+  "title": "Contract layer is complete, self-consistent and evidence-backed",
+  "tags": ["contracts", "honesty", "meta"],
+  "spec": "case.json",
+  "assertions": "assertions.json"
+}

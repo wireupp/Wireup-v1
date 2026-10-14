@@ -1,0 +1,60 @@
+{
+  "args": {
+    "additionalProperties": false,
+    "properties": {
+      "expected_revision": {
+        "maximum": 20,
+        "minimum": 0,
+        "type": "integer"
+      },
+      "new": {
+        "maxLength": 1000,
+        "minLength": 1,
+        "type": "string"
+      },
+      "old": {
+        "maxLength": 1000,
+        "minLength": 1,
+        "type": "string"
+      },
+      "source": {
+        "maxLength": 1000,
+        "minLength": 1,
+        "type": "string"
+      }
+    },
+    "required": [
+      "expected_revision",
+      "new",
+      "old",
+      "source"
+    ],
+    "type": "object"
+  },
+  "errors": [
+    {
+      "code": "REVISION_STALE",
+      "retryable": false,
+      "when": "expected_revision does not match the current project revision"
+    },
+    {
+      "code": "INVALID_ARGUMENTS",
+      "retryable": false,
+      "when": "arguments fail the contract's args schema"
+    }
+  ],
+  "legacy_names": [
+    "edit_firmware"
+  ],
+  "mutating": true,
+  "name": "edit_firmware",
+  "requires_review": true,
+  "result": {
+    "description": "Legacy response shape, byte-for-byte unchanged. Parity against backend/hardware/commands.py is asserted in phase v04.",
+    "type": "object"
+  },
+  "see_also": [],
+  "summary": "Replace firmware with source, or make one exact old/new replacement.",
+  "title": "Edit Firmware",
+  "version": 1
+}

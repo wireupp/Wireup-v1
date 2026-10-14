@@ -1,0 +1,31 @@
+{
+  "args": {
+    "additionalProperties": false,
+    "properties": {},
+    "type": "object"
+  },
+  "errors": [
+    {
+      "code": "REVISION_STALE",
+      "retryable": false,
+      "when": "expected_revision does not match the current project revision"
+    },
+    {
+      "code": "INVALID_ARGUMENTS",
+      "retryable": false,
+      "when": "arguments fail the contract's args schema"
+    }
+  ],
+  "implemented_in_phase": "v04",
+  "legacy_names": [],
+  "mutating": true,
+  "name": "node.remove",
+  "requires_review": false,
+  "result": {
+    "type": "object"
+  },
+  "see_also": [],
+  "summary": "Remove a node and its incident edges.",
+  "title": "Node Remove",
+  "version": 1
+}

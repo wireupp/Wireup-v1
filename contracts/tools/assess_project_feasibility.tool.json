@@ -1,0 +1,31 @@
+{
+  "args": {
+    "additionalProperties": false,
+    "properties": {
+      "plan": {
+        "type": "object"
+      }
+    },
+    "type": "object"
+  },
+  "errors": [
+    {
+      "code": "INVALID_ARGUMENTS",
+      "retryable": false,
+      "when": "arguments fail the contract's args schema"
+    }
+  ],
+  "legacy_names": [
+    "assess_project_feasibility"
+  ],
+  "mutating": false,
+  "name": "assess_project_feasibility",
+  "requires_review": true,
+  "result": {
+    "type": "object"
+  },
+  "see_also": [],
+  "summary": "Assess a complete plan - board, behaviour, every part with quantity and purpose, libraries, and the exact tool names required - before ANY placement or mutation.",
+  "title": "Assess Project Feasibility",
+  "version": 1
+}

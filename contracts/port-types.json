@@ -1,0 +1,288 @@
+{
+  "description": "The port and edge type system. Two ports may connect only when one type appears in the other's compatible_with list. Any other connection is a typed error naming both ports - never a silent drop (invariant I7).",
+  "generated_by": "scripts/gen-contracts.py",
+  "port_types": [
+    {
+      "carries": "value",
+      "compatible_with": [
+        "power.dc"
+      ],
+      "description": "A DC supply rail.",
+      "domains": [
+        "electronics",
+        "hybrid"
+      ],
+      "id": "power.dc",
+      "units": [
+        "V",
+        "A"
+      ]
+    },
+    {
+      "carries": "value",
+      "compatible_with": [
+        "power.gnd",
+        "power.dc"
+      ],
+      "description": "Ground reference.",
+      "domains": [
+        "electronics",
+        "hybrid"
+      ],
+      "id": "power.gnd",
+      "units": []
+    },
+    {
+      "carries": "value",
+      "compatible_with": [
+        "signal.electrical",
+        "signal.digital",
+        "signal.pwm",
+        "signal.analog"
+      ],
+      "description": "An electrical node at a potential.",
+      "domains": [
+        "electronics",
+        "hybrid"
+      ],
+      "id": "signal.electrical",
+      "units": [
+        "V"
+      ]
+    },
+    {
+      "carries": "value",
+      "compatible_with": [
+        "signal.digital",
+        "signal.electrical"
+      ],
+      "description": "A logic-level binary signal.",
+      "domains": [
+        "electronics",
+        "hybrid"
+      ],
+      "id": "signal.digital",
+      "units": []
+    },
+    {
+      "carries": "value",
+      "compatible_with": [
+        "signal.pwm",
+        "signal.digital"
+      ],
+      "description": "A pulse-width modulated output.",
+      "domains": [
+        "electronics",
+        "hybrid",
+        "mechanics"
+      ],
+      "id": "signal.pwm",
+      "units": [
+        "%"
+      ]
+    },
+    {
+      "carries": "value",
+      "compatible_with": [
+        "signal.analog",
+        "signal.electrical"
+      ],
+      "description": "A continuous analogue signal.",
+      "domains": [
+        "electronics",
+        "hybrid",
+        "mechanics"
+      ],
+      "id": "signal.analog",
+      "units": [
+        "V"
+      ]
+    },
+    {
+      "carries": "data",
+      "compatible_with": [
+        "signal.serial"
+      ],
+      "description": "A UART serial link.",
+      "domains": [
+        "electronics",
+        "hybrid"
+      ],
+      "id": "signal.serial",
+      "units": [
+        "baud"
+      ]
+    },
+    {
+      "carries": "data",
+      "compatible_with": [
+        "signal.i2c"
+      ],
+      "description": "An I2C bus. Two buses may share one net.",
+      "domains": [
+        "electronics",
+        "hybrid"
+      ],
+      "id": "signal.i2c",
+      "units": [
+        "Hz"
+      ]
+    },
+    {
+      "carries": "data",
+      "compatible_with": [
+        "signal.spi"
+      ],
+      "description": "An SPI bus.",
+      "domains": [
+        "electronics",
+        "hybrid"
+      ],
+      "id": "signal.spi",
+      "units": [
+        "Hz"
+      ]
+    },
+    {
+      "carries": "force",
+      "compatible_with": [
+        "mech.force"
+      ],
+      "description": "A linear force on a rigid body.",
+      "domains": [
+        "mechanics",
+        "hybrid"
+      ],
+      "id": "mech.force",
+      "units": [
+        "N"
+      ]
+    },
+    {
+      "carries": "force",
+      "compatible_with": [
+        "mech.torque"
+      ],
+      "description": "A torque about an axis.",
+      "domains": [
+        "mechanics",
+        "hybrid"
+      ],
+      "id": "mech.torque",
+      "units": [
+        "N*m"
+      ]
+    },
+    {
+      "carries": "value",
+      "compatible_with": [
+        "mech.linear"
+      ],
+      "description": "A linear displacement or velocity.",
+      "domains": [
+        "mechanics",
+        "hybrid"
+      ],
+      "id": "mech.linear",
+      "units": [
+        "m",
+        "m/s"
+      ]
+    },
+    {
+      "carries": "value",
+      "compatible_with": [
+        "mech.angular"
+      ],
+      "description": "An angular displacement or rate.",
+      "domains": [
+        "mechanics",
+        "hybrid"
+      ],
+      "id": "mech.angular",
+      "units": [
+        "rad",
+        "rad/s"
+      ]
+    },
+    {
+      "carries": "value",
+      "compatible_with": [
+        "fluid.pressure"
+      ],
+      "description": "A fluid pressure port.",
+      "domains": [
+        "mechanics",
+        "environment"
+      ],
+      "id": "fluid.pressure",
+      "units": [
+        "Pa"
+      ]
+    },
+    {
+      "carries": "data",
+      "compatible_with": [
+        "data.file"
+      ],
+      "description": "A file produced or consumed by a software node.",
+      "domains": [
+        "software"
+      ],
+      "id": "data.file",
+      "units": []
+    },
+    {
+      "carries": "data",
+      "compatible_with": [
+        "data.stream"
+      ],
+      "description": "A stream of values.",
+      "domains": [
+        "software",
+        "hybrid"
+      ],
+      "id": "data.stream",
+      "units": []
+    },
+    {
+      "carries": "packet",
+      "compatible_with": [
+        "net.http"
+      ],
+      "description": "An HTTP request or response.",
+      "domains": [
+        "software"
+      ],
+      "id": "net.http",
+      "units": []
+    },
+    {
+      "carries": "packet",
+      "compatible_with": [
+        "net.tcp"
+      ],
+      "description": "A TCP connection.",
+      "domains": [
+        "software"
+      ],
+      "id": "net.tcp",
+      "units": []
+    },
+    {
+      "carries": "value",
+      "compatible_with": [
+        "env.reference"
+      ],
+      "description": "A reference to a shared environment source.",
+      "domains": [
+        "mechanics",
+        "environment",
+        "hybrid"
+      ],
+      "id": "env.reference",
+      "units": []
+    }
+  ],
+  "version": 1
+}

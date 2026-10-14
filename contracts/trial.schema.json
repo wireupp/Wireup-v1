@@ -1,0 +1,163 @@
+{
+  "$id": "https://wireup.dev/contracts/trial.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "A reproducible experiment: a goal, a sweep space, a seed, and a verdict computed only from measured telemetry.",
+  "properties": {
+    "environment_overrides": {
+      "type": "object"
+    },
+    "goal": {
+      "additionalProperties": false,
+      "properties": {
+        "direction": {
+          "enum": [
+            "min",
+            "max",
+            "target"
+          ]
+        },
+        "metric": {
+          "type": "string"
+        },
+        "target": {
+          "type": "number"
+        },
+        "tolerance": {
+          "minimum": 0,
+          "type": "number"
+        },
+        "window": {
+          "items": {
+            "type": "number"
+          },
+          "maxItems": 2,
+          "minItems": 2,
+          "type": [
+            "array",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "metric",
+        "direction"
+      ],
+      "type": "object"
+    },
+    "id": {
+      "maxLength": 128,
+      "minLength": 1,
+      "type": "string"
+    },
+    "parameters": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "node": {
+            "type": "string"
+          },
+          "property": {
+            "type": "string"
+          },
+          "values": {
+            "items": {
+              "type": "number"
+            },
+            "minItems": 1,
+            "type": "array"
+          }
+        },
+        "required": [
+          "node",
+          "property",
+          "values"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "project_id": {
+      "type": "string"
+    },
+    "runs": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "error": {
+            "type": [
+              "object",
+              "null"
+            ]
+          },
+          "index": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "metrics": {
+            "additionalProperties": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "type": "object"
+          },
+          "parameters": {
+            "type": "object"
+          },
+          "seed": {
+            "type": "integer"
+          },
+          "telemetry_ref": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "verdict": {
+            "enum": [
+              "pass",
+              "fail",
+              "error"
+            ]
+          }
+        },
+        "required": [
+          "index",
+          "seed",
+          "verdict"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "seed": {
+      "description": "Explicit. Same graph + same seed = same result.",
+      "type": "integer"
+    },
+    "summary": {
+      "type": "object"
+    },
+    "verdict": {
+      "description": "Computed from the goal alone. Never written by a caller.",
+      "enum": [
+        "pass",
+        "fail",
+        "error"
+      ]
+    }
+  },
+  "required": [
+    "id",
+    "project_id",
+    "goal",
+    "parameters",
+    "seed",
+    "runs",
+    "verdict",
+    "summary"
+  ],
+  "title": "Trial",
+  "type": "object"
+}

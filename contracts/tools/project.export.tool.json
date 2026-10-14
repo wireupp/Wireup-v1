@@ -1,0 +1,26 @@
+{
+  "args": {
+    "additionalProperties": false,
+    "properties": {},
+    "type": "object"
+  },
+  "errors": [
+    {
+      "code": "INVALID_ARGUMENTS",
+      "retryable": false,
+      "when": "arguments fail the contract's args schema"
+    }
+  ],
+  "implemented_in_phase": "v04",
+  "legacy_names": [],
+  "mutating": false,
+  "name": "project.export",
+  "requires_review": false,
+  "result": {
+    "type": "object"
+  },
+  "see_also": [],
+  "summary": "Export a portable bundle: graph, sources, build list, recordings.",
+  "title": "Project Export",
+  "version": 1
+}

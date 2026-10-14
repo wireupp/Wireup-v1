@@ -1,0 +1,122 @@
+{
+  "$id": "https://wireup.dev/contracts/capability.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "What the platform can actually do. Generated from solver registration and test results; never hand-maintained. The 'unsupported' array is the most important part of the platform: it is what stops an agent claiming a simulation that does not exist.",
+  "properties": {
+    "environments": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "generated_at": {
+      "description": "Derived from the manifest hash, not the wall clock, so regeneration is byte-identical.",
+      "type": "string"
+    },
+    "generator_status": {
+      "description": "'stub' means no solver has registered yet. Nothing may treat a stub as truth.",
+      "enum": [
+        "stub",
+        "generated"
+      ]
+    },
+    "generator_version": {
+      "type": "integer"
+    },
+    "kinds": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "confidence": {
+            "enum": [
+              "verified",
+              "partial",
+              "experimental",
+              "unknown"
+            ]
+          },
+          "exercised_by_cases": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "exists": {
+            "type": "boolean"
+          },
+          "id": {
+            "type": "string"
+          },
+          "simulated": {
+            "type": "boolean"
+          },
+          "solver": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "simulated"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "limits": {
+      "additionalProperties": {
+        "minimum": 0,
+        "type": "integer"
+      },
+      "type": "object"
+    },
+    "telemetry_channels": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "unsupported": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "feature": {
+            "type": "string"
+          },
+          "kind": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "reason": {
+            "type": "string"
+          },
+          "required_to_support": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "feature",
+          "reason",
+          "required_to_support"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "generated_at",
+    "generator_version",
+    "generator_status",
+    "kinds",
+    "unsupported",
+    "limits"
+  ],
+  "title": "Declared platform capability",
+  "type": "object"
+}

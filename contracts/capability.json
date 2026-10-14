@@ -1,0 +1,1326 @@
+{
+  "environments": [],
+  "generated_at": "stub",
+  "generator_status": "stub",
+  "generator_version": 2,
+  "kinds": [
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "board.arduino-mega",
+      "simulated": true,
+      "solver": "mcu"
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "board.arduino-nano",
+      "simulated": true,
+      "solver": "mcu"
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "board.arduino-uno",
+      "simulated": true,
+      "solver": "mcu"
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "board.esp32-devkit-v1",
+      "simulated": false,
+      "solver": null
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "board.franzininho",
+      "simulated": false,
+      "solver": null
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "board.nano-rp2040-connect",
+      "simulated": false,
+      "solver": null
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "board.pi-pico",
+      "simulated": false,
+      "solver": null
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "electromech.biaxial-stepper",
+      "simulated": false,
+      "solver": null
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "electromech.ks2e-m-dc5",
+      "simulated": false,
+      "solver": null
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "electromech.relay",
+      "simulated": false,
+      "solver": null
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "electromech.stepper-motor",
+      "simulated": false,
+      "solver": null
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "input.analog-joystick",
+      "simulated": true,
+      "solver": "mcu"
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "input.dip-switch-8",
+      "simulated": true,
+      "solver": "mcu"
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "input.ir-receiver",
+      "simulated": false,
+      "solver": null
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "input.ir-remote",
+      "simulated": false,
+      "solver": null
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "input.membrane-keypad",
+      "simulated": true,
+      "solver": "mcu"
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "input.potentiometer",
+      "simulated": true,
+      "solver": "mcu"
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "input.pushbutton",
+      "simulated": true,
+      "solver": "mcu"
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "input.pushbutton-6mm",
+      "simulated": true,
+      "solver": "mcu"
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "input.rotary-dialer",
+      "simulated": true,
+      "solver": "mcu"
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "input.slide-potentiometer",
+      "simulated": true,
+      "solver": "mcu"
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "input.slide-switch",
+      "simulated": true,
+      "solver": "mcu"
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "input.tilt-switch",
+      "simulated": true,
+      "solver": "mcu"
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "logic.a4988",
+      "simulated": false,
+      "solver": null
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "logic.bjt-2n2222",
+      "simulated": false,
+      "solver": null
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "logic.bjt-2n3055",
+      "simulated": false,
+      "solver": null
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "logic.bjt-2n3906",
+      "simulated": false,
+      "solver": null
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "logic.bjt-bc547",
+      "simulated": false,
+      "solver": null
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "logic.bjt-bc557",
+      "simulated": false,
+      "solver": null
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "logic.diode",
+      "simulated": true,
+      "solver": "circuit"
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "logic.diode-1n4007",
+      "simulated": true,
+      "solver": "circuit"
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "logic.diode-1n4148",
+      "simulated": true,
+      "solver": "circuit"
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "logic.diode-1n5817",
+      "simulated": false,
+      "solver": null
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "logic.diode-1n5819",
+      "simulated": false,
+      "solver": null
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "logic.flip-flop-d",
+      "simulated": false,
+      "solver": null
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "logic.flip-flop-jk",
+      "simulated": false,
+      "solver": null
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "logic.flip-flop-t",
+      "simulated": false,
+      "solver": null
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "logic.ic-74hc00",
+      "simulated": false,
+      "solver": null
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "logic.ic-74hc02",
+      "simulated": false,
+      "solver": null
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "logic.ic-74hc04",
+      "simulated": false,
+      "solver": null
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "logic.ic-74hc08",
+      "simulated": false,
+      "solver": null
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "logic.ic-74hc14",
+      "simulated": false,
+      "solver": null
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "logic.ic-74hc32",
+      "simulated": false,
+      "solver": null
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "logic.ic-74hc86",
+      "simulated": false,
+      "solver": null
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "logic.logic-gate-and",
+      "simulated": false,
+      "solver": null
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "logic.logic-gate-and-3",
+      "simulated": false,
+      "solver": null
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "logic.logic-gate-and-4",
+      "simulated": false,
+      "solver": null
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "logic.logic-gate-nand",
+      "simulated": false,
+      "solver": null
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "logic.logic-gate-nand-3",
+      "simulated": false,
+      "solver": null
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "logic.logic-gate-nand-4",
+      "simulated": false,
+      "solver": null
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "logic.logic-gate-nor",
+      "simulated": false,
+      "solver": null
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "logic.logic-gate-nor-3",
+      "simulated": false,
+      "solver": null
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "logic.logic-gate-nor-4",
+      "simulated": false,
+      "solver": null
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "logic.logic-gate-not",
+      "simulated": false,
+      "solver": null
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "logic.logic-gate-or",
+      "simulated": false,
+      "solver": null
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "logic.logic-gate-or-3",
+      "simulated": false,
+      "solver": null
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "logic.logic-gate-or-4",
+      "simulated": false,
+      "solver": null
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "logic.logic-gate-xnor",
+      "simulated": false,
+      "solver": null
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "logic.logic-gate-xor",
+      "simulated": false,
+      "solver": null
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "logic.mosfet-2n7000",
+      "simulated": false,
+      "solver": null
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "logic.mosfet-fqp27p06",
+      "simulated": false,
+      "solver": null
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "logic.mosfet-irf540",
+      "simulated": false,
+      "solver": null
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "logic.mosfet-irf9540",
+      "simulated": false,
+      "solver": null
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "logic.motor-driver-l293d",
+      "simulated": false,
+      "solver": null
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "logic.opamp-ideal",
+      "simulated": false,
+      "solver": null
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "logic.opamp-lm324",
+      "simulated": false,
+      "solver": null
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "logic.opamp-lm358",
+      "simulated": false,
+      "solver": null
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "logic.opamp-lm741",
+      "simulated": false,
+      "solver": null
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "logic.opamp-tl072",
+      "simulated": false,
+      "solver": null
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "logic.opto-4n25",
+      "simulated": false,
+      "solver": null
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "logic.opto-pc817",
+      "simulated": false,
+      "solver": null
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "logic.reg-7805",
+      "simulated": false,
+      "solver": null
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "logic.reg-7812",
+      "simulated": false,
+      "solver": null
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "logic.reg-7905",
+      "simulated": false,
+      "solver": null
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "logic.reg-lm317",
+      "simulated": false,
+      "solver": null
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "logic.zener-1n4733",
+      "simulated": true,
+      "solver": "circuit"
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "output.7segment",
+      "simulated": false,
+      "solver": null
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "output.buzzer",
+      "simulated": true,
+      "solver": "mcu"
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "output.epaper-1in54-bw",
+      "simulated": false,
+      "solver": null
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "output.epaper-2in13-bw",
+      "simulated": false,
+      "solver": null
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "output.epaper-2in13-bwr",
+      "simulated": false,
+      "solver": null
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "output.epaper-2in9-bw",
+      "simulated": false,
+      "solver": null
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "output.epaper-2in9-bwr",
+      "simulated": false,
+      "solver": null
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "output.epaper-4in2-bw",
+      "simulated": false,
+      "solver": null
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "output.epaper-5in65-7c",
+      "simulated": false,
+      "solver": null
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "output.epaper-7in5-bw",
+      "simulated": false,
+      "solver": null
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "output.ili9341",
+      "simulated": true,
+      "solver": "mcu"
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "output.lcd1602",
+      "simulated": true,
+      "solver": "mcu"
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "output.lcd1602-i2c",
+      "simulated": false,
+      "solver": null
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "output.lcd2004",
+      "simulated": true,
+      "solver": "mcu"
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "output.lcd2004-i2c",
+      "simulated": false,
+      "solver": null
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "output.led",
+      "simulated": true,
+      "solver": "mcu"
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "output.led-bar-graph",
+      "simulated": true,
+      "solver": "mcu"
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "output.led-ring",
+      "simulated": true,
+      "solver": "mcu"
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "output.neopixel",
+      "simulated": true,
+      "solver": "mcu"
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "output.neopixel-matrix",
+      "simulated": true,
+      "solver": "mcu"
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "output.rgb-led",
+      "simulated": true,
+      "solver": "mcu"
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "output.ssd1306",
+      "simulated": true,
+      "solver": "mcu"
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "output.ssd1306-i2c-4pin",
+      "simulated": true,
+      "solver": "mcu"
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "passive.battery-9v",
+      "simulated": true,
+      "solver": "circuit"
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "passive.battery-aa",
+      "simulated": true,
+      "solver": "circuit"
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "passive.battery-coin-cell",
+      "simulated": true,
+      "solver": "circuit"
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "passive.breadboard",
+      "simulated": false,
+      "solver": null
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "passive.breadboard-mini",
+      "simulated": false,
+      "solver": null
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "passive.cap-100n",
+      "simulated": true,
+      "solver": "circuit"
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "passive.cap-100p",
+      "simulated": true,
+      "solver": "circuit"
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "passive.cap-10n",
+      "simulated": true,
+      "solver": "circuit"
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "passive.cap-10p",
+      "simulated": true,
+      "solver": "circuit"
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "passive.cap-1n",
+      "simulated": true,
+      "solver": "circuit"
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "passive.cap-1u",
+      "simulated": true,
+      "solver": "circuit"
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "passive.cap-22p",
+      "simulated": true,
+      "solver": "circuit"
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "passive.cap-elec-1000u",
+      "simulated": true,
+      "solver": "circuit"
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "passive.cap-elec-100u",
+      "simulated": true,
+      "solver": "circuit"
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "passive.cap-elec-10u",
+      "simulated": true,
+      "solver": "circuit"
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "passive.cap-elec-1u",
+      "simulated": true,
+      "solver": "circuit"
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "passive.cap-elec-470u",
+      "simulated": true,
+      "solver": "circuit"
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "passive.cap-elec-47u",
+      "simulated": true,
+      "solver": "circuit"
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "passive.capacitor",
+      "simulated": true,
+      "solver": "circuit"
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "passive.capacitor-electrolytic",
+      "simulated": true,
+      "solver": "circuit"
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "passive.ind-100u",
+      "simulated": true,
+      "solver": "circuit"
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "passive.ind-10m",
+      "simulated": true,
+      "solver": "circuit"
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "passive.ind-1m",
+      "simulated": true,
+      "solver": "circuit"
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "passive.inductor",
+      "simulated": true,
+      "solver": "circuit"
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "passive.junction",
+      "simulated": false,
+      "solver": null
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "passive.power-supply",
+      "simulated": true,
+      "solver": "circuit"
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "passive.resistor",
+      "simulated": true,
+      "solver": "circuit"
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "passive.resistor-100k",
+      "simulated": true,
+      "solver": "circuit"
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "passive.resistor-10k",
+      "simulated": true,
+      "solver": "circuit"
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "passive.resistor-1k",
+      "simulated": true,
+      "solver": "circuit"
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "passive.resistor-1m",
+      "simulated": true,
+      "solver": "circuit"
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "passive.resistor-220",
+      "simulated": true,
+      "solver": "circuit"
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "passive.resistor-22k",
+      "simulated": true,
+      "solver": "circuit"
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "passive.resistor-2k2",
+      "simulated": true,
+      "solver": "circuit"
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "passive.resistor-330",
+      "simulated": true,
+      "solver": "circuit"
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "passive.resistor-470",
+      "simulated": true,
+      "solver": "circuit"
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "passive.resistor-47k",
+      "simulated": true,
+      "solver": "circuit"
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "passive.resistor-4k7",
+      "simulated": true,
+      "solver": "circuit"
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "sensor.big-sound-sensor",
+      "simulated": true,
+      "solver": "mcu"
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "sensor.bmp280",
+      "simulated": true,
+      "solver": "mcu"
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "sensor.dht22",
+      "simulated": true,
+      "solver": "mcu"
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "sensor.ds1307",
+      "simulated": true,
+      "solver": "mcu"
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "sensor.ds3231",
+      "simulated": true,
+      "solver": "mcu"
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "sensor.flame-sensor",
+      "simulated": true,
+      "solver": "mcu"
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "sensor.gas-sensor",
+      "simulated": true,
+      "solver": "mcu"
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "sensor.gps-neo6m",
+      "simulated": false,
+      "solver": null
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "sensor.hc-sr04",
+      "simulated": true,
+      "solver": "mcu"
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "sensor.heart-beat-sensor",
+      "simulated": true,
+      "solver": "mcu"
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "sensor.hx711",
+      "simulated": true,
+      "solver": "mcu"
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "sensor.ky-040",
+      "simulated": false,
+      "solver": null
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "sensor.mpu6050",
+      "simulated": true,
+      "solver": "mcu"
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "sensor.ntc-temperature-sensor",
+      "simulated": true,
+      "solver": "mcu"
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "sensor.photodiode",
+      "simulated": true,
+      "solver": "mcu"
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "sensor.photoresistor-sensor",
+      "simulated": true,
+      "solver": "mcu"
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "sensor.pir-motion-sensor",
+      "simulated": true,
+      "solver": "mcu"
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "sensor.servo",
+      "simulated": true,
+      "solver": "mcu"
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "sensor.small-sound-sensor",
+      "simulated": true,
+      "solver": "mcu"
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "source.signal-generator",
+      "simulated": false,
+      "solver": null
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "storage.microsd-card",
+      "simulated": false,
+      "solver": null
+    }
+  ],
+  "limits": {
+    "max_iterations": 12,
+    "max_model_calls": 60,
+    "max_nodes": 512,
+    "max_payload_bytes": 200000,
+    "max_sim_seconds": 300,
+    "max_tool_calls_per_run": 400,
+    "max_trial_runs": 64
+  },
+  "telemetry_channels": [],
+  "unsupported": [
+    {
+      "feature": "Universal graph store, tool bus, MCP surface, headless runtime, orchestrator, 3D room, mechanics solver, software sandbox",
+      "kind": null,
+      "reason": "Not implemented. This file is a stub generated before any solver registered.",
+      "required_to_support": "Phases v02-v12 of prompts/."
+    },
+    {
+      "feature": "ESP32 DevKit V1 browser simulation",
+      "kind": "board.esp32-devkit-v1",
+      "reason": "No configured native runtime.",
+      "required_to_support": "A working ESP32 QEMU lane; phase v07."
+    },
+    {
+      "feature": "ESP32-C3 native runtime",
+      "kind": "board.esp32-c3",
+      "reason": "Vendor RiscVCore adapter fails at PC 0x514c26 after 2,666,667 cycles.",
+      "required_to_support": "Fix the vendor CPU adapter; phase v07."
+    },
+    {
+      "feature": "Pico W CYW43 radio and onboard LED",
+      "kind": "board.nano-rp2040-connect",
+      "reason": "Unimplemented in the browser CPU emulator.",
+      "required_to_support": "CYW43 emulation. External GPIO and UART0 work today."
+    },
+    {
+      "feature": "AC sweep, noise analysis and temperature sweep",
+      "kind": null,
+      "reason": "Only DC bias and transient are implemented.",
+      "required_to_support": "ngspice AC/noise/temperature wiring; phase v06."
+    },
+    {
+      "feature": "Compiler isolation for untrusted firmware",
+      "kind": null,
+      "reason": "Native compilation runs in-process.",
+      "required_to_support": "Sandboxed runtime worker; phase v07."
+    },
+    {
+      "feature": "Per-user authentication and project authorization",
+      "kind": null,
+      "reason": "Shared-token reference auth only.",
+      "required_to_support": "Identity and per-project ownership; required before public deployment."
+    }
+  ]
+}
