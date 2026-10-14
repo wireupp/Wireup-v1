@@ -1,3 +1,4 @@
+<!-- Parent document: docs/ARCHITECTURE.md --><!-- Phase reports: docs/phase-reports/ -->
 # Canonical SPICE catalog schema (version 1)
 
 Backend `ComponentCatalog` adds these schematic-only definitions even when vendor metadata is absent. All four board definitions and compiler/runtime interfaces are unchanged. These entries provide validated project data, not simulation results. The browser ngspice adapter must perform actual solves and report unsupported features honestly.

@@ -1,3 +1,4 @@
+<!-- Parent document: docs/ARCHITECTURE.md --><!-- Phase reports: docs/phase-reports/ -->
 # Live build diagnosis
 
 Parent actual Groq build request read_project -> search LED returned optocouplers first because search() searched entire serialized schemas ('controlled' etc match LED). Model then query 'wokwi-led' returned none because canonical id led. No mutations, done status error. Parent fixed ComponentCatalog.search to rank exact id/name then prefix then tags; strips wokwi- prefix. Need agent SYSTEM prompt catalog canonical id and robust errors. Live request actual sequence must be verified after MCQ. User wants FIRST step MCQ for build, then actual action, not text. Project mutation permitted available state. Agent scope must keep distinct request project. Do not claim success without successful mutations. Frontend questionnaire component parent implementing. Contract file needed.

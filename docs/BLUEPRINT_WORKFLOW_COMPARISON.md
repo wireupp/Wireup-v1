@@ -1,3 +1,4 @@
+<!-- Parent document: docs/ARCHITECTURE.md --><!-- Phase reports: docs/phase-reports/ -->
 # Blueprint hands-on comparison and WireUp iteration
 
 Reference: user-provided `blueprint-research/blueprint-hands-on.md`. It records one actual account/session; untested sharing, physical assembly and CAD fit are not evidence of working hardware.

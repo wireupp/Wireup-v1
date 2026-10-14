@@ -1,3 +1,4 @@
+<!-- Parent document: docs/ARCHITECTURE.md --><!-- Phase reports: docs/phase-reports/ -->
 # Canvas interaction and simulated Wi-Fi
 
 Component dragging previews movement on every animation frame. Actual pin endpoints and rounded cable paths follow the same preview, while the canonical backend records one modification on release. Cancelling returns to the stored position. Simulation-running state prevents topology edits.

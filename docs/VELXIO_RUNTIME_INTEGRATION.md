@@ -1,3 +1,4 @@
+<!-- Parent document: docs/ARCHITECTURE.md --><!-- Phase reports: docs/phase-reports/ -->
 # Velxio runtime integration — Uno milestone
 
 WireUp keeps the existing `HardwareRuntime`, CPU artifact loader, compiler, canvas, serial monitor and project ownership. It now attaches selected upstream `PartSimulationRegistry` handlers to the same existing AVRSimulator instance; no second CPU engine or circuit store owns the project.

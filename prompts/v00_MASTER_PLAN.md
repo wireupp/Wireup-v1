@@ -177,7 +177,7 @@ wireup/
 │  └─ room/                       v10
 ├─ bench/
 │  ├─ cases/<domain>/<case>/      every phase adds cases
-│  └─ run.ts
+│  └─ run.mjs                    # the runner itself; plain JS so `node` runs it directly
 ├─ docs/
 │  ├─ ARCHITECTURE.md             v01
 │  ├─ adr/                        v01 onward

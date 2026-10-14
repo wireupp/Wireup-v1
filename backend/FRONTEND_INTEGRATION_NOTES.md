@@ -1,3 +1,4 @@
+<!-- Parent document: docs/ARCHITECTURE.md --><!-- Phase reports: docs/phase-reports/ -->
 # Shared frontend integration notes
 
 Read-only exploration confirms prefer genuine SimulatorCanvas + useSimulatorStore + CodeEditor, not EditorPage. Must mount vendor simulation/spice/start.ts startSimulation() with cleanup; without it pushbutton/analog connectivity fails. Catalog public/components-metadata.json; actual pin geometry from element pinInfo. compileBoardProgram(boardId,hex) then startBoard; don't overwrite serial callback. getBoardPinManager/getBoardSimulator exported. Parent has configured @pro and @velxio aliases and installed upstream runtime dependencies. Parent copies public assets, initializes Monaco assets. Frontend agent should expose HardwareWorkspace with chat slot contract and runtimeToken callback/context for parent to bind ChatApp. Preserve backend canonical state with revision conflicts rather than silent overwrite.

@@ -77,8 +77,8 @@ A single `verify` job on push and pull request, running, in order:
    the documented pre-existing failure list — implement this as an explicit allowlist file
    `bench/known-failures.txt`, one `test_file.py::test_name` per line, empty is fine)
 5. `npm test -- --workers=1`
-6. `node bench/run.ts` — must exit 0 and print a per-case table. If `bench/` does not exist yet,
-   create a minimal `bench/run.ts` that discovers `bench/cases/**/case.json`, runs zero cases, and
+6. `node bench/run.mjs` — must exit 0 and print a per-case table. If `bench/` does not exist yet,
+   create a minimal `bench/run.mjs` that discovers `bench/cases/**/case.json`, runs zero cases, and
    exits 0. This gives later phases a CI slot for free.
 
 No secrets in CI. No provider keys. Tests that require live model providers stay skipped in CI —
@@ -150,7 +150,7 @@ beyond keeping it working.
 
 ## 4. Files
 
-**Create:** `AGENTS.md`, `.github/workflows/ci.yml`, `bench/run.ts`, `bench/known-failures.txt`,
+**Create:** `AGENTS.md`, `.github/workflows/ci.yml`, `bench/run.mjs`, `bench/known-failures.txt`,
 `bench/known-oversize.txt`, `docs/ARCHITECTURE.md`, `docs/adr/README.md`,
 `docs/adr/0001-record-architecture-decisions.md`, `docs/adr/0002-contracts-before-code.md`,
 `docs/phase-reports/README.md`, `scripts/check-file-size.mjs`, `scripts/check-docs.mjs`,
@@ -178,7 +178,7 @@ Map each to `bench/cases/meta/repo-hygiene/assertions.json` (create it):
 
 - **A1** `AGENTS.md` exists, is ≤250 lines, and contains all nine required sections.
 - **A2** `.github/workflows/ci.yml` runs build, lint, api tests, playwright, bench.
-- **A3** `node bench/run.ts` exits 0 and prints a table.
+- **A3** `node bench/run.mjs` exits 0 and prints a table.
 - **A4** None of the six deleted reports exist; no inbound references to them remain
   (`node scripts/check-docs.mjs` passes).
 - **A5** `RELEASE_STATUS.md` is ≤30 lines and still names all five open risks.
@@ -199,7 +199,7 @@ node scripts/python.mjs -m pytest backend/tests -q
 npm run build
 npm run lint
 npm test -- --workers=1
-node bench/run.ts
+node bench/run.mjs
 node scripts/check-file-size.mjs
 node scripts/check-docs.mjs
 ```

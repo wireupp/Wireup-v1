@@ -1,27 +1,34 @@
-# WireUp release status
+# Release status
 
-This application has improved local reliability but is **not certified ready for public multi-user production**.
+Authoritative short list of what is verified and what is blocked. The full architecture is
+`docs/ARCHITECTURE.md`; per-phase detail is in `docs/phase-reports/`.
 
-## Verified local changes
-- Canonical project persistence, board/pin validation, atomic additive wiring with one undo/revision transaction, limited rail/LED topology checks.
-- LangGraph tools `wire_circuit` and `validate_circuit`, alongside original project/firmware tools and analyzed Velxio example references.
-- Hardware request deadlines/cancellation, nonoverlapping project polling, metadata retry, root error recovery, per-conversation project requirements.
-- API middleware body limits, request admission, headers and fail-closed production token settings.
-- Build passes; lint has existing React optimization warnings, not errors.
-- Backend regression baseline: 493 passed (22 real-runtime/compiler tests excluded from this particular run). Dedicated security and wiring tests also executed.
+## Verified locally
 
-## Simulation capabilities
-- Uno/Nano/Mega/Pico use genuine browser CPU emulators. Pico and Pico W external-GPIO/UART0/button execution have now passed actual compiled-firmware browser tests; Pico W CYW43 radio and onboard LED remain unsupported. Existing real compilation/run checks establish selected local paths, not every peripheral.
-- ESP32-C3 uses the genuine vendor RiscVCore adapter experimentally. Actual Arduino firmware execution failed at PC 0x514c26 after 2,666,667 cycles; it is not certified browser-supported and normal Run stays unavailable.
-- ESP32/S3/C3 remote server package exists under deployment/remote-simulation and local session integration under backend/remote_projects.py. No server URL/token is configured; Docker image/TLS/QEMU firmware execution is unverified. Do not advertise successful remote simulation before deploying and smoke-testing it.
-- Linux Pi3/4/5 and full WiFi/Bluetooth/CYW43 support remain unavailable. Not all upstream Velxio board features exist in this adapter.
+- Canonical project persistence, integer revisions, board/pin validation, atomic additive wiring,
+  bounded undo, limited rail/LED topology checks.
+- LangGraph agent with 24 tools, real ngspice DC/transient, real Arduino compilation, real AVR and
+  RP2040 CPU emulation, oscilloscope and logic analyser.
+- Circuit canvas, schematic studio, breadboard view, build guide, examples gallery.
 
-## Public deployment blockers
-- Shared-token reference auth is not per-user identity/project authorization. Browser credential/session and WebSocket ticket integration is not complete.
-- Native compiler must move to disposable isolated workers without provider credentials or project filesystem access before accepting untrusted/public firmware.
-- File locks/runtime sessions are process-local; keep single worker until transactional shared state and runtime coordination are implemented.
-- Container builds, runtime capabilities and deployed HTTPS are not verified in this Windows environment without Docker.
-- Review and rotate previously disclosed provider credentials. No secrets belong in deployment artifacts.
-- AGPL source availability/attribution obligations must be met, or appropriate commercial licenses obtained.
+## Not ready — open blockers
 
-Use deployment/local-production as a reference preparation package, not a declaration that these blockers are resolved.
+1. **No MCP server.** The agent-facing surface does not exist yet. Sequenced as phase v08.
+2. **Simulation requires a browser.** An external agent cannot run or observe anything today.
+   Sequenced as phase v07.
+3. **Single domain.** The project model is electronics-only. No boat, drone or website domain.
+   Sequenced as phase v03.
+4. **Compiler is not sandboxed.** Native compilation runs in-process. Must be isolated before any
+   untrusted or public firmware is accepted.
+5. **No per-user auth.** Shared-token reference auth is not identity or project authorization.
+6. **ESP32-C3 native runtime fails** in execution (PC 0x514c26). Not advertised as working.
+   Pico W radio (CYW43) and onboard LED unsupported.
+7. **Remote ESP32 QEMU** is packaged but not deployed; Docker, TLS and QEMU execution unverified.
+8. **AGPL obligations.** The vendored Velxio tree is AGPLv3 / commercial dual-licensed. A licensing
+   decision is required before closed-source distribution. See `vendor/VELXIO_PROVENANCE.md`.
+
+## Confidence
+
+Local features above are exercised by the test suites. Provider-dependent behaviour (Groq,
+NVIDIA, Azure, Bedrock) is verified only where a live call was made; quota and access problems are
+environmental, not product defects, and are reported as such.

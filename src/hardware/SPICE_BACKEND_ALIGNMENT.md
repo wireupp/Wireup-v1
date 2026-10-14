@@ -1,3 +1,4 @@
+<!-- Parent document: docs/ARCHITECTURE.md --><!-- Phase reports: docs/phase-reports/ -->
 # Mandatory backend alignment
 
 Backend catalog now supports exact canonical ids in backend/SPICE_CATALOG.md:

@@ -215,7 +215,7 @@ npm run build
 npm run lint
 npm test -- --workers=1
 node scripts/python.mjs -m pytest backend/tests -q
-node bench/run.ts
+node bench/run.mjs
 ```
 
 Plus: paste the headless-vs-browser recording comparison from A1.

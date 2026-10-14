@@ -27,7 +27,7 @@ phase builds the contract; `v04` wires the generator to the tool bus.
 
 ## 2. Preconditions — verify, do not assume
 
-1. `prompts/v01_REPO_GROUND_RULES.md` completed: `AGENTS.md` exists, CI is green, `bench/run.ts`
+1. `prompts/v01_REPO_GROUND_RULES.md` completed: `AGENTS.md` exists, CI is green, `bench/run.mjs`
    runs. If `AGENTS.md` does not exist, stop and report.
 2. `backend/agent/schemas.py` and `backend/hardware/commands.py` exist (v01's extractions).
 3. `contracts/` does not already exist. If it does, read it and report what you find.
@@ -306,7 +306,7 @@ The legacy tool definitions are **not** rewired in this phase. `v04` does that.
 ```powershell
 npm run contracts:gen
 npm run contracts:check
-node bench/run.ts
+node bench/run.mjs
 npm run build
 npm run lint
 node scripts/python.mjs -m pytest backend/tests -q

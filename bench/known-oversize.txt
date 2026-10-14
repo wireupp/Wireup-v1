@@ -1,0 +1,10 @@
+# Tracked source files already above the 800-line god-file limit at the start of
+# phase v01. Editing a file listed here is allowed only if the change does not grow it.
+# Format: <path>:<line-count-at-baseline>
+#
+# This file is a ratchet, not a licence. Remove an entry once the file is under the limit.
+
+src/components/ui/ai-prompt-input.tsx:2582
+backend/hardware.py:1228
+backend/tests/test_agent.py:1173
+backend/agent.py:1067

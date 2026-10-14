@@ -208,7 +208,7 @@ npm run build
 npm run lint
 npm run core:test
 npm test -- --workers=1
-node bench/run.ts
+node bench/run.mjs
 node scripts/python.mjs -m pytest backend/tests -q
 npm run mcp:smoke
 ```

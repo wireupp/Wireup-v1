@@ -232,7 +232,7 @@ npm run core:test
 npm run contracts:gen
 npm run contracts:check
 npm run mcp:smoke
-node bench/run.ts
+node bench/run.mjs
 ```
 
 Plus: paste the escape-corpus results and one completed `BuildReport` for the web app goal.

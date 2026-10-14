@@ -1,3 +1,4 @@
+<!-- Parent document: docs/ARCHITECTURE.md --><!-- Phase reports: docs/phase-reports/ -->
 # Feasibility service contract
 Parent implements backend/feasibility.py after worker tool failure.
 assess(service, project_id, plan) synchronous -> report {id,project_id,revision,status:'approved'|'awaiting_approval'|'blocked',summary,issues:[{code,title,message,reason,alternative}],choices:[{id,label,description}],plan:{board,parts:[{type,quantity}],behavior,libraries,operations}}. Internal state saved _feasibility excluded public; no visible mutation/revision. Simple safe plan no issue approved automatically. Any issues require choice before mutations.

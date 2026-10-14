@@ -1,3 +1,4 @@
+<!-- Parent document: docs/ARCHITECTURE.md --><!-- Phase reports: docs/phase-reports/ -->
 # Analog integration contract
 
 Owned files: `src/hardware/spice.ts`, its typed `spice-netlist.js`/`.d.ts` upstream bridge, `src/components/schematic-canvas.tsx`, `src/components/schematic-canvas.css`, `tests/spice.spec.ts`, and this contract. The bridge preserves direct upstream runtime reuse without pulling existing vendor-only TypeScript errors into the application type-check. Backend, runtime, workspace, and oscilloscope are not edited here.

@@ -1,3 +1,4 @@
+<!-- Parent document: docs/ARCHITECTURE.md --><!-- Phase reports: docs/phase-reports/ -->
 # Connect and flash an actual board
 
 The workspace footer provides **Connect board & flash**. Plug in the board with a data-capable USB cable, open the dialog, refresh detected serial ports, select the intended device, and confirm that its firmware may be replaced.

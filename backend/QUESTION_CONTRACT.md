@@ -1,3 +1,4 @@
+<!-- Parent document: docs/ARCHITECTURE.md --><!-- Phase reports: docs/phase-reports/ -->
 # Agent question and resume contract
 
 `stream_agent(model, history, project_id=None, runtime_token=None, requirements=None, *, max_tool_calls=None, max_model_calls=None, timeout_seconds=None)` remains backwards compatible. Parent should validate `ChatRequest.project_answers` as a nonempty object mapping question IDs to selected option IDs or confirmed text (maximum 20 entries; IDs 80 characters, values 1000 characters), then pass it as `requirements=payload.project_answers`. Do not accept a model-produced confirmation flag. Requirements are request context, not persistent agent state; send the confirmed object on subsequent build requests for that project.

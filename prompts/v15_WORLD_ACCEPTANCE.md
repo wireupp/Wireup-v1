@@ -39,7 +39,7 @@ If that is true, the product does what the company set out to build. Everything 
 
 1. Every prior phase report exists in `docs/phase-reports/` with its `ESCALATION` recorded.
 2. `npm run contracts:check`, `npm run core:test`, `npm run mcp:smoke`, `npm run build`,
-   `npm run lint`, `node bench/run.ts`, pytest and Playwright all pass.
+   `npm run lint`, `node bench/run.mjs`, pytest and Playwright all pass.
 3. A model provider is configured and reachable. **Record any live-provider failure and its cause
    before starting.** A provider outage is not a product failure; it must be reported as `SKIPPED`
    with the reason, never as `PASS`.

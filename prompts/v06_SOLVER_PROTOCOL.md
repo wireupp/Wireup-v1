@@ -119,7 +119,7 @@ experimental  ⇔ self-test fails on at least one standard fixture
 ```
 
 A solver author cannot mark themselves `verified`. The generator reads the CI test report
-(`bench/results/testreport.json`, produced by `bench/run.ts`) and the runtime self-test.
+(`bench/results/testreport.json`, produced by `bench/run.mjs`) and the runtime self-test.
 
 ### 3.4 `scripts/gen-capability.mjs` — replace the stub
 
@@ -240,7 +240,7 @@ npm run core:test
 npm run build
 npm run lint
 npm test -- --workers=1
-node bench/run.ts
+node bench/run.mjs
 node scripts/python.mjs -m pytest backend/tests -q
 ```
 

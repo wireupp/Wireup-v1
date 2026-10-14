@@ -10,7 +10,10 @@
     "test": "playwright test",
     "test:api": "node scripts/python.mjs -m pytest backend/tests -q",
     "build": "tsc -b && vite build",
-    "lint": "oxlint src tests scripts vite.config.ts playwright.config.ts",
+    "lint": "oxlint src tests scripts vite.config.ts playwright.config.ts && node scripts/check-file-size.mjs && node scripts/check-docs.mjs",
+    "lint:files": "node scripts/check-file-size.mjs --print",
+    "bench": "node bench/run.mjs",
+    "verify:structure": "python scripts/verify-backend-structure.py",
     "preview": "vite preview"
   },
   "dependencies": {

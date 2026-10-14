@@ -1,0 +1,3 @@
+# Pre-existing backend test failures at the baseline of phase v01.
+# One <test_file>::<test_name> per line. Empty is the correct starting state.
+# Only add an entry after verifying the failure exists on a clean checkout.

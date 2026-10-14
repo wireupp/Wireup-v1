@@ -1,3 +1,4 @@
+<!-- Parent document: docs/ARCHITECTURE.md --><!-- Phase reports: docs/phase-reports/ -->
 # Latest frontend scope update
 
 User explicitly rejects current stacked tiny circuit/code/compiler layout (005316.png). Wants reference 005529.png, 005714.png: main large circuit canvas + left categorized visual component catalog + right agent + compact bottom console; Sketch toggle opens code, schematic mode, sources including DC SPICE, oscilloscope/logic analyser. NO Builder/Studio switch. Parent will implement full visual followup after current worker completes; avoid further changing layout once tests done report so parent can own. Core must now merge fuller upstream simulator not placement-only parts.

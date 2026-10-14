@@ -198,7 +198,7 @@ None. `jszip`, `recharts` and `zustand` are already present.
 npm run build
 npm run lint
 npm test -- --workers=1
-node bench/run.ts
+node bench/run.mjs
 npm run mcp:smoke
 node scripts/python.mjs -m pytest backend/tests -q
 ```

@@ -218,7 +218,7 @@ None beyond `ajv` (already added in `v02`) and `idb-keyval` (already present).
 
 ```powershell
 npm run core:test
-node bench/run.ts
+node bench/run.mjs
 npm run contracts:check
 npm run build
 npm run lint

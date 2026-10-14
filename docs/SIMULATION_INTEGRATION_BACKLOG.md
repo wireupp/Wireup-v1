@@ -1,3 +1,4 @@
+<!-- Parent document: docs/ARCHITECTURE.md --><!-- Phase reports: docs/phase-reports/ -->
 # Simulation integration backlog — exhaustive catalog/registry inventory
 
 ## Scope and reconciliation

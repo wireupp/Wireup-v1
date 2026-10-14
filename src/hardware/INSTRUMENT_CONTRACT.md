@@ -1,3 +1,4 @@
+<!-- Parent document: docs/ARCHITECTURE.md --><!-- Phase reports: docs/phase-reports/ -->
 # Runtime instrument integration
 
 Owned implementation: `src/hardware/runtime.ts` and `src/components/hardware-instruments.tsx` / `.css`. Mount named/default `HardwareInstruments` with `{ runtime: HardwareRuntime | null, results: RuntimeResults | null, analogResult?: AnalogSolveResult | null }`. The parent supplies the actual runtime instance, its existing result callback, and optionally the separate SPICE worker result. No new runtime instance is created by the panel.

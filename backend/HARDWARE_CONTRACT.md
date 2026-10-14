@@ -1,3 +1,4 @@
+<!-- Parent document: docs/ARCHITECTURE.md --><!-- Phase reports: docs/phase-reports/ -->
 # Hardware API contract
 
 Integration: `from backend.hardware import router, service` and `application.include_router(router)`; app.py is intentionally not changed by the hardware worker. Agent tools call `await service.command(project_id, name, args, runtime_token=runtime_token)` and use the same canonical service as manual REST edits. `HardwareService(data_dir=Path(...), compiler=ArduinoCompiler(...), runtime=RuntimeBridge(...))` supports isolated tests.

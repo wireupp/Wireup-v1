@@ -262,7 +262,7 @@ npm run build
 npm run lint
 npm run core:test
 npm run mcp:smoke
-node bench/run.ts
+node bench/run.mjs
 node scripts/python.mjs -m pytest backend/tests -q
 npm test -- --workers=1
 ```

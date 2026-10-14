@@ -246,7 +246,7 @@ npm run lint
 npm run core:test
 node scripts/python.mjs -m pytest backend/tests -q
 npm test -- --workers=1
-node bench/run.ts
+node bench/run.mjs
 ```
 
 Plus: manually diff each baseline response against its bus result and paste the table.
