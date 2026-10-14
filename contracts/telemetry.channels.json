@@ -1,0 +1,125 @@
+{
+  "version": 1,
+  "channels": [
+    {
+      "id": "pin.edge",
+      "label": "Digital pin transition",
+      "unit": null,
+      "node_kinds": ["board.arduino-uno", "board.arduino-nano", "board.arduino-mega", "board.pi-pico", "board.pi-pico-w"],
+      "direction": "output",
+      "min_rate_hz": 0,
+      "quality": "measured",
+      "source": "solver",
+      "solver": "mcu",
+      "derivations": []
+    },
+    {
+      "id": "pin.level",
+      "label": "Digital pin state",
+      "unit": null,
+      "node_kinds": ["board.arduino-uno", "board.arduino-nano", "board.arduino-mega", "board.pi-pico", "board.pi-pico-w"],
+      "direction": "output",
+      "min_rate_hz": 0,
+      "quality": "measured",
+      "source": "solver",
+      "solver": "mcu",
+      "derivations": ["pin.level"]
+    },
+    {
+      "id": "serial.rx",
+      "label": "UART0 received text",
+      "unit": null,
+      "node_kinds": ["board.arduino-uno", "board.arduino-nano", "board.arduino-mega", "board.pi-pico", "board.pi-pico-w"],
+      "direction": "output",
+      "min_rate_hz": 0,
+      "quality": "measured",
+      "source": "solver",
+      "solver": "mcu",
+      "derivations": []
+    },
+    {
+      "id": "mcu.cycles",
+      "label": "Emulated CPU cycles",
+      "unit": "cycles",
+      "node_kinds": ["board.arduino-uno", "board.arduino-nano", "board.arduino-mega", "board.pi-pico", "board.pi-pico-w"],
+      "direction": "output",
+      "min_rate_hz": 0,
+      "quality": "measured",
+      "source": "solver",
+      "solver": "mcu",
+      "derivations": ["mcu.cycles"]
+    },
+    {
+      "id": "mcu.clock_hz",
+      "label": "Emulated CPU clock",
+      "unit": "Hz",
+      "node_kinds": ["board.arduino-uno", "board.arduino-nano", "board.arduino-mega", "board.pi-pico", "board.pi-pico-w"],
+      "direction": "output",
+      "min_rate_hz": 0,
+      "quality": "measured",
+      "source": "solver",
+      "solver": "mcu",
+      "derivations": ["mcu.clock_hz"]
+    },
+    {
+      "id": "runtime.simulated_time",
+      "label": "Emulated time",
+      "unit": "s",
+      "node_kinds": ["board.arduino-uno", "board.arduino-nano", "board.arduino-mega", "board.pi-pico", "board.pi-pico-w"],
+      "direction": "output",
+      "min_rate_hz": 0,
+      "quality": "derived",
+      "source": "derived",
+      "solver": "mcu",
+      "derivations": ["runtime.simulated_time"]
+    },
+    {
+      "id": "analog.node_voltage",
+      "label": "ngspice node voltage",
+      "unit": "V",
+      "node_kinds": [],
+      "direction": "output",
+      "min_rate_hz": 0,
+      "quality": "measured",
+      "source": "solver",
+      "solver": "circuit",
+      "derivations": ["analog.node_voltage"]
+    },
+    {
+      "id": "analog.branch_current",
+      "label": "ngspice branch current",
+      "unit": "A",
+      "node_kinds": [],
+      "direction": "output",
+      "min_rate_hz": 0,
+      "quality": "measured",
+      "source": "solver",
+      "solver": "circuit",
+      "derivations": ["analog.branch_current"]
+    },
+    {
+      "id": "pin.duty_cycle",
+      "label": "Digital pin duty cycle",
+      "unit": "ratio",
+      "node_kinds": ["board.arduino-uno", "board.arduino-nano", "board.arduino-mega", "board.pi-pico", "board.pi-pico-w"],
+      "direction": "output",
+      "min_rate_hz": 0,
+      "quality": "unavailable",
+      "source": "",
+      "solver": "mcu",
+      "derivations": []
+    },
+    {
+      "id": "pin.avg_voltage",
+      "label": "Estimated pin average voltage",
+      "unit": "V",
+      "node_kinds": ["board.arduino-uno", "board.arduino-nano", "board.arduino-mega", "board.pi-pico", "board.pi-pico-w"],
+      "direction": "output",
+      "min_rate_hz": 0,
+      "quality": "unavailable",
+      "source": "",
+      "solver": "circuit",
+      "derivations": []
+    }
+  ]
+}

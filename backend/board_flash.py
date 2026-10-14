@@ -246,7 +246,7 @@ async def until_disconnect(request, operation):
 
 
 def create_router(service, *, prefix='/api/hardware'):
-    from backend.hardware import local_connection
+    from backend.hardware.api import local_connection
 
     async def local_only(connection: HTTPConnection, response: Response):
         if not local_connection(connection):

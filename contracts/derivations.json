@@ -37,6 +37,70 @@
         "imu.heading_rad"
       ],
       "solver": "mechanics"
+    },
+    {
+      "channel": "runtime.simulated_time",
+      "confidence": "exact",
+      "formula": "cycles / clock_hz",
+      "inputs": [
+        "mcu.cycles",
+        "mcu.clock_hz"
+      ],
+      "solver": "mcu"
+    },
+    {
+      "channel": "pin.level",
+      "confidence": "exact",
+      "formula": "arithmetic mean of the samples in a telemetry query bucket",
+      "inputs": [
+        "pin.level"
+      ],
+      "solver": "telemetry"
+    },
+    {
+      "channel": "mcu.cycles",
+      "confidence": "exact",
+      "formula": "arithmetic mean of the samples in a telemetry query bucket",
+      "inputs": [
+        "mcu.cycles"
+      ],
+      "solver": "telemetry"
+    },
+    {
+      "channel": "mcu.clock_hz",
+      "confidence": "exact",
+      "formula": "arithmetic mean of the samples in a telemetry query bucket",
+      "inputs": [
+        "mcu.clock_hz"
+      ],
+      "solver": "telemetry"
+    },
+    {
+      "channel": "runtime.simulated_time",
+      "confidence": "exact",
+      "formula": "arithmetic mean of the samples in a telemetry query bucket",
+      "inputs": [
+        "runtime.simulated_time"
+      ],
+      "solver": "telemetry"
+    },
+    {
+      "channel": "analog.node_voltage",
+      "confidence": "exact",
+      "formula": "arithmetic mean of the samples in a telemetry query bucket",
+      "inputs": [
+        "analog.node_voltage"
+      ],
+      "solver": "telemetry"
+    },
+    {
+      "channel": "analog.branch_current",
+      "confidence": "exact",
+      "formula": "arithmetic mean of the samples in a telemetry query bucket",
+      "inputs": [
+        "analog.branch_current"
+      ],
+      "solver": "telemetry"
     }
   ],
   "description": "How each derived channel is computed. A telemetry sample with quality='derived' MUST name an entry here, or the recorder rejects it. This is invariant I5 expressed as data.",

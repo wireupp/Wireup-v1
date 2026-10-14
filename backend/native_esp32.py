@@ -357,7 +357,7 @@ class NativeESP32:
 
 def create_router(service, *, prefix=''):
     from backend.board_flash import until_disconnect
-    from backend.hardware import local_connection
+    from backend.hardware.api import local_connection
 
     async def local_only(connection: HTTPConnection, response: Response):
         if not local_connection(connection):

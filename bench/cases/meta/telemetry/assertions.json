@@ -1,0 +1,64 @@
+{
+  "assertions": [
+    {
+      "id": "A1_metrics_match_hand_calculated_series",
+      "kind": "schema_valid",
+      "checker": ["node", "bench/cases/meta/telemetry/check.mjs", "A1"],
+      "description": "Every metric matches its hand-computed value on deterministic series."
+    },
+    {
+      "id": "A2_insufficient_data_never_passes",
+      "kind": "schema_valid",
+      "checker": ["node", "bench/cases/meta/telemetry/check.mjs", "A2"],
+      "description": "Two-sample standard deviation is insufficient and a null goal is an error."
+    },
+    {
+      "id": "A3_telemetry_quality_is_enforced",
+      "kind": "schema_valid",
+      "checker": ["node", "bench/cases/meta/telemetry/check.mjs", "A3"],
+      "description": "Unknown derivations and non-null unavailable samples are rejected."
+    },
+    {
+      "id": "A4_recordings_are_byte_deterministic",
+      "kind": "schema_valid",
+      "checker": ["node", "bench/cases/meta/telemetry/check.mjs", "A4"],
+      "description": "Ten recordings of identical NDJSON input have identical compressed bytes."
+    },
+    {
+      "id": "A5_telemetry_overflow_is_reported",
+      "kind": "schema_valid",
+      "checker": ["node", "bench/cases/meta/telemetry/check.mjs", "A5"],
+      "description": "Attempted samples equal retained plus dropped samples."
+    },
+    {
+      "id": "A6_truncated_recording_is_rejected",
+      "kind": "schema_valid",
+      "checker": ["node", "bench/cases/meta/telemetry/check.mjs", "A6"],
+      "description": "A truncated gzip recording is surfaced as corrupt."
+    },
+    {
+      "id": "A7_sweep_is_stable_and_isolates_solver_errors",
+      "kind": "schema_valid",
+      "checker": ["node", "bench/cases/meta/telemetry/check.mjs", "A7"],
+      "description": "A 3 by 2 sweep with two repeats has 12 ordered runs and isolates one failure."
+    },
+    {
+      "id": "A8_cancellation_cannot_pass",
+      "kind": "schema_valid",
+      "checker": ["node", "bench/cases/meta/telemetry/check.mjs", "A8"],
+      "description": "Cancellation returns partial error results and never reports pass."
+    },
+    {
+      "id": "A9_probe_parser_rejects_hostile_expressions",
+      "kind": "schema_valid",
+      "checker": ["node", "bench/cases/meta/telemetry/check.mjs", "A9"],
+      "description": "The expression parser rejects dangerous identifiers, property access, assignment, and loops."
+    },
+    {
+      "id": "A10_runtime_tokens_never_enter_results",
+      "kind": "schema_valid",
+      "checker": ["node", "bench/cases/meta/telemetry/check.mjs", "A10"],
+      "description": "Runtime tokens are rejected from telemetry and absent from trial results."
+    }
+  ]
+}

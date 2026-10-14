@@ -1,6 +1,18 @@
 {
   "rows": [
     {
+      "id": "electronics/blink",
+      "assertion": "A1_boards_and_led_are_declared_simulated (capability_declared)",
+      "status": "pass",
+      "note": ""
+    },
+    {
+      "id": "electronics/blink",
+      "assertion": "A2_every_simulated_kind_cites_existing_evidence (capability_declared)",
+      "status": "pass",
+      "note": ""
+    },
+    {
       "id": "meta/contracts",
       "assertion": "A1_contracts_are_current (schema_valid)",
       "status": "pass",
@@ -37,7 +49,7 @@
       "note": ""
     }
   ],
-  "passed": 6,
+  "passed": 8,
   "failed": 0,
   "skipped": 0
 }

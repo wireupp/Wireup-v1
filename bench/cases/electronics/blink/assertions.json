@@ -1,0 +1,16 @@
+{
+  "assertions": [
+    {
+      "id": "A1_boards_and_led_are_declared_simulated",
+      "kind": "capability_declared",
+      "checker": ["node", "scripts/check-contracts.mjs"],
+      "description": "board.arduino-uno and output.led must be simulated:true, each citing an executable spec that exists (tests/uno-lifecycle.spec.ts, tests/uno-peripherals.spec.ts)."
+    },
+    {
+      "id": "A2_every_simulated_kind_cites_existing_evidence",
+      "kind": "capability_declared",
+      "checker": ["node", "scripts/check-contracts.mjs"],
+      "description": "No kind in the registry claims simulated:true without an evidence array pointing at a real spec file. This is the load-bearing honesty check."
+    }
+  ]
+}

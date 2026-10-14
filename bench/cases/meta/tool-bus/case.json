@@ -1,0 +1,8 @@
+{
+  "id": "meta/tool-bus",
+  "domain": "meta",
+  "title": "ToolBus validates, serializes, and reports calls safely",
+  "tags": ["toolbus", "revisions", "security", "parity"],
+  "spec": "spec.md",
+  "assertions": "assertions.json"
+}

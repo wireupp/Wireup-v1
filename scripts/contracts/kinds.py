@@ -90,12 +90,23 @@ for _scope, _by_spec in EVIDENCE.items():
             else:
                 MODELLED[_part] = (_prev[0], sorted({*_prev[1], _spec}))
 
-BROWSER_BOARDS = {"arduino-uno", "arduino-nano", "arduino-mega", "nano-rp2040-connect"}
-BOARD_EVIDENCE = {
+# Boards with genuine browser CPU emulation, each cited to the spec that proves it.
+# RELEASE_STATUS.md records: Uno, Nano, Mega and Pico run; Pico W runs external GPIO and
+# UART0 only (no CYW43 radio, no onboard LED); every ESP32 and Pi target has no runtime.
+BROWSER_BOARDS = {
     "arduino-uno": "tests/uno-lifecycle.spec.ts",
     "arduino-nano": "tests/uno-peripherals.spec.ts",
     "arduino-mega": "tests/avr-peripherals.spec.ts",
+    "pi-pico": "tests/pico-runtime.spec.ts",
+    "pi-pico-w": "tests/pico-runtime.spec.ts",
+    # Upstream alias for the same RP2040 board, present in the component catalogue.
     "nano-rp2040-connect": "tests/pico-runtime.spec.ts",
+}
+# The Pico W's real limits, stated rather than implied.
+PARTIAL_BOARDS = {
+    "pi-pico-w": "External GPIO and UART0 only. The CYW43 radio and the onboard LED are "
+                 "unimplemented; firmware using WiFi, Bluetooth, cyw43 or LED_BUILTIN is "
+                 "rejected rather than approximated.",
 }
 
 PORT_ROLES = [
@@ -120,10 +131,37 @@ def pin_port(name: str):
     return None, "signal.electrical"
 
 
+def read_boards_module(path):
+    """Import backend/hardware/boards.py and return its board catalogue and pin layouts.
+
+    That module imports only the standard library (json, math, re, pathlib), so importing
+    it is safe, and it is what the backend itself already does.
+
+    An earlier version read these with the AST evaluator. It failed silently: it returned 4
+    of the 12 BOARDS entries, so 8 boards were missing from contracts/kinds.json with no
+    error anywhere. A parser that quietly returns less than the source is worse than no
+    parser. Reading PIN_LAYOUTS the same way also removed three hand-rolled comprehension
+    parsers that each broke on a different pin-list form.
+    """
+    import importlib.util
+
+    spec = importlib.util.spec_from_file_location("_wireup_boards", str(path))
+    if spec is None or spec.loader is None:
+        raise Unsupported(f"cannot load {path}")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    boards = list(getattr(module, "BOARDS", []) or [])
+    layouts = dict(getattr(module, "PIN_LAYOUTS", {}) or {})
+    if len(boards) < 6:
+        raise Unsupported(f"{path.name} yielded only {len(boards)} boards; expected at least 6. "
+                          f"A partial catalogue would silently drop boards from the contract.")
+    return boards, layouts
+
+
 def build_kinds() -> dict:
     pins_doc = json.loads(PINS_JSON.read_text(encoding="utf-8"))
     components = pins_doc["components"]
-    boards = read_literal_list(BOARDS_PY, "BOARDS") or []
+    boards, pin_layouts = read_boards_module(BOARDS_PY)
 
     availability = AVAILABILITY.read_text(encoding="utf-8", errors="replace")
     documented = {m.group(1) for m in
@@ -193,20 +231,33 @@ def build_kinds() -> dict:
             "notes": kind_note(group, cid, scope, entry, cid in documented),
         })
 
+    # Board pin layouts give every board real ports. A board with no ports would be
+    # unwireable, so the graph could not represent a circuit at all.
+
     for b in boards:
         ok = b.get("id") in BROWSER_BOARDS
+        pins = pin_layouts.get(b.get("id")) or []
+        seen = set()
+        ports = []
+        for name in pins:
+            if name in seen:
+                continue
+            seen.add(name)
+            role, ptype = pin_port(name)
+            ports.append({"name": name, "type": ptype, "direction": "inout", "role": role})
         kinds.append({
             "id": f"board.{b['id']}",
             "label": b.get("name", b["id"]), "group": "board", "legacy_type": b["id"],
-            "tagName": None, "derived_by": "backend/hardware/boards.py BOARDS",
-            "ports": [], "properties": {}, "defaults": {"fqbn": b.get("fqbn")},
+            "tagName": None, "derived_by": "backend/hardware/boards.py BOARDS + PIN_LAYOUTS",
+            "ports": ports,
+            "properties": {}, "defaults": {"fqbn": b.get("fqbn")},
             "solver": "mcu" if ok else None,
             "simulated": ok,
             "scope": "browser" if ok else "none",
-            "evidence": [BOARD_EVIDENCE[b["id"]]] if ok else [],
-            "notes": ("Genuine CPU emulation in the browser runtime. Requires a connected "
-                      "browser; headless execution arrives in phase v07."
-                      if ok else b.get("unavailable_reason", "No configured runtime.")),
+            "evidence": [BROWSER_BOARDS[b["id"]]] if ok else [],
+            "notes": (f"{len(ports)} pins from PIN_LAYOUTS. Genuine CPU emulation in the browser "
+                      f"runtime; requires a connected browser. Headless execution arrives in v07."
+                      if ok else (b.get("unavailable_reason") or "No configured runtime.")),
         })
 
     kinds.sort(key=lambda k: k["id"])

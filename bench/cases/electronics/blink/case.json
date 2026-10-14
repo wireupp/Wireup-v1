@@ -1,0 +1,8 @@
+{
+  "id": "electronics/blink",
+  "domain": "electronics",
+  "title": "Uno + LED + resistor are declared simulatable with evidence",
+  "tags": ["electronics", "board", "led", "capability"],
+  "spec": "The simplest real circuit: an Arduino Uno driving an LED through a current-limiting resistor. The platform must declare each node simulated, each citing an executable spec, and must not claim simulation for anything without a spec.",
+  "assertions": "assertions.json"
+}

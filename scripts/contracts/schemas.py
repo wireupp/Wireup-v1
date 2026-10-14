@@ -66,7 +66,7 @@ def graph_schema() -> dict:
                 "type": "object", "required": ["id", "kind"], "additionalProperties": False,
                 "properties": {
                     "id": node_id,
-                    "kind": {"type": "string", "pattern": r"^[a-z][a-z0-9_]*\.[a-z][a-z0-9_]*$",
+                    "kind": {"type": "string", "pattern": r"^[a-z][a-z0-9_-]*\.[a-z][a-z0-9_-]*$",
                              "description": "group.kind. Must exist in contracts/kinds.json."},
                     "label": {"type": "string", "maxLength": 120},
                     "parent_id": {"type": ["string", "null"],

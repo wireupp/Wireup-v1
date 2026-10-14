@@ -15,7 +15,7 @@
       }
     },
     "backend/hardware/boards.py": {
-      "boards": 4
+      "boards": 12
     },
     "docs/COMPONENT_SIMULATION_AVAILABILITY.md": {
       "documented": 164
@@ -26,7 +26,7 @@
       "defaults": {
         "fqbn": "arduino:avr:mega:cpu=atmega2560"
       },
-      "derived_by": "backend/hardware/boards.py BOARDS",
+      "derived_by": "backend/hardware/boards.py BOARDS + PIN_LAYOUTS",
       "evidence": [
         "tests/avr-peripherals.spec.ts"
       ],
@@ -34,8 +34,519 @@
       "id": "board.arduino-mega",
       "label": "Arduino Mega 2560",
       "legacy_type": "arduino-mega",
-      "notes": "Genuine CPU emulation in the browser runtime. Requires a connected browser; headless execution arrives in phase v07.",
-      "ports": [],
+      "notes": "85 pins from PIN_LAYOUTS. Genuine CPU emulation in the browser runtime; requires a connected browser. Headless execution arrives in v07.",
+      "ports": [
+        {
+          "direction": "inout",
+          "name": "0",
+          "role": "gnd",
+          "type": "power.gnd"
+        },
+        {
+          "direction": "inout",
+          "name": "1",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "2",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "3",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "4",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "5",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "6",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "7",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "8",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "9",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "10",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "11",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "12",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "13",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "14",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "15",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "16",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "17",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "18",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "19",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "20",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "21",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "22",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "23",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "24",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "25",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "26",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "27",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "28",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "29",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "30",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "31",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "32",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "33",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "34",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "35",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "36",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "37",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "38",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "39",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "40",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "41",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "42",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "43",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "44",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "45",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "46",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "47",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "48",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "49",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "50",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "51",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "52",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "53",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "A0",
+          "role": "adc",
+          "type": "signal.analog"
+        },
+        {
+          "direction": "inout",
+          "name": "A1",
+          "role": "adc",
+          "type": "signal.analog"
+        },
+        {
+          "direction": "inout",
+          "name": "A2",
+          "role": "adc",
+          "type": "signal.analog"
+        },
+        {
+          "direction": "inout",
+          "name": "A3",
+          "role": "adc",
+          "type": "signal.analog"
+        },
+        {
+          "direction": "inout",
+          "name": "A4",
+          "role": "adc",
+          "type": "signal.analog"
+        },
+        {
+          "direction": "inout",
+          "name": "A5",
+          "role": "adc",
+          "type": "signal.analog"
+        },
+        {
+          "direction": "inout",
+          "name": "A6",
+          "role": "adc",
+          "type": "signal.analog"
+        },
+        {
+          "direction": "inout",
+          "name": "A7",
+          "role": "adc",
+          "type": "signal.analog"
+        },
+        {
+          "direction": "inout",
+          "name": "A8",
+          "role": "adc",
+          "type": "signal.analog"
+        },
+        {
+          "direction": "inout",
+          "name": "A9",
+          "role": "adc",
+          "type": "signal.analog"
+        },
+        {
+          "direction": "inout",
+          "name": "A10",
+          "role": "adc",
+          "type": "signal.analog"
+        },
+        {
+          "direction": "inout",
+          "name": "A11",
+          "role": "adc",
+          "type": "signal.analog"
+        },
+        {
+          "direction": "inout",
+          "name": "A12",
+          "role": "adc",
+          "type": "signal.analog"
+        },
+        {
+          "direction": "inout",
+          "name": "A13",
+          "role": "adc",
+          "type": "signal.analog"
+        },
+        {
+          "direction": "inout",
+          "name": "A14",
+          "role": "adc",
+          "type": "signal.analog"
+        },
+        {
+          "direction": "inout",
+          "name": "A15",
+          "role": "adc",
+          "type": "signal.analog"
+        },
+        {
+          "direction": "inout",
+          "name": "SCL",
+          "role": "i2c",
+          "type": "signal.i2c"
+        },
+        {
+          "direction": "inout",
+          "name": "SDA",
+          "role": "i2c",
+          "type": "signal.i2c"
+        },
+        {
+          "direction": "inout",
+          "name": "AREF",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "IOREF",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "RESET",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "3.3V",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "5V",
+          "role": "vcc",
+          "type": "power.dc"
+        },
+        {
+          "direction": "inout",
+          "name": "5V.1",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "5V.2",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "VIN",
+          "role": "vcc",
+          "type": "power.dc"
+        },
+        {
+          "direction": "inout",
+          "name": "GND.1",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GND.2",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GND.3",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GND.4",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GND.5",
+          "role": null,
+          "type": "signal.electrical"
+        }
+      ],
       "properties": {},
       "scope": "browser",
       "simulated": true,
@@ -46,7 +557,7 @@
       "defaults": {
         "fqbn": "arduino:avr:nano:cpu=atmega328"
       },
-      "derived_by": "backend/hardware/boards.py BOARDS",
+      "derived_by": "backend/hardware/boards.py BOARDS + PIN_LAYOUTS",
       "evidence": [
         "tests/uno-peripherals.spec.ts"
       ],
@@ -54,8 +565,225 @@
       "id": "board.arduino-nano",
       "label": "Arduino Nano (ATmega328P)",
       "legacy_type": "arduino-nano",
-      "notes": "Genuine CPU emulation in the browser runtime. Requires a connected browser; headless execution arrives in phase v07.",
-      "ports": [],
+      "notes": "36 pins from PIN_LAYOUTS. Genuine CPU emulation in the browser runtime; requires a connected browser. Headless execution arrives in v07.",
+      "ports": [
+        {
+          "direction": "inout",
+          "name": "0",
+          "role": "gnd",
+          "type": "power.gnd"
+        },
+        {
+          "direction": "inout",
+          "name": "1",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "2",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "3",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "4",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "5",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "6",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "7",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "8",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "9",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "10",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "11",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "12",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "13",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "A0",
+          "role": "adc",
+          "type": "signal.analog"
+        },
+        {
+          "direction": "inout",
+          "name": "A1",
+          "role": "adc",
+          "type": "signal.analog"
+        },
+        {
+          "direction": "inout",
+          "name": "A2",
+          "role": "adc",
+          "type": "signal.analog"
+        },
+        {
+          "direction": "inout",
+          "name": "A3",
+          "role": "adc",
+          "type": "signal.analog"
+        },
+        {
+          "direction": "inout",
+          "name": "A4",
+          "role": "adc",
+          "type": "signal.analog"
+        },
+        {
+          "direction": "inout",
+          "name": "A5",
+          "role": "adc",
+          "type": "signal.analog"
+        },
+        {
+          "direction": "inout",
+          "name": "A6",
+          "role": "adc",
+          "type": "signal.analog"
+        },
+        {
+          "direction": "inout",
+          "name": "A7",
+          "role": "adc",
+          "type": "signal.analog"
+        },
+        {
+          "direction": "inout",
+          "name": "3.3V",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "AREF",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "5V",
+          "role": "vcc",
+          "type": "power.dc"
+        },
+        {
+          "direction": "inout",
+          "name": "VIN",
+          "role": "vcc",
+          "type": "power.dc"
+        },
+        {
+          "direction": "inout",
+          "name": "RESET",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "RESET.2",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "RESET.3",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GND.1",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GND.2",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GND.3",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "12.2",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "13.2",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "11.2",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "5V.2",
+          "role": null,
+          "type": "signal.electrical"
+        }
+      ],
       "properties": {},
       "scope": "browser",
       "simulated": true,
@@ -66,7 +794,7 @@
       "defaults": {
         "fqbn": "arduino:avr:uno"
       },
-      "derived_by": "backend/hardware/boards.py BOARDS",
+      "derived_by": "backend/hardware/boards.py BOARDS + PIN_LAYOUTS",
       "evidence": [
         "tests/uno-lifecycle.spec.ts"
       ],
@@ -74,8 +802,195 @@
       "id": "board.arduino-uno",
       "label": "Arduino Uno",
       "legacy_type": "arduino-uno",
-      "notes": "Genuine CPU emulation in the browser runtime. Requires a connected browser; headless execution arrives in phase v07.",
-      "ports": [],
+      "notes": "31 pins from PIN_LAYOUTS. Genuine CPU emulation in the browser runtime; requires a connected browser. Headless execution arrives in v07.",
+      "ports": [
+        {
+          "direction": "inout",
+          "name": "0",
+          "role": "gnd",
+          "type": "power.gnd"
+        },
+        {
+          "direction": "inout",
+          "name": "1",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "2",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "3",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "4",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "5",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "6",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "7",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "8",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "9",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "10",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "11",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "12",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "13",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "A0",
+          "role": "adc",
+          "type": "signal.analog"
+        },
+        {
+          "direction": "inout",
+          "name": "A1",
+          "role": "adc",
+          "type": "signal.analog"
+        },
+        {
+          "direction": "inout",
+          "name": "A2",
+          "role": "adc",
+          "type": "signal.analog"
+        },
+        {
+          "direction": "inout",
+          "name": "A3",
+          "role": "adc",
+          "type": "signal.analog"
+        },
+        {
+          "direction": "inout",
+          "name": "A4",
+          "role": "adc",
+          "type": "signal.analog"
+        },
+        {
+          "direction": "inout",
+          "name": "A5",
+          "role": "adc",
+          "type": "signal.analog"
+        },
+        {
+          "direction": "inout",
+          "name": "GND.1",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GND.2",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GND.3",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "5V",
+          "role": "vcc",
+          "type": "power.dc"
+        },
+        {
+          "direction": "inout",
+          "name": "3.3V",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "VIN",
+          "role": "vcc",
+          "type": "power.dc"
+        },
+        {
+          "direction": "inout",
+          "name": "AREF",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "RESET",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "IOREF",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "A4.2",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "A5.2",
+          "role": null,
+          "type": "signal.electrical"
+        }
+      ],
       "properties": {},
       "scope": "browser",
       "simulated": true,
@@ -84,16 +999,461 @@
     },
     {
       "defaults": {
-        "led1": false,
-        "ledPower": false
+        "fqbn": "esp32:esp32:esp32c3"
       },
-      "derived_by": "GROUP_RULES",
+      "derived_by": "backend/hardware/boards.py BOARDS + PIN_LAYOUTS",
+      "evidence": [],
+      "group": "board",
+      "id": "board.esp32-c3",
+      "label": "ESP32-C3 DevKitM-1",
+      "legacy_type": "esp32-c3",
+      "notes": "No configured runtime.",
+      "ports": [
+        {
+          "direction": "inout",
+          "name": "GND.1",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "3V3.1",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "3V3.2",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "2",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "3",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GND.2",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "RST",
+          "role": "io",
+          "type": "signal.digital"
+        },
+        {
+          "direction": "inout",
+          "name": "GND.3",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "0",
+          "role": "gnd",
+          "type": "power.gnd"
+        },
+        {
+          "direction": "inout",
+          "name": "1",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "10",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GND.4",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "5V.1",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "5V.2",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GND.5",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GND.6",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "19",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "18",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GND.7",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "4",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "5",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "6",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "7",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GND.8",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "8",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "9",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GND.9",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "RX",
+          "role": "uart",
+          "type": "signal.serial"
+        },
+        {
+          "direction": "inout",
+          "name": "TX",
+          "role": "uart",
+          "type": "signal.serial"
+        },
+        {
+          "direction": "inout",
+          "name": "GND.10",
+          "role": null,
+          "type": "signal.electrical"
+        }
+      ],
+      "properties": {},
+      "scope": "none",
+      "simulated": false,
+      "solver": null,
+      "tagName": null
+    },
+    {
+      "defaults": {
+        "fqbn": "esp32:esp32:esp32"
+      },
+      "derived_by": "backend/hardware/boards.py BOARDS + PIN_LAYOUTS",
+      "evidence": [],
+      "group": "board",
+      "id": "board.esp32-devkit-c-v4",
+      "label": "ESP32 DevKit C V4",
+      "legacy_type": "esp32-devkit-c-v4",
+      "notes": "Classic ESP32 requires the compatible patched native Velxio QEMU runtime; the official WASM emulator does not support this chip.",
+      "ports": [
+        {
+          "direction": "inout",
+          "name": "3V3",
+          "role": "vcc",
+          "type": "power.dc"
+        },
+        {
+          "direction": "inout",
+          "name": "EN",
+          "role": "io",
+          "type": "signal.digital"
+        },
+        {
+          "direction": "inout",
+          "name": "VP",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "VN",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "34",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "35",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "32",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "33",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "25",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "26",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "27",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "14",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "12",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GND.1",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "13",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "D2",
+          "role": "io",
+          "type": "signal.digital"
+        },
+        {
+          "direction": "inout",
+          "name": "D3",
+          "role": "io",
+          "type": "signal.digital"
+        },
+        {
+          "direction": "inout",
+          "name": "CMD",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "5V",
+          "role": "vcc",
+          "type": "power.dc"
+        },
+        {
+          "direction": "inout",
+          "name": "GND.2",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "23",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "22",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "TX",
+          "role": "uart",
+          "type": "signal.serial"
+        },
+        {
+          "direction": "inout",
+          "name": "RX",
+          "role": "uart",
+          "type": "signal.serial"
+        },
+        {
+          "direction": "inout",
+          "name": "21",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GND.3",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "19",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "18",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "5",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "17",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "16",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "4",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "0",
+          "role": "gnd",
+          "type": "power.gnd"
+        },
+        {
+          "direction": "inout",
+          "name": "2",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "15",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "D1",
+          "role": "io",
+          "type": "signal.digital"
+        },
+        {
+          "direction": "inout",
+          "name": "D0",
+          "role": "io",
+          "type": "signal.digital"
+        },
+        {
+          "direction": "inout",
+          "name": "CLK",
+          "role": null,
+          "type": "signal.electrical"
+        }
+      ],
+      "properties": {},
+      "scope": "none",
+      "simulated": false,
+      "solver": null,
+      "tagName": null
+    },
+    {
+      "defaults": {
+        "fqbn": "esp32:esp32:esp32doit-devkit-v1"
+      },
+      "derived_by": "backend/hardware/boards.py BOARDS + PIN_LAYOUTS",
       "evidence": [],
       "group": "board",
       "id": "board.esp32-devkit-v1",
-      "label": "esp32-devkit-v1",
+      "label": "ESP32 DevKit V1",
       "legacy_type": "esp32-devkit-v1",
-      "notes": "Placement-only. 'esp32-devkit-v1' is listed under 'No implemented normal board/peripheral simulation' in docs/COMPONENT_SIMULATION_AVAILABILITY.md. It can be placed and wired but produces no telemetry.",
+      "notes": "Classic ESP32 requires the compatible patched native Velxio QEMU runtime; the official WASM emulator does not support this chip.",
       "ports": [
         {
           "direction": "inout",
@@ -276,14 +1636,294 @@
           "type": "signal.digital"
         }
       ],
-      "properties": {
-        "led1": false,
-        "ledPower": false
-      },
+      "properties": {},
       "scope": "none",
       "simulated": false,
       "solver": null,
-      "tagName": "wokwi-esp32-devkit-v1"
+      "tagName": null
+    },
+    {
+      "defaults": {
+        "fqbn": "esp32:esp32:esp32s3"
+      },
+      "derived_by": "backend/hardware/boards.py BOARDS + PIN_LAYOUTS",
+      "evidence": [],
+      "group": "board",
+      "id": "board.esp32-s3",
+      "label": "ESP32-S3 DevKitC-1",
+      "legacy_type": "esp32-s3",
+      "notes": "No configured runtime.",
+      "ports": [
+        {
+          "direction": "inout",
+          "name": "3V3.1",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "3V3.2",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "RST",
+          "role": "io",
+          "type": "signal.digital"
+        },
+        {
+          "direction": "inout",
+          "name": "4",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "5",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "6",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "7",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "15",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "16",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "17",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "18",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "8",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "3",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "46",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "9",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "10",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "11",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "12",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "13",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "14",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "5V",
+          "role": "vcc",
+          "type": "power.dc"
+        },
+        {
+          "direction": "inout",
+          "name": "GND.1",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GND.2",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "TX",
+          "role": "uart",
+          "type": "signal.serial"
+        },
+        {
+          "direction": "inout",
+          "name": "RX",
+          "role": "uart",
+          "type": "signal.serial"
+        },
+        {
+          "direction": "inout",
+          "name": "1",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "2",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "42",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "41",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "40",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "39",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "38",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "37",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "36",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "35",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "0",
+          "role": "gnd",
+          "type": "power.gnd"
+        },
+        {
+          "direction": "inout",
+          "name": "45",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "48",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "47",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "21",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "20",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "19",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GND.3",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GND.4",
+          "role": null,
+          "type": "signal.electrical"
+        }
+      ],
+      "properties": {},
+      "scope": "none",
+      "simulated": false,
+      "solver": null,
+      "tagName": null
     },
     {
       "defaults": {
@@ -589,14 +2229,1133 @@
       "defaults": {
         "fqbn": "rp2040:rp2040:rpipico"
       },
-      "derived_by": "backend/hardware/boards.py BOARDS",
-      "evidence": [],
+      "derived_by": "backend/hardware/boards.py BOARDS + PIN_LAYOUTS",
+      "evidence": [
+        "tests/pico-runtime.spec.ts"
+      ],
       "group": "board",
       "id": "board.pi-pico",
       "label": "Raspberry Pi Pico",
       "legacy_type": "pi-pico",
-      "notes": "No configured runtime.",
-      "ports": [],
+      "notes": "40 pins from PIN_LAYOUTS. Genuine CPU emulation in the browser runtime; requires a connected browser. Headless execution arrives in v07.",
+      "ports": [
+        {
+          "direction": "inout",
+          "name": "GP0",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GP1",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GP2",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GP3",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GP4",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GP5",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GP6",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GP7",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GP8",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GP9",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GP10",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GP11",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GP12",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GP13",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GP14",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GP15",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GP16",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GP17",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GP18",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GP19",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GP20",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GP21",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GP22",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GP26",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GP27",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GP28",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GND.1",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GND.2",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GND.3",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GND.4",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GND.5",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GND.6",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GND.7",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GND.8",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "VBUS",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "VSYS",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "3V3_EN",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "3V3",
+          "role": "vcc",
+          "type": "power.dc"
+        },
+        {
+          "direction": "inout",
+          "name": "ADC_VREF",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "RUN",
+          "role": null,
+          "type": "signal.electrical"
+        }
+      ],
+      "properties": {},
+      "scope": "browser",
+      "simulated": true,
+      "solver": "mcu",
+      "tagName": null
+    },
+    {
+      "defaults": {
+        "fqbn": "rp2040:rp2040:rpipicow"
+      },
+      "derived_by": "backend/hardware/boards.py BOARDS + PIN_LAYOUTS",
+      "evidence": [
+        "tests/pico-runtime.spec.ts"
+      ],
+      "group": "board",
+      "id": "board.pi-pico-w",
+      "label": "Raspberry Pi Pico W",
+      "legacy_type": "pi-pico-w",
+      "notes": "40 pins from PIN_LAYOUTS. Genuine CPU emulation in the browser runtime; requires a connected browser. Headless execution arrives in v07.",
+      "ports": [
+        {
+          "direction": "inout",
+          "name": "GP0",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GP1",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GP2",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GP3",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GP4",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GP5",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GP6",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GP7",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GP8",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GP9",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GP10",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GP11",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GP12",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GP13",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GP14",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GP15",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GP16",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GP17",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GP18",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GP19",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GP20",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GP21",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GP22",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GP26",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GP27",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GP28",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GND.1",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GND.2",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GND.3",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GND.4",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GND.5",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GND.6",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GND.7",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GND.8",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "VBUS",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "VSYS",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "3V3_EN",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "3V3",
+          "role": "vcc",
+          "type": "power.dc"
+        },
+        {
+          "direction": "inout",
+          "name": "ADC_VREF",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "RUN",
+          "role": null,
+          "type": "signal.electrical"
+        }
+      ],
+      "properties": {},
+      "scope": "browser",
+      "simulated": true,
+      "solver": "mcu",
+      "tagName": null
+    },
+    {
+      "defaults": {
+        "fqbn": null
+      },
+      "derived_by": "backend/hardware/boards.py BOARDS + PIN_LAYOUTS",
+      "evidence": [],
+      "group": "board",
+      "id": "board.raspberry-pi-3",
+      "label": "Raspberry Pi 3",
+      "legacy_type": "raspberry-pi-3",
+      "notes": "Raspberry Pi Linux boards require a native runtime and guest Linux image; Arduino firmware compilation is not supported.",
+      "ports": [
+        {
+          "direction": "inout",
+          "name": "3V3",
+          "role": "vcc",
+          "type": "power.dc"
+        },
+        {
+          "direction": "inout",
+          "name": "5V",
+          "role": "vcc",
+          "type": "power.dc"
+        },
+        {
+          "direction": "inout",
+          "name": "GND",
+          "role": "gnd",
+          "type": "power.gnd"
+        },
+        {
+          "direction": "inout",
+          "name": "ID_SD",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "ID_SC",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GPIO2",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GPIO3",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GPIO4",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GPIO5",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GPIO6",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GPIO7",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GPIO8",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GPIO9",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GPIO10",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GPIO11",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GPIO12",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GPIO13",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GPIO14",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GPIO15",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GPIO16",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GPIO17",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GPIO18",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GPIO19",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GPIO20",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GPIO21",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GPIO22",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GPIO23",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GPIO24",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GPIO25",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GPIO26",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GPIO27",
+          "role": null,
+          "type": "signal.electrical"
+        }
+      ],
+      "properties": {},
+      "scope": "none",
+      "simulated": false,
+      "solver": null,
+      "tagName": null
+    },
+    {
+      "defaults": {
+        "fqbn": null
+      },
+      "derived_by": "backend/hardware/boards.py BOARDS + PIN_LAYOUTS",
+      "evidence": [],
+      "group": "board",
+      "id": "board.raspberry-pi-4",
+      "label": "Raspberry Pi 4",
+      "legacy_type": "raspberry-pi-4",
+      "notes": "Raspberry Pi Linux boards require a native runtime and guest Linux image; Arduino firmware compilation is not supported.",
+      "ports": [
+        {
+          "direction": "inout",
+          "name": "3V3",
+          "role": "vcc",
+          "type": "power.dc"
+        },
+        {
+          "direction": "inout",
+          "name": "5V",
+          "role": "vcc",
+          "type": "power.dc"
+        },
+        {
+          "direction": "inout",
+          "name": "GND",
+          "role": "gnd",
+          "type": "power.gnd"
+        },
+        {
+          "direction": "inout",
+          "name": "ID_SD",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "ID_SC",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GPIO2",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GPIO3",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GPIO4",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GPIO5",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GPIO6",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GPIO7",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GPIO8",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GPIO9",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GPIO10",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GPIO11",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GPIO12",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GPIO13",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GPIO14",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GPIO15",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GPIO16",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GPIO17",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GPIO18",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GPIO19",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GPIO20",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GPIO21",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GPIO22",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GPIO23",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GPIO24",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GPIO25",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GPIO26",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GPIO27",
+          "role": null,
+          "type": "signal.electrical"
+        }
+      ],
+      "properties": {},
+      "scope": "none",
+      "simulated": false,
+      "solver": null,
+      "tagName": null
+    },
+    {
+      "defaults": {
+        "fqbn": null
+      },
+      "derived_by": "backend/hardware/boards.py BOARDS + PIN_LAYOUTS",
+      "evidence": [],
+      "group": "board",
+      "id": "board.raspberry-pi-5",
+      "label": "Raspberry Pi 5",
+      "legacy_type": "raspberry-pi-5",
+      "notes": "Raspberry Pi Linux boards require a native runtime and guest Linux image; Arduino firmware compilation is not supported.",
+      "ports": [
+        {
+          "direction": "inout",
+          "name": "3V3",
+          "role": "vcc",
+          "type": "power.dc"
+        },
+        {
+          "direction": "inout",
+          "name": "5V",
+          "role": "vcc",
+          "type": "power.dc"
+        },
+        {
+          "direction": "inout",
+          "name": "GND",
+          "role": "gnd",
+          "type": "power.gnd"
+        },
+        {
+          "direction": "inout",
+          "name": "ID_SD",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "ID_SC",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GPIO2",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GPIO3",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GPIO4",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GPIO5",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GPIO6",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GPIO7",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GPIO8",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GPIO9",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GPIO10",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GPIO11",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GPIO12",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GPIO13",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GPIO14",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GPIO15",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GPIO16",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GPIO17",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GPIO18",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GPIO19",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GPIO20",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GPIO21",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GPIO22",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GPIO23",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GPIO24",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GPIO25",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GPIO26",
+          "role": null,
+          "type": "signal.electrical"
+        },
+        {
+          "direction": "inout",
+          "name": "GPIO27",
+          "role": null,
+          "type": "signal.electrical"
+        }
+      ],
       "properties": {},
       "scope": "none",
       "simulated": false,

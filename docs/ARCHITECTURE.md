@@ -142,10 +142,14 @@ near zero on GREEN, and never a silent merge.
 Read `docs/phase-reports/` for what was actually built and verified, in order. Read
 `RELEASE_STATUS.md` for the honest short list of what is not ready.
 
-As of phase v01 the platform is an electronics simulator with a working LangGraph agent, real
-ngspice analysis, and real CPU emulation. The universal graph, the tool bus, the MCP server, the
-headless runtime, the orchestrator, the room, mechanics and software are sequenced in
-`prompts/` and marked `(planned, phase vNN)` in `AGENTS.md` §3.
+The v03 graph core and a v04 tool-bus foundation are present. The v04 report records the
+remaining integration and parity gaps; this foundation is not yet the application's authoritative
+mutation path. Initial v05 telemetry and trial primitives exist, but the phase report records
+their unverified state and missing ToolBus integration. The local MCP server is a separately
+documented bridge to the existing electronics API, not the completed v08 transport over the tool
+bus. Headless runtime, orchestration, the room, mechanics, software and human review remain
+governed by their phase reports and contracts; no capability should be inferred from an
+implementation stub.
 
 ---
 

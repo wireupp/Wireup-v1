@@ -1,0 +1,8 @@
+{
+  "id": "meta/telemetry",
+  "domain": "meta",
+  "title": "Telemetry and trial evidence is bounded, deterministic, and honest",
+  "tags": ["telemetry", "trials", "determinism", "honesty"],
+  "spec": "spec.md",
+  "assertions": "assertions.json"
+}

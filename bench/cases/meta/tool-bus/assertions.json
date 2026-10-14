@@ -1,0 +1,46 @@
+{
+  "assertions": [
+    {
+      "id": "A3_tokens_are_scrubbed_from_results_errors_and_events",
+      "kind": "schema_valid",
+      "checker": ["node", "bench/cases/meta/tool-bus/check.mjs", "A3"],
+      "description": "Runtime tokens do not appear in nested tool results or emitted events."
+    },
+    {
+      "id": "A4_registry_rejects_missing_handlers",
+      "kind": "schema_valid",
+      "checker": ["node", "bench/cases/meta/tool-bus/check.mjs", "A4"],
+      "description": "Registry initialization rejects contracts whose handler is missing."
+    },
+    {
+      "id": "A5_unavailable_services_name_their_phase",
+      "kind": "schema_valid",
+      "checker": ["node", "bench/cases/meta/tool-bus/check.mjs", "A5"],
+      "description": "Runtime, telemetry, trials, and solver stubs fail with NOT_IMPLEMENTED and an owning phase."
+    },
+    {
+      "id": "A6_review_scope_is_authoritatively_checked",
+      "kind": "schema_valid",
+      "checker": ["node", "bench/cases/meta/tool-bus/check.mjs", "A6"],
+      "description": "Review-required calls fail closed and succeed only after service authorization and scope checks."
+    },
+    {
+      "id": "A7_stale_mutation_does_not_apply",
+      "kind": "schema_valid",
+      "checker": ["node", "bench/cases/meta/tool-bus/check.mjs", "A7"],
+      "description": "A mutating call with a stale revision returns REVISION_STALE without changing the store."
+    },
+    {
+      "id": "A8_concurrent_mutations_have_no_lost_updates",
+      "kind": "schema_valid",
+      "checker": ["node", "bench/cases/meta/tool-bus/check.mjs", "A8"],
+      "description": "Concurrent calls with one expected revision yield one applied mutation and explicit stale results for the rest."
+    },
+    {
+      "id": "A9_invalid_arguments_return_contract_errors",
+      "kind": "schema_valid",
+      "checker": ["node", "bench/cases/meta/tool-bus/check.mjs", "A9"],
+      "description": "Every registered tool returns a contract-listed error for invalid arguments without throwing."
+    }
+  ]
+}

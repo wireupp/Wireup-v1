@@ -196,6 +196,53 @@ def check_reexports(quiet: bool) -> None:
     note(quiet, "5. checked every __all__ entry is bound")
 
 
+def check_executes(quiet: bool) -> None:
+    """Modules that must EXECUTE and produce non-empty data.
+
+    Static analysis cannot catch the worst class of split bug: a module that imports
+    cleanly but resolves a path to nothing, so a lookup silently returns {}. The v01 split
+    did exactly that - boards.py kept parents[1] after moving one level deeper, so every
+    ROOT-relative path became backend/backend/... and it loaded 0 component pins instead of
+    raising. Only executing the module catches it.
+    """
+    import importlib.util
+
+    checks_by_file = {
+        "backend/hardware/boards.py": {
+            "BOARDS": lambda m: len(m.BOARDS) >= 6,
+            "PIN_LAYOUTS": lambda m: len(m.PIN_LAYOUTS) >= 40,
+            "COMPONENT_PINS": lambda m: len(m.COMPONENT_PINS) >= 100,
+            "ROOT resolves to the repo root": lambda m: (m.ROOT / "backend").is_dir(),
+            "esp32 pin layout present": lambda m: "esp32-devkit-v1" in m.PIN_LAYOUTS,
+        },
+    }
+    executed = 0
+    for rel, checks in checks_by_file.items():
+        path = ROOT / rel
+        if not path.exists():
+            failures.append(f"{rel} does not exist")
+            continue
+        spec = importlib.util.spec_from_file_location(f"_verify_{path.stem}", path)
+        module = importlib.util.module_from_spec(spec)
+        try:
+            spec.loader.exec_module(module)
+        except Exception as error:  # noqa: BLE001 - the message is the point
+            failures.append(f"{rel}: failed to execute — {type(error).__name__}: {error}")
+            continue
+        executed += 1
+        for label, predicate in checks.items():
+            try:
+                ok = predicate(module)
+            except Exception as error:  # noqa: BLE001
+                failures.append(f"{rel}: check '{label}' raised {type(error).__name__}: {error}")
+                continue
+            if not ok:
+                failures.append(
+                    f"{rel}: '{label}' is empty or wrong — the module executed but resolved "
+                    f"a path or literal to nothing")
+    note(quiet, f"6. executed {executed} data module(s) and asserted their contents")
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--quiet", action="store_true")
@@ -206,6 +253,7 @@ def main() -> int:
     check_no_cycles(trees, args.quiet)
     check_exports(args.quiet)
     check_reexports(args.quiet)
+    check_executes(args.quiet)
 
     if failures:
         print(f"\nFAIL: {len(failures)} structural problem(s)", file=sys.stderr)

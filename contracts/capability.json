@@ -32,7 +32,31 @@
       "confidence": "unknown",
       "exercised_by_cases": [],
       "exists": true,
+      "id": "board.esp32-c3",
+      "simulated": false,
+      "solver": null
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "board.esp32-devkit-c-v4",
+      "simulated": false,
+      "solver": null
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
       "id": "board.esp32-devkit-v1",
+      "simulated": false,
+      "solver": null
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "board.esp32-s3",
       "simulated": false,
       "solver": null
     },
@@ -57,6 +81,38 @@
       "exercised_by_cases": [],
       "exists": true,
       "id": "board.pi-pico",
+      "simulated": true,
+      "solver": "mcu"
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "board.pi-pico-w",
+      "simulated": true,
+      "solver": "mcu"
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "board.raspberry-pi-3",
+      "simulated": false,
+      "solver": null
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "board.raspberry-pi-4",
+      "simulated": false,
+      "solver": null
+    },
+    {
+      "confidence": "unknown",
+      "exercised_by_cases": [],
+      "exists": true,
+      "id": "board.raspberry-pi-5",
       "simulated": false,
       "solver": null
     },

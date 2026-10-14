@@ -2,9 +2,9 @@
   "description": "Every contract file with the sha256 of its contents. A consumer that cannot reproduce these hashes has stale contracts.",
   "files": [
     {
-      "bytes": 31976,
+      "bytes": 33285,
       "id": "capability.json",
-      "sha256": "5ab55f332fd1cf553918fb1c980a8982d59ffd3122d071c40428e965f47b59d8",
+      "sha256": "2440cf29420bd639319f57809f815d4535cf8812fbd2280472a9b31341123cc3",
       "version": 1
     },
     {
@@ -20,15 +20,15 @@
       "version": 1
     },
     {
-      "bytes": 7693,
+      "bytes": 7695,
       "id": "graph.schema.json",
-      "sha256": "7cf2da64e1e382b8fd82e6152d235f8216f46c4f1ee3c3b1056d419c11883c60",
+      "sha256": "ce0efa87cd8b297795ec3aed30e27122dbe43a86c27ed5b5b97ac4c9699f15ba",
       "version": 1
     },
     {
-      "bytes": 364145,
+      "bytes": 432011,
       "id": "kinds.json",
-      "sha256": "c7b2b876f412cfc48bca238c827e0b678d72b7b3b5fbc6d20c1ab3ef474699b7",
+      "sha256": "56e248a243e67c098a0440766c317782ba5993f19ebdaef71f86a57da11843c2",
       "version": 1
     },
     {

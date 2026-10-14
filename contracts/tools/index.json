@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "name_mapping_rule": "Replace every dot in the contract name with an underscore.",
+  "transport": "stdio",
+  "toolbus_status": "not_implemented",
+  "tools": [
+    { "contract": "session.create", "mcp_name": "session_create", "handler": "session.create" },
+    { "contract": "project.create", "mcp_name": "project_create", "handler": "project.create" },
+    { "contract": "project.read", "mcp_name": "project_read", "handler": "project.read" },
+    { "contract": "project.delete", "mcp_name": "project_delete", "handler": "project.delete" },
+    { "contract": "read_project", "mcp_name": "read_project", "handler": "read_project" },
+    { "contract": "search_components", "mcp_name": "search_components", "handler": "search_components" },
+    { "contract": "add_component", "mcp_name": "add_component", "handler": "add_component" },
+    { "contract": "remove_component", "mcp_name": "remove_component", "handler": "remove_component" },
+    { "contract": "modify_component", "mcp_name": "modify_component", "handler": "modify_component" },
+    { "contract": "connect_wire", "mcp_name": "connect_wire", "handler": "connect_wire" },
+    { "contract": "remove_wire", "mcp_name": "remove_wire", "handler": "remove_wire" },
+    { "contract": "check_connections", "mcp_name": "check_connections", "handler": "check_connections" },
+    { "contract": "generate_firmware", "mcp_name": "generate_firmware", "handler": "generate_firmware" },
+    { "contract": "read_firmware", "mcp_name": "read_firmware", "handler": "read_firmware" },
+    { "contract": "edit_firmware", "mcp_name": "edit_firmware", "handler": "edit_firmware" },
+    { "contract": "compile_firmware", "mcp_name": "compile_firmware", "handler": "compile_firmware" },
+    { "contract": "run_simulation", "mcp_name": "run_simulation", "handler": "run_simulation" },
+    { "contract": "stop_simulation", "mcp_name": "stop_simulation", "handler": "stop_simulation" },
+    { "contract": "read_simulation_results", "mcp_name": "read_simulation_results", "handler": "read_simulation_results" },
+    { "contract": "read_compiler_errors", "mcp_name": "read_compiler_errors", "handler": "read_compiler_errors" },
+    { "contract": "calculator", "mcp_name": "calculator", "handler": "calculator" },
+    { "contract": "wire_circuit", "mcp_name": "wire_circuit", "handler": "wire_circuit" },
+    { "contract": "validate_circuit", "mcp_name": "validate_circuit", "handler": "validate_circuit" }
+  ]
+}

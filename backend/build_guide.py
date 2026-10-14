@@ -57,7 +57,7 @@ def describe(service, project):
         source_notes.append('This source format is not automatically explained. Use the language and board documentation to review its entry points, dependencies, inputs, and outputs.')
     source_notes.append('Read the source itself to understand pin assignments, timing, and expected behavior; this guide does not infer intent or guarantee source-to-wire compatibility.')
     safety = 'Disconnect physical power before wiring; verify real part pinouts, polarity, supply voltage, and current limits against datasheets. Saved pin labels are not a physical pin-number guarantee.'
-    from backend.hardware import BOARD_CONFIG
+    from backend.hardware.boards import BOARD_CONFIG
     board = BOARD_CONFIG.get(project['board'], {})
     capability = [
         f"Compilation support for {project['board']}: " + ('listed as supported.' if board.get('compile') is True else 'unavailable or not confirmed.'),
@@ -219,13 +219,13 @@ class VerifyRequest(BaseModel):
 
 
 def check_version(guide, payload):
-    from backend.hardware import fail
+    from backend.hardware.util import fail
     if payload.version != guide['version'] or payload.expected_progress_revision != guide['progress']['revision']:
         fail(409, 'Build guide version or progress revision conflict; read the current build guide.')
 
 
 def current_compile(project):
-    from backend.hardware import BOARD_CONFIG
+    from backend.hardware.boards import BOARD_CONFIG
     result = project.get('compiler') or {}
     artifact = result.get('artifact') or {}
     stored = project.get('_artifacts', {}).get(artifact.get('id'))
@@ -250,7 +250,7 @@ def current_compile(project):
 
 
 def create_router(service):
-    from backend.hardware import fail, now
+    from backend.hardware.util import fail, now
     api = APIRouter()
 
     @api.get('/projects/{project_id}/build-guide')
