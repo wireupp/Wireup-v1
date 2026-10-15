@@ -13,9 +13,10 @@ Authoritative short list of what is verified and what is blocked. The full archi
 
 ## Not ready — open blockers
 
-1. **No MCP server.** The agent-facing surface does not exist yet. Sequenced as phase v08.
-2. **Simulation requires a browser.** An external agent cannot run or observe anything today.
-   Sequenced as phase v07.
+1. **MCP is a local legacy bridge, not the completed ToolBus transport.** It exposes the
+   existing electronics API; the unified mutation path and headless execution are incomplete.
+2. **Simulation requires a browser.** An external agent cannot run or observe anything without
+   an attached browser runtime. Sequenced as phase v07.
 3. **Single domain.** The project model is electronics-only. No boat, drone or website domain.
    Sequenced as phase v03.
 4. **Compiler is not sandboxed.** Native compilation runs in-process. Must be isolated before any

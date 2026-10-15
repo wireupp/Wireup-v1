@@ -1,0 +1,64 @@
+{
+  "unsupported": [
+    {
+      "feature": "Headless simulation",
+      "kind": null,
+      "reason": "Simulation currently depends on the connected browser runtime.",
+      "required_to_support": "A headless runtime worker with equivalent emulator behavior and verified deterministic fixtures."
+    },
+    {
+      "feature": "Mechanics, environment, and software domains",
+      "kind": null,
+      "reason": "No verified solvers are registered for these domains.",
+      "required_to_support": "The mechanics, environment, and sandboxed software solver phases."
+    },
+    {
+      "feature": "ESP32-C3 native execution",
+      "kind": "board.esp32-c3",
+      "reason": "Vendor RiscVCore adapter fails at PC 0x514c26 after 2,666,667 cycles.",
+      "required_to_support": "A verified ESP32-C3 emulator run that passes the documented firmware fixtures."
+    },
+    {
+      "feature": "Pico W radio and onboard LED",
+      "kind": "board.pi-pico-w",
+      "reason": "CYW43 radio, WiFi, Bluetooth and the onboard LED are unsupported.",
+      "required_to_support": "A verified CYW43 and onboard LED model with passing firmware fixtures."
+    },
+    {
+      "feature": "Remote ESP32 QEMU",
+      "kind": "board.esp32-c3",
+      "reason": "Remote ESP32 QEMU is packaged but not deployed; Docker, TLS and QEMU execution are unverified.",
+      "required_to_support": "A deployed, secured remote QEMU service with verified board-specific fixtures."
+    },
+    {
+      "feature": "Compiler isolation",
+      "kind": null,
+      "reason": "Native compilation is not sandboxed.",
+      "required_to_support": "Process-isolated compilation with resource and filesystem limits."
+    },
+    {
+      "feature": "Project authentication",
+      "kind": null,
+      "reason": "Shared-token reference authorization is not per-user identity or project authorization.",
+      "required_to_support": "Per-user authentication and project-level authorization."
+    },
+    {
+      "feature": "Distribution licensing",
+      "kind": null,
+      "reason": "The vendored Velxio tree is AGPLv3 or commercially licensed; distribution obligations need a decision.",
+      "required_to_support": "A documented licensing decision before closed-source distribution."
+    },
+    {
+      "feature": "General mechanical, fluid, and vehicle physics",
+      "kind": null,
+      "reason": "No mechanics solver is registered; no vehicle speed, torque, or acceleration is simulated.",
+      "required_to_support": "A verified mechanics solver with motor, drivetrain, contact, and vehicle telemetry models."
+    },
+    {
+      "feature": "Website-to-device runtime",
+      "kind": null,
+      "reason": "No sandboxed software solver or device bridge is registered.",
+      "required_to_support": "A sandboxed website runtime and verified device telemetry bridge."
+    }
+  ]
+}

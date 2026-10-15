@@ -117,18 +117,30 @@ for (const k of kinds) {
 
 // --------------------------- 5. capability mirrors kinds and keeps unsupported honest
 if (capability && kindsDoc) {
-  if (capability.generator_status !== 'stub' && capability.generator_status !== 'generated') {
+  if (capability.generator_status !== 'generated') {
     fail(`capability.json: unknown generator_status ${capability.generator_status}`);
-  }
-  if (capability.generator_status === 'stub') {
-    // A stub must not claim it knows anything.
-    if (capability.kinds?.some((k) => k.confidence === 'verified')) {
-      fail('capability.json is a stub but contains a verified kind');
-    }
   }
   const capIds = new Set((capability.kinds ?? []).map((k) => k.id));
   for (const k of kinds) {
     if (!capIds.has(k.id)) fail(`capability.json is missing kind ${k.id}`);
+  }
+  if (capIds.size !== (capability.kinds ?? []).length) {
+    fail('capability.json contains duplicate kind ids');
+  }
+  const capabilityById = new Map((capability.kinds ?? []).map((kind) => [kind.id, kind]));
+  for (const kind of capability.kinds ?? []) {
+    if (kind.simulated && !kind.solver) {
+      fail(`capability kind ${kind.id} claims simulated:true without a registered solver`);
+    }
+    if (kind.confidence === 'verified' && !kind.simulated) {
+      fail(`capability kind ${kind.id} claims confidence verified while simulated:false`);
+    }
+  }
+  for (const kind of kinds) {
+    const resolved = capabilityById.get(kind.id);
+    if (resolved?.simulated && !kind.simulated) {
+      fail(`capability kind ${kind.id} overstates contracts/kinds.json support`);
+    }
   }
   for (const u of capability.unsupported ?? []) {
     if (!u.feature || !u.reason || !u.required_to_support) {

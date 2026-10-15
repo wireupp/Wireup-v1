@@ -1,1382 +1,2939 @@
 {
   "environments": [],
-  "generated_at": "stub",
-  "generator_status": "stub",
-  "generator_version": 2,
+  "generated_at": "sha256:3d90517862a83809486fe6931c5a278102c07675378adf564972472188d1f5b1",
+  "generator_status": "generated",
+  "generator_version": 3,
   "kinds": [
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "board.arduino-mega",
+      "exists": true,
+      "solver": "mcu",
       "simulated": true,
-      "solver": "mcu"
+      "confidence": "partial",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "board.arduino-nano",
+      "exists": true,
+      "solver": "mcu",
       "simulated": true,
-      "solver": "mcu"
+      "confidence": "partial",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "board.arduino-uno",
+      "exists": true,
+      "solver": "mcu",
       "simulated": true,
-      "solver": "mcu"
+      "confidence": "partial",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "board.esp32-c3",
+      "exists": true,
+      "solver": null,
       "simulated": false,
-      "solver": null
+      "confidence": "experimental",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "board.esp32-devkit-c-v4",
+      "exists": true,
+      "solver": null,
       "simulated": false,
-      "solver": null
+      "confidence": "experimental",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "board.esp32-devkit-v1",
+      "exists": true,
+      "solver": null,
       "simulated": false,
-      "solver": null
+      "confidence": "experimental",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "board.esp32-s3",
+      "exists": true,
+      "solver": null,
       "simulated": false,
-      "solver": null
+      "confidence": "experimental",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "board.franzininho",
+      "exists": true,
+      "solver": null,
       "simulated": false,
-      "solver": null
+      "confidence": "experimental",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "board.nano-rp2040-connect",
+      "exists": true,
+      "solver": null,
       "simulated": false,
-      "solver": null
+      "confidence": "experimental",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "board.pi-pico",
+      "exists": true,
+      "solver": "mcu",
       "simulated": true,
-      "solver": "mcu"
+      "confidence": "partial",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "board.pi-pico-w",
+      "exists": true,
+      "solver": "mcu",
       "simulated": true,
-      "solver": "mcu"
+      "confidence": "partial",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "board.raspberry-pi-3",
+      "exists": true,
+      "solver": null,
       "simulated": false,
-      "solver": null
+      "confidence": "experimental",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "board.raspberry-pi-4",
+      "exists": true,
+      "solver": null,
       "simulated": false,
-      "solver": null
+      "confidence": "experimental",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "board.raspberry-pi-5",
+      "exists": true,
+      "solver": null,
       "simulated": false,
-      "solver": null
+      "confidence": "experimental",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "electromech.biaxial-stepper",
+      "exists": true,
+      "solver": null,
       "simulated": false,
-      "solver": null
+      "confidence": "experimental",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "electromech.ks2e-m-dc5",
+      "exists": true,
+      "solver": null,
       "simulated": false,
-      "solver": null
+      "confidence": "experimental",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "electromech.relay",
+      "exists": true,
+      "solver": null,
       "simulated": false,
-      "solver": null
+      "confidence": "experimental",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "electromech.stepper-motor",
+      "exists": true,
+      "solver": null,
       "simulated": false,
-      "solver": null
+      "confidence": "experimental",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "input.analog-joystick",
+      "exists": true,
+      "solver": "mcu",
       "simulated": true,
-      "solver": "mcu"
+      "confidence": "partial",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "input.dip-switch-8",
+      "exists": true,
+      "solver": "mcu",
       "simulated": true,
-      "solver": "mcu"
+      "confidence": "partial",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "input.ir-receiver",
+      "exists": true,
+      "solver": null,
       "simulated": false,
-      "solver": null
+      "confidence": "experimental",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "input.ir-remote",
+      "exists": true,
+      "solver": null,
       "simulated": false,
-      "solver": null
+      "confidence": "experimental",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "input.membrane-keypad",
+      "exists": true,
+      "solver": "mcu",
       "simulated": true,
-      "solver": "mcu"
+      "confidence": "partial",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "input.potentiometer",
+      "exists": true,
+      "solver": "mcu",
       "simulated": true,
-      "solver": "mcu"
+      "confidence": "partial",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "input.pushbutton",
+      "exists": true,
+      "solver": "mcu",
       "simulated": true,
-      "solver": "mcu"
+      "confidence": "partial",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "input.pushbutton-6mm",
+      "exists": true,
+      "solver": "mcu",
       "simulated": true,
-      "solver": "mcu"
+      "confidence": "partial",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "input.rotary-dialer",
+      "exists": true,
+      "solver": "mcu",
       "simulated": true,
-      "solver": "mcu"
+      "confidence": "partial",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "input.slide-potentiometer",
+      "exists": true,
+      "solver": "mcu",
       "simulated": true,
-      "solver": "mcu"
+      "confidence": "partial",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "input.slide-switch",
+      "exists": true,
+      "solver": "mcu",
       "simulated": true,
-      "solver": "mcu"
+      "confidence": "partial",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "input.tilt-switch",
+      "exists": true,
+      "solver": "mcu",
       "simulated": true,
-      "solver": "mcu"
+      "confidence": "partial",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "logic.a4988",
+      "exists": true,
+      "solver": null,
       "simulated": false,
-      "solver": null
+      "confidence": "experimental",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "logic.bjt-2n2222",
+      "exists": true,
+      "solver": null,
       "simulated": false,
-      "solver": null
+      "confidence": "experimental",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "logic.bjt-2n3055",
+      "exists": true,
+      "solver": null,
       "simulated": false,
-      "solver": null
+      "confidence": "experimental",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "logic.bjt-2n3906",
+      "exists": true,
+      "solver": null,
       "simulated": false,
-      "solver": null
+      "confidence": "experimental",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "logic.bjt-bc547",
+      "exists": true,
+      "solver": null,
       "simulated": false,
-      "solver": null
+      "confidence": "experimental",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "logic.bjt-bc557",
+      "exists": true,
+      "solver": null,
       "simulated": false,
-      "solver": null
+      "confidence": "experimental",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "logic.diode",
+      "exists": true,
+      "solver": "circuit",
       "simulated": true,
-      "solver": "circuit"
+      "confidence": "partial",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "logic.diode-1n4007",
+      "exists": true,
+      "solver": "circuit",
       "simulated": true,
-      "solver": "circuit"
+      "confidence": "partial",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "logic.diode-1n4148",
+      "exists": true,
+      "solver": "circuit",
       "simulated": true,
-      "solver": "circuit"
+      "confidence": "partial",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "logic.diode-1n5817",
+      "exists": true,
+      "solver": null,
       "simulated": false,
-      "solver": null
+      "confidence": "experimental",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "logic.diode-1n5819",
+      "exists": true,
+      "solver": null,
       "simulated": false,
-      "solver": null
+      "confidence": "experimental",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "logic.flip-flop-d",
+      "exists": true,
+      "solver": null,
       "simulated": false,
-      "solver": null
+      "confidence": "experimental",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "logic.flip-flop-jk",
+      "exists": true,
+      "solver": null,
       "simulated": false,
-      "solver": null
+      "confidence": "experimental",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "logic.flip-flop-t",
+      "exists": true,
+      "solver": null,
       "simulated": false,
-      "solver": null
+      "confidence": "experimental",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "logic.ic-74hc00",
+      "exists": true,
+      "solver": null,
       "simulated": false,
-      "solver": null
+      "confidence": "experimental",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "logic.ic-74hc02",
+      "exists": true,
+      "solver": null,
       "simulated": false,
-      "solver": null
+      "confidence": "experimental",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "logic.ic-74hc04",
+      "exists": true,
+      "solver": null,
       "simulated": false,
-      "solver": null
+      "confidence": "experimental",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "logic.ic-74hc08",
+      "exists": true,
+      "solver": null,
       "simulated": false,
-      "solver": null
+      "confidence": "experimental",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "logic.ic-74hc14",
+      "exists": true,
+      "solver": null,
       "simulated": false,
-      "solver": null
+      "confidence": "experimental",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "logic.ic-74hc32",
+      "exists": true,
+      "solver": null,
       "simulated": false,
-      "solver": null
+      "confidence": "experimental",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "logic.ic-74hc86",
+      "exists": true,
+      "solver": null,
       "simulated": false,
-      "solver": null
+      "confidence": "experimental",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "logic.logic-gate-and",
+      "exists": true,
+      "solver": null,
       "simulated": false,
-      "solver": null
+      "confidence": "experimental",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "logic.logic-gate-and-3",
+      "exists": true,
+      "solver": null,
       "simulated": false,
-      "solver": null
+      "confidence": "experimental",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "logic.logic-gate-and-4",
+      "exists": true,
+      "solver": null,
       "simulated": false,
-      "solver": null
+      "confidence": "experimental",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "logic.logic-gate-nand",
+      "exists": true,
+      "solver": null,
       "simulated": false,
-      "solver": null
+      "confidence": "experimental",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "logic.logic-gate-nand-3",
+      "exists": true,
+      "solver": null,
       "simulated": false,
-      "solver": null
+      "confidence": "experimental",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "logic.logic-gate-nand-4",
+      "exists": true,
+      "solver": null,
       "simulated": false,
-      "solver": null
+      "confidence": "experimental",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "logic.logic-gate-nor",
+      "exists": true,
+      "solver": null,
       "simulated": false,
-      "solver": null
+      "confidence": "experimental",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "logic.logic-gate-nor-3",
+      "exists": true,
+      "solver": null,
       "simulated": false,
-      "solver": null
+      "confidence": "experimental",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "logic.logic-gate-nor-4",
+      "exists": true,
+      "solver": null,
       "simulated": false,
-      "solver": null
+      "confidence": "experimental",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "logic.logic-gate-not",
+      "exists": true,
+      "solver": null,
       "simulated": false,
-      "solver": null
+      "confidence": "experimental",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "logic.logic-gate-or",
+      "exists": true,
+      "solver": null,
       "simulated": false,
-      "solver": null
+      "confidence": "experimental",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "logic.logic-gate-or-3",
+      "exists": true,
+      "solver": null,
       "simulated": false,
-      "solver": null
+      "confidence": "experimental",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "logic.logic-gate-or-4",
+      "exists": true,
+      "solver": null,
       "simulated": false,
-      "solver": null
+      "confidence": "experimental",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "logic.logic-gate-xnor",
+      "exists": true,
+      "solver": null,
       "simulated": false,
-      "solver": null
+      "confidence": "experimental",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "logic.logic-gate-xor",
+      "exists": true,
+      "solver": null,
       "simulated": false,
-      "solver": null
+      "confidence": "experimental",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "logic.mosfet-2n7000",
+      "exists": true,
+      "solver": null,
       "simulated": false,
-      "solver": null
+      "confidence": "experimental",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "logic.mosfet-fqp27p06",
+      "exists": true,
+      "solver": null,
       "simulated": false,
-      "solver": null
+      "confidence": "experimental",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "logic.mosfet-irf540",
+      "exists": true,
+      "solver": null,
       "simulated": false,
-      "solver": null
+      "confidence": "experimental",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "logic.mosfet-irf9540",
+      "exists": true,
+      "solver": null,
       "simulated": false,
-      "solver": null
+      "confidence": "experimental",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "logic.motor-driver-l293d",
+      "exists": true,
+      "solver": null,
       "simulated": false,
-      "solver": null
+      "confidence": "experimental",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "logic.opamp-ideal",
+      "exists": true,
+      "solver": null,
       "simulated": false,
-      "solver": null
+      "confidence": "experimental",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "logic.opamp-lm324",
+      "exists": true,
+      "solver": null,
       "simulated": false,
-      "solver": null
+      "confidence": "experimental",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "logic.opamp-lm358",
+      "exists": true,
+      "solver": null,
       "simulated": false,
-      "solver": null
+      "confidence": "experimental",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "logic.opamp-lm741",
+      "exists": true,
+      "solver": null,
       "simulated": false,
-      "solver": null
+      "confidence": "experimental",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "logic.opamp-tl072",
+      "exists": true,
+      "solver": null,
       "simulated": false,
-      "solver": null
+      "confidence": "experimental",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "logic.opto-4n25",
+      "exists": true,
+      "solver": null,
       "simulated": false,
-      "solver": null
+      "confidence": "experimental",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "logic.opto-pc817",
+      "exists": true,
+      "solver": null,
       "simulated": false,
-      "solver": null
+      "confidence": "experimental",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "logic.reg-7805",
+      "exists": true,
+      "solver": null,
       "simulated": false,
-      "solver": null
+      "confidence": "experimental",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "logic.reg-7812",
+      "exists": true,
+      "solver": null,
       "simulated": false,
-      "solver": null
+      "confidence": "experimental",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "logic.reg-7905",
+      "exists": true,
+      "solver": null,
       "simulated": false,
-      "solver": null
+      "confidence": "experimental",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "logic.reg-lm317",
+      "exists": true,
+      "solver": null,
       "simulated": false,
-      "solver": null
+      "confidence": "experimental",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "logic.zener-1n4733",
+      "exists": true,
+      "solver": "circuit",
       "simulated": true,
-      "solver": "circuit"
+      "confidence": "partial",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "output.7segment",
+      "exists": true,
+      "solver": null,
       "simulated": false,
-      "solver": null
+      "confidence": "experimental",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "output.buzzer",
+      "exists": true,
+      "solver": "mcu",
       "simulated": true,
-      "solver": "mcu"
+      "confidence": "partial",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "output.epaper-1in54-bw",
+      "exists": true,
+      "solver": null,
       "simulated": false,
-      "solver": null
+      "confidence": "experimental",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "output.epaper-2in13-bw",
+      "exists": true,
+      "solver": null,
       "simulated": false,
-      "solver": null
+      "confidence": "experimental",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "output.epaper-2in13-bwr",
+      "exists": true,
+      "solver": null,
       "simulated": false,
-      "solver": null
+      "confidence": "experimental",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "output.epaper-2in9-bw",
+      "exists": true,
+      "solver": null,
       "simulated": false,
-      "solver": null
+      "confidence": "experimental",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "output.epaper-2in9-bwr",
+      "exists": true,
+      "solver": null,
       "simulated": false,
-      "solver": null
+      "confidence": "experimental",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "output.epaper-4in2-bw",
+      "exists": true,
+      "solver": null,
       "simulated": false,
-      "solver": null
+      "confidence": "experimental",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "output.epaper-5in65-7c",
+      "exists": true,
+      "solver": null,
       "simulated": false,
-      "solver": null
+      "confidence": "experimental",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "output.epaper-7in5-bw",
+      "exists": true,
+      "solver": null,
       "simulated": false,
-      "solver": null
+      "confidence": "experimental",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "output.ili9341",
+      "exists": true,
+      "solver": "mcu",
       "simulated": true,
-      "solver": "mcu"
+      "confidence": "partial",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "output.lcd1602",
+      "exists": true,
+      "solver": "mcu",
       "simulated": true,
-      "solver": "mcu"
+      "confidence": "partial",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "output.lcd1602-i2c",
+      "exists": true,
+      "solver": null,
       "simulated": false,
-      "solver": null
+      "confidence": "experimental",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "output.lcd2004",
+      "exists": true,
+      "solver": "mcu",
       "simulated": true,
-      "solver": "mcu"
+      "confidence": "partial",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "output.lcd2004-i2c",
+      "exists": true,
+      "solver": null,
       "simulated": false,
-      "solver": null
+      "confidence": "experimental",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "output.led",
+      "exists": true,
+      "solver": "mcu",
       "simulated": true,
-      "solver": "mcu"
+      "confidence": "partial",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "output.led-bar-graph",
+      "exists": true,
+      "solver": "mcu",
       "simulated": true,
-      "solver": "mcu"
+      "confidence": "partial",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "output.led-ring",
+      "exists": true,
+      "solver": "mcu",
       "simulated": true,
-      "solver": "mcu"
+      "confidence": "partial",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "output.neopixel",
+      "exists": true,
+      "solver": "mcu",
       "simulated": true,
-      "solver": "mcu"
+      "confidence": "partial",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "output.neopixel-matrix",
+      "exists": true,
+      "solver": "mcu",
       "simulated": true,
-      "solver": "mcu"
+      "confidence": "partial",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "output.rgb-led",
+      "exists": true,
+      "solver": "mcu",
       "simulated": true,
-      "solver": "mcu"
+      "confidence": "partial",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "output.ssd1306",
+      "exists": true,
+      "solver": "mcu",
       "simulated": true,
-      "solver": "mcu"
+      "confidence": "partial",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "output.ssd1306-i2c-4pin",
+      "exists": true,
+      "solver": "mcu",
       "simulated": true,
-      "solver": "mcu"
+      "confidence": "partial",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "passive.battery-9v",
+      "exists": true,
+      "solver": "circuit",
       "simulated": true,
-      "solver": "circuit"
+      "confidence": "partial",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "passive.battery-aa",
+      "exists": true,
+      "solver": "circuit",
       "simulated": true,
-      "solver": "circuit"
+      "confidence": "partial",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "passive.battery-coin-cell",
+      "exists": true,
+      "solver": "circuit",
       "simulated": true,
-      "solver": "circuit"
+      "confidence": "partial",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "passive.breadboard",
+      "exists": true,
+      "solver": null,
       "simulated": false,
-      "solver": null
+      "confidence": "experimental",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "passive.breadboard-mini",
+      "exists": true,
+      "solver": null,
       "simulated": false,
-      "solver": null
+      "confidence": "experimental",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "passive.cap-100n",
+      "exists": true,
+      "solver": "circuit",
       "simulated": true,
-      "solver": "circuit"
+      "confidence": "partial",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "passive.cap-100p",
+      "exists": true,
+      "solver": "circuit",
       "simulated": true,
-      "solver": "circuit"
+      "confidence": "partial",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "passive.cap-10n",
+      "exists": true,
+      "solver": "circuit",
       "simulated": true,
-      "solver": "circuit"
+      "confidence": "partial",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "passive.cap-10p",
+      "exists": true,
+      "solver": "circuit",
       "simulated": true,
-      "solver": "circuit"
+      "confidence": "partial",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "passive.cap-1n",
+      "exists": true,
+      "solver": "circuit",
       "simulated": true,
-      "solver": "circuit"
+      "confidence": "partial",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "passive.cap-1u",
+      "exists": true,
+      "solver": "circuit",
       "simulated": true,
-      "solver": "circuit"
+      "confidence": "partial",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "passive.cap-22p",
+      "exists": true,
+      "solver": "circuit",
       "simulated": true,
-      "solver": "circuit"
+      "confidence": "partial",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "passive.cap-elec-1000u",
+      "exists": true,
+      "solver": "circuit",
       "simulated": true,
-      "solver": "circuit"
+      "confidence": "partial",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "passive.cap-elec-100u",
+      "exists": true,
+      "solver": "circuit",
       "simulated": true,
-      "solver": "circuit"
+      "confidence": "partial",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "passive.cap-elec-10u",
+      "exists": true,
+      "solver": "circuit",
       "simulated": true,
-      "solver": "circuit"
+      "confidence": "partial",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "passive.cap-elec-1u",
+      "exists": true,
+      "solver": "circuit",
       "simulated": true,
-      "solver": "circuit"
+      "confidence": "partial",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "passive.cap-elec-470u",
+      "exists": true,
+      "solver": "circuit",
       "simulated": true,
-      "solver": "circuit"
+      "confidence": "partial",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "passive.cap-elec-47u",
+      "exists": true,
+      "solver": "circuit",
       "simulated": true,
-      "solver": "circuit"
+      "confidence": "partial",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "passive.capacitor",
+      "exists": true,
+      "solver": "circuit",
       "simulated": true,
-      "solver": "circuit"
+      "confidence": "partial",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "passive.capacitor-electrolytic",
+      "exists": true,
+      "solver": "circuit",
       "simulated": true,
-      "solver": "circuit"
+      "confidence": "partial",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "passive.ind-100u",
+      "exists": true,
+      "solver": "circuit",
       "simulated": true,
-      "solver": "circuit"
+      "confidence": "partial",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "passive.ind-10m",
+      "exists": true,
+      "solver": "circuit",
       "simulated": true,
-      "solver": "circuit"
+      "confidence": "partial",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "passive.ind-1m",
+      "exists": true,
+      "solver": "circuit",
       "simulated": true,
-      "solver": "circuit"
+      "confidence": "partial",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "passive.inductor",
+      "exists": true,
+      "solver": "circuit",
       "simulated": true,
-      "solver": "circuit"
+      "confidence": "partial",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "passive.junction",
+      "exists": true,
+      "solver": null,
       "simulated": false,
-      "solver": null
+      "confidence": "experimental",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "passive.power-supply",
+      "exists": true,
+      "solver": "circuit",
       "simulated": true,
-      "solver": "circuit"
+      "confidence": "partial",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "passive.resistor",
+      "exists": true,
+      "solver": "circuit",
       "simulated": true,
-      "solver": "circuit"
+      "confidence": "partial",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "passive.resistor-100k",
+      "exists": true,
+      "solver": "circuit",
       "simulated": true,
-      "solver": "circuit"
+      "confidence": "partial",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "passive.resistor-10k",
+      "exists": true,
+      "solver": "circuit",
       "simulated": true,
-      "solver": "circuit"
+      "confidence": "partial",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "passive.resistor-1k",
+      "exists": true,
+      "solver": "circuit",
       "simulated": true,
-      "solver": "circuit"
+      "confidence": "partial",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "passive.resistor-1m",
+      "exists": true,
+      "solver": "circuit",
       "simulated": true,
-      "solver": "circuit"
+      "confidence": "partial",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "passive.resistor-220",
+      "exists": true,
+      "solver": "circuit",
       "simulated": true,
-      "solver": "circuit"
+      "confidence": "partial",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "passive.resistor-22k",
+      "exists": true,
+      "solver": "circuit",
       "simulated": true,
-      "solver": "circuit"
+      "confidence": "partial",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "passive.resistor-2k2",
+      "exists": true,
+      "solver": "circuit",
       "simulated": true,
-      "solver": "circuit"
+      "confidence": "partial",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "passive.resistor-330",
+      "exists": true,
+      "solver": "circuit",
       "simulated": true,
-      "solver": "circuit"
+      "confidence": "partial",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "passive.resistor-470",
+      "exists": true,
+      "solver": "circuit",
       "simulated": true,
-      "solver": "circuit"
+      "confidence": "partial",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "passive.resistor-47k",
+      "exists": true,
+      "solver": "circuit",
       "simulated": true,
-      "solver": "circuit"
+      "confidence": "partial",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "passive.resistor-4k7",
+      "exists": true,
+      "solver": "circuit",
       "simulated": true,
-      "solver": "circuit"
+      "confidence": "partial",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "sensor.big-sound-sensor",
+      "exists": true,
+      "solver": "mcu",
       "simulated": true,
-      "solver": "mcu"
+      "confidence": "partial",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "sensor.bmp280",
+      "exists": true,
+      "solver": "mcu",
       "simulated": true,
-      "solver": "mcu"
+      "confidence": "partial",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "sensor.dht22",
+      "exists": true,
+      "solver": "mcu",
       "simulated": true,
-      "solver": "mcu"
+      "confidence": "partial",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "sensor.ds1307",
+      "exists": true,
+      "solver": "mcu",
       "simulated": true,
-      "solver": "mcu"
+      "confidence": "partial",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "sensor.ds3231",
+      "exists": true,
+      "solver": "mcu",
       "simulated": true,
-      "solver": "mcu"
+      "confidence": "partial",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "sensor.flame-sensor",
+      "exists": true,
+      "solver": "mcu",
       "simulated": true,
-      "solver": "mcu"
+      "confidence": "partial",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "sensor.gas-sensor",
+      "exists": true,
+      "solver": "mcu",
       "simulated": true,
-      "solver": "mcu"
+      "confidence": "partial",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "sensor.gps-neo6m",
+      "exists": true,
+      "solver": null,
       "simulated": false,
-      "solver": null
+      "confidence": "experimental",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "sensor.hc-sr04",
+      "exists": true,
+      "solver": "mcu",
       "simulated": true,
-      "solver": "mcu"
+      "confidence": "partial",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "sensor.heart-beat-sensor",
+      "exists": true,
+      "solver": "mcu",
       "simulated": true,
-      "solver": "mcu"
+      "confidence": "partial",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "sensor.hx711",
+      "exists": true,
+      "solver": "mcu",
       "simulated": true,
-      "solver": "mcu"
+      "confidence": "partial",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "sensor.ky-040",
+      "exists": true,
+      "solver": null,
       "simulated": false,
-      "solver": null
+      "confidence": "experimental",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "sensor.mpu6050",
+      "exists": true,
+      "solver": "mcu",
       "simulated": true,
-      "solver": "mcu"
+      "confidence": "partial",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "sensor.ntc-temperature-sensor",
+      "exists": true,
+      "solver": "mcu",
       "simulated": true,
-      "solver": "mcu"
+      "confidence": "partial",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "sensor.photodiode",
+      "exists": true,
+      "solver": "mcu",
       "simulated": true,
-      "solver": "mcu"
+      "confidence": "partial",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "sensor.photoresistor-sensor",
+      "exists": true,
+      "solver": "mcu",
       "simulated": true,
-      "solver": "mcu"
+      "confidence": "partial",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "sensor.pir-motion-sensor",
+      "exists": true,
+      "solver": "mcu",
       "simulated": true,
-      "solver": "mcu"
+      "confidence": "partial",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "sensor.servo",
+      "exists": true,
+      "solver": "mcu",
       "simulated": true,
-      "solver": "mcu"
+      "confidence": "partial",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "sensor.small-sound-sensor",
+      "exists": true,
+      "solver": "mcu",
       "simulated": true,
-      "solver": "mcu"
+      "confidence": "partial",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "source.signal-generator",
+      "exists": true,
+      "solver": null,
       "simulated": false,
-      "solver": null
+      "confidence": "experimental",
+      "exercised_by_cases": []
     },
     {
-      "confidence": "unknown",
-      "exercised_by_cases": [],
-      "exists": true,
       "id": "storage.microsd-card",
+      "exists": true,
+      "solver": null,
       "simulated": false,
-      "solver": null
+      "confidence": "experimental",
+      "exercised_by_cases": []
     }
   ],
   "limits": {
-    "max_iterations": 12,
-    "max_model_calls": 60,
     "max_nodes": 512,
-    "max_payload_bytes": 200000,
     "max_sim_seconds": 300,
-    "max_tool_calls_per_run": 400,
-    "max_trial_runs": 64
+    "max_substeps": 200000,
+    "max_payload_bytes": 200000
   },
   "telemetry_channels": [],
   "unsupported": [
     {
-      "feature": "Universal graph store, tool bus, MCP surface, headless runtime, orchestrator, 3D room, mechanics solver, software sandbox",
-      "kind": null,
-      "reason": "Not implemented. This file is a stub generated before any solver registered.",
-      "required_to_support": "Phases v02-v12 of prompts/."
+      "feature": "Documented component limitation: ESP32-C3 DevKitM-1 (esp32-c3)",
+      "kind": "board.esp32-c3",
+      "reason": "The component availability document lists 'esp32-c3' outside any explicitly verified board/peripheral scope.",
+      "required_to_support": "Verified runtime fixtures for 'esp32-c3' on the intended board and wiring."
     },
     {
-      "feature": "ESP32 DevKit V1 browser simulation",
-      "kind": "board.esp32-devkit-v1",
-      "reason": "No configured native runtime.",
-      "required_to_support": "A working ESP32 QEMU lane; phase v07."
+      "feature": "ESP32-C3 execution",
+      "kind": "board.esp32-c3",
+      "reason": "The native runtime fails at PC 0x514c26 after 2,666,667 cycles.",
+      "required_to_support": "A verified ESP32-C3 emulator run that passes the documented firmware fixtures."
     },
     {
-      "feature": "ESP32-C3 native runtime",
+      "feature": "ESP32-C3 native execution",
       "kind": "board.esp32-c3",
       "reason": "Vendor RiscVCore adapter fails at PC 0x514c26 after 2,666,667 cycles.",
-      "required_to_support": "Fix the vendor CPU adapter; phase v07."
+      "required_to_support": "A verified ESP32-C3 emulator run that passes the documented firmware fixtures."
     },
     {
-      "feature": "Pico W CYW43 radio and onboard LED",
+      "feature": "Remote ESP32 QEMU",
+      "kind": "board.esp32-c3",
+      "reason": "Remote ESP32 QEMU is packaged but not deployed; Docker, TLS and QEMU execution are unverified.",
+      "required_to_support": "A deployed, secured remote QEMU service with verified board-specific fixtures."
+    },
+    {
+      "feature": "Simulation for board.esp32-c3",
+      "kind": "board.esp32-c3",
+      "reason": "No registered solver claims this kind.",
+      "required_to_support": "Register a solver with a passing prepare self-test and verified test coverage for 'board.esp32-c3'."
+    },
+    {
+      "feature": "Documented component limitation: ESP32 DevKit C V4 (esp32-devkit-c-v4)",
+      "kind": "board.esp32-devkit-c-v4",
+      "reason": "The component availability document lists 'esp32-devkit-c-v4' outside any explicitly verified board/peripheral scope.",
+      "required_to_support": "Verified runtime fixtures for 'esp32-devkit-c-v4' on the intended board and wiring."
+    },
+    {
+      "feature": "Simulation for board.esp32-devkit-c-v4",
+      "kind": "board.esp32-devkit-c-v4",
+      "reason": "No registered solver claims this kind.",
+      "required_to_support": "Register a solver with a passing prepare self-test and verified test coverage for 'board.esp32-devkit-c-v4'."
+    },
+    {
+      "feature": "Documented component limitation: ESP32 DevKit V1 (esp32-devkit-v1)",
+      "kind": "board.esp32-devkit-v1",
+      "reason": "The component availability document lists 'esp32-devkit-v1' outside any explicitly verified board/peripheral scope.",
+      "required_to_support": "Verified runtime fixtures for 'esp32-devkit-v1' on the intended board and wiring."
+    },
+    {
+      "feature": "Simulation for board.esp32-devkit-v1",
+      "kind": "board.esp32-devkit-v1",
+      "reason": "No registered solver claims this kind.",
+      "required_to_support": "Register a solver with a passing prepare self-test and verified test coverage for 'board.esp32-devkit-v1'."
+    },
+    {
+      "feature": "Documented component limitation: ESP32-S3 DevKitC-1 (esp32-s3)",
+      "kind": "board.esp32-s3",
+      "reason": "The component availability document lists 'esp32-s3' outside any explicitly verified board/peripheral scope.",
+      "required_to_support": "Verified runtime fixtures for 'esp32-s3' on the intended board and wiring."
+    },
+    {
+      "feature": "Simulation for board.esp32-s3",
+      "kind": "board.esp32-s3",
+      "reason": "No registered solver claims this kind.",
+      "required_to_support": "Register a solver with a passing prepare self-test and verified test coverage for 'board.esp32-s3'."
+    },
+    {
+      "feature": "Documented component limitation: Franzininho (franzininho)",
+      "kind": "board.franzininho",
+      "reason": "The component availability document lists 'franzininho' outside any explicitly verified board/peripheral scope.",
+      "required_to_support": "Verified runtime fixtures for 'franzininho' on the intended board and wiring."
+    },
+    {
+      "feature": "Simulation for board.franzininho",
+      "kind": "board.franzininho",
+      "reason": "No registered solver claims this kind.",
+      "required_to_support": "Register a solver with a passing prepare self-test and verified test coverage for 'board.franzininho'."
+    },
+    {
+      "feature": "Documented component limitation: Nano RP2040 Connect (nano-rp2040-connect)",
       "kind": "board.nano-rp2040-connect",
-      "reason": "Unimplemented in the browser CPU emulator.",
-      "required_to_support": "CYW43 emulation. External GPIO and UART0 work today."
+      "reason": "The component availability document lists 'nano-rp2040-connect' outside any explicitly verified board/peripheral scope.",
+      "required_to_support": "Verified runtime fixtures for 'nano-rp2040-connect' on the intended board and wiring."
     },
     {
-      "feature": "AC sweep, noise analysis and temperature sweep",
-      "kind": null,
-      "reason": "Only DC bias and transient are implemented.",
-      "required_to_support": "ngspice AC/noise/temperature wiring; phase v06."
+      "feature": "Simulation for board.nano-rp2040-connect",
+      "kind": "board.nano-rp2040-connect",
+      "reason": "No registered solver claims this kind.",
+      "required_to_support": "Register a solver with a passing prepare self-test and verified test coverage for 'board.nano-rp2040-connect'."
     },
     {
-      "feature": "Compiler isolation for untrusted firmware",
-      "kind": null,
-      "reason": "Native compilation runs in-process.",
-      "required_to_support": "Sandboxed runtime worker; phase v07."
+      "feature": "Pico W radio and onboard LED",
+      "kind": "board.pi-pico-w",
+      "reason": "CYW43 radio, WiFi, Bluetooth and the onboard LED are unsupported.",
+      "required_to_support": "A verified CYW43 and onboard LED model with passing firmware fixtures."
     },
     {
-      "feature": "Per-user authentication and project authorization",
+      "feature": "Pico W radio and onboard LED",
+      "kind": "board.pi-pico-w",
+      "reason": "Only external GPIO and UART0 are emulated; CYW43, WiFi, Bluetooth and the onboard LED are unsupported.",
+      "required_to_support": "A verified CYW43 and onboard LED model with passing firmware fixtures."
+    },
+    {
+      "feature": "Documented component limitation: Raspberry Pi 3 (raspberry-pi-3)",
+      "kind": "board.raspberry-pi-3",
+      "reason": "The component availability document lists 'raspberry-pi-3' outside any explicitly verified board/peripheral scope.",
+      "required_to_support": "Verified runtime fixtures for 'raspberry-pi-3' on the intended board and wiring."
+    },
+    {
+      "feature": "Simulation for board.raspberry-pi-3",
+      "kind": "board.raspberry-pi-3",
+      "reason": "No registered solver claims this kind.",
+      "required_to_support": "Register a solver with a passing prepare self-test and verified test coverage for 'board.raspberry-pi-3'."
+    },
+    {
+      "feature": "Documented component limitation: Raspberry Pi 4 (raspberry-pi-4)",
+      "kind": "board.raspberry-pi-4",
+      "reason": "The component availability document lists 'raspberry-pi-4' outside any explicitly verified board/peripheral scope.",
+      "required_to_support": "Verified runtime fixtures for 'raspberry-pi-4' on the intended board and wiring."
+    },
+    {
+      "feature": "Simulation for board.raspberry-pi-4",
+      "kind": "board.raspberry-pi-4",
+      "reason": "No registered solver claims this kind.",
+      "required_to_support": "Register a solver with a passing prepare self-test and verified test coverage for 'board.raspberry-pi-4'."
+    },
+    {
+      "feature": "Documented component limitation: Raspberry Pi 5 (raspberry-pi-5)",
+      "kind": "board.raspberry-pi-5",
+      "reason": "The component availability document lists 'raspberry-pi-5' outside any explicitly verified board/peripheral scope.",
+      "required_to_support": "Verified runtime fixtures for 'raspberry-pi-5' on the intended board and wiring."
+    },
+    {
+      "feature": "Simulation for board.raspberry-pi-5",
+      "kind": "board.raspberry-pi-5",
+      "reason": "No registered solver claims this kind.",
+      "required_to_support": "Register a solver with a passing prepare self-test and verified test coverage for 'board.raspberry-pi-5'."
+    },
+    {
+      "feature": "Documented component limitation: Biaxial Stepper (biaxial-stepper)",
+      "kind": "electromech.biaxial-stepper",
+      "reason": "The component availability document lists 'biaxial-stepper' outside any explicitly verified board/peripheral scope.",
+      "required_to_support": "Verified runtime fixtures for 'biaxial-stepper' on the intended board and wiring."
+    },
+    {
+      "feature": "Simulation for electromech.biaxial-stepper",
+      "kind": "electromech.biaxial-stepper",
+      "reason": "No registered solver claims this kind.",
+      "required_to_support": "Register a solver with a passing prepare self-test and verified test coverage for 'electromech.biaxial-stepper'."
+    },
+    {
+      "feature": "Documented component limitation: KS2E-M-DC5 (ks2e-m-dc5)",
+      "kind": "electromech.ks2e-m-dc5",
+      "reason": "The component availability document lists 'ks2e-m-dc5' outside any explicitly verified board/peripheral scope.",
+      "required_to_support": "Verified runtime fixtures for 'ks2e-m-dc5' on the intended board and wiring."
+    },
+    {
+      "feature": "Simulation for electromech.ks2e-m-dc5",
+      "kind": "electromech.ks2e-m-dc5",
+      "reason": "No registered solver claims this kind.",
+      "required_to_support": "Register a solver with a passing prepare self-test and verified test coverage for 'electromech.ks2e-m-dc5'."
+    },
+    {
+      "feature": "Documented component limitation: Relay (SPDT) (relay)",
+      "kind": "electromech.relay",
+      "reason": "The component availability document lists 'relay' outside any explicitly verified board/peripheral scope.",
+      "required_to_support": "Verified runtime fixtures for 'relay' on the intended board and wiring."
+    },
+    {
+      "feature": "Simulation for electromech.relay",
+      "kind": "electromech.relay",
+      "reason": "No registered solver claims this kind.",
+      "required_to_support": "Register a solver with a passing prepare self-test and verified test coverage for 'electromech.relay'."
+    },
+    {
+      "feature": "Documented component limitation: Stepper Motor (stepper-motor)",
+      "kind": "electromech.stepper-motor",
+      "reason": "The component availability document lists 'stepper-motor' outside any explicitly verified board/peripheral scope.",
+      "required_to_support": "Verified runtime fixtures for 'stepper-motor' on the intended board and wiring."
+    },
+    {
+      "feature": "Simulation for electromech.stepper-motor",
+      "kind": "electromech.stepper-motor",
+      "reason": "No registered solver claims this kind.",
+      "required_to_support": "Register a solver with a passing prepare self-test and verified test coverage for 'electromech.stepper-motor'."
+    },
+    {
+      "feature": "Documented component limitation: Analog Joystick (analog-joystick)",
+      "kind": "input.analog-joystick",
+      "reason": "The historical inventory lists 'analog-joystick', but that limitation does not apply to its currently verified scopes; other combinations remain unverified.",
+      "required_to_support": "Additional verified runtime fixtures for 'analog-joystick' on any board/peripheral combinations beyond its current tested scope."
+    },
+    {
+      "feature": "Documented component limitation: DIP Switch 8 (dip-switch-8)",
+      "kind": "input.dip-switch-8",
+      "reason": "The historical inventory lists 'dip-switch-8', but that limitation does not apply to its currently verified scopes; other combinations remain unverified.",
+      "required_to_support": "Additional verified runtime fixtures for 'dip-switch-8' on any board/peripheral combinations beyond its current tested scope."
+    },
+    {
+      "feature": "Documented component limitation: IR Receiver (ir-receiver)",
+      "kind": "input.ir-receiver",
+      "reason": "The component availability document lists 'ir-receiver' outside any explicitly verified board/peripheral scope.",
+      "required_to_support": "Verified runtime fixtures for 'ir-receiver' on the intended board and wiring."
+    },
+    {
+      "feature": "Simulation for input.ir-receiver",
+      "kind": "input.ir-receiver",
+      "reason": "No registered solver claims this kind.",
+      "required_to_support": "Register a solver with a passing prepare self-test and verified test coverage for 'input.ir-receiver'."
+    },
+    {
+      "feature": "Documented component limitation: IR Remote (ir-remote)",
+      "kind": "input.ir-remote",
+      "reason": "The component availability document lists 'ir-remote' outside any explicitly verified board/peripheral scope.",
+      "required_to_support": "Verified runtime fixtures for 'ir-remote' on the intended board and wiring."
+    },
+    {
+      "feature": "Simulation for input.ir-remote",
+      "kind": "input.ir-remote",
+      "reason": "No registered solver claims this kind.",
+      "required_to_support": "Register a solver with a passing prepare self-test and verified test coverage for 'input.ir-remote'."
+    },
+    {
+      "feature": "Documented component limitation: Membrane Keypad (membrane-keypad)",
+      "kind": "input.membrane-keypad",
+      "reason": "The historical inventory lists 'membrane-keypad', but that limitation does not apply to its currently verified scopes; other combinations remain unverified.",
+      "required_to_support": "Additional verified runtime fixtures for 'membrane-keypad' on any board/peripheral combinations beyond its current tested scope."
+    },
+    {
+      "feature": "Documented component limitation: Potentiometer (potentiometer)",
+      "kind": "input.potentiometer",
+      "reason": "The historical inventory lists 'potentiometer', but that limitation does not apply to its currently verified scopes; other combinations remain unverified.",
+      "required_to_support": "Additional verified runtime fixtures for 'potentiometer' on any board/peripheral combinations beyond its current tested scope."
+    },
+    {
+      "feature": "Documented component limitation: Rotary Dialer (rotary-dialer)",
+      "kind": "input.rotary-dialer",
+      "reason": "The historical inventory lists 'rotary-dialer', but that limitation does not apply to its currently verified scopes; other combinations remain unverified.",
+      "required_to_support": "Additional verified runtime fixtures for 'rotary-dialer' on any board/peripheral combinations beyond its current tested scope."
+    },
+    {
+      "feature": "Documented component limitation: Slide Potentiometer (slide-potentiometer)",
+      "kind": "input.slide-potentiometer",
+      "reason": "The historical inventory lists 'slide-potentiometer', but that limitation does not apply to its currently verified scopes; other combinations remain unverified.",
+      "required_to_support": "Additional verified runtime fixtures for 'slide-potentiometer' on any board/peripheral combinations beyond its current tested scope."
+    },
+    {
+      "feature": "Documented component limitation: Slide Switch (slide-switch)",
+      "kind": "input.slide-switch",
+      "reason": "The historical inventory lists 'slide-switch', but that limitation does not apply to its currently verified scopes; other combinations remain unverified.",
+      "required_to_support": "Additional verified runtime fixtures for 'slide-switch' on any board/peripheral combinations beyond its current tested scope."
+    },
+    {
+      "feature": "Documented component limitation: Tilt Switch (tilt-switch)",
+      "kind": "input.tilt-switch",
+      "reason": "The historical inventory lists 'tilt-switch', but that limitation does not apply to its currently verified scopes; other combinations remain unverified.",
+      "required_to_support": "Additional verified runtime fixtures for 'tilt-switch' on any board/peripheral combinations beyond its current tested scope."
+    },
+    {
+      "feature": "Documented component limitation: A4988 Stepper Driver (a4988)",
+      "kind": "logic.a4988",
+      "reason": "The component availability document lists 'a4988' outside any explicitly verified board/peripheral scope.",
+      "required_to_support": "Verified runtime fixtures for 'a4988' on the intended board and wiring."
+    },
+    {
+      "feature": "Simulation for logic.a4988",
+      "kind": "logic.a4988",
+      "reason": "No registered solver claims this kind.",
+      "required_to_support": "Register a solver with a passing prepare self-test and verified test coverage for 'logic.a4988'."
+    },
+    {
+      "feature": "Documented component limitation: 2N2222 (NPN BJT) (bjt-2n2222)",
+      "kind": "logic.bjt-2n2222",
+      "reason": "The component availability document lists 'bjt-2n2222' outside any explicitly verified board/peripheral scope.",
+      "required_to_support": "Verified runtime fixtures for 'bjt-2n2222' on the intended board and wiring."
+    },
+    {
+      "feature": "Simulation for logic.bjt-2n2222",
+      "kind": "logic.bjt-2n2222",
+      "reason": "No registered solver claims this kind.",
+      "required_to_support": "Register a solver with a passing prepare self-test and verified test coverage for 'logic.bjt-2n2222'."
+    },
+    {
+      "feature": "Documented component limitation: 2N3055 (NPN Power BJT) (bjt-2n3055)",
+      "kind": "logic.bjt-2n3055",
+      "reason": "The component availability document lists 'bjt-2n3055' outside any explicitly verified board/peripheral scope.",
+      "required_to_support": "Verified runtime fixtures for 'bjt-2n3055' on the intended board and wiring."
+    },
+    {
+      "feature": "Simulation for logic.bjt-2n3055",
+      "kind": "logic.bjt-2n3055",
+      "reason": "No registered solver claims this kind.",
+      "required_to_support": "Register a solver with a passing prepare self-test and verified test coverage for 'logic.bjt-2n3055'."
+    },
+    {
+      "feature": "Documented component limitation: 2N3906 (PNP BJT) (bjt-2n3906)",
+      "kind": "logic.bjt-2n3906",
+      "reason": "The component availability document lists 'bjt-2n3906' outside any explicitly verified board/peripheral scope.",
+      "required_to_support": "Verified runtime fixtures for 'bjt-2n3906' on the intended board and wiring."
+    },
+    {
+      "feature": "Simulation for logic.bjt-2n3906",
+      "kind": "logic.bjt-2n3906",
+      "reason": "No registered solver claims this kind.",
+      "required_to_support": "Register a solver with a passing prepare self-test and verified test coverage for 'logic.bjt-2n3906'."
+    },
+    {
+      "feature": "Documented component limitation: BC547 (NPN BJT) (bjt-bc547)",
+      "kind": "logic.bjt-bc547",
+      "reason": "The component availability document lists 'bjt-bc547' outside any explicitly verified board/peripheral scope.",
+      "required_to_support": "Verified runtime fixtures for 'bjt-bc547' on the intended board and wiring."
+    },
+    {
+      "feature": "Simulation for logic.bjt-bc547",
+      "kind": "logic.bjt-bc547",
+      "reason": "No registered solver claims this kind.",
+      "required_to_support": "Register a solver with a passing prepare self-test and verified test coverage for 'logic.bjt-bc547'."
+    },
+    {
+      "feature": "Documented component limitation: BC557 (PNP BJT) (bjt-bc557)",
+      "kind": "logic.bjt-bc557",
+      "reason": "The component availability document lists 'bjt-bc557' outside any explicitly verified board/peripheral scope.",
+      "required_to_support": "Verified runtime fixtures for 'bjt-bc557' on the intended board and wiring."
+    },
+    {
+      "feature": "Simulation for logic.bjt-bc557",
+      "kind": "logic.bjt-bc557",
+      "reason": "No registered solver claims this kind.",
+      "required_to_support": "Register a solver with a passing prepare self-test and verified test coverage for 'logic.bjt-bc557'."
+    },
+    {
+      "feature": "Documented component limitation: Diode (generic) (diode)",
+      "kind": "logic.diode",
+      "reason": "The historical inventory lists 'diode', but that limitation does not apply to its currently verified scopes; other combinations remain unverified.",
+      "required_to_support": "Additional verified runtime fixtures for 'diode' on any board/peripheral combinations beyond its current tested scope."
+    },
+    {
+      "feature": "Documented component limitation: 1N4007 (1 kV Rectifier) (diode-1n4007)",
+      "kind": "logic.diode-1n4007",
+      "reason": "The historical inventory lists 'diode-1n4007', but that limitation does not apply to its currently verified scopes; other combinations remain unverified.",
+      "required_to_support": "Additional verified runtime fixtures for 'diode-1n4007' on any board/peripheral combinations beyond its current tested scope."
+    },
+    {
+      "feature": "Documented component limitation: 1N4148 (Small-Signal Diode) (diode-1n4148)",
+      "kind": "logic.diode-1n4148",
+      "reason": "The historical inventory lists 'diode-1n4148', but that limitation does not apply to its currently verified scopes; other combinations remain unverified.",
+      "required_to_support": "Additional verified runtime fixtures for 'diode-1n4148' on any board/peripheral combinations beyond its current tested scope."
+    },
+    {
+      "feature": "Documented component limitation: 1N5817 (Schottky 20V) (diode-1n5817)",
+      "kind": "logic.diode-1n5817",
+      "reason": "The component availability document lists 'diode-1n5817' outside any explicitly verified board/peripheral scope.",
+      "required_to_support": "Verified runtime fixtures for 'diode-1n5817' on the intended board and wiring."
+    },
+    {
+      "feature": "Simulation for logic.diode-1n5817",
+      "kind": "logic.diode-1n5817",
+      "reason": "No registered solver claims this kind.",
+      "required_to_support": "Register a solver with a passing prepare self-test and verified test coverage for 'logic.diode-1n5817'."
+    },
+    {
+      "feature": "Documented component limitation: 1N5819 (Schottky 40V) (diode-1n5819)",
+      "kind": "logic.diode-1n5819",
+      "reason": "The component availability document lists 'diode-1n5819' outside any explicitly verified board/peripheral scope.",
+      "required_to_support": "Verified runtime fixtures for 'diode-1n5819' on the intended board and wiring."
+    },
+    {
+      "feature": "Simulation for logic.diode-1n5819",
+      "kind": "logic.diode-1n5819",
+      "reason": "No registered solver claims this kind.",
+      "required_to_support": "Register a solver with a passing prepare self-test and verified test coverage for 'logic.diode-1n5819'."
+    },
+    {
+      "feature": "Documented component limitation: D Flip-Flop (flip-flop-d)",
+      "kind": "logic.flip-flop-d",
+      "reason": "The component availability document lists 'flip-flop-d' outside any explicitly verified board/peripheral scope.",
+      "required_to_support": "Verified runtime fixtures for 'flip-flop-d' on the intended board and wiring."
+    },
+    {
+      "feature": "Simulation for logic.flip-flop-d",
+      "kind": "logic.flip-flop-d",
+      "reason": "No registered solver claims this kind.",
+      "required_to_support": "Register a solver with a passing prepare self-test and verified test coverage for 'logic.flip-flop-d'."
+    },
+    {
+      "feature": "Documented component limitation: JK Flip-Flop (flip-flop-jk)",
+      "kind": "logic.flip-flop-jk",
+      "reason": "The component availability document lists 'flip-flop-jk' outside any explicitly verified board/peripheral scope.",
+      "required_to_support": "Verified runtime fixtures for 'flip-flop-jk' on the intended board and wiring."
+    },
+    {
+      "feature": "Simulation for logic.flip-flop-jk",
+      "kind": "logic.flip-flop-jk",
+      "reason": "No registered solver claims this kind.",
+      "required_to_support": "Register a solver with a passing prepare self-test and verified test coverage for 'logic.flip-flop-jk'."
+    },
+    {
+      "feature": "Documented component limitation: T Flip-Flop (flip-flop-t)",
+      "kind": "logic.flip-flop-t",
+      "reason": "The component availability document lists 'flip-flop-t' outside any explicitly verified board/peripheral scope.",
+      "required_to_support": "Verified runtime fixtures for 'flip-flop-t' on the intended board and wiring."
+    },
+    {
+      "feature": "Simulation for logic.flip-flop-t",
+      "kind": "logic.flip-flop-t",
+      "reason": "No registered solver claims this kind.",
+      "required_to_support": "Register a solver with a passing prepare self-test and verified test coverage for 'logic.flip-flop-t'."
+    },
+    {
+      "feature": "Documented component limitation: 74HC00 (Quad 2-input NAND) (ic-74hc00)",
+      "kind": "logic.ic-74hc00",
+      "reason": "The component availability document lists 'ic-74hc00' outside any explicitly verified board/peripheral scope.",
+      "required_to_support": "Verified runtime fixtures for 'ic-74hc00' on the intended board and wiring."
+    },
+    {
+      "feature": "Simulation for logic.ic-74hc00",
+      "kind": "logic.ic-74hc00",
+      "reason": "No registered solver claims this kind.",
+      "required_to_support": "Register a solver with a passing prepare self-test and verified test coverage for 'logic.ic-74hc00'."
+    },
+    {
+      "feature": "Documented component limitation: 74HC02 (Quad 2-input NOR) (ic-74hc02)",
+      "kind": "logic.ic-74hc02",
+      "reason": "The component availability document lists 'ic-74hc02' outside any explicitly verified board/peripheral scope.",
+      "required_to_support": "Verified runtime fixtures for 'ic-74hc02' on the intended board and wiring."
+    },
+    {
+      "feature": "Simulation for logic.ic-74hc02",
+      "kind": "logic.ic-74hc02",
+      "reason": "No registered solver claims this kind.",
+      "required_to_support": "Register a solver with a passing prepare self-test and verified test coverage for 'logic.ic-74hc02'."
+    },
+    {
+      "feature": "Documented component limitation: 74HC04 (Hex Inverter) (ic-74hc04)",
+      "kind": "logic.ic-74hc04",
+      "reason": "The component availability document lists 'ic-74hc04' outside any explicitly verified board/peripheral scope.",
+      "required_to_support": "Verified runtime fixtures for 'ic-74hc04' on the intended board and wiring."
+    },
+    {
+      "feature": "Simulation for logic.ic-74hc04",
+      "kind": "logic.ic-74hc04",
+      "reason": "No registered solver claims this kind.",
+      "required_to_support": "Register a solver with a passing prepare self-test and verified test coverage for 'logic.ic-74hc04'."
+    },
+    {
+      "feature": "Documented component limitation: 74HC08 (Quad 2-input AND) (ic-74hc08)",
+      "kind": "logic.ic-74hc08",
+      "reason": "The component availability document lists 'ic-74hc08' outside any explicitly verified board/peripheral scope.",
+      "required_to_support": "Verified runtime fixtures for 'ic-74hc08' on the intended board and wiring."
+    },
+    {
+      "feature": "Simulation for logic.ic-74hc08",
+      "kind": "logic.ic-74hc08",
+      "reason": "No registered solver claims this kind.",
+      "required_to_support": "Register a solver with a passing prepare self-test and verified test coverage for 'logic.ic-74hc08'."
+    },
+    {
+      "feature": "Documented component limitation: 74HC14 (Hex Schmitt Inverter) (ic-74hc14)",
+      "kind": "logic.ic-74hc14",
+      "reason": "The component availability document lists 'ic-74hc14' outside any explicitly verified board/peripheral scope.",
+      "required_to_support": "Verified runtime fixtures for 'ic-74hc14' on the intended board and wiring."
+    },
+    {
+      "feature": "Simulation for logic.ic-74hc14",
+      "kind": "logic.ic-74hc14",
+      "reason": "No registered solver claims this kind.",
+      "required_to_support": "Register a solver with a passing prepare self-test and verified test coverage for 'logic.ic-74hc14'."
+    },
+    {
+      "feature": "Documented component limitation: 74HC32 (Quad 2-input OR) (ic-74hc32)",
+      "kind": "logic.ic-74hc32",
+      "reason": "The component availability document lists 'ic-74hc32' outside any explicitly verified board/peripheral scope.",
+      "required_to_support": "Verified runtime fixtures for 'ic-74hc32' on the intended board and wiring."
+    },
+    {
+      "feature": "Simulation for logic.ic-74hc32",
+      "kind": "logic.ic-74hc32",
+      "reason": "No registered solver claims this kind.",
+      "required_to_support": "Register a solver with a passing prepare self-test and verified test coverage for 'logic.ic-74hc32'."
+    },
+    {
+      "feature": "Documented component limitation: 74HC86 (Quad 2-input XOR) (ic-74hc86)",
+      "kind": "logic.ic-74hc86",
+      "reason": "The component availability document lists 'ic-74hc86' outside any explicitly verified board/peripheral scope.",
+      "required_to_support": "Verified runtime fixtures for 'ic-74hc86' on the intended board and wiring."
+    },
+    {
+      "feature": "Simulation for logic.ic-74hc86",
+      "kind": "logic.ic-74hc86",
+      "reason": "No registered solver claims this kind.",
+      "required_to_support": "Register a solver with a passing prepare self-test and verified test coverage for 'logic.ic-74hc86'."
+    },
+    {
+      "feature": "Documented component limitation: AND Gate (logic-gate-and)",
+      "kind": "logic.logic-gate-and",
+      "reason": "The component availability document lists 'logic-gate-and' outside any explicitly verified board/peripheral scope.",
+      "required_to_support": "Verified runtime fixtures for 'logic-gate-and' on the intended board and wiring."
+    },
+    {
+      "feature": "Simulation for logic.logic-gate-and",
+      "kind": "logic.logic-gate-and",
+      "reason": "No registered solver claims this kind.",
+      "required_to_support": "Register a solver with a passing prepare self-test and verified test coverage for 'logic.logic-gate-and'."
+    },
+    {
+      "feature": "Documented component limitation: AND Gate (3-input) (logic-gate-and-3)",
+      "kind": "logic.logic-gate-and-3",
+      "reason": "The component availability document lists 'logic-gate-and-3' outside any explicitly verified board/peripheral scope.",
+      "required_to_support": "Verified runtime fixtures for 'logic-gate-and-3' on the intended board and wiring."
+    },
+    {
+      "feature": "Simulation for logic.logic-gate-and-3",
+      "kind": "logic.logic-gate-and-3",
+      "reason": "No registered solver claims this kind.",
+      "required_to_support": "Register a solver with a passing prepare self-test and verified test coverage for 'logic.logic-gate-and-3'."
+    },
+    {
+      "feature": "Documented component limitation: AND Gate (4-input) (logic-gate-and-4)",
+      "kind": "logic.logic-gate-and-4",
+      "reason": "The component availability document lists 'logic-gate-and-4' outside any explicitly verified board/peripheral scope.",
+      "required_to_support": "Verified runtime fixtures for 'logic-gate-and-4' on the intended board and wiring."
+    },
+    {
+      "feature": "Simulation for logic.logic-gate-and-4",
+      "kind": "logic.logic-gate-and-4",
+      "reason": "No registered solver claims this kind.",
+      "required_to_support": "Register a solver with a passing prepare self-test and verified test coverage for 'logic.logic-gate-and-4'."
+    },
+    {
+      "feature": "Documented component limitation: NAND Gate (logic-gate-nand)",
+      "kind": "logic.logic-gate-nand",
+      "reason": "The component availability document lists 'logic-gate-nand' outside any explicitly verified board/peripheral scope.",
+      "required_to_support": "Verified runtime fixtures for 'logic-gate-nand' on the intended board and wiring."
+    },
+    {
+      "feature": "Simulation for logic.logic-gate-nand",
+      "kind": "logic.logic-gate-nand",
+      "reason": "No registered solver claims this kind.",
+      "required_to_support": "Register a solver with a passing prepare self-test and verified test coverage for 'logic.logic-gate-nand'."
+    },
+    {
+      "feature": "Documented component limitation: NAND Gate (3-input) (logic-gate-nand-3)",
+      "kind": "logic.logic-gate-nand-3",
+      "reason": "The component availability document lists 'logic-gate-nand-3' outside any explicitly verified board/peripheral scope.",
+      "required_to_support": "Verified runtime fixtures for 'logic-gate-nand-3' on the intended board and wiring."
+    },
+    {
+      "feature": "Simulation for logic.logic-gate-nand-3",
+      "kind": "logic.logic-gate-nand-3",
+      "reason": "No registered solver claims this kind.",
+      "required_to_support": "Register a solver with a passing prepare self-test and verified test coverage for 'logic.logic-gate-nand-3'."
+    },
+    {
+      "feature": "Documented component limitation: NAND Gate (4-input) (logic-gate-nand-4)",
+      "kind": "logic.logic-gate-nand-4",
+      "reason": "The component availability document lists 'logic-gate-nand-4' outside any explicitly verified board/peripheral scope.",
+      "required_to_support": "Verified runtime fixtures for 'logic-gate-nand-4' on the intended board and wiring."
+    },
+    {
+      "feature": "Simulation for logic.logic-gate-nand-4",
+      "kind": "logic.logic-gate-nand-4",
+      "reason": "No registered solver claims this kind.",
+      "required_to_support": "Register a solver with a passing prepare self-test and verified test coverage for 'logic.logic-gate-nand-4'."
+    },
+    {
+      "feature": "Documented component limitation: NOR Gate (logic-gate-nor)",
+      "kind": "logic.logic-gate-nor",
+      "reason": "The component availability document lists 'logic-gate-nor' outside any explicitly verified board/peripheral scope.",
+      "required_to_support": "Verified runtime fixtures for 'logic-gate-nor' on the intended board and wiring."
+    },
+    {
+      "feature": "Simulation for logic.logic-gate-nor",
+      "kind": "logic.logic-gate-nor",
+      "reason": "No registered solver claims this kind.",
+      "required_to_support": "Register a solver with a passing prepare self-test and verified test coverage for 'logic.logic-gate-nor'."
+    },
+    {
+      "feature": "Documented component limitation: NOR Gate (3-input) (logic-gate-nor-3)",
+      "kind": "logic.logic-gate-nor-3",
+      "reason": "The component availability document lists 'logic-gate-nor-3' outside any explicitly verified board/peripheral scope.",
+      "required_to_support": "Verified runtime fixtures for 'logic-gate-nor-3' on the intended board and wiring."
+    },
+    {
+      "feature": "Simulation for logic.logic-gate-nor-3",
+      "kind": "logic.logic-gate-nor-3",
+      "reason": "No registered solver claims this kind.",
+      "required_to_support": "Register a solver with a passing prepare self-test and verified test coverage for 'logic.logic-gate-nor-3'."
+    },
+    {
+      "feature": "Documented component limitation: NOR Gate (4-input) (logic-gate-nor-4)",
+      "kind": "logic.logic-gate-nor-4",
+      "reason": "The component availability document lists 'logic-gate-nor-4' outside any explicitly verified board/peripheral scope.",
+      "required_to_support": "Verified runtime fixtures for 'logic-gate-nor-4' on the intended board and wiring."
+    },
+    {
+      "feature": "Simulation for logic.logic-gate-nor-4",
+      "kind": "logic.logic-gate-nor-4",
+      "reason": "No registered solver claims this kind.",
+      "required_to_support": "Register a solver with a passing prepare self-test and verified test coverage for 'logic.logic-gate-nor-4'."
+    },
+    {
+      "feature": "Documented component limitation: NOT Gate (Inverter) (logic-gate-not)",
+      "kind": "logic.logic-gate-not",
+      "reason": "The component availability document lists 'logic-gate-not' outside any explicitly verified board/peripheral scope.",
+      "required_to_support": "Verified runtime fixtures for 'logic-gate-not' on the intended board and wiring."
+    },
+    {
+      "feature": "Simulation for logic.logic-gate-not",
+      "kind": "logic.logic-gate-not",
+      "reason": "No registered solver claims this kind.",
+      "required_to_support": "Register a solver with a passing prepare self-test and verified test coverage for 'logic.logic-gate-not'."
+    },
+    {
+      "feature": "Documented component limitation: OR Gate (logic-gate-or)",
+      "kind": "logic.logic-gate-or",
+      "reason": "The component availability document lists 'logic-gate-or' outside any explicitly verified board/peripheral scope.",
+      "required_to_support": "Verified runtime fixtures for 'logic-gate-or' on the intended board and wiring."
+    },
+    {
+      "feature": "Simulation for logic.logic-gate-or",
+      "kind": "logic.logic-gate-or",
+      "reason": "No registered solver claims this kind.",
+      "required_to_support": "Register a solver with a passing prepare self-test and verified test coverage for 'logic.logic-gate-or'."
+    },
+    {
+      "feature": "Documented component limitation: OR Gate (3-input) (logic-gate-or-3)",
+      "kind": "logic.logic-gate-or-3",
+      "reason": "The component availability document lists 'logic-gate-or-3' outside any explicitly verified board/peripheral scope.",
+      "required_to_support": "Verified runtime fixtures for 'logic-gate-or-3' on the intended board and wiring."
+    },
+    {
+      "feature": "Simulation for logic.logic-gate-or-3",
+      "kind": "logic.logic-gate-or-3",
+      "reason": "No registered solver claims this kind.",
+      "required_to_support": "Register a solver with a passing prepare self-test and verified test coverage for 'logic.logic-gate-or-3'."
+    },
+    {
+      "feature": "Documented component limitation: OR Gate (4-input) (logic-gate-or-4)",
+      "kind": "logic.logic-gate-or-4",
+      "reason": "The component availability document lists 'logic-gate-or-4' outside any explicitly verified board/peripheral scope.",
+      "required_to_support": "Verified runtime fixtures for 'logic-gate-or-4' on the intended board and wiring."
+    },
+    {
+      "feature": "Simulation for logic.logic-gate-or-4",
+      "kind": "logic.logic-gate-or-4",
+      "reason": "No registered solver claims this kind.",
+      "required_to_support": "Register a solver with a passing prepare self-test and verified test coverage for 'logic.logic-gate-or-4'."
+    },
+    {
+      "feature": "Documented component limitation: XNOR Gate (logic-gate-xnor)",
+      "kind": "logic.logic-gate-xnor",
+      "reason": "The component availability document lists 'logic-gate-xnor' outside any explicitly verified board/peripheral scope.",
+      "required_to_support": "Verified runtime fixtures for 'logic-gate-xnor' on the intended board and wiring."
+    },
+    {
+      "feature": "Simulation for logic.logic-gate-xnor",
+      "kind": "logic.logic-gate-xnor",
+      "reason": "No registered solver claims this kind.",
+      "required_to_support": "Register a solver with a passing prepare self-test and verified test coverage for 'logic.logic-gate-xnor'."
+    },
+    {
+      "feature": "Documented component limitation: XOR Gate (logic-gate-xor)",
+      "kind": "logic.logic-gate-xor",
+      "reason": "The component availability document lists 'logic-gate-xor' outside any explicitly verified board/peripheral scope.",
+      "required_to_support": "Verified runtime fixtures for 'logic-gate-xor' on the intended board and wiring."
+    },
+    {
+      "feature": "Simulation for logic.logic-gate-xor",
+      "kind": "logic.logic-gate-xor",
+      "reason": "No registered solver claims this kind.",
+      "required_to_support": "Register a solver with a passing prepare self-test and verified test coverage for 'logic.logic-gate-xor'."
+    },
+    {
+      "feature": "Documented component limitation: 2N7000 (N-MOSFET) (mosfet-2n7000)",
+      "kind": "logic.mosfet-2n7000",
+      "reason": "The component availability document lists 'mosfet-2n7000' outside any explicitly verified board/peripheral scope.",
+      "required_to_support": "Verified runtime fixtures for 'mosfet-2n7000' on the intended board and wiring."
+    },
+    {
+      "feature": "Simulation for logic.mosfet-2n7000",
+      "kind": "logic.mosfet-2n7000",
+      "reason": "No registered solver claims this kind.",
+      "required_to_support": "Register a solver with a passing prepare self-test and verified test coverage for 'logic.mosfet-2n7000'."
+    },
+    {
+      "feature": "Documented component limitation: FQP27P06 (P-MOSFET) (mosfet-fqp27p06)",
+      "kind": "logic.mosfet-fqp27p06",
+      "reason": "The component availability document lists 'mosfet-fqp27p06' outside any explicitly verified board/peripheral scope.",
+      "required_to_support": "Verified runtime fixtures for 'mosfet-fqp27p06' on the intended board and wiring."
+    },
+    {
+      "feature": "Simulation for logic.mosfet-fqp27p06",
+      "kind": "logic.mosfet-fqp27p06",
+      "reason": "No registered solver claims this kind.",
+      "required_to_support": "Register a solver with a passing prepare self-test and verified test coverage for 'logic.mosfet-fqp27p06'."
+    },
+    {
+      "feature": "Documented component limitation: IRF540 (N-MOSFET Power) (mosfet-irf540)",
+      "kind": "logic.mosfet-irf540",
+      "reason": "The component availability document lists 'mosfet-irf540' outside any explicitly verified board/peripheral scope.",
+      "required_to_support": "Verified runtime fixtures for 'mosfet-irf540' on the intended board and wiring."
+    },
+    {
+      "feature": "Simulation for logic.mosfet-irf540",
+      "kind": "logic.mosfet-irf540",
+      "reason": "No registered solver claims this kind.",
+      "required_to_support": "Register a solver with a passing prepare self-test and verified test coverage for 'logic.mosfet-irf540'."
+    },
+    {
+      "feature": "Documented component limitation: IRF9540 (P-MOSFET) (mosfet-irf9540)",
+      "kind": "logic.mosfet-irf9540",
+      "reason": "The component availability document lists 'mosfet-irf9540' outside any explicitly verified board/peripheral scope.",
+      "required_to_support": "Verified runtime fixtures for 'mosfet-irf9540' on the intended board and wiring."
+    },
+    {
+      "feature": "Simulation for logic.mosfet-irf9540",
+      "kind": "logic.mosfet-irf9540",
+      "reason": "No registered solver claims this kind.",
+      "required_to_support": "Register a solver with a passing prepare self-test and verified test coverage for 'logic.mosfet-irf9540'."
+    },
+    {
+      "feature": "Documented component limitation: L293D (Dual H-Bridge Motor Driver) (motor-driver-l293d)",
+      "kind": "logic.motor-driver-l293d",
+      "reason": "The component availability document lists 'motor-driver-l293d' outside any explicitly verified board/peripheral scope.",
+      "required_to_support": "Verified runtime fixtures for 'motor-driver-l293d' on the intended board and wiring."
+    },
+    {
+      "feature": "Simulation for logic.motor-driver-l293d",
+      "kind": "logic.motor-driver-l293d",
+      "reason": "No registered solver claims this kind.",
+      "required_to_support": "Register a solver with a passing prepare self-test and verified test coverage for 'logic.motor-driver-l293d'."
+    },
+    {
+      "feature": "Documented component limitation: Ideal Op-Amp (opamp-ideal)",
+      "kind": "logic.opamp-ideal",
+      "reason": "The component availability document lists 'opamp-ideal' outside any explicitly verified board/peripheral scope.",
+      "required_to_support": "Verified runtime fixtures for 'opamp-ideal' on the intended board and wiring."
+    },
+    {
+      "feature": "Simulation for logic.opamp-ideal",
+      "kind": "logic.opamp-ideal",
+      "reason": "No registered solver claims this kind.",
+      "required_to_support": "Register a solver with a passing prepare self-test and verified test coverage for 'logic.opamp-ideal'."
+    },
+    {
+      "feature": "Documented component limitation: LM324 (Quad Op-Amp) (opamp-lm324)",
+      "kind": "logic.opamp-lm324",
+      "reason": "The component availability document lists 'opamp-lm324' outside any explicitly verified board/peripheral scope.",
+      "required_to_support": "Verified runtime fixtures for 'opamp-lm324' on the intended board and wiring."
+    },
+    {
+      "feature": "Simulation for logic.opamp-lm324",
+      "kind": "logic.opamp-lm324",
+      "reason": "No registered solver claims this kind.",
+      "required_to_support": "Register a solver with a passing prepare self-test and verified test coverage for 'logic.opamp-lm324'."
+    },
+    {
+      "feature": "Documented component limitation: LM358 (Dual Op-Amp) (opamp-lm358)",
+      "kind": "logic.opamp-lm358",
+      "reason": "The component availability document lists 'opamp-lm358' outside any explicitly verified board/peripheral scope.",
+      "required_to_support": "Verified runtime fixtures for 'opamp-lm358' on the intended board and wiring."
+    },
+    {
+      "feature": "Simulation for logic.opamp-lm358",
+      "kind": "logic.opamp-lm358",
+      "reason": "No registered solver claims this kind.",
+      "required_to_support": "Register a solver with a passing prepare self-test and verified test coverage for 'logic.opamp-lm358'."
+    },
+    {
+      "feature": "Documented component limitation: LM741 (Op-Amp) (opamp-lm741)",
+      "kind": "logic.opamp-lm741",
+      "reason": "The component availability document lists 'opamp-lm741' outside any explicitly verified board/peripheral scope.",
+      "required_to_support": "Verified runtime fixtures for 'opamp-lm741' on the intended board and wiring."
+    },
+    {
+      "feature": "Simulation for logic.opamp-lm741",
+      "kind": "logic.opamp-lm741",
+      "reason": "No registered solver claims this kind.",
+      "required_to_support": "Register a solver with a passing prepare self-test and verified test coverage for 'logic.opamp-lm741'."
+    },
+    {
+      "feature": "Documented component limitation: TL072 (JFET Op-Amp) (opamp-tl072)",
+      "kind": "logic.opamp-tl072",
+      "reason": "The component availability document lists 'opamp-tl072' outside any explicitly verified board/peripheral scope.",
+      "required_to_support": "Verified runtime fixtures for 'opamp-tl072' on the intended board and wiring."
+    },
+    {
+      "feature": "Simulation for logic.opamp-tl072",
+      "kind": "logic.opamp-tl072",
+      "reason": "No registered solver claims this kind.",
+      "required_to_support": "Register a solver with a passing prepare self-test and verified test coverage for 'logic.opamp-tl072'."
+    },
+    {
+      "feature": "Documented component limitation: 4N25 (Optocoupler) (opto-4n25)",
+      "kind": "logic.opto-4n25",
+      "reason": "The component availability document lists 'opto-4n25' outside any explicitly verified board/peripheral scope.",
+      "required_to_support": "Verified runtime fixtures for 'opto-4n25' on the intended board and wiring."
+    },
+    {
+      "feature": "Simulation for logic.opto-4n25",
+      "kind": "logic.opto-4n25",
+      "reason": "No registered solver claims this kind.",
+      "required_to_support": "Register a solver with a passing prepare self-test and verified test coverage for 'logic.opto-4n25'."
+    },
+    {
+      "feature": "Documented component limitation: PC817 (Optocoupler) (opto-pc817)",
+      "kind": "logic.opto-pc817",
+      "reason": "The component availability document lists 'opto-pc817' outside any explicitly verified board/peripheral scope.",
+      "required_to_support": "Verified runtime fixtures for 'opto-pc817' on the intended board and wiring."
+    },
+    {
+      "feature": "Simulation for logic.opto-pc817",
+      "kind": "logic.opto-pc817",
+      "reason": "No registered solver claims this kind.",
+      "required_to_support": "Register a solver with a passing prepare self-test and verified test coverage for 'logic.opto-pc817'."
+    },
+    {
+      "feature": "Documented component limitation: 7805 (+5V Linear Regulator) (reg-7805)",
+      "kind": "logic.reg-7805",
+      "reason": "The component availability document lists 'reg-7805' outside any explicitly verified board/peripheral scope.",
+      "required_to_support": "Verified runtime fixtures for 'reg-7805' on the intended board and wiring."
+    },
+    {
+      "feature": "Simulation for logic.reg-7805",
+      "kind": "logic.reg-7805",
+      "reason": "No registered solver claims this kind.",
+      "required_to_support": "Register a solver with a passing prepare self-test and verified test coverage for 'logic.reg-7805'."
+    },
+    {
+      "feature": "Documented component limitation: 7812 (+12V Linear Regulator) (reg-7812)",
+      "kind": "logic.reg-7812",
+      "reason": "The component availability document lists 'reg-7812' outside any explicitly verified board/peripheral scope.",
+      "required_to_support": "Verified runtime fixtures for 'reg-7812' on the intended board and wiring."
+    },
+    {
+      "feature": "Simulation for logic.reg-7812",
+      "kind": "logic.reg-7812",
+      "reason": "No registered solver claims this kind.",
+      "required_to_support": "Register a solver with a passing prepare self-test and verified test coverage for 'logic.reg-7812'."
+    },
+    {
+      "feature": "Documented component limitation: 7905 (−5V Linear Regulator) (reg-7905)",
+      "kind": "logic.reg-7905",
+      "reason": "The component availability document lists 'reg-7905' outside any explicitly verified board/peripheral scope.",
+      "required_to_support": "Verified runtime fixtures for 'reg-7905' on the intended board and wiring."
+    },
+    {
+      "feature": "Simulation for logic.reg-7905",
+      "kind": "logic.reg-7905",
+      "reason": "No registered solver claims this kind.",
+      "required_to_support": "Register a solver with a passing prepare self-test and verified test coverage for 'logic.reg-7905'."
+    },
+    {
+      "feature": "Documented component limitation: LM317 (Adjustable Linear Regulator) (reg-lm317)",
+      "kind": "logic.reg-lm317",
+      "reason": "The component availability document lists 'reg-lm317' outside any explicitly verified board/peripheral scope.",
+      "required_to_support": "Verified runtime fixtures for 'reg-lm317' on the intended board and wiring."
+    },
+    {
+      "feature": "Simulation for logic.reg-lm317",
+      "kind": "logic.reg-lm317",
+      "reason": "No registered solver claims this kind.",
+      "required_to_support": "Register a solver with a passing prepare self-test and verified test coverage for 'logic.reg-lm317'."
+    },
+    {
+      "feature": "Documented component limitation: 1N4733 (5.1 V Zener) (zener-1n4733)",
+      "kind": "logic.zener-1n4733",
+      "reason": "The historical inventory lists 'zener-1n4733', but that limitation does not apply to its currently verified scopes; other combinations remain unverified.",
+      "required_to_support": "Additional verified runtime fixtures for 'zener-1n4733' on any board/peripheral combinations beyond its current tested scope."
+    },
+    {
+      "feature": "ac sweep",
       "kind": null,
-      "reason": "Shared-token reference auth only.",
-      "required_to_support": "Identity and per-project ownership; required before public deployment."
+      "reason": "The analog engine supports DC operating point and transient analysis only.",
+      "required_to_support": "ngspice AC sweep implementation"
+    },
+    {
+      "feature": "Compiler isolation",
+      "kind": null,
+      "reason": "Native compilation is not sandboxed.",
+      "required_to_support": "Process-isolated compilation with resource and filesystem limits."
+    },
+    {
+      "feature": "Distribution licensing",
+      "kind": null,
+      "reason": "The vendored Velxio tree is AGPLv3 or commercially licensed; distribution obligations need a decision.",
+      "required_to_support": "A documented licensing decision before closed-source distribution."
+    },
+    {
+      "feature": "Documented component limitation: AC Voltage Source (source-ac-voltage)",
+      "kind": null,
+      "reason": "The component availability document lists 'source-ac-voltage' outside any explicitly verified board/peripheral scope.",
+      "required_to_support": "Verified runtime fixtures for 'source-ac-voltage' on the intended board and wiring."
+    },
+    {
+      "feature": "Documented component limitation: DC Current Source (source-dc-current)",
+      "kind": null,
+      "reason": "The component availability document lists 'source-dc-current' outside any explicitly verified board/peripheral scope.",
+      "required_to_support": "Verified runtime fixtures for 'source-dc-current' on the intended board and wiring."
+    },
+    {
+      "feature": "Documented component limitation: DC Voltage Source (source-dc-voltage)",
+      "kind": null,
+      "reason": "The component availability document lists 'source-dc-voltage' outside any explicitly verified board/peripheral scope.",
+      "required_to_support": "Verified runtime fixtures for 'source-dc-voltage' on the intended board and wiring."
+    },
+    {
+      "feature": "Documented component limitation: Piecewise Linear Voltage Source (source-pwl-voltage)",
+      "kind": null,
+      "reason": "The component availability document lists 'source-pwl-voltage' outside any explicitly verified board/peripheral scope.",
+      "required_to_support": "Verified runtime fixtures for 'source-pwl-voltage' on the intended board and wiring."
+    },
+    {
+      "feature": "Documented component limitation: Pulse Voltage Source (source-pulse-voltage)",
+      "kind": null,
+      "reason": "The component availability document lists 'source-pulse-voltage' outside any explicitly verified board/peripheral scope.",
+      "required_to_support": "Verified runtime fixtures for 'source-pulse-voltage' on the intended board and wiring."
+    },
+    {
+      "feature": "Documented component limitation: Sine Voltage Source (source-sine-voltage)",
+      "kind": null,
+      "reason": "The component availability document lists 'source-sine-voltage' outside any explicitly verified board/peripheral scope.",
+      "required_to_support": "Verified runtime fixtures for 'source-sine-voltage' on the intended board and wiring."
+    },
+    {
+      "feature": "Documented component limitation: SPICE Ground (ground)",
+      "kind": null,
+      "reason": "The component availability document lists 'ground' outside any explicitly verified board/peripheral scope.",
+      "required_to_support": "Verified runtime fixtures for 'ground' on the intended board and wiring."
+    },
+    {
+      "feature": "environment simulation",
+      "kind": null,
+      "reason": "No verified environment solver is registered.",
+      "required_to_support": "A verified environmental solver with measured-quality outputs."
+    },
+    {
+      "feature": "ESP32-C3 execution using the vendor RiscVCore adapter.",
+      "kind": null,
+      "reason": "Vendor RiscVCore adapter fails at PC 0x514c26 after 2,666,667 cycles.",
+      "required_to_support": "Resolve and verify failure ESP32_C3_PC_FAILURE."
+    },
+    {
+      "feature": "General mechanical, fluid, and vehicle physics",
+      "kind": null,
+      "reason": "No mechanics solver is registered; no vehicle speed, torque, or acceleration is simulated.",
+      "required_to_support": "A verified mechanics solver with motor, drivetrain, contact, and vehicle telemetry models."
+    },
+    {
+      "feature": "Headless simulation",
+      "kind": null,
+      "reason": "Simulation currently depends on the connected browser runtime.",
+      "required_to_support": "A headless runtime worker with equivalent emulator behavior and verified deterministic fixtures."
+    },
+    {
+      "feature": "mechanics simulation",
+      "kind": null,
+      "reason": "No verified mechanics solver is registered.",
+      "required_to_support": "A deterministic, verified mechanics solver and actuator coupling."
+    },
+    {
+      "feature": "Mechanics, environment, and software domains",
+      "kind": null,
+      "reason": "No verified solvers are registered for these domains.",
+      "required_to_support": "The mechanics, environment, and sandboxed software solver phases."
+    },
+    {
+      "feature": "noise analysis",
+      "kind": null,
+      "reason": "Noise analysis is not implemented.",
+      "required_to_support": "ngspice noise analysis implementation and verified fixtures"
+    },
+    {
+      "feature": "Pico W firmware uses CYW43 radio, WiFi, Bluetooth, or the onboard LED.",
+      "kind": null,
+      "reason": "Pico W radio (CYW43), WiFi, Bluetooth and the CYW43-controlled onboard LED are unsupported.",
+      "required_to_support": "Resolve and verify failure PICO_W_CYW43_UNSUPPORTED."
+    },
+    {
+      "feature": "Project authentication",
+      "kind": null,
+      "reason": "Shared-token reference authorization is not per-user identity or project authorization.",
+      "required_to_support": "Per-user authentication and project-level authorization."
+    },
+    {
+      "feature": "Release status source",
+      "kind": null,
+      "reason": "The generated capability is constrained by RELEASE_STATUS.md.",
+      "required_to_support": "Keep the release blockers represented by a solver failure or static unsupported entry."
+    },
+    {
+      "feature": "software simulation",
+      "kind": null,
+      "reason": "No verified sandboxed software solver is registered.",
+      "required_to_support": "A sandboxed, resource-limited website runtime and verified device bridge."
+    },
+    {
+      "feature": "temperature sweep",
+      "kind": null,
+      "reason": "Temperature sweeps are not implemented.",
+      "required_to_support": "ngspice temperature sweep implementation and verified fixtures"
+    },
+    {
+      "feature": "Website-to-device runtime",
+      "kind": null,
+      "reason": "No sandboxed software solver or device bridge is registered.",
+      "required_to_support": "A sandboxed website runtime and verified device telemetry bridge."
+    },
+    {
+      "feature": "Documented component limitation: 7 Segment (7segment)",
+      "kind": "output.7segment",
+      "reason": "The component availability document lists '7segment' outside any explicitly verified board/peripheral scope.",
+      "required_to_support": "Verified runtime fixtures for '7segment' on the intended board and wiring."
+    },
+    {
+      "feature": "Simulation for output.7segment",
+      "kind": "output.7segment",
+      "reason": "No registered solver claims this kind.",
+      "required_to_support": "Register a solver with a passing prepare self-test and verified test coverage for 'output.7segment'."
+    },
+    {
+      "feature": "Documented component limitation: Buzzer (buzzer)",
+      "kind": "output.buzzer",
+      "reason": "The historical inventory lists 'buzzer', but that limitation does not apply to its currently verified scopes; other combinations remain unverified.",
+      "required_to_support": "Additional verified runtime fixtures for 'buzzer' on any board/peripheral combinations beyond its current tested scope."
+    },
+    {
+      "feature": "Documented component limitation: ePaper 1.54\" (200×200, B/W) (epaper-1in54-bw)",
+      "kind": "output.epaper-1in54-bw",
+      "reason": "The component availability document lists 'epaper-1in54-bw' outside any explicitly verified board/peripheral scope.",
+      "required_to_support": "Verified runtime fixtures for 'epaper-1in54-bw' on the intended board and wiring."
+    },
+    {
+      "feature": "Simulation for output.epaper-1in54-bw",
+      "kind": "output.epaper-1in54-bw",
+      "reason": "No registered solver claims this kind.",
+      "required_to_support": "Register a solver with a passing prepare self-test and verified test coverage for 'output.epaper-1in54-bw'."
+    },
+    {
+      "feature": "Documented component limitation: ePaper 2.13\" (250×122, B/W) (epaper-2in13-bw)",
+      "kind": "output.epaper-2in13-bw",
+      "reason": "The component availability document lists 'epaper-2in13-bw' outside any explicitly verified board/peripheral scope.",
+      "required_to_support": "Verified runtime fixtures for 'epaper-2in13-bw' on the intended board and wiring."
+    },
+    {
+      "feature": "Simulation for output.epaper-2in13-bw",
+      "kind": "output.epaper-2in13-bw",
+      "reason": "No registered solver claims this kind.",
+      "required_to_support": "Register a solver with a passing prepare self-test and verified test coverage for 'output.epaper-2in13-bw'."
+    },
+    {
+      "feature": "Documented component limitation: ePaper 2.13\" (250×122, B/W/Red) (epaper-2in13-bwr)",
+      "kind": "output.epaper-2in13-bwr",
+      "reason": "The component availability document lists 'epaper-2in13-bwr' outside any explicitly verified board/peripheral scope.",
+      "required_to_support": "Verified runtime fixtures for 'epaper-2in13-bwr' on the intended board and wiring."
+    },
+    {
+      "feature": "Simulation for output.epaper-2in13-bwr",
+      "kind": "output.epaper-2in13-bwr",
+      "reason": "No registered solver claims this kind.",
+      "required_to_support": "Register a solver with a passing prepare self-test and verified test coverage for 'output.epaper-2in13-bwr'."
+    },
+    {
+      "feature": "Documented component limitation: ePaper 2.9\" (296×128, B/W) (epaper-2in9-bw)",
+      "kind": "output.epaper-2in9-bw",
+      "reason": "The component availability document lists 'epaper-2in9-bw' outside any explicitly verified board/peripheral scope.",
+      "required_to_support": "Verified runtime fixtures for 'epaper-2in9-bw' on the intended board and wiring."
+    },
+    {
+      "feature": "Simulation for output.epaper-2in9-bw",
+      "kind": "output.epaper-2in9-bw",
+      "reason": "No registered solver claims this kind.",
+      "required_to_support": "Register a solver with a passing prepare self-test and verified test coverage for 'output.epaper-2in9-bw'."
+    },
+    {
+      "feature": "Documented component limitation: ePaper 2.9\" (296×128, B/W/Red) (epaper-2in9-bwr)",
+      "kind": "output.epaper-2in9-bwr",
+      "reason": "The component availability document lists 'epaper-2in9-bwr' outside any explicitly verified board/peripheral scope.",
+      "required_to_support": "Verified runtime fixtures for 'epaper-2in9-bwr' on the intended board and wiring."
+    },
+    {
+      "feature": "Simulation for output.epaper-2in9-bwr",
+      "kind": "output.epaper-2in9-bwr",
+      "reason": "No registered solver claims this kind.",
+      "required_to_support": "Register a solver with a passing prepare self-test and verified test coverage for 'output.epaper-2in9-bwr'."
+    },
+    {
+      "feature": "Documented component limitation: ePaper 4.2\" (400×300, B/W) (epaper-4in2-bw)",
+      "kind": "output.epaper-4in2-bw",
+      "reason": "The component availability document lists 'epaper-4in2-bw' outside any explicitly verified board/peripheral scope.",
+      "required_to_support": "Verified runtime fixtures for 'epaper-4in2-bw' on the intended board and wiring."
+    },
+    {
+      "feature": "Simulation for output.epaper-4in2-bw",
+      "kind": "output.epaper-4in2-bw",
+      "reason": "No registered solver claims this kind.",
+      "required_to_support": "Register a solver with a passing prepare self-test and verified test coverage for 'output.epaper-4in2-bw'."
+    },
+    {
+      "feature": "Documented component limitation: ePaper 5.65\" (600×448, ACeP 7-colour) (epaper-5in65-7c)",
+      "kind": "output.epaper-5in65-7c",
+      "reason": "The component availability document lists 'epaper-5in65-7c' outside any explicitly verified board/peripheral scope.",
+      "required_to_support": "Verified runtime fixtures for 'epaper-5in65-7c' on the intended board and wiring."
+    },
+    {
+      "feature": "Simulation for output.epaper-5in65-7c",
+      "kind": "output.epaper-5in65-7c",
+      "reason": "No registered solver claims this kind.",
+      "required_to_support": "Register a solver with a passing prepare self-test and verified test coverage for 'output.epaper-5in65-7c'."
+    },
+    {
+      "feature": "Documented component limitation: ePaper 7.5\" (800×480, B/W) (epaper-7in5-bw)",
+      "kind": "output.epaper-7in5-bw",
+      "reason": "The component availability document lists 'epaper-7in5-bw' outside any explicitly verified board/peripheral scope.",
+      "required_to_support": "Verified runtime fixtures for 'epaper-7in5-bw' on the intended board and wiring."
+    },
+    {
+      "feature": "Simulation for output.epaper-7in5-bw",
+      "kind": "output.epaper-7in5-bw",
+      "reason": "No registered solver claims this kind.",
+      "required_to_support": "Register a solver with a passing prepare self-test and verified test coverage for 'output.epaper-7in5-bw'."
+    },
+    {
+      "feature": "Documented component limitation: ILI9341 (ili9341)",
+      "kind": "output.ili9341",
+      "reason": "The historical inventory lists 'ili9341', but that limitation does not apply to its currently verified scopes; other combinations remain unverified.",
+      "required_to_support": "Additional verified runtime fixtures for 'ili9341' on any board/peripheral combinations beyond its current tested scope."
+    },
+    {
+      "feature": "Documented component limitation: LCD1602 (lcd1602)",
+      "kind": "output.lcd1602",
+      "reason": "The historical inventory lists 'lcd1602', but that limitation does not apply to its currently verified scopes; other combinations remain unverified.",
+      "required_to_support": "Additional verified runtime fixtures for 'lcd1602' on any board/peripheral combinations beyond its current tested scope."
+    },
+    {
+      "feature": "Documented component limitation: LCD 16x2 (I2C) (lcd1602-i2c)",
+      "kind": "output.lcd1602-i2c",
+      "reason": "The component availability document lists 'lcd1602-i2c' outside any explicitly verified board/peripheral scope.",
+      "required_to_support": "Verified runtime fixtures for 'lcd1602-i2c' on the intended board and wiring."
+    },
+    {
+      "feature": "Simulation for output.lcd1602-i2c",
+      "kind": "output.lcd1602-i2c",
+      "reason": "No registered solver claims this kind.",
+      "required_to_support": "Register a solver with a passing prepare self-test and verified test coverage for 'output.lcd1602-i2c'."
+    },
+    {
+      "feature": "Documented component limitation: LCD2004 (lcd2004)",
+      "kind": "output.lcd2004",
+      "reason": "The historical inventory lists 'lcd2004', but that limitation does not apply to its currently verified scopes; other combinations remain unverified.",
+      "required_to_support": "Additional verified runtime fixtures for 'lcd2004' on any board/peripheral combinations beyond its current tested scope."
+    },
+    {
+      "feature": "Documented component limitation: LCD 20x4 (I2C) (lcd2004-i2c)",
+      "kind": "output.lcd2004-i2c",
+      "reason": "The component availability document lists 'lcd2004-i2c' outside any explicitly verified board/peripheral scope.",
+      "required_to_support": "Verified runtime fixtures for 'lcd2004-i2c' on the intended board and wiring."
+    },
+    {
+      "feature": "Simulation for output.lcd2004-i2c",
+      "kind": "output.lcd2004-i2c",
+      "reason": "No registered solver claims this kind.",
+      "required_to_support": "Register a solver with a passing prepare self-test and verified test coverage for 'output.lcd2004-i2c'."
+    },
+    {
+      "feature": "Documented component limitation: Led Bar Graph (led-bar-graph)",
+      "kind": "output.led-bar-graph",
+      "reason": "The historical inventory lists 'led-bar-graph', but that limitation does not apply to its currently verified scopes; other combinations remain unverified.",
+      "required_to_support": "Additional verified runtime fixtures for 'led-bar-graph' on any board/peripheral combinations beyond its current tested scope."
+    },
+    {
+      "feature": "Documented component limitation: LED Ring (led-ring)",
+      "kind": "output.led-ring",
+      "reason": "The historical inventory lists 'led-ring', but that limitation does not apply to its currently verified scopes; other combinations remain unverified.",
+      "required_to_support": "Additional verified runtime fixtures for 'led-ring' on any board/peripheral combinations beyond its current tested scope."
+    },
+    {
+      "feature": "Documented component limitation: Neopixel (neopixel)",
+      "kind": "output.neopixel",
+      "reason": "The historical inventory lists 'neopixel', but that limitation does not apply to its currently verified scopes; other combinations remain unverified.",
+      "required_to_support": "Additional verified runtime fixtures for 'neopixel' on any board/peripheral combinations beyond its current tested scope."
+    },
+    {
+      "feature": "Documented component limitation: NeoPixel Matrix (neopixel-matrix)",
+      "kind": "output.neopixel-matrix",
+      "reason": "The historical inventory lists 'neopixel-matrix', but that limitation does not apply to its currently verified scopes; other combinations remain unverified.",
+      "required_to_support": "Additional verified runtime fixtures for 'neopixel-matrix' on any board/peripheral combinations beyond its current tested scope."
+    },
+    {
+      "feature": "Documented component limitation: RGB Led (rgb-led)",
+      "kind": "output.rgb-led",
+      "reason": "The historical inventory lists 'rgb-led', but that limitation does not apply to its currently verified scopes; other combinations remain unverified.",
+      "required_to_support": "Additional verified runtime fixtures for 'rgb-led' on any board/peripheral combinations beyond its current tested scope."
+    },
+    {
+      "feature": "Documented component limitation: SSD1306 OLED (ssd1306)",
+      "kind": "output.ssd1306",
+      "reason": "The historical inventory lists 'ssd1306', but that limitation does not apply to its currently verified scopes; other combinations remain unverified.",
+      "required_to_support": "Additional verified runtime fixtures for 'ssd1306' on any board/peripheral combinations beyond its current tested scope."
+    },
+    {
+      "feature": "Documented component limitation: SSD1306 OLED (I2C, 4-pin) (ssd1306-i2c-4pin)",
+      "kind": "output.ssd1306-i2c-4pin",
+      "reason": "The historical inventory lists 'ssd1306-i2c-4pin', but that limitation does not apply to its currently verified scopes; other combinations remain unverified.",
+      "required_to_support": "Additional verified runtime fixtures for 'ssd1306-i2c-4pin' on any board/peripheral combinations beyond its current tested scope."
+    },
+    {
+      "feature": "Documented component limitation: 9V Battery (battery-9v)",
+      "kind": "passive.battery-9v",
+      "reason": "The historical inventory lists 'battery-9v', but that limitation does not apply to its currently verified scopes; other combinations remain unverified.",
+      "required_to_support": "Additional verified runtime fixtures for 'battery-9v' on any board/peripheral combinations beyond its current tested scope."
+    },
+    {
+      "feature": "Documented component limitation: AA Battery (1.5V) (battery-aa)",
+      "kind": "passive.battery-aa",
+      "reason": "The historical inventory lists 'battery-aa', but that limitation does not apply to its currently verified scopes; other combinations remain unverified.",
+      "required_to_support": "Additional verified runtime fixtures for 'battery-aa' on any board/peripheral combinations beyond its current tested scope."
+    },
+    {
+      "feature": "Documented component limitation: Coin Cell (CR2032, 3V) (battery-coin-cell)",
+      "kind": "passive.battery-coin-cell",
+      "reason": "The historical inventory lists 'battery-coin-cell', but that limitation does not apply to its currently verified scopes; other combinations remain unverified.",
+      "required_to_support": "Additional verified runtime fixtures for 'battery-coin-cell' on any board/peripheral combinations beyond its current tested scope."
+    },
+    {
+      "feature": "Documented component limitation: Breadboard (full) (breadboard)",
+      "kind": "passive.breadboard",
+      "reason": "The component availability document lists 'breadboard' outside any explicitly verified board/peripheral scope.",
+      "required_to_support": "Verified runtime fixtures for 'breadboard' on the intended board and wiring."
+    },
+    {
+      "feature": "Simulation for passive.breadboard",
+      "kind": "passive.breadboard",
+      "reason": "No registered solver claims this kind.",
+      "required_to_support": "Register a solver with a passing prepare self-test and verified test coverage for 'passive.breadboard'."
+    },
+    {
+      "feature": "Documented component limitation: Breadboard Mini (breadboard-mini)",
+      "kind": "passive.breadboard-mini",
+      "reason": "The component availability document lists 'breadboard-mini' outside any explicitly verified board/peripheral scope.",
+      "required_to_support": "Verified runtime fixtures for 'breadboard-mini' on the intended board and wiring."
+    },
+    {
+      "feature": "Simulation for passive.breadboard-mini",
+      "kind": "passive.breadboard-mini",
+      "reason": "No registered solver claims this kind.",
+      "required_to_support": "Register a solver with a passing prepare self-test and verified test coverage for 'passive.breadboard-mini'."
+    },
+    {
+      "feature": "Documented component limitation: Cap. 100 nF (cap-100n)",
+      "kind": "passive.cap-100n",
+      "reason": "The historical inventory lists 'cap-100n', but that limitation does not apply to its currently verified scopes; other combinations remain unverified.",
+      "required_to_support": "Additional verified runtime fixtures for 'cap-100n' on any board/peripheral combinations beyond its current tested scope."
+    },
+    {
+      "feature": "Documented component limitation: Cap. 100 pF (cap-100p)",
+      "kind": "passive.cap-100p",
+      "reason": "The historical inventory lists 'cap-100p', but that limitation does not apply to its currently verified scopes; other combinations remain unverified.",
+      "required_to_support": "Additional verified runtime fixtures for 'cap-100p' on any board/peripheral combinations beyond its current tested scope."
+    },
+    {
+      "feature": "Documented component limitation: Cap. 10 nF (cap-10n)",
+      "kind": "passive.cap-10n",
+      "reason": "The historical inventory lists 'cap-10n', but that limitation does not apply to its currently verified scopes; other combinations remain unverified.",
+      "required_to_support": "Additional verified runtime fixtures for 'cap-10n' on any board/peripheral combinations beyond its current tested scope."
+    },
+    {
+      "feature": "Documented component limitation: Cap. 10 pF (cap-10p)",
+      "kind": "passive.cap-10p",
+      "reason": "The historical inventory lists 'cap-10p', but that limitation does not apply to its currently verified scopes; other combinations remain unverified.",
+      "required_to_support": "Additional verified runtime fixtures for 'cap-10p' on any board/peripheral combinations beyond its current tested scope."
+    },
+    {
+      "feature": "Documented component limitation: Cap. 1 nF (cap-1n)",
+      "kind": "passive.cap-1n",
+      "reason": "The historical inventory lists 'cap-1n', but that limitation does not apply to its currently verified scopes; other combinations remain unverified.",
+      "required_to_support": "Additional verified runtime fixtures for 'cap-1n' on any board/peripheral combinations beyond its current tested scope."
+    },
+    {
+      "feature": "Documented component limitation: Cap. 1 µF (cap-1u)",
+      "kind": "passive.cap-1u",
+      "reason": "The historical inventory lists 'cap-1u', but that limitation does not apply to its currently verified scopes; other combinations remain unverified.",
+      "required_to_support": "Additional verified runtime fixtures for 'cap-1u' on any board/peripheral combinations beyond its current tested scope."
+    },
+    {
+      "feature": "Documented component limitation: Cap. 22 pF (cap-22p)",
+      "kind": "passive.cap-22p",
+      "reason": "The historical inventory lists 'cap-22p', but that limitation does not apply to its currently verified scopes; other combinations remain unverified.",
+      "required_to_support": "Additional verified runtime fixtures for 'cap-22p' on any board/peripheral combinations beyond its current tested scope."
+    },
+    {
+      "feature": "Documented component limitation: Electrolytic 1000 µF (cap-elec-1000u)",
+      "kind": "passive.cap-elec-1000u",
+      "reason": "The historical inventory lists 'cap-elec-1000u', but that limitation does not apply to its currently verified scopes; other combinations remain unverified.",
+      "required_to_support": "Additional verified runtime fixtures for 'cap-elec-1000u' on any board/peripheral combinations beyond its current tested scope."
+    },
+    {
+      "feature": "Documented component limitation: Electrolytic 100 µF (cap-elec-100u)",
+      "kind": "passive.cap-elec-100u",
+      "reason": "The historical inventory lists 'cap-elec-100u', but that limitation does not apply to its currently verified scopes; other combinations remain unverified.",
+      "required_to_support": "Additional verified runtime fixtures for 'cap-elec-100u' on any board/peripheral combinations beyond its current tested scope."
+    },
+    {
+      "feature": "Documented component limitation: Electrolytic 10 µF (cap-elec-10u)",
+      "kind": "passive.cap-elec-10u",
+      "reason": "The historical inventory lists 'cap-elec-10u', but that limitation does not apply to its currently verified scopes; other combinations remain unverified.",
+      "required_to_support": "Additional verified runtime fixtures for 'cap-elec-10u' on any board/peripheral combinations beyond its current tested scope."
+    },
+    {
+      "feature": "Documented component limitation: Electrolytic 1 µF (cap-elec-1u)",
+      "kind": "passive.cap-elec-1u",
+      "reason": "The historical inventory lists 'cap-elec-1u', but that limitation does not apply to its currently verified scopes; other combinations remain unverified.",
+      "required_to_support": "Additional verified runtime fixtures for 'cap-elec-1u' on any board/peripheral combinations beyond its current tested scope."
+    },
+    {
+      "feature": "Documented component limitation: Electrolytic 470 µF (cap-elec-470u)",
+      "kind": "passive.cap-elec-470u",
+      "reason": "The historical inventory lists 'cap-elec-470u', but that limitation does not apply to its currently verified scopes; other combinations remain unverified.",
+      "required_to_support": "Additional verified runtime fixtures for 'cap-elec-470u' on any board/peripheral combinations beyond its current tested scope."
+    },
+    {
+      "feature": "Documented component limitation: Electrolytic 47 µF (cap-elec-47u)",
+      "kind": "passive.cap-elec-47u",
+      "reason": "The historical inventory lists 'cap-elec-47u', but that limitation does not apply to its currently verified scopes; other combinations remain unverified.",
+      "required_to_support": "Additional verified runtime fixtures for 'cap-elec-47u' on any board/peripheral combinations beyond its current tested scope."
+    },
+    {
+      "feature": "Documented component limitation: Cap. ceramic (custom) (capacitor)",
+      "kind": "passive.capacitor",
+      "reason": "The historical inventory lists 'capacitor', but that limitation does not apply to its currently verified scopes; other combinations remain unverified.",
+      "required_to_support": "Additional verified runtime fixtures for 'capacitor' on any board/peripheral combinations beyond its current tested scope."
+    },
+    {
+      "feature": "Documented component limitation: Electrolytic Cap. (custom) (capacitor-electrolytic)",
+      "kind": "passive.capacitor-electrolytic",
+      "reason": "The historical inventory lists 'capacitor-electrolytic', but that limitation does not apply to its currently verified scopes; other combinations remain unverified.",
+      "required_to_support": "Additional verified runtime fixtures for 'capacitor-electrolytic' on any board/peripheral combinations beyond its current tested scope."
+    },
+    {
+      "feature": "Documented component limitation: Inductor 100 µH (ind-100u)",
+      "kind": "passive.ind-100u",
+      "reason": "The historical inventory lists 'ind-100u', but that limitation does not apply to its currently verified scopes; other combinations remain unverified.",
+      "required_to_support": "Additional verified runtime fixtures for 'ind-100u' on any board/peripheral combinations beyond its current tested scope."
+    },
+    {
+      "feature": "Documented component limitation: Inductor 10 mH (ind-10m)",
+      "kind": "passive.ind-10m",
+      "reason": "The historical inventory lists 'ind-10m', but that limitation does not apply to its currently verified scopes; other combinations remain unverified.",
+      "required_to_support": "Additional verified runtime fixtures for 'ind-10m' on any board/peripheral combinations beyond its current tested scope."
+    },
+    {
+      "feature": "Documented component limitation: Inductor 1 mH (ind-1m)",
+      "kind": "passive.ind-1m",
+      "reason": "The historical inventory lists 'ind-1m', but that limitation does not apply to its currently verified scopes; other combinations remain unverified.",
+      "required_to_support": "Additional verified runtime fixtures for 'ind-1m' on any board/peripheral combinations beyond its current tested scope."
+    },
+    {
+      "feature": "Documented component limitation: Inductor (custom) (inductor)",
+      "kind": "passive.inductor",
+      "reason": "The historical inventory lists 'inductor', but that limitation does not apply to its currently verified scopes; other combinations remain unverified.",
+      "required_to_support": "Additional verified runtime fixtures for 'inductor' on any board/peripheral combinations beyond its current tested scope."
+    },
+    {
+      "feature": "Documented component limitation: Junction (junction)",
+      "kind": "passive.junction",
+      "reason": "The component availability document lists 'junction' outside any explicitly verified board/peripheral scope.",
+      "required_to_support": "Verified runtime fixtures for 'junction' on the intended board and wiring."
+    },
+    {
+      "feature": "Simulation for passive.junction",
+      "kind": "passive.junction",
+      "reason": "No registered solver claims this kind.",
+      "required_to_support": "Register a solver with a passing prepare self-test and verified test coverage for 'passive.junction'."
+    },
+    {
+      "feature": "Documented component limitation: Regulated Power Supply (power-supply)",
+      "kind": "passive.power-supply",
+      "reason": "The historical inventory lists 'power-supply', but that limitation does not apply to its currently verified scopes; other combinations remain unverified.",
+      "required_to_support": "Additional verified runtime fixtures for 'power-supply' on any board/peripheral combinations beyond its current tested scope."
+    },
+    {
+      "feature": "Documented component limitation: Resistor (custom) (resistor)",
+      "kind": "passive.resistor",
+      "reason": "The historical inventory lists 'resistor', but that limitation does not apply to its currently verified scopes; other combinations remain unverified.",
+      "required_to_support": "Additional verified runtime fixtures for 'resistor' on any board/peripheral combinations beyond its current tested scope."
+    },
+    {
+      "feature": "Documented component limitation: Resistor 100 kΩ (resistor-100k)",
+      "kind": "passive.resistor-100k",
+      "reason": "The historical inventory lists 'resistor-100k', but that limitation does not apply to its currently verified scopes; other combinations remain unverified.",
+      "required_to_support": "Additional verified runtime fixtures for 'resistor-100k' on any board/peripheral combinations beyond its current tested scope."
+    },
+    {
+      "feature": "Documented component limitation: Resistor 10 kΩ (resistor-10k)",
+      "kind": "passive.resistor-10k",
+      "reason": "The historical inventory lists 'resistor-10k', but that limitation does not apply to its currently verified scopes; other combinations remain unverified.",
+      "required_to_support": "Additional verified runtime fixtures for 'resistor-10k' on any board/peripheral combinations beyond its current tested scope."
+    },
+    {
+      "feature": "Documented component limitation: Resistor 1 kΩ (resistor-1k)",
+      "kind": "passive.resistor-1k",
+      "reason": "The historical inventory lists 'resistor-1k', but that limitation does not apply to its currently verified scopes; other combinations remain unverified.",
+      "required_to_support": "Additional verified runtime fixtures for 'resistor-1k' on any board/peripheral combinations beyond its current tested scope."
+    },
+    {
+      "feature": "Documented component limitation: Resistor 1 MΩ (resistor-1m)",
+      "kind": "passive.resistor-1m",
+      "reason": "The historical inventory lists 'resistor-1m', but that limitation does not apply to its currently verified scopes; other combinations remain unverified.",
+      "required_to_support": "Additional verified runtime fixtures for 'resistor-1m' on any board/peripheral combinations beyond its current tested scope."
+    },
+    {
+      "feature": "Documented component limitation: Resistor 220 Ω (resistor-220)",
+      "kind": "passive.resistor-220",
+      "reason": "The historical inventory lists 'resistor-220', but that limitation does not apply to its currently verified scopes; other combinations remain unverified.",
+      "required_to_support": "Additional verified runtime fixtures for 'resistor-220' on any board/peripheral combinations beyond its current tested scope."
+    },
+    {
+      "feature": "Documented component limitation: Resistor 22 kΩ (resistor-22k)",
+      "kind": "passive.resistor-22k",
+      "reason": "The historical inventory lists 'resistor-22k', but that limitation does not apply to its currently verified scopes; other combinations remain unverified.",
+      "required_to_support": "Additional verified runtime fixtures for 'resistor-22k' on any board/peripheral combinations beyond its current tested scope."
+    },
+    {
+      "feature": "Documented component limitation: Resistor 2.2 kΩ (resistor-2k2)",
+      "kind": "passive.resistor-2k2",
+      "reason": "The historical inventory lists 'resistor-2k2', but that limitation does not apply to its currently verified scopes; other combinations remain unverified.",
+      "required_to_support": "Additional verified runtime fixtures for 'resistor-2k2' on any board/peripheral combinations beyond its current tested scope."
+    },
+    {
+      "feature": "Documented component limitation: Resistor 330 Ω (resistor-330)",
+      "kind": "passive.resistor-330",
+      "reason": "The historical inventory lists 'resistor-330', but that limitation does not apply to its currently verified scopes; other combinations remain unverified.",
+      "required_to_support": "Additional verified runtime fixtures for 'resistor-330' on any board/peripheral combinations beyond its current tested scope."
+    },
+    {
+      "feature": "Documented component limitation: Resistor 470 Ω (resistor-470)",
+      "kind": "passive.resistor-470",
+      "reason": "The historical inventory lists 'resistor-470', but that limitation does not apply to its currently verified scopes; other combinations remain unverified.",
+      "required_to_support": "Additional verified runtime fixtures for 'resistor-470' on any board/peripheral combinations beyond its current tested scope."
+    },
+    {
+      "feature": "Documented component limitation: Resistor 47 kΩ (resistor-47k)",
+      "kind": "passive.resistor-47k",
+      "reason": "The historical inventory lists 'resistor-47k', but that limitation does not apply to its currently verified scopes; other combinations remain unverified.",
+      "required_to_support": "Additional verified runtime fixtures for 'resistor-47k' on any board/peripheral combinations beyond its current tested scope."
+    },
+    {
+      "feature": "Documented component limitation: Resistor 4.7 kΩ (resistor-4k7)",
+      "kind": "passive.resistor-4k7",
+      "reason": "The historical inventory lists 'resistor-4k7', but that limitation does not apply to its currently verified scopes; other combinations remain unverified.",
+      "required_to_support": "Additional verified runtime fixtures for 'resistor-4k7' on any board/peripheral combinations beyond its current tested scope."
+    },
+    {
+      "feature": "Documented component limitation: Big Sound Sensor (big-sound-sensor)",
+      "kind": "sensor.big-sound-sensor",
+      "reason": "The historical inventory lists 'big-sound-sensor', but that limitation does not apply to its currently verified scopes; other combinations remain unverified.",
+      "required_to_support": "Additional verified runtime fixtures for 'big-sound-sensor' on any board/peripheral combinations beyond its current tested scope."
+    },
+    {
+      "feature": "Documented component limitation: BMP280 (Pressure + Temp) (bmp280)",
+      "kind": "sensor.bmp280",
+      "reason": "The historical inventory lists 'bmp280', but that limitation does not apply to its currently verified scopes; other combinations remain unverified.",
+      "required_to_support": "Additional verified runtime fixtures for 'bmp280' on any board/peripheral combinations beyond its current tested scope."
+    },
+    {
+      "feature": "Documented component limitation: DHT22 (dht22)",
+      "kind": "sensor.dht22",
+      "reason": "The historical inventory lists 'dht22', but that limitation does not apply to its currently verified scopes; other combinations remain unverified.",
+      "required_to_support": "Additional verified runtime fixtures for 'dht22' on any board/peripheral combinations beyond its current tested scope."
+    },
+    {
+      "feature": "Documented component limitation: DS1307 (ds1307)",
+      "kind": "sensor.ds1307",
+      "reason": "The historical inventory lists 'ds1307', but that limitation does not apply to its currently verified scopes; other combinations remain unverified.",
+      "required_to_support": "Additional verified runtime fixtures for 'ds1307' on any board/peripheral combinations beyond its current tested scope."
+    },
+    {
+      "feature": "Documented component limitation: DS3231 RTC (ds3231)",
+      "kind": "sensor.ds3231",
+      "reason": "The historical inventory lists 'ds3231', but that limitation does not apply to its currently verified scopes; other combinations remain unverified.",
+      "required_to_support": "Additional verified runtime fixtures for 'ds3231' on any board/peripheral combinations beyond its current tested scope."
+    },
+    {
+      "feature": "Documented component limitation: Flame Sensor (flame-sensor)",
+      "kind": "sensor.flame-sensor",
+      "reason": "The historical inventory lists 'flame-sensor', but that limitation does not apply to its currently verified scopes; other combinations remain unverified.",
+      "required_to_support": "Additional verified runtime fixtures for 'flame-sensor' on any board/peripheral combinations beyond its current tested scope."
+    },
+    {
+      "feature": "Documented component limitation: Gas Sensor (gas-sensor)",
+      "kind": "sensor.gas-sensor",
+      "reason": "The historical inventory lists 'gas-sensor', but that limitation does not apply to its currently verified scopes; other combinations remain unverified.",
+      "required_to_support": "Additional verified runtime fixtures for 'gas-sensor' on any board/peripheral combinations beyond its current tested scope."
+    },
+    {
+      "feature": "Documented component limitation: GPS NEO-6M (gps-neo6m)",
+      "kind": "sensor.gps-neo6m",
+      "reason": "The component availability document lists 'gps-neo6m' outside any explicitly verified board/peripheral scope.",
+      "required_to_support": "Verified runtime fixtures for 'gps-neo6m' on the intended board and wiring."
+    },
+    {
+      "feature": "Simulation for sensor.gps-neo6m",
+      "kind": "sensor.gps-neo6m",
+      "reason": "No registered solver claims this kind.",
+      "required_to_support": "Register a solver with a passing prepare self-test and verified test coverage for 'sensor.gps-neo6m'."
+    },
+    {
+      "feature": "Documented component limitation: HC-SR04 (hc-sr04)",
+      "kind": "sensor.hc-sr04",
+      "reason": "The historical inventory lists 'hc-sr04', but that limitation does not apply to its currently verified scopes; other combinations remain unverified.",
+      "required_to_support": "Additional verified runtime fixtures for 'hc-sr04' on any board/peripheral combinations beyond its current tested scope."
+    },
+    {
+      "feature": "Documented component limitation: Heart Beat Sensor (heart-beat-sensor)",
+      "kind": "sensor.heart-beat-sensor",
+      "reason": "The historical inventory lists 'heart-beat-sensor', but that limitation does not apply to its currently verified scopes; other combinations remain unverified.",
+      "required_to_support": "Additional verified runtime fixtures for 'heart-beat-sensor' on any board/peripheral combinations beyond its current tested scope."
+    },
+    {
+      "feature": "Documented component limitation: HX711 (hx711)",
+      "kind": "sensor.hx711",
+      "reason": "The historical inventory lists 'hx711', but that limitation does not apply to its currently verified scopes; other combinations remain unverified.",
+      "required_to_support": "Additional verified runtime fixtures for 'hx711' on any board/peripheral combinations beyond its current tested scope."
+    },
+    {
+      "feature": "Documented component limitation: KY-040 Rotary Encoder (ky-040)",
+      "kind": "sensor.ky-040",
+      "reason": "The component availability document lists 'ky-040' outside any explicitly verified board/peripheral scope.",
+      "required_to_support": "Verified runtime fixtures for 'ky-040' on the intended board and wiring."
+    },
+    {
+      "feature": "Simulation for sensor.ky-040",
+      "kind": "sensor.ky-040",
+      "reason": "No registered solver claims this kind.",
+      "required_to_support": "Register a solver with a passing prepare self-test and verified test coverage for 'sensor.ky-040'."
+    },
+    {
+      "feature": "Documented component limitation: MPU6050 (mpu6050)",
+      "kind": "sensor.mpu6050",
+      "reason": "The historical inventory lists 'mpu6050', but that limitation does not apply to its currently verified scopes; other combinations remain unverified.",
+      "required_to_support": "Additional verified runtime fixtures for 'mpu6050' on any board/peripheral combinations beyond its current tested scope."
+    },
+    {
+      "feature": "Documented component limitation: NTC Temperature Sensor (ntc-temperature-sensor)",
+      "kind": "sensor.ntc-temperature-sensor",
+      "reason": "The historical inventory lists 'ntc-temperature-sensor', but that limitation does not apply to its currently verified scopes; other combinations remain unverified.",
+      "required_to_support": "Additional verified runtime fixtures for 'ntc-temperature-sensor' on any board/peripheral combinations beyond its current tested scope."
+    },
+    {
+      "feature": "Documented component limitation: Photodiode (photodiode)",
+      "kind": "sensor.photodiode",
+      "reason": "The historical inventory lists 'photodiode', but that limitation does not apply to its currently verified scopes; other combinations remain unverified.",
+      "required_to_support": "Additional verified runtime fixtures for 'photodiode' on any board/peripheral combinations beyond its current tested scope."
+    },
+    {
+      "feature": "Documented component limitation: Photoresistor Sensor (photoresistor-sensor)",
+      "kind": "sensor.photoresistor-sensor",
+      "reason": "The historical inventory lists 'photoresistor-sensor', but that limitation does not apply to its currently verified scopes; other combinations remain unverified.",
+      "required_to_support": "Additional verified runtime fixtures for 'photoresistor-sensor' on any board/peripheral combinations beyond its current tested scope."
+    },
+    {
+      "feature": "Documented component limitation: PIR Motion Sensor (pir-motion-sensor)",
+      "kind": "sensor.pir-motion-sensor",
+      "reason": "The historical inventory lists 'pir-motion-sensor', but that limitation does not apply to its currently verified scopes; other combinations remain unverified.",
+      "required_to_support": "Additional verified runtime fixtures for 'pir-motion-sensor' on any board/peripheral combinations beyond its current tested scope."
+    },
+    {
+      "feature": "Documented component limitation: Servo (servo)",
+      "kind": "sensor.servo",
+      "reason": "The historical inventory lists 'servo', but that limitation does not apply to its currently verified scopes; other combinations remain unverified.",
+      "required_to_support": "Additional verified runtime fixtures for 'servo' on any board/peripheral combinations beyond its current tested scope."
+    },
+    {
+      "feature": "Documented component limitation: Small Sound Sensor (small-sound-sensor)",
+      "kind": "sensor.small-sound-sensor",
+      "reason": "The historical inventory lists 'small-sound-sensor', but that limitation does not apply to its currently verified scopes; other combinations remain unverified.",
+      "required_to_support": "Additional verified runtime fixtures for 'small-sound-sensor' on any board/peripheral combinations beyond its current tested scope."
+    },
+    {
+      "feature": "Documented component limitation: Signal Generator (signal-generator)",
+      "kind": "source.signal-generator",
+      "reason": "The component availability document lists 'signal-generator' outside any explicitly verified board/peripheral scope.",
+      "required_to_support": "Verified runtime fixtures for 'signal-generator' on the intended board and wiring."
+    },
+    {
+      "feature": "Simulation for source.signal-generator",
+      "kind": "source.signal-generator",
+      "reason": "No registered solver claims this kind.",
+      "required_to_support": "Register a solver with a passing prepare self-test and verified test coverage for 'source.signal-generator'."
+    },
+    {
+      "feature": "Documented component limitation: microSD Card (microsd-card)",
+      "kind": "storage.microsd-card",
+      "reason": "The component availability document lists 'microsd-card' outside any explicitly verified board/peripheral scope.",
+      "required_to_support": "Verified runtime fixtures for 'microsd-card' on the intended board and wiring."
+    },
+    {
+      "feature": "Simulation for storage.microsd-card",
+      "kind": "storage.microsd-card",
+      "reason": "No registered solver claims this kind.",
+      "required_to_support": "Register a solver with a passing prepare self-test and verified test coverage for 'storage.microsd-card'."
     }
   ]
 }

@@ -147,9 +147,14 @@ remaining integration and parity gaps; this foundation is not yet the applicatio
 mutation path. Initial v05 telemetry and trial primitives exist, but the phase report records
 their unverified state and missing ToolBus integration. The local MCP server is a separately
 documented bridge to the existing electronics API, not the completed v08 transport over the tool
-bus. Headless runtime, orchestration, the room, mechanics, software and human review remain
-governed by their phase reports and contracts; no capability should be inferred from an
-implementation stub.
+bus. A partial `/room/:projectId` view renders saved electronics projects and can query an already
+connected browser MCU runtime from a focused component page; it does not start a simulation or
+provide vehicle physics, validated motor CAD, or software execution. The v06 capability generator
+now derives a conservative declaration from registered solver manifests, the current bench report,
+and component/release limitations. Browser circuit and MCU claims remain partial until their
+solver adapters are integrated with the ToolBus and their tests appear in the bench report.
+Headless runtime, orchestration, mechanics, software and human review remain governed by their
+phase reports and contracts; no vehicle or website capability should be inferred from the room.
 
 ---
 

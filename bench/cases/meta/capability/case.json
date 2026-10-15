@@ -1,0 +1,8 @@
+{
+  "id": "meta/capability",
+  "domain": "meta",
+  "title": "Generated capability is honest and deterministic",
+  "tags": ["capability", "solver", "honesty"],
+  "spec": "case.json",
+  "assertions": "assertions.json"
+}

@@ -265,7 +265,7 @@ def read_literal_list(path: Path, name: str):
 # ================================================== manifest
 MANIFEST_FILES = ["graph.schema.json", "port-types.json", "kinds.json", "telemetry.schema.json",
                   "derivations.json", "trial.schema.json", "capability.schema.json",
-                  "capability.json"]
+                  "capability.json", "telemetry.channels.json", "tools/index.json"]
 
 
 def sha256(path: Path) -> str:

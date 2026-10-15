@@ -17,6 +17,7 @@ const Preview = lazy(() => import('@/components/demo'))
 const SchematicStudio = lazy(() => import('@/components/schematic-studio').then(module => ({ default: module.SchematicStudio })))
 const HardwareInstruments = lazy(() => import('@/components/hardware-instruments').then(module => ({ default: module.HardwareInstruments })))
 const HardwareWorkspace = lazy(() => loadWorkspaceModule().then(module => ({ default: module.HardwareWorkspace })))
+const RoomShell = lazy(() => import('@/components/room-shell').then(module => ({ default: module.RoomShell })))
 
 function ProjectPage() {
   const [project, setProject] = useState<HardwareProject | null>(null)
@@ -77,6 +78,8 @@ export default function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/orb" element={<Suspense fallback={<div className="h-svh bg-[#0a0a0a]" />}><Preview /></Suspense>} />
+        <Route path="/room" element={<Suspense fallback={<div className="flex h-svh items-center justify-center bg-[#020817] text-slate-100">Loading room…</div>}><RoomShell /></Suspense>} />
+        <Route path="/room/:projectId" element={<Suspense fallback={<div className="flex h-svh items-center justify-center bg-[#020817] text-slate-100">Loading room…</div>}><RoomShell /></Suspense>} />
         <Route path="/" element={<PlatformHome />} />
         <Route path="/chat/:id" element={<ChatApp />} />
         <Route path="/projects" element={<AllProjects />} />

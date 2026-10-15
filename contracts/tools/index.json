@@ -5,6 +5,8 @@
   "toolbus_status": "not_implemented",
   "tools": [
     { "contract": "session.create", "mcp_name": "session_create", "handler": "session.create" },
+    { "contract": "capability.read", "mcp_name": "capability_read", "handler": "capability.read" },
+    { "contract": "capability.explain", "mcp_name": "capability_explain", "handler": "capability.explain" },
     { "contract": "project.create", "mcp_name": "project_create", "handler": "project.create" },
     { "contract": "project.read", "mcp_name": "project_read", "handler": "project.read" },
     { "contract": "project.delete", "mcp_name": "project_delete", "handler": "project.delete" },

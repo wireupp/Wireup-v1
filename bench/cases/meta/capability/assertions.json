@@ -1,0 +1,22 @@
+{
+  "assertions": [
+    {
+      "id": "A1_capability_claims_have_a_generated_source",
+      "kind": "capability_declared",
+      "checker": ["node", "bench/cases/meta/capability/check.mjs"],
+      "description": "Solver registrations, test results, kind contracts, and unsupported limits generate the capability document."
+    },
+    {
+      "id": "A2_documented_limits_are_preserved",
+      "kind": "capability_declared",
+      "checker": ["node", "bench/cases/meta/capability/check.mjs"],
+      "description": "Every component limitation from the release and component availability sources is represented."
+    },
+    {
+      "id": "A3_solver_registry_is_unique_and_confidence_is_earned",
+      "kind": "capability_declared",
+      "checker": ["node", "bench/cases/meta/capability/check.mjs"],
+      "description": "Duplicate claims fail and solver authors cannot self-assert verified confidence."
+    }
+  ]
+}

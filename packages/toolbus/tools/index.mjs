@@ -1,9 +1,10 @@
 import { notImplemented } from '../errors.mjs';
+import { explainCapability, readCapability, resolveProjectCapability } from '../../solvers/capability.mjs';
 
 const graphTools = new Set([
   'project.create', 'project.read', 'project.delete', 'project.export',
   'node.add', 'node.remove', 'node.modify', 'edge.connect', 'edge.remove',
-  'catalog.search', 'catalog.read_kind', 'session.create', 'capability.read',
+  'catalog.search', 'catalog.read_kind', 'session.create', 'capability.read', 'capability.explain',
   'calculator.evaluate', 'room.list',
 ]);
 
@@ -89,7 +90,13 @@ async function invokeGraphTool(name, args, context, services, definition) {
     case 'catalog.read_kind':
       return services.catalog.readKind(args.kind);
     case 'capability.read':
-      return services.persistence.capability(context.projectId, context);
+      {
+        const capability = readCapability();
+        const project = context.store?.read?.();
+        return project ? { ...capability, project: resolveProjectCapability(capability, project) } : capability;
+      }
+    case 'capability.explain':
+      return explainCapability(args.kind);
     case 'room.list':
       return services.persistence.roomList(context);
     case 'calculator.evaluate':

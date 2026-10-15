@@ -4,6 +4,7 @@ import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { Server } from '@modelcontextprotocol/sdk/server/index.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
+import { explainCapability, readCapability, resolveProjectCapability } from '../../packages/solvers/capability.mjs';
 import {
   CallToolRequestSchema,
   GetPromptRequestSchema,
@@ -56,6 +57,7 @@ const TOOL_DEFINITIONS = INDEX.tools.map((entry) => {
   }
   if (entry.handler !== 'session.create' && entry.handler !== 'project.create'
       && entry.handler !== 'project.read' && entry.handler !== 'project.delete'
+      && entry.handler !== 'capability.read' && entry.handler !== 'capability.explain'
       && !(contract.legacy_names ?? []).includes(entry.handler)) {
     throw new Error(`MCP handler '${entry.handler}' is not declared by contract '${entry.contract}'.`);
   }
@@ -191,32 +193,62 @@ async function apiRequest(path, { method = 'GET', body, runtimeToken } = {}) {
   }
   if (!response.ok) {
     const detail = payload?.detail ?? payload?.message ?? `HTTP ${response.status}`;
-    throw Object.assign(new Error(String(detail)), { status: response.status, payload });
+    const code = response.status === 409 ? 'REVISION_STALE'
+      : response.status === 429 ? 'RATE_LIMITED' : undefined;
+    throw Object.assign(new Error(String(detail)), {
+      status: response.status,
+      payload,
+      ...(code ? { code } : {}),
+      ...(response.status === 429 ? { retryable: true } : {}),
+    });
   }
   return payload;
 }
 
 function safeToolError(error, runtimeToken) {
   const status = error?.status;
-  const message = scrub(error?.message ?? 'WireUp tool failed.', runtimeToken);
+  const code = error?.code ?? (status === 409 ? 'REVISION_STALE' : status === 429 ? 'RATE_LIMITED' : undefined);
+  const detail = scrub(error?.message ?? 'WireUp tool failed.', runtimeToken);
+  const message = code === 'REVISION_STALE'
+    ? `REVISION_STALE: ${detail} Re-read the project and retry with its current revision.`
+    : code === 'RATE_LIMITED'
+      ? `RATE_LIMITED: ${detail} This operation is retryable after the limit window.`
+      : code ? `${code}: ${detail}` : detail;
   return {
     content: [{ type: 'text', text: message }],
     isError: true,
-    ...(status ? { _meta: { httpStatus: status } } : {}),
+    ...((status || code || error?.retryable) ? {
+      _meta: {
+        ...(status ? { httpStatus: status } : {}),
+        ...(code ? { code } : {}),
+        ...(error?.retryable ? { retryable: true } : {}),
+      },
+    } : {}),
   };
 }
 
 function getSession(sessionId) {
   const session = sessions.get(sessionId);
-  if (!session) throw new Error('SESSION_EXPIRED: session does not exist; call session_create.');
+  if (!session) throw Object.assign(
+    new Error('SESSION_EXPIRED: session does not exist; call session_create.'),
+    { code: 'SESSION_EXPIRED' },
+  );
   if (Date.now() >= session.expiresAt) {
     sessions.delete(sessionId);
-    throw new Error('SESSION_EXPIRED: session expired; call session_create.');
+    callTimes.delete(sessionId);
+    throw Object.assign(new Error('SESSION_EXPIRED: session expired; call session_create.'), {
+      code: 'SESSION_EXPIRED',
+    });
   }
   const now = Date.now();
   const recent = (callTimes.get(sessionId) ?? []).filter((time) => now - time < 60_000);
   if (recent.length >= SESSION_CALLS_PER_MINUTE) {
-    throw new Error('RATE_LIMITED: session exceeded 60 tool calls per minute; retry shortly.');
+    callTimes.set(sessionId, recent);
+    throw Object.assign(new Error('session exceeded 60 tool calls per minute.'), {
+      code: 'RATE_LIMITED',
+      status: 429,
+      retryable: true,
+    });
   }
   recent.push(now);
   callTimes.set(sessionId, recent);
@@ -353,6 +385,20 @@ async function invokeDefinition(entry, rawArgs) {
       case 'session.create':
         result = await createSession(rawArgs);
         break;
+      case 'capability.read':
+        {
+          const capability = readCapability();
+          const project = session.projectId
+            ? await apiRequest(`/api/hardware/projects/${encodeURIComponent(session.projectId)}`)
+            : null;
+          result = project
+            ? { ...capability, project: resolveProjectCapability(capability, project) }
+            : capability;
+        }
+        break;
+      case 'capability.explain':
+        result = explainCapability(args.kind);
+        break;
       case 'project.create': {
         if (session.projectId) throw new Error('PROJECT_ALREADY_BOUND: create a fresh session before creating a different project.');
         const project = await apiRequest('/api/hardware/projects', {
@@ -401,7 +447,9 @@ async function invokeDefinition(entry, rawArgs) {
     }
     return { content: [{ type: 'text', text: JSON.stringify(result) }], structuredContent: result, isError: false };
   } catch (error) {
-    resultCode = error?.status ? `HTTP_${error.status}` : (String(error.message).split(':', 1)[0] || 'ERROR');
+    resultCode = error?.code ?? (error?.status
+      ? `HTTP_${error.status}`
+      : (String(error.message).split(':', 1)[0] || 'ERROR'));
     return safeToolError(error, session?.runtimeToken);
   } finally {
     console.error(JSON.stringify({
@@ -448,7 +496,11 @@ server.setRequestHandler(ListResourcesRequestSchema, async () => ({
 
 server.setRequestHandler(ListResourceTemplatesRequestSchema, async () => ({
   resourceTemplates: [
-    { uriTemplate: 'wireup://project/{project_id}', name: 'Legacy project', mimeType: 'application/json' },
+    {
+      uriTemplate: 'wireup://project/{project_id}?session_id={session_id}',
+      name: 'Session-bound project',
+      mimeType: 'application/json',
+    },
   ],
 }));
 
@@ -472,10 +524,26 @@ server.setRequestHandler(ReadResourceRequestSchema, async (request) => {
   }
   const projectPrefix = 'wireup://project/';
   if (uri.startsWith(projectPrefix)) {
-    const projectId = decodeURIComponent(uri.slice(projectPrefix.length));
-    if (!/^[a-f0-9]{32}$/.test(projectId)) throw new Error('Invalid project id in resource URI.');
+    let resource;
+    try {
+      resource = new URL(uri);
+    } catch {
+      throw new Error('Invalid project resource URI.');
+    }
+    const projectId = decodeURIComponent(resource.pathname.slice(1));
+    const sessionIds = resource.searchParams.getAll('session_id');
+    if (resource.protocol !== 'wireup:' || resource.hostname !== 'project'
+        || !/^[a-f0-9]{32}$/.test(projectId) || sessionIds.length !== 1
+        || [...resource.searchParams.keys()].some((key) => key !== 'session_id')
+        || resource.hash) {
+      throw new Error('Project resources require a valid project id and exactly one session_id.');
+    }
+    const session = getSession(sessionIds[0]);
+    if (session.projectId !== projectId) {
+      throw new Error('PROJECT_SCOPE_MISMATCH: resource project is not bound to this session.');
+    }
     const project = await apiRequest(`/api/hardware/projects/${encodeURIComponent(projectId)}`);
-    return textResource(uri, JSON.stringify(scrub(project), null, 2), 'application/json');
+    return textResource(uri, JSON.stringify(scrub(project, session.runtimeToken), null, 2), 'application/json');
   }
   throw new Error(`Unknown WireUp resource '${uri}'.`);
 });
@@ -500,6 +568,7 @@ server.setRequestHandler(ListPromptsRequestSchema, async () => ({
       description: 'Inspect a project and report observed failures without implying unavailable simulation.',
       arguments: [
         { name: 'project_id', description: 'Legacy project id.', required: true },
+        { name: 'session_id', description: 'Session bound to this project.', required: true },
         { name: 'trial_id', description: 'Trial id, if a trial service is available.', required: false },
       ],
     },
@@ -515,7 +584,7 @@ server.setRequestHandler(GetPromptRequestSchema, async (request) => {
         role: 'user',
         content: {
           type: 'text',
-          text: `Read wireup://docs/agent-guide and wireup://capability first. Then use session_create, project_create, search_components, and the applicable build tools. The local API currently exposes legacy project operations; browser simulation requires an attached browser, and no headless runtime or trial service is implemented. Goal: ${args.goal ?? ''}\nDomain: ${args.domain ?? 'electronics'}\nConstraints: ${args.constraints ?? 'none provided'}`,
+          text: `Read wireup://docs/agent-guide and wireup://capability before planning. Create a session with session_create, then call capability_read with that session_id; when a kind is unavailable or partial, call capability_explain for its limits and test evidence. For a new project, call project_create; otherwise bind the existing project in session_create. Read the project with project_read before editing, then search_components before adding parts. Use the applicable component, wiring, and firmware tools, and re-read after mutations to refresh the revision. compile_firmware checks compilation only. run_simulation requires an attached browser runtime and acknowledgement; this MCP server has no headless runtime, trial service, or BOM service, so do not claim runtime, telemetry, trial, or BOM results unless returned by an implemented tool. Goal: ${args.goal ?? ''}\nDomain: ${args.domain ?? 'electronics'}\nConstraints: ${args.constraints ?? 'none provided'}`,
         },
       }],
     };
@@ -527,7 +596,7 @@ server.setRequestHandler(GetPromptRequestSchema, async (request) => {
         role: 'user',
         content: {
           type: 'text',
-          text: `Read wireup://project/${encodeURIComponent(args.project_id ?? '')} and the relevant error results. Trial ${args.trial_id ?? '(not supplied)'} cannot be inspected because no trial service is implemented. Report exactly what evidence exists; do not retry blindly or claim an unrun simulation.`,
+          text: `Read wireup://project/${encodeURIComponent(args.project_id ?? '')}?session_id=${encodeURIComponent(args.session_id ?? '')} and the relevant error results. Trial ${args.trial_id ?? '(not supplied)'} cannot be inspected because no trial service is implemented. Report exactly what evidence exists; do not retry blindly or claim an unrun simulation.`,
         },
       }],
     };

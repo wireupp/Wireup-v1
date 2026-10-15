@@ -22,6 +22,7 @@ Usage:
 from __future__ import annotations
 
 import argparse
+import subprocess
 import sys
 from pathlib import Path
 
@@ -50,6 +51,11 @@ def generate() -> dict:
     kinds = build_kinds()
     write(CONTRACTS / "kinds.json", dump(kinds))
     write(CONTRACTS / "capability.json", dump(capability_stub(kinds["kinds"])))
+    subprocess.run(
+        ["node", str(Path(__file__).resolve().with_name("gen-capability.mjs"))],
+        cwd=Path(__file__).resolve().parents[1],
+        check=True,
+    )
 
     TOOLS_DIR.mkdir(parents=True, exist_ok=True)
     for old in TOOLS_DIR.glob("*.tool.json"):

@@ -151,5 +151,25 @@ def build_tool_contracts() -> list:
             "implemented_in_phase": "v04",
         })
 
+    tools.append({
+        "name": "capability.explain",
+        "version": 1,
+        "title": "Capability Explain",
+        "summary": "Explain whether one catalog kind is simulated, its solver limits, failing tests, and supporting documentation.",
+        "mutating": False,
+        "requires_review": False,
+        "args": {
+            "type": "object",
+            "properties": {"kind": {"type": "string", "minLength": 1}},
+            "required": ["kind"],
+            "additionalProperties": False,
+        },
+        "result": {"type": "object"},
+        "errors": COMMON_ERRORS,
+        "see_also": ["capability.read"],
+        "legacy_names": [],
+        "implemented_in_phase": "v06",
+    })
+
     tools.sort(key=lambda t: t["name"])
     return tools

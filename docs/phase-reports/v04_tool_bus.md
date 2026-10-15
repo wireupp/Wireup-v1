@@ -29,8 +29,9 @@
 - `packages/toolbus/registry.mjs` — contract/handler registry with parity checks and an explicit handler-table input for parity validation; the default contract-derived handler table remains unchanged.
 - `packages/toolbus/tools/index.mjs` — graph, legacy, and phase-owned unavailable handler routing.
 - `packages/toolbus/bus.mjs` — structured invocation, review checks, project serialization, events, deadlines, rate limit, batch calls; invocation exceptions are converted to secret-scrubbed `ToolResult` failures, mutating revision and authoritative review checks occur after acquiring the project lock, legacy target kinds are checked against review scope, handler-emitted events pass through the secret scrubber, and event-sink failures are returned as warnings rather than misreporting a successful mutation as failed.
+- Review authorization now applies approved quantity limits to every review-gated operation that resolves one or more node kinds, rather than only `add_component`; it rejects non-positive or unsafe quantities before invoking the handler.
 - `packages/toolbus/index.mjs` — public module exports.
-- `bench/cases/meta/tool-bus/` — authored unexecuted acceptance checks for token/stack scrubbing in results, errors, and failed event sinks; missing handlers; unavailable service phases; review validation; stale revisions; concurrent mutations; and invalid-argument error codes. No legacy response baselines were fabricated.
+- `bench/cases/meta/tool-bus/` — acceptance checks for token/stack scrubbing in results, errors, and failed event sinks; missing handlers; unavailable service phases; review validation; stale revisions; concurrent mutations; and invalid-argument error codes. A3–A9 now execute and pass. No legacy response baselines were fabricated.
 
 ## ACCEPTANCE
 
@@ -38,18 +39,18 @@
 |---|---|
 | A1 — legacy parity against saved response baselines | **NOT RUN**; required baselines were not captured |
 | A2 — existing pytest and Playwright counts unchanged | **NOT RUN** |
-| A3 — runtime-token and stack scrubbing in result, error and events | Checker authored; implementation and assertions **NOT RUN** |
-| A4 — registry rejects missing/extra handlers | Explicit-handler validation path and checker authored; **NOT RUN** |
-| A5 — explicit phase-owned failures for unimplemented services | Checker authored; implementation and assertions **NOT RUN** |
-| A6 — reviewed scope validation for gated tools | Authoritative review validation, tool/kind scope, and add-component quantity checks are enforced under the project lock; checker authored; **NOT RUN** |
-| A7 — stale revision and atomic rejection across mutators | Revision is rechecked under the per-project lock; graph handlers delegate to `GraphStore.apply`; legacy path not routed; checker authored; **NOT RUN** |
-| A8 — concurrent mutation behaviour | Per-project serialization with revision recheck; checker asserts one apply and 19 explicit stale results; **NOT RUN** |
-| A9 — no uncaught tool errors for invalid arguments | Public invocation boundary converts thrown errors to `ToolResult`; checker authored to cover registered tools; **NOT RUN** |
+| A3 — runtime-token and stack scrubbing in result, error and events | `node bench/cases/meta/tool-bus/check.mjs A3` | **PASS** |
+| A4 — registry rejects missing/extra handlers | `node bench/cases/meta/tool-bus/check.mjs A4` | **PASS** |
+| A5 — explicit phase-owned failures for unimplemented services | `node bench/cases/meta/tool-bus/check.mjs A5` | **PASS** |
+| A6 — reviewed scope validation for gated tools | `node bench/cases/meta/tool-bus/check.mjs A6`; verifies missing review, unauthorized review, wrong kind, excess quantity and approved success | **PASS** |
+| A7 — stale revision and atomic rejection across mutators | `node bench/cases/meta/tool-bus/check.mjs A7`; current case checks one stale mutator without graph change, not every mutator | **PARTIAL** |
+| A8 — concurrent mutation behaviour | `node bench/cases/meta/tool-bus/check.mjs A8`; one succeeds and 19 return explicit stale results | **PASS** |
+| A9 — no uncaught tool errors for invalid arguments | `node bench/cases/meta/tool-bus/check.mjs A9`; iterates registered tools with null arguments | **PASS** |
 
 ## EXISTING_TESTS
 
-- JavaScript syntax checks: **NOT RUN**.
-- `meta/tool-bus` acceptance checks: **NOT RUN**.
+- `node bench/cases/meta/tool-bus/check.mjs`: **PASS**, A3–A9.
+- `node --check packages/toolbus/bus.mjs`: **PASS**.
 - `npm run core:test`: **NOT RUN**.
 - `npm run build`: **NOT RUN**.
 - `npm run lint`: **NOT RUN**.
@@ -59,7 +60,7 @@
 
 ## ESCALATION
 
-**RED** — no parity evidence was captured, the backend/API and LangGraph adapters are not wired to this bus, and authoritative review validation must be injected before review-gated handlers can run. Do not route production mutations through this implementation until these items are resolved and verified.
+**RED** — the focused A3–A9 ToolBus acceptance checks now pass, including the corrected general review quantity gate. The required legacy parity evidence is still absent and the backend/API and LangGraph adapters are not wired to this bus. Do not route production mutations through this implementation until parity and production integration are resolved and verified.
 
 ## GAPS
 
@@ -69,7 +70,7 @@
 - `ToolContext` construction, persistent graph storage, tool result shape parity, and legacy error/status mapping need implementation.
 - The schema validator currently covers common object/array/string/number/boolean/enum/const constraints; full JSON Schema compliance is not established.
 - The required baseline fixtures and v04 parity assertions are absent.
-- Verification was intentionally not run at the user's request.
+- Full parity, build, lint, backend, Playwright, and bench suites remain unrun; only the focused meta/tool-bus acceptance check and targeted lint were run in this continuation.
 
 ## DEVIATIONS
 

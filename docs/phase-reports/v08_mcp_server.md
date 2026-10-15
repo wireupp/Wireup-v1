@@ -5,21 +5,23 @@
 - Branch: `v2`.
 - Before this continuation, `http://127.0.0.1:8000/docs` and `http://127.0.0.1:5173/` both returned HTTP 200.
 - The reduced MCP project-edit smoke passed before the schema-description checks were added: it listed tools, created a temporary project, searched for an LED, added it, read it back, and deleted the project.
-- The v08 upstream prerequisites are not complete: there is no `packages/toolbus`, `contracts/capability.json` has `generator_status: "stub"`, and no headless runtime or trial/BOM service is exposed by this bridge.
+- `packages/toolbus` exists but the MCP bridge still delegates to the legacy hardware API instead of the bus. `contracts/capability.json` has `generator_status: "stub"`, and no headless runtime or trial/BOM service is exposed by this bridge.
 - Full pre-change v08 verification suites: **NOT RUN**.
 
 ## TOOL_SURFACE
 
-The stdio bridge exposes **23** indexed tools:
+The stdio bridge exposes **24** indexed tools:
 
 - Session/project lifecycle: 4
 - Electronics project and wiring: 10
 - Firmware/runtime: 8
+- Capability discovery: 1
 - Utility: 1
 
 | Contract | MCP name |
 |---|---|
 | `session.create` | `session_create` |
+| `capability.read` | `capability_read` |
 | `project.create` | `project_create` |
 | `project.read` | `project_read` |
 | `project.delete` | `project_delete` |
@@ -45,7 +47,7 @@ The stdio bridge exposes **23** indexed tools:
 
 ## A3_TRANSCRIPT
 
-The actual reduced MCP smoke transcript follows. This is **not** the v08 A3 transcript: A3's firmware compile, headless run, telemetry, and BOM steps were not performed.
+The initial reduced MCP smoke transcript follows and predates the capability tool and session-bound resource additions. This is **not** the v08 A3 transcript: A3's firmware compile, headless run, telemetry, and BOM steps were not performed.
 
 ```text
 > wireup@0.0.0 mcp:smoke
@@ -66,30 +68,34 @@ MCP smoke passed: 23 indexed tools and schemas verified; created and read projec
 - The existing API requires a bearer token in production; requests are loopback/origin guarded, bodies are capped at 600,000 bytes, and expensive requests have a default concurrency limit of four.
 - Session runtime tokens stay in the MCP process and are passed only to the local API where needed. Project responses scrub token-like fields and bearer strings.
 - MCP audit output contains the session id, tool name, argument hash, result code, duration, and revisions; it does not log raw tool arguments.
+- `capability_read` returns the same document as `wireup://capability`, including the current `generator_status`; it does not synthesize support.
+- Project resource reads now require a session id bound to that project. The smoke verified that the bound read succeeds, unscoped and cross-session reads fail, and the session-bound resource reflects the subsequent edit.
+- HTTP 409 responses are mapped to `REVISION_STALE` with explicit re-read/retry guidance; HTTP 429/session rate limits identify `RATE_LIMITED` as retryable. Missing or expired session IDs map to `SESSION_EXPIRED`.
+- `review_approved:true` remains a caller assertion, not a server-verifiable human approval; the agent guide now states that MCP clients/deployments must enforce confirmation.
 - The smoke confirmed no runtime token was returned in the created or read project. It did not inspect process sockets or run the full A3 secret-hygiene capture.
 
 ## ACCEPTANCE
 
 | Assertion | Command / evidence | Result |
 |---|---|---|
-| A1 — exact registered tool surface | `npm run mcp:smoke` verifies the 23 listed names match `contracts/tools/index.json`; no v04 tool registry exists | **FAIL** — the bridge maps legacy hardware commands; this is not the required toolbus registry |
+| A1 — exact registered tool surface | `npm run mcp:smoke` verifies the 24 listed names match `contracts/tools/index.json` and follow the dot-to-underscore rule | **PARTIAL** — the MCP bridge still does not derive its surface from the ToolBus registry |
 | A2 — contract-derived descriptions and schemas | `npm run mcp:smoke` verifies every indexed output schema, summary, argument field, error and `see_also` entry | **PASS** |
 | A3 — Uno, LED, resistor, firmware, headless run, telemetry, BOM | Not run; no headless runtime, telemetry/trials, or BOM service is available through the bridge | **FAIL** |
 | A4 — three deterministic full A3 runs | **NOT RUN**; A3 is unavailable | **FAIL** |
-| A5 — stale-revision recovery | **NOT RUN** | **FAIL** |
+| A5 — stale-revision recovery | MCP smoke uses a second session bound to the same project: stale `expected_revision` returns `isError:true`, `_meta.code:"REVISION_STALE"`, and re-read guidance; re-reading and retrying succeeds | **PASS** |
 | A6 — unavailable-mechanics response | **NOT RUN**; solver registry/capability generation is absent | **FAIL** |
-| A7 — session isolation | **NOT RUN** | **FAIL** |
-| A8 — session expiry | **NOT RUN** | **FAIL** |
+| A7 — session isolation | Smoke creates separate projects and confirms a session cannot read the other project's data; it also binds a second session to one project, verifies a stale write is rejected, re-reads, and succeeds on retry | **PASS** for the exercised sequential stale-write and project-isolation cases; simultaneous interleaving **NOT RUN** |
+| A8 — session expiry | Smoke verifies an unknown/expired session returns `_meta.code:"SESSION_EXPIRED"` and does not create a replacement; timed TTL expiry **NOT RUN** | **PARTIAL** |
 | A9 — full-run secret and source hygiene | Reduced smoke returned no project runtime token and emitted argument hashes; full A3 capture not run | **PARTIAL** |
 | A10 — no stdio listening socket | Server starts only `StdioServerTransport`; socket-inspection test **NOT RUN** | **PARTIAL** |
 | A11 — rate-limit retry behavior | **NOT RUN** | **FAIL** |
-| A12 — agent-guide resource and tool-name consistency | Capability resource is read by smoke; agent-guide consistency assertion **NOT RUN** | **PARTIAL** |
+| A12 — agent-guide resource and tool-name consistency | Smoke verifies the build prompt points to the guide resource, checks capability tool/resource equality, and checks the prompt's available capability/project/catalog sequence plus no-headless-runtime disclosure; guide retrieval and full tool-name consistency assertion **NOT RUN** | **PARTIAL** |
 
 ## EXISTING_TESTS
 
 - `node --check services/mcp/server.mjs`: **PASS**.
 - `node --check services/mcp/smoke.mjs`: **PASS**.
-- `npm run mcp:smoke`: **PASS**; 23 indexed tools and schemas checked, temporary project edited/read/deleted.
+- `npm run mcp:smoke`: **PASS**; 24 indexed tools and schemas checked, capability tool/resource equality verified, build prompt guidance checked, unknown-session handling and bound/unscoped/cross-session resource access checked, and cross-session stale-write recovery verified on two temporary projects.
 - `npm run build`: **NOT RUN**.
 - `npm run lint`: **NOT RUN**.
 - `npm run core:test`: **NOT RUN**.
@@ -100,14 +106,15 @@ MCP smoke passed: 23 indexed tools and schemas verified; created and read projec
 
 ## ESCALATION
 
-**RED** — the required v08 A3 loop and its dependent guarantees are not available because v04–v07 are incomplete. Before claiming v08 complete, should this branch first complete those prerequisites rather than extend this legacy bridge?
+**RED** — capability discovery and session-bound project resources are verified, but the v08 A3 loop and its dependent guarantees remain unavailable because the ToolBus integration and v05–v07 services are incomplete. Do not claim v08 complete until those prerequisites and the headless acceptance loop are implemented and verified.
 
 ## GAPS
 
 - MCP currently delegates directly to the legacy hardware API, not `packages/toolbus`; mutation parity with the UI/toolbus is therefore not established.
 - A3 and the deterministic, headless simulation, telemetry, trial, and BOM acceptance criteria remain blocked by missing v04–v07 services.
 - The MCP bridge does not provide the required scoped per-session auth token, `session.release`, or streamable HTTP transport.
-- Stale-revision error mapping, full session isolation/expiry/rate-limit proofs, and socket inspection remain unverified.
+- Review-gated MCP tools still rely on a caller-provided boolean and are not backed by a server-verifiable approval record. Do not treat that flag alone as completed human review.
+- Simultaneous cross-session mutation interleaving, timed TTL expiry, rate-limit saturation, and socket inspection remain unverified.
 - `contracts/capability.json` is still a stub; mechanics capability reporting cannot be validated.
 
 ## DEVIATIONS

@@ -2,9 +2,9 @@
   "description": "Every contract file with the sha256 of its contents. A consumer that cannot reproduce these hashes has stale contracts.",
   "files": [
     {
-      "bytes": 33285,
+      "bytes": 128735,
       "id": "capability.json",
-      "sha256": "2440cf29420bd639319f57809f815d4535cf8812fbd2280472a9b31341123cc3",
+      "sha256": "e2f73438e816044b4e5c553903a019ec49ef6996679a51acbd2e6a0e876a1675",
       "version": 1
     },
     {
@@ -14,9 +14,9 @@
       "version": 1
     },
     {
-      "bytes": 1234,
+      "bytes": 2949,
       "id": "derivations.json",
-      "sha256": "7793b8ba7f731d970d6e6867a4c7e0c1f07572eb1040dacb0de633c14d0d3dfa",
+      "sha256": "c8a632718534479a73078af497771ae65229ee6d6af535d2cbab9bd6485a3fea",
       "version": 1
     },
     {
@@ -35,6 +35,12 @@
       "bytes": 6044,
       "id": "port-types.json",
       "sha256": "7a4bd3c03e74e9779e171822fcca5db42b6c3cd53281d80d76388c60ace8a015",
+      "version": 1
+    },
+    {
+      "bytes": 3880,
+      "id": "telemetry.channels.json",
+      "sha256": "3b1613ff5a92f4db710822692d3372fd8a1b3bfbfd56d6db6c3f3fa130859f76",
       "version": 1
     },
     {
@@ -71,6 +77,12 @@
       "bytes": 906,
       "id": "tools/calculator.tool.json",
       "sha256": "cf4c251c54165f558ec8702a1e980f3cfbf785c186b31254ad23ceb5f99ce37b",
+      "version": 1
+    },
+    {
+      "bytes": 795,
+      "id": "tools/capability.explain.tool.json",
+      "sha256": "0c330e9c6657aac329b6d4b0da9f229bdb751eaef4d1553b4801d4c471ebb677",
       "version": 1
     },
     {
@@ -125,6 +137,12 @@
       "bytes": 784,
       "id": "tools/get_example_reference.tool.json",
       "sha256": "20c2f391c1338ce48365345e1377563cfbf5b444d62652f947b962ae1020437d",
+      "version": 1
+    },
+    {
+      "bytes": 2702,
+      "id": "tools/index.json",
+      "sha256": "4f93052a833230f8e2d03f8f22ad88c667cfe02f10edbbbf7cb4ba1653d1ccfe",
       "version": 1
     },
     {

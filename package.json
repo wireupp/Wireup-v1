@@ -17,7 +17,7 @@
     "bench": "node bench/run.mjs",
     "core:test": "node packages/core/test/run.mjs",
     "contracts:gen": "python scripts/gen-contracts.py",
-    "contracts:check": "node scripts/check-contracts.mjs",
+    "contracts:check": "node scripts/check-contracts.mjs && node scripts/gen-capability.mjs --check",
     "verify:structure": "python scripts/verify-backend-structure.py",
     "preview": "vite preview"
   },

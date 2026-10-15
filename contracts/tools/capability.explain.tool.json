@@ -1,0 +1,36 @@
+{
+  "args": {
+    "additionalProperties": false,
+    "properties": {
+      "kind": {
+        "minLength": 1,
+        "type": "string"
+      }
+    },
+    "required": [
+      "kind"
+    ],
+    "type": "object"
+  },
+  "errors": [
+    {
+      "code": "INVALID_ARGUMENTS",
+      "retryable": false,
+      "when": "arguments fail the contract's args schema"
+    }
+  ],
+  "implemented_in_phase": "v06",
+  "legacy_names": [],
+  "mutating": false,
+  "name": "capability.explain",
+  "requires_review": false,
+  "result": {
+    "type": "object"
+  },
+  "see_also": [
+    "capability.read"
+  ],
+  "summary": "Explain whether one catalog kind is simulated, its solver limits, failing tests, and supporting documentation.",
+  "title": "Capability Explain",
+  "version": 1
+}

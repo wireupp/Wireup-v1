@@ -212,14 +212,18 @@ async function checkReview(contract, name, args, context, services) {
       return new ToolBusError('REVIEW_REQUIRED', `Review '${review.approvalId}' does not cover kind '${kind}'.`);
     }
   }
-  if (name === 'add_component' && kinds.length) {
-    const kind = kinds[0];
+  if (kinds.length) {
     const quantity = args?.quantity ?? 1;
-    const maximum = Math.max(0, ...Object.entries(review.scope.quantities)
-      .filter(([allowed]) => normalizeKind(allowed) === normalizeKind(kind))
-      .map(([, value]) => value));
-    if (!Number.isInteger(quantity) || quantity < 1 || quantity > maximum) {
-      return new ToolBusError('REVIEW_REQUIRED', `Review '${review.approvalId}' does not cover quantity ${quantity} of '${kind}'.`);
+    if (!Number.isSafeInteger(quantity) || quantity < 1) {
+      return new ToolBusError('REVIEW_REQUIRED', `Review '${review.approvalId}' cannot cover invalid quantity '${quantity}'.`);
+    }
+    for (const kind of new Set(kinds)) {
+      const maximum = Math.max(0, ...Object.entries(review.scope.quantities)
+        .filter(([allowed]) => normalizeKind(allowed) === normalizeKind(kind))
+        .map(([, value]) => value));
+      if (quantity > maximum) {
+        return new ToolBusError('REVIEW_REQUIRED', `Review '${review.approvalId}' does not cover quantity ${quantity} of '${kind}'.`);
+      }
     }
   }
   if (['remove_component', 'modify_component'].includes(name) && kinds.length === 0) {
