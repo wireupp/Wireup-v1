@@ -1,0 +1,9 @@
+{
+  "id": "mechanics/boat-speed",
+  "domain": "mechanics",
+  "title": "A hull and two thrusters reach and hold a commanded speed in water",
+  "tags": ["mechanics", "boat", "coupling", "headline"],
+  "spec": "spec.md",
+  "assertions": "assertions.json",
+  "project": "project.json"
+}

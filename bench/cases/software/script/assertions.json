@@ -1,0 +1,10 @@
+{
+  "assertions": [
+    { "id": "A1", "kind": "no_error", "checker": ["node", "bench/cases/software/script/check.mjs", "A1"],
+      "description": "The declared telemetry program runs; both assertions pass and are reported as measured." },
+    { "id": "A2", "kind": "equals", "checker": ["node", "bench/cases/software/script/check.mjs", "A2"],
+      "description": "The run publishes exactly five channels and nothing else: the evaluator has no I/O." },
+    { "id": "A3", "kind": "capability_declared", "checker": ["node", "bench/cases/software/script/check.mjs", "A3"],
+      "description": "The software.script kind declares agent-authored script execution unavailable, naming the missing enforced network boundary." }
+  ]
+}

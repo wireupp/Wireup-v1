@@ -1,0 +1,105 @@
+{
+  "schema_version": 3,
+  "id": "b000000000000000000000000000006",
+  "project_id": "66666666666666666666666666666666",
+  "domain": "mechanics",
+  "revision": 0,
+  "created_at": "2026-01-01T00:00:00Z",
+  "updated_at": "2026-01-01T00:00:00Z",
+  "nodes": [
+    {
+      "id": "env_ground_1",
+      "kind": "env.ground",
+      "properties": { "height_m": 0.0, "friction": 0.6, "restitution": 0.1 }
+    },
+    {
+      "id": "env_airspace_1",
+      "kind": "env.airspace",
+      "properties": {
+        "altitude_m": 4.0,
+        "wind": { "x": 0.0, "y": 0.0, "z": 0.0 },
+        "gust_model": "steady",
+        "temperature_k": 288.15,
+        "precipitation": "none"
+      }
+    },
+    {
+      "id": "mech_airframe_1",
+      "kind": "mech.airframe",
+      "properties": {
+        "mass_kg": 0.8,
+        "size_m": 0.2,
+        "cd": 1.0,
+        "area_m2": 0.04,
+        "ground_contact": true,
+        "linear_damping": 25.0,
+        "angular_damping": 0.0,
+        "duration_s": 40.0,
+        "sample_rate_hz": 20.0,
+        "position": { "x": 0.0, "y": 0.0, "z": 0.0 }
+      }
+    },
+    {
+      "id": "mech_depth_sensor_1",
+      "kind": "mech.depth_sensor",
+      "properties": { "target_node": "mech_airframe_1", "channel": "alt.m", "sensor": "altitude" }
+    },
+    {
+      "id": "mech_control_law_1",
+      "kind": "mech.control_law",
+      "properties": {
+        "setpoint": 5.0,
+        "gain": 100.0,
+        "integral_gain": 0.0,
+        "min": 0.0,
+        "max": 1.0,
+        "source_channel": "alt.m",
+        "output_channel": "rotor.pwm"
+      }
+    },
+    {
+      "id": "mech_rotor_1",
+      "kind": "mech.rotor",
+      "properties": {
+        "target_node": "mech_airframe_1", "channel": "rotor.pwm", "direction": 1,
+        "diameter_m": 0.127, "blade_area_m2": 0.00125, "thrust_coefficient": 0.11,
+        "induced_drag_factor": 0.318, "max_rpm": 20000.0, "rpm": 0.0
+      }
+    },
+    {
+      "id": "mech_rotor_2",
+      "kind": "mech.rotor",
+      "properties": {
+        "target_node": "mech_airframe_1", "channel": "rotor.pwm", "direction": 1,
+        "diameter_m": 0.127, "blade_area_m2": 0.00125, "thrust_coefficient": 0.11,
+        "induced_drag_factor": 0.318, "max_rpm": 20000.0, "rpm": 0.0
+      }
+    },
+    {
+      "id": "mech_rotor_3",
+      "kind": "mech.rotor",
+      "properties": {
+        "target_node": "mech_airframe_1", "channel": "rotor.pwm", "direction": 1,
+        "diameter_m": 0.127, "blade_area_m2": 0.00125, "thrust_coefficient": 0.11,
+        "induced_drag_factor": 0.318, "max_rpm": 20000.0, "rpm": 0.0
+      }
+    },
+    {
+      "id": "mech_rotor_4",
+      "kind": "mech.rotor",
+      "properties": {
+        "target_node": "mech_airframe_1", "channel": "rotor.pwm", "direction": 1,
+        "diameter_m": 0.127, "blade_area_m2": 0.00125, "thrust_coefficient": 0.11,
+        "induced_drag_factor": 0.318, "max_rpm": 20000.0, "rpm": 0.0
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "wire_stream_1",
+      "kind": "data.stream",
+      "from": { "node": "mech_depth_sensor_1", "port": "reading" },
+      "to": { "node": "mech_control_law_1", "port": "sensor" }
+    }
+  ]
+}

@@ -314,7 +314,7 @@ export function validateTelemetry(sample) {
   }
   if (quality === 'unavailable' && sample.value !== null) {
     add('/value',
-        'quality "unavailable" requires value:null. A channel that could not be produced must ' +
+        'unavailable telemetry must carry value:null. A channel that could not be produced must ' +
         'not carry a number, because a number would be read as a measurement.');
   }
   if (quality === 'derived') {
@@ -327,6 +327,28 @@ export function validateTelemetry(sample) {
     }
   }
   return issues;
+}
+
+/**
+ * Merge every node's declared properties over its kind's declared properties and defaults.
+ *
+ * A kind's `properties` block IS its declaration: `mech.hull` declaring `mass_kg: 12` means
+ * every hull has a mass unless it says otherwise. Merging here, once, means no solver has to
+ * reimplement "what does this kind declare", and no solver has to invent a value either.
+ */
+export function withKindDefaults(graph) {
+  if (!graph || !Array.isArray(graph.nodes)) return graph;
+  const kinds = loadKinds();
+  return {
+    ...graph,
+    nodes: graph.nodes.map((node) => {
+      const kind = kinds.byId.get(node.kind);
+      if (!kind) return node;
+      const declared = { ...(kind.properties ?? {}), ...(kind.defaults ?? {}) };
+      if (Object.keys(declared).length === 0) return node;
+      return { ...node, properties: { ...declared, ...(node.properties ?? {}) } };
+    }),
+  };
 }
 
 /**

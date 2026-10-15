@@ -1,7 +1,42 @@
 {
   "args": {
     "additionalProperties": false,
-    "properties": {},
+    "properties": {
+      "expected_revision": {
+        "description": "The revision this call expects. A stale revision is rejected with REVISION_STALE.",
+        "minimum": 0,
+        "type": "integer"
+      },
+      "node": {
+        "additionalProperties": true,
+        "properties": {
+          "id": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "kind": {
+            "description": "A kind id from contracts/kinds.json.",
+            "minLength": 1,
+            "type": "string"
+          },
+          "parent": {
+            "type": "string"
+          },
+          "properties": {
+            "type": "object"
+          }
+        },
+        "required": [
+          "id",
+          "kind"
+        ],
+        "type": "object"
+      }
+    },
+    "required": [
+      "node",
+      "expected_revision"
+    ],
     "type": "object"
   },
   "errors": [

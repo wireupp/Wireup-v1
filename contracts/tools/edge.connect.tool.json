@@ -1,7 +1,41 @@
 {
   "args": {
     "additionalProperties": false,
-    "properties": {},
+    "properties": {
+      "edge": {
+        "additionalProperties": true,
+        "properties": {
+          "from": {
+            "type": "object"
+          },
+          "id": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "kind": {
+            "description": "A port type id from contracts/port-types.json.",
+            "minLength": 1,
+            "type": "string"
+          },
+          "to": {
+            "type": "object"
+          }
+        },
+        "required": [
+          "from",
+          "to"
+        ],
+        "type": "object"
+      },
+      "expected_revision": {
+        "minimum": 0,
+        "type": "integer"
+      }
+    },
+    "required": [
+      "edge",
+      "expected_revision"
+    ],
     "type": "object"
   },
   "errors": [

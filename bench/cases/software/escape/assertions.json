@@ -1,0 +1,16 @@
+{
+  "assertions": [
+    { "id": "A1", "kind": "capability_declared", "checker": ["node", "bench/cases/software/escape/check.mjs", "A1"],
+      "description": "All six markup escapes (inline handler, remote script, protocol-relative script, javascript: URL, iframe, img onerror) are refused with SANDBOX_MARKUP_REFUSED before anything is served." },
+    { "id": "A2", "kind": "capability_declared", "checker": ["node", "bench/cases/software/escape/check.mjs", "A2"],
+      "description": "Seventeen hostile probe expressions — env reads, require, import, child_process, fetch, eval, Function, prototype pollution, infinite loops — are all rejected with a named code." },
+    { "id": "A3", "kind": "capability_declared", "checker": ["node", "bench/cases/software/escape/check.mjs", "A3"],
+      "description": "A getter placed on a probe target is refused: the validator never invokes an accessor." },
+    { "id": "A4", "kind": "capability_declared", "checker": ["node", "bench/cases/software/escape/check.mjs", "A4"],
+      "description": "A runtime token appearing in a probe value is refused with TOKEN_FORBIDDEN and never returned." },
+    { "id": "A5", "kind": "capability_declared", "checker": ["node", "bench/cases/software/escape/check.mjs", "A5"],
+      "description": "No environment variable value can reach a served page, and the served body is exactly the declared file." },
+    { "id": "A6", "kind": "capability_declared", "checker": ["node", "bench/cases/software/escape/check.mjs", "A6"],
+      "description": "The manifest declares all seven capabilities this corpus could otherwise exploit, each with a concrete requiredToSupport." }
+  ]
+}

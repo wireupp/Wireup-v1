@@ -1,0 +1,10 @@
+{
+  "assertions": [
+    { "id": "A1", "kind": "no_error", "checker": ["node", "bench/cases/mechanics/determinism/check.mjs", "A1"],
+      "description": "Ten seeded runs each produce a full telemetry stream." },
+    { "id": "A2", "kind": "equals", "checker": ["node", "bench/cases/mechanics/determinism/check.mjs", "A2"],
+      "description": "All ten runs hash to a single NDJSON digest: same graph + same seed => same bytes." },
+    { "id": "A3", "kind": "equals", "checker": ["node", "bench/cases/mechanics/determinism/check.mjs", "A3"],
+      "description": "The seed is an explicit input to the solver, and changing it produces the same sample count (the declared model is closed)." }
+  ]
+}

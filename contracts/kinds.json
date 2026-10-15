@@ -23,6 +23,128 @@
   },
   "kinds": [
     {
+      "defaults": {},
+      "derived_by": "scripts/contracts/domain_kinds.py",
+      "evidence": [
+        "bench/cases/mechanics/coupling/case.json"
+      ],
+      "group": "actuator",
+      "id": "actuator.force",
+      "label": "Force actuator",
+      "legacy_type": null,
+      "notes": "Applies a declared force from an analogue signal. Nothing is inferred.",
+      "ports": [
+        {
+          "direction": "in",
+          "name": "sig",
+          "role": null,
+          "type": "signal.analog"
+        },
+        {
+          "direction": "out",
+          "name": "force",
+          "role": null,
+          "type": "mech.force"
+        }
+      ],
+      "properties": {
+        "axis": "z",
+        "mode": "force",
+        "transfer": {
+          "curve": "linear",
+          "deadband": 0.0,
+          "gain": 1.0,
+          "saturation": 1.0
+        }
+      },
+      "scope": "headless",
+      "simulated": true,
+      "solver": "mechanics",
+      "tagName": null
+    },
+    {
+      "defaults": {},
+      "derived_by": "scripts/contracts/domain_kinds.py",
+      "evidence": [
+        "bench/cases/mechanics/coupling/case.json"
+      ],
+      "group": "actuator",
+      "id": "actuator.servo",
+      "label": "Servo",
+      "legacy_type": null,
+      "notes": "Bidirectional: signal 0.5 is neutral and the gain is in N*m at full deflection.",
+      "ports": [
+        {
+          "direction": "in",
+          "name": "pwm",
+          "role": null,
+          "type": "signal.pwm"
+        },
+        {
+          "direction": "out",
+          "name": "torque",
+          "role": null,
+          "type": "mech.torque"
+        }
+      ],
+      "properties": {
+        "axis": "z",
+        "mode": "torque",
+        "transfer": {
+          "bidirectional": true,
+          "curve": "linear",
+          "deadband": 0.02,
+          "gain": 0.4,
+          "saturation": 1.0
+        }
+      },
+      "scope": "headless",
+      "simulated": true,
+      "solver": "mechanics",
+      "tagName": null
+    },
+    {
+      "defaults": {},
+      "derived_by": "scripts/contracts/domain_kinds.py",
+      "evidence": [
+        "bench/cases/mechanics/coupling/case.json",
+        "bench/cases/mechanics/boat-speed/case.json"
+      ],
+      "group": "actuator",
+      "id": "actuator.thruster",
+      "label": "Thruster",
+      "legacy_type": null,
+      "notes": "The pin-to-force bridge. Deadband, saturation and curve are declared data, so an ESC deadband is modelled rather than approximated away. Gain is in newtons at full signal and is never inferred from the power supply.",
+      "ports": [
+        {
+          "direction": "in",
+          "name": "pwm",
+          "role": null,
+          "type": "signal.pwm"
+        },
+        {
+          "direction": "out",
+          "name": "force",
+          "role": null,
+          "type": "mech.force"
+        }
+      ],
+      "properties": {
+        "axis": "x",
+        "mode": "force",
+        "transfer": {
+          "curve": "linear",
+          "deadband": 0.05,
+          "gain": 12.0,
+          "saturation": 0.95
+        }
+      },
+      "scope": "headless",
+      "simulated": true,
+      "solver": "mechanics",
+      "tagName": null
+    },
+    {
       "defaults": {
         "fqbn": "arduino:avr:mega:cpu=atmega2560"
       },
@@ -3617,6 +3739,111 @@
       "tagName": "wokwi-stepper-motor"
     },
     {
+      "defaults": {},
+      "derived_by": "scripts/contracts/domain_kinds.py",
+      "evidence": [
+        "bench/cases/mechanics/drone-hover/case.json",
+        "bench/cases/environment/recorded-weather/case.json"
+      ],
+      "group": "environment",
+      "id": "env.airspace",
+      "label": "Airspace",
+      "legacy_type": null,
+      "notes": "Wind vector plus air density from the ISA troposphere. Live weather is disabled: the recorded dataset is the only source unless an explicit host allowlist is configured. No gust turbulence model beyond the declared gust_model.",
+      "ports": [
+        {
+          "direction": "out",
+          "name": "ref",
+          "role": null,
+          "type": "env.reference"
+        }
+      ],
+      "properties": {
+        "altitude_m": 0.0,
+        "gust_model": "steady",
+        "precipitation": "none",
+        "temperature_k": 288.15,
+        "wind": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        }
+      },
+      "scope": "headless",
+      "simulated": true,
+      "solver": "environment",
+      "tagName": null
+    },
+    {
+      "defaults": {},
+      "derived_by": "scripts/contracts/domain_kinds.py",
+      "evidence": [
+        "bench/cases/environment/recorded-weather/case.json"
+      ],
+      "group": "environment",
+      "id": "env.ground",
+      "label": "Ground",
+      "legacy_type": null,
+      "notes": "A declared height, friction and restitution. No DEM, no terrain profile.",
+      "ports": [
+        {
+          "direction": "out",
+          "name": "ref",
+          "role": null,
+          "type": "env.reference"
+        }
+      ],
+      "properties": {
+        "friction": 0.6,
+        "height_m": 0.0,
+        "restitution": 0.1
+      },
+      "scope": "headless",
+      "simulated": true,
+      "solver": "environment",
+      "tagName": null
+    },
+    {
+      "defaults": {},
+      "derived_by": "scripts/contracts/domain_kinds.py",
+      "evidence": [
+        "bench/cases/mechanics/boat-speed/case.json",
+        "bench/cases/environment/recorded-weather/case.json"
+      ],
+      "group": "environment",
+      "id": "env.water_body",
+      "label": "Water body",
+      "legacy_type": null,
+      "notes": "Declared extent, density and a single uniform flow vector. No tidal, geostrophic or eddy fields. wave_model is 'flat' by default; 'seeded_sinusoid' is a sum of declared sinusoids and is NOT a wave spectrum.",
+      "ports": [
+        {
+          "direction": "out",
+          "name": "ref",
+          "role": null,
+          "type": "env.reference"
+        }
+      ],
+      "properties": {
+        "density": 1000.0,
+        "flow": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "kinematic_viscosity": 1e-06,
+        "surface_z": 0.0,
+        "temperature_c": 15.0,
+        "wave_model": "flat",
+        "wave_parameters": {
+          "components": []
+        }
+      },
+      "scope": "headless",
+      "simulated": true,
+      "solver": "environment",
+      "tagName": null
+    },
+    {
       "defaults": {
         "pressed": false,
         "xValue": 0,
@@ -6853,6 +7080,443 @@
       "simulated": true,
       "solver": "circuit",
       "tagName": "wokwi-zener-1n4733"
+    },
+    {
+      "defaults": {},
+      "derived_by": "scripts/contracts/domain_kinds.py",
+      "evidence": [
+        "bench/cases/mechanics/drone-hover/case.json"
+      ],
+      "group": "mechanics",
+      "id": "mech.airframe",
+      "label": "Airframe",
+      "legacy_type": null,
+      "notes": "Translational quadratic drag in the wind frame. Cd and reference area are declared, not measured; no blade-element or vortex model.",
+      "ports": [
+        {
+          "direction": "in",
+          "name": "ref",
+          "role": null,
+          "type": "env.reference"
+        }
+      ],
+      "properties": {
+        "angular_damping": 0.0,
+        "area_m2": 0.04,
+        "cd": 1.0,
+        "duration_s": 30.0,
+        "linear_damping": 0.0,
+        "mass_kg": 0.8,
+        "position": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "sample_rate_hz": 20.0,
+        "size_m": 0.2
+      },
+      "scope": "headless",
+      "simulated": true,
+      "solver": "mechanics",
+      "tagName": null
+    },
+    {
+      "defaults": {},
+      "derived_by": "scripts/contracts/domain_kinds.py",
+      "evidence": [
+        "bench/cases/mechanics/coupling/case.json"
+      ],
+      "group": "sensor",
+      "id": "mech.barometer",
+      "label": "Barometer",
+      "legacy_type": null,
+      "notes": "Hydrostatic pressure from the body's declared depth: p = p0 + rho*g*h. Exact for a submerged body; no device noise, no temperature compensation.",
+      "ports": [
+        {
+          "direction": "in",
+          "name": "body",
+          "role": null,
+          "type": "mech.linear"
+        },
+        {
+          "direction": "out",
+          "name": "reading",
+          "role": null,
+          "type": "data.stream"
+        }
+      ],
+      "properties": {},
+      "scope": "headless",
+      "simulated": true,
+      "solver": "mechanics",
+      "tagName": null
+    },
+    {
+      "defaults": {
+        "fqbn": null
+      },
+      "derived_by": "scripts/contracts/domain_kinds.py",
+      "evidence": [
+        "bench/cases/mechanics/determinism/case.json",
+        "bench/cases/mechanics/terminal-velocity/case.json"
+      ],
+      "group": "mechanics",
+      "id": "mech.body",
+      "label": "Rigid body",
+      "legacy_type": null,
+      "notes": "A body with no declared mass_kg is an error, not a 1 kg default. Semi-implicit Euler at a fixed 1/240 s timestep, deterministic for a fixed graph and seed. Inertia is taken from a declared size_m box or an explicit inertia_kg_m2; it is never guessed from mass alone. Declaring the Cd and reference area couples the body to the fluid in drag only.",
+      "ports": [],
+      "properties": {
+        "angular_damping": 0.0,
+        "cd_area_heave_m2": 0.00785,
+        "cd_area_surge_m2": 0.00785,
+        "cd_area_sway_m2": 0.00785,
+        "cd_heave": 0.47,
+        "cd_surge": 0.47,
+        "cd_sway": 0.47,
+        "duration_s": 20.0,
+        "ground_contact": false,
+        "linear_damping": 0.0,
+        "mass_kg": 1.0,
+        "position": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "sample_rate_hz": 20.0,
+        "size_m": 0.1
+      },
+      "scope": "headless",
+      "simulated": true,
+      "solver": "mechanics",
+      "tagName": null
+    },
+    {
+      "defaults": {},
+      "derived_by": "scripts/contracts/domain_kinds.py",
+      "evidence": [
+        "bench/cases/mechanics/coupling/case.json"
+      ],
+      "group": "sensor",
+      "id": "mech.compass",
+      "label": "Compass",
+      "legacy_type": null,
+      "notes": "Yaw derived from the body quaternion. Declared derived, not measured.",
+      "ports": [
+        {
+          "direction": "in",
+          "name": "body",
+          "role": null,
+          "type": "mech.angular"
+        },
+        {
+          "direction": "out",
+          "name": "reading",
+          "role": null,
+          "type": "data.stream"
+        }
+      ],
+      "properties": {},
+      "scope": "headless",
+      "simulated": true,
+      "solver": "mechanics",
+      "tagName": null
+    },
+    {
+      "defaults": {},
+      "derived_by": "scripts/contracts/domain_kinds.py",
+      "evidence": [
+        "bench/cases/mechanics/coupling/case.json"
+      ],
+      "group": "actuator",
+      "id": "mech.control_law",
+      "label": "Declared control law",
+      "legacy_type": null,
+      "notes": "A declared proportional (optionally PI) law closing a loop on a physics-published sensor channel. The reverse direction of the coupling: physics writes the channel, the law reads it, the actuator applies the force.",
+      "ports": [
+        {
+          "direction": "in",
+          "name": "sensor",
+          "role": null,
+          "type": "data.stream"
+        },
+        {
+          "direction": "out",
+          "name": "pwm",
+          "role": null,
+          "type": "signal.pwm"
+        }
+      ],
+      "properties": {
+        "gain": 0.0,
+        "initial_output": 0.0,
+        "integral_gain": 0.0,
+        "max": 1.0,
+        "min": 0.0,
+        "output_channel": "self.output",
+        "setpoint": 0.0,
+        "source_channel": "self.input"
+      },
+      "scope": "headless",
+      "simulated": true,
+      "solver": "mechanics",
+      "tagName": null
+    },
+    {
+      "defaults": {},
+      "derived_by": "scripts/contracts/domain_kinds.py",
+      "evidence": [
+        "bench/cases/mechanics/coupling/case.json"
+      ],
+      "group": "sensor",
+      "id": "mech.depth_sensor",
+      "label": "Depth sensor",
+      "legacy_type": null,
+      "notes": "Free-surface depth relative to the declared water surface.",
+      "ports": [
+        {
+          "direction": "in",
+          "name": "body",
+          "role": null,
+          "type": "mech.linear"
+        },
+        {
+          "direction": "out",
+          "name": "reading",
+          "role": null,
+          "type": "data.stream"
+        }
+      ],
+      "properties": {},
+      "scope": "headless",
+      "simulated": true,
+      "solver": "mechanics",
+      "tagName": null
+    },
+    {
+      "defaults": {},
+      "derived_by": "scripts/contracts/domain_kinds.py",
+      "evidence": [
+        "bench/cases/mechanics/buoyancy/case.json",
+        "bench/cases/mechanics/terminal-velocity/case.json"
+      ],
+      "group": "mechanics",
+      "id": "mech.float",
+      "label": "Buoyant float",
+      "legacy_type": null,
+      "notes": "Approximated: see contracts/derivations.json. A prismatic float used to verify Archimedes and terminal velocity against closed form. Terminal velocity assumes Cd = 0.47, the declared value for a sphere, not a fitted one.",
+      "ports": [
+        {
+          "direction": "in",
+          "name": "water",
+          "role": null,
+          "type": "fluid.pressure"
+        },
+        {
+          "direction": "in",
+          "name": "ref",
+          "role": null,
+          "type": "env.reference"
+        }
+      ],
+      "properties": {
+        "added_mass": {
+          "x": 0.5,
+          "y": 0.5,
+          "z": 0.5
+        },
+        "beam": 0.1,
+        "cd_area_heave_m2": 0.00785,
+        "cd_area_surge_m2": 0.00785,
+        "cd_area_sway_m2": 0.00785,
+        "cd_heave": 0.47,
+        "cd_surge": 0.47,
+        "cd_sway": 0.47,
+        "diameter_m": 0.1,
+        "draft": 0.1,
+        "duration_s": 20.0,
+        "heave_damping": 0.0,
+        "length": 0.1,
+        "linear_damping": 0.0,
+        "mass_kg": 1.0,
+        "position": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "sample_rate_hz": 50.0,
+        "samples": 24,
+        "volume": 0.001
+      },
+      "scope": "headless",
+      "simulated": true,
+      "solver": "mechanics",
+      "tagName": null
+    },
+    {
+      "defaults": {},
+      "derived_by": "scripts/contracts/domain_kinds.py",
+      "evidence": [
+        "bench/cases/mechanics/boat-speed/case.json",
+        "bench/cases/mechanics/buoyancy/case.json"
+      ],
+      "group": "mechanics",
+      "id": "mech.hull",
+      "label": "Boat hull",
+      "legacy_type": null,
+      "notes": "Approximated: see contracts/derivations.json. Buoyancy from a declared sample-point discretisation of the declared volume; quadratic drag with declared Cd and area; declared added mass; a STEP change in drag at Froude 0.4. No CFD, no free surface, no cavitation, no structural deformation. Metacentric height is reported as a warning when GM < 0.",
+      "ports": [
+        {
+          "direction": "in",
+          "name": "thrust",
+          "role": null,
+          "type": "mech.force"
+        },
+        {
+          "direction": "in",
+          "name": "water",
+          "role": null,
+          "type": "fluid.pressure"
+        },
+        {
+          "direction": "in",
+          "name": "ref",
+          "role": null,
+          "type": "env.reference"
+        }
+      ],
+      "properties": {
+        "added_mass": {
+          "x": 0.1,
+          "y": 0.8,
+          "z": 1.0
+        },
+        "beam": 0.24,
+        "cd_area_heave_m2": 1.08,
+        "cd_area_surge_m2": 0.216,
+        "cd_area_sway_m2": 1.08,
+        "cd_heave": 0.9,
+        "cd_surge": 0.006,
+        "cd_sway": 0.45,
+        "draft": 0.12,
+        "duration_s": 30.0,
+        "heave_damping": 40.0,
+        "length": 0.9,
+        "linear_damping": 0.0,
+        "mass_kg": 12.0,
+        "planing_drag_factor": 1.35,
+        "planing_threshold": 0.4,
+        "position": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "sample_rate_hz": 20.0,
+        "samples": 6,
+        "volume": 0.02,
+        "waterline_length_m": 0.9
+      },
+      "scope": "headless",
+      "simulated": true,
+      "solver": "mechanics",
+      "tagName": null
+    },
+    {
+      "defaults": {},
+      "derived_by": "scripts/contracts/domain_kinds.py",
+      "evidence": [
+        "bench/cases/mechanics/coupling/case.json"
+      ],
+      "group": "sensor",
+      "id": "mech.imu",
+      "label": "IMU",
+      "legacy_type": null,
+      "notes": "Specific force a - g along the declared axis, with no bias, noise or sample-and-hold. Real IMU error is not modelled.",
+      "ports": [
+        {
+          "direction": "in",
+          "name": "body",
+          "role": null,
+          "type": "mech.angular"
+        },
+        {
+          "direction": "out",
+          "name": "reading",
+          "role": null,
+          "type": "data.stream"
+        }
+      ],
+      "properties": {},
+      "scope": "headless",
+      "simulated": true,
+      "solver": "mechanics",
+      "tagName": null
+    },
+    {
+      "defaults": {},
+      "derived_by": "scripts/contracts/domain_kinds.py",
+      "evidence": [
+        "bench/cases/mechanics/boat-speed/case.json"
+      ],
+      "group": "actuator",
+      "id": "mech.pwm_source",
+      "label": "Declared PWM source",
+      "legacy_type": null,
+      "notes": "An open-loop PWM command standing in for firmware output. It is NOT compiled firmware: headless firmware execution is unavailable (see the v07 report), and this node is labelled a declared source so a report cannot mistake it for one.",
+      "ports": [
+        {
+          "direction": "out",
+          "name": "pwm",
+          "role": null,
+          "type": "signal.pwm"
+        }
+      ],
+      "properties": {
+        "duty": 0.62
+      },
+      "scope": "headless",
+      "simulated": true,
+      "solver": "mechanics",
+      "tagName": null
+    },
+    {
+      "defaults": {},
+      "derived_by": "scripts/contracts/domain_kinds.py",
+      "evidence": [
+        "bench/cases/mechanics/drone-hover/case.json"
+      ],
+      "group": "mechanics",
+      "id": "mech.rotor",
+      "label": "Rotor",
+      "legacy_type": null,
+      "notes": "Free-air disc model: T = Ct*rho*A*v_tip^2. Ground effect and rotor-rotor interaction are declared unavailable, not approximated.",
+      "ports": [
+        {
+          "direction": "in",
+          "name": "mount",
+          "role": null,
+          "type": "mech.force"
+        },
+        {
+          "direction": "in",
+          "name": "ref",
+          "role": null,
+          "type": "env.reference"
+        }
+      ],
+      "properties": {
+        "blade_area_m2": 0.00125,
+        "diameter_m": 0.127,
+        "direction": 1,
+        "induced_drag_factor": 0.318,
+        "max_rpm": 12000.0,
+        "rpm": 0.0,
+        "thrust_coefficient": 0.11
+      },
+      "scope": "headless",
+      "simulated": true,
+      "solver": "mechanics",
+      "tagName": null
     },
     {
       "defaults": {
@@ -16800,6 +17464,139 @@
       "simulated": true,
       "solver": "mcu",
       "tagName": "wokwi-small-sound-sensor"
+    },
+    {
+      "defaults": {},
+      "derived_by": "scripts/contracts/domain_kinds.py",
+      "evidence": [
+        "bench/cases/software/hello-app/case.json"
+      ],
+      "group": "software",
+      "id": "software.computer",
+      "label": "Computer",
+      "legacy_type": null,
+      "notes": "A declared machine that owns software children. deny_internet defaults to true and setting it false is refused, not honoured: there is no sandbox network egress policy to grant.",
+      "ports": [
+        {
+          "direction": "in",
+          "name": "apps",
+          "role": null,
+          "type": "data.stream"
+        }
+      ],
+      "properties": {
+        "cores": 4,
+        "memory_mb": 8192,
+        "network": {
+          "allowlist": [],
+          "deny_internet": true
+        },
+        "os": "linux"
+      },
+      "scope": "headless",
+      "simulated": true,
+      "solver": "software",
+      "tagName": null
+    },
+    {
+      "defaults": {},
+      "derived_by": "scripts/contracts/domain_kinds.py",
+      "evidence": [
+        "bench/cases/software/script/case.json",
+        "bench/cases/software/limit/case.json"
+      ],
+      "group": "software",
+      "id": "software.script",
+      "label": "Telemetry script",
+      "legacy_type": null,
+      "notes": "A declared program evaluated by the same bounded, side-effect-free expression evaluator the trial probes use: no I/O, no network, no filesystem, no eval, not Turing complete. It is NOT a general-purpose interpreter and does not run Python or Node.",
+      "ports": [
+        {
+          "direction": "in",
+          "name": "sensor",
+          "role": null,
+          "type": "data.stream"
+        },
+        {
+          "direction": "out",
+          "name": "reading",
+          "role": null,
+          "type": "data.stream"
+        }
+      ],
+      "properties": {
+        "probes": [
+          {
+            "expression": "1",
+            "id": "self",
+            "target": {
+              "node": "self"
+            },
+            "timeout_ms": 1000
+          }
+        ],
+        "timeout_s": 5
+      },
+      "scope": "headless",
+      "simulated": true,
+      "solver": "software",
+      "tagName": null
+    },
+    {
+      "defaults": {},
+      "derived_by": "scripts/contracts/domain_kinds.py",
+      "evidence": [
+        "bench/cases/software/hello-app/case.json",
+        "bench/cases/software/dom-assert/case.json"
+      ],
+      "group": "software",
+      "id": "software.web_app",
+      "label": "Web app",
+      "legacy_type": null,
+      "notes": "Served from a loopback static server under a strict CSP and probed by static DOM analysis. Client-side JavaScript is NOT executed, so a page that renders only after a script runs is unverifiable here. Inline event handlers, javascript: URLs, remote script sources and iframes are refused before serving.",
+      "ports": [
+        {
+          "direction": "out",
+          "name": "http",
+          "role": null,
+          "type": "net.http"
+        },
+        {
+          "direction": "in",
+          "name": "sensor",
+          "role": null,
+          "type": "data.stream"
+        },
+        {
+          "direction": "in",
+          "name": "asset",
+          "role": null,
+          "type": "data.file"
+        }
+      ],
+      "properties": {
+        "dom_operations": [
+          {
+            "expect": {
+              "op": "eq",
+              "value": true
+            },
+            "expression": "value",
+            "id": "served",
+            "op": "exists",
+            "selector": "#self-test"
+          }
+        ],
+        "entry": "index.html",
+        "files": {
+          "index.html": "<!DOCTYPE html><html><head><title>self test</title></head><body><p id=\"self-test\">served</p></body></html>"
+        },
+        "framework": "vanilla"
+      },
+      "scope": "headless",
+      "simulated": true,
+      "solver": "software",
+      "tagName": null
     },
     {
       "defaults": {

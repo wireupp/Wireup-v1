@@ -1,0 +1,16 @@
+{
+  "assertions": [
+    { "id": "A1", "kind": "no_error", "checker": ["node", "bench/cases/software/hello-app/check.mjs", "A1"],
+      "description": "A declared web app is served and every declared DOM probe passes; a failing probe is published, not dropped." },
+    { "id": "A2", "kind": "equals", "checker": ["node", "bench/cases/software/hello-app/check.mjs", "A2"],
+      "description": "HTTP status 200 and the exact document byte length are reported as measured values." },
+    { "id": "A3", "kind": "capability_declared", "checker": ["node", "bench/cases/software/hello-app/check.mjs", "A3"],
+      "description": "The CSP header denies connections, objects and base URIs, and permits scripts only from 'self'." },
+    { "id": "A4", "kind": "capability_declared", "checker": ["node", "bench/cases/software/hello-app/check.mjs", "A4"],
+      "description": "Served bytes are identical to the declared files; encoded path traversal is refused with 403; non-GET methods are refused with 405." },
+    { "id": "A5", "kind": "equals", "checker": ["node", "bench/cases/software/hello-app/check.mjs", "A5"],
+      "description": "The preview digest is stable and independent of key order, so a human preview can be proven to be the artefact the trial ran." },
+    { "id": "A6", "kind": "capability_declared", "checker": ["node", "bench/cases/software/hello-app/check.mjs", "A6"],
+      "description": "The software manifest names, by feature, what it cannot do: client-side JS, script execution, dependency installation and screenshots." }
+  ]
+}

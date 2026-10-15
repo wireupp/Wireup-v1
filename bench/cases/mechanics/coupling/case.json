@@ -1,0 +1,9 @@
+{
+  "id": "mechanics/coupling",
+  "domain": "mechanics",
+  "title": "A declared control law closes a loop on physics-derived telemetry",
+  "tags": ["mechanics", "coupling", "actuator", "sensors", "bidirectional"],
+  "spec": "spec.md",
+  "assertions": "assertions.json",
+  "project": "project.json"
+}

@@ -1,0 +1,14 @@
+{
+  "assertions": [
+    { "id": "A1", "kind": "capability_declared", "checker": ["node", "bench/cases/software/dom-assert/check.mjs", "A1"],
+      "description": "A wrong app fails at least two of its declared probes." },
+    { "id": "A2", "kind": "capability_declared", "checker": ["node", "bench/cases/software/dom-assert/check.mjs", "A2"],
+      "description": "Failed probes are published with their error code rather than dropped from the stream." },
+    { "id": "A3", "kind": "equals", "checker": ["node", "bench/cases/software/dom-assert/check.mjs", "A3"],
+      "description": "The probe stream has the same shape for the wrong and the right app: a probe that only exists when it fails cannot be trusted." },
+    { "id": "A4", "kind": "no_error", "checker": ["node", "bench/cases/software/dom-assert/check.mjs", "A4"],
+      "description": "The identical probes pass against the correct app." },
+    { "id": "A5", "kind": "equals", "checker": ["node", "bench/cases/software/dom-assert/check.mjs", "A5"],
+      "description": "The wrong app is still served with HTTP 200: the failure is a content failure, not a sandbox refusal." }
+  ]
+}

@@ -1,11 +1,9 @@
-import { declaredUnavailableSolver } from '../legacy-adapter.mjs';
+/**
+ * Backwards-compatible entry point.
+ *
+ * Before v12 this exported a solver that refused every request. It now re-exports the real
+ * software solver, whose `unavailable` array still refuses script execution, client-side
+ * JavaScript, screenshots, dependency installation and the device bridge.
+ */
 
-export const softwareSolver = declaredUnavailableSolver({
-  id: 'software',
-  version: '1',
-  unavailable: [{
-    feature: 'software simulation',
-    reason: 'No verified sandboxed software solver is registered.',
-    requiredToSupport: 'A sandboxed, resource-limited website runtime and verified device bridge.',
-  }],
-});
+export { softwareSolver } from './solver.mjs';

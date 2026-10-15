@@ -1,0 +1,14 @@
+{
+  "assertions": [
+    { "id": "A1", "kind": "no_error", "checker": ["node", "bench/cases/mechanics/buoyancy/check.mjs", "A1"],
+      "description": "A 1 kg float in 1000 kg/m^3 water runs to completion without a solver error." },
+    { "id": "A2", "kind": "within", "checker": ["node", "bench/cases/mechanics/buoyancy/check.mjs", "A2"],
+      "description": "The settled draft matches V_sub = m/rho to within 2%, derived from the declared node properties." },
+    { "id": "A3", "kind": "within", "checker": ["node", "bench/cases/mechanics/buoyancy/check.mjs", "A3"],
+      "description": "The displaced volume at equilibrium matches m/rho to within 2%." },
+    { "id": "A4", "kind": "within", "checker": ["node", "bench/cases/mechanics/buoyancy/check.mjs", "A4"],
+      "description": "The heave period matches 2*pi*sqrt(m/k) for the declared waterplane stiffness to within 5%." },
+    { "id": "A5", "kind": "within", "checker": ["node", "bench/cases/mechanics/buoyancy/check.mjs", "A5"],
+      "description": "The oscillation envelope decays by more than 20% over the run." }
+  ]
+}

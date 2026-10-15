@@ -1,7 +1,20 @@
 {
   "args": {
     "additionalProperties": false,
-    "properties": {},
+    "properties": {
+      "edge_id": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "expected_revision": {
+        "minimum": 0,
+        "type": "integer"
+      }
+    },
+    "required": [
+      "edge_id",
+      "expected_revision"
+    ],
     "type": "object"
   },
   "errors": [

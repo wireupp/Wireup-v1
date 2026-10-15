@@ -71,6 +71,11 @@ async function runProbe(probe, session) {
   }
 }
 
+// Target keys are a CLOSED set of plain strings. Phase v12 added `url_path`, `op` and
+// `selector` for web/script targets; they name a declared DOM operation, never an
+// expression over a live document, so the evaluator is unchanged.
+const TARGET_KEYS = ['node', 'port', 'app', 'url_path', 'op', 'selector', 'symbol', 'attribute'];
+
 function isValidTarget(target) {
   if (!target || typeof target !== 'object' || Array.isArray(target)) return false;
   const prototype = Object.getPrototypeOf(target);
@@ -80,7 +85,7 @@ function isValidTarget(target) {
   const descriptors = Object.getOwnPropertyDescriptors(target);
   return keys.every((key) => {
     const descriptor = descriptors[key];
-    return ['node', 'port', 'app'].includes(key)
+    return TARGET_KEYS.includes(key)
       && !descriptor.get && !descriptor.set
       && typeof descriptor.value === 'string'
       && descriptor.value.length > 0

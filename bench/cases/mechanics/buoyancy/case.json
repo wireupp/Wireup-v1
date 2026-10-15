@@ -1,0 +1,9 @@
+{
+  "id": "mechanics/buoyancy",
+  "domain": "mechanics",
+  "title": "A buoyant body displaces its own weight, oscillates, and damps",
+  "tags": ["mechanics", "buoyancy", "closed-form", "determinism"],
+  "spec": "spec.md",
+  "assertions": "assertions.json",
+  "project": "project.json"
+}

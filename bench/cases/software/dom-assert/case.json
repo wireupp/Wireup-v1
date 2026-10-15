@@ -1,0 +1,1 @@
+{"id":"software/dom-assert","domain":"software","title":"A deliberately wrong app fails its probes, and the same probes pass against the right one","tags":["software","probes","negative"],"spec":"spec.md","assertions":"assertions.json","project":"project.json"}

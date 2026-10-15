@@ -1,0 +1,9 @@
+{
+  "id": "mechanics/drone-hover",
+  "domain": "mechanics",
+  "title": "A quadrotor holds a declared altitude, and the force needed against wind rises monotonically",
+  "tags": ["mechanics", "aero", "drone", "environment"],
+  "spec": "spec.md",
+  "assertions": "assertions.json",
+  "project": "project.json"
+}

@@ -1,0 +1,1 @@
+{"id":"orchestrator/honesty","domain":"orchestrator","title":"The headless orchestrator says no correctly, and says yes only with evidence","tags":["orchestrator","honesty","budgets","headless"],"spec":"spec.md","assertions":"assertions.json","project":"project.json"}

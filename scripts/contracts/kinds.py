@@ -14,6 +14,7 @@ import re
 from contracts.common import (
     AVAILABILITY, BOARDS_PY, GENERATED_BY, PINS_JSON, ROOT, Unsupported, read_literal_list,
 )
+from contracts.domain_kinds import domain_kinds
 
 GROUP_RULES = [
     ("board",     r"^(arduino-|esp32-|nano-rp2040|franzininho)"),
@@ -260,6 +261,7 @@ def build_kinds() -> dict:
                       if ok else (b.get("unavailable_reason") or "No configured runtime.")),
         })
 
+    kinds.extend(domain_kinds())
     kinds.sort(key=lambda k: k["id"])
     return {
         "version": 1,

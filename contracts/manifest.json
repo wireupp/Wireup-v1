@@ -2,9 +2,9 @@
   "description": "Every contract file with the sha256 of its contents. A consumer that cannot reproduce these hashes has stale contracts.",
   "files": [
     {
-      "bytes": 128735,
+      "bytes": 141132,
       "id": "capability.json",
-      "sha256": "e2f73438e816044b4e5c553903a019ec49ef6996679a51acbd2e6a0e876a1675",
+      "sha256": "fbd2b30c0c0d78e2af6b48daa60a97d3a74e87db46b8b98c57f1ebfc76b86823",
       "version": 1
     },
     {
@@ -14,9 +14,9 @@
       "version": 1
     },
     {
-      "bytes": 2949,
+      "bytes": 8313,
       "id": "derivations.json",
-      "sha256": "c8a632718534479a73078af497771ae65229ee6d6af535d2cbab9bd6485a3fea",
+      "sha256": "736cce21cbe5b5c77e106a2c2652d49f9d4b35f831631c5565b55e90c6765c32",
       "version": 1
     },
     {
@@ -26,9 +26,9 @@
       "version": 1
     },
     {
-      "bytes": 432011,
+      "bytes": 455386,
       "id": "kinds.json",
-      "sha256": "56e248a243e67c098a0440766c317782ba5993f19ebdaef71f86a57da11843c2",
+      "sha256": "a1bd88fc4040d45c0da2e5c77848c62daefde9788e198dd766e99ba4cd168a80",
       "version": 1
     },
     {
@@ -110,15 +110,15 @@
       "version": 1
     },
     {
-      "bytes": 699,
+      "bytes": 1453,
       "id": "tools/edge.connect.tool.json",
-      "sha256": "da228e30fa2c547737980dab1c68b2b0389a3fcc94e9a29312dfa392181c7d38",
+      "sha256": "a0cfdbae6882d2878621cf7fcf9f991ba561c90a33fef56cd35013924eb1c86a",
       "version": 1
     },
     {
-      "bytes": 688,
+      "bytes": 936,
       "id": "tools/edge.remove.tool.json",
-      "sha256": "90676789cf07214de0f342cd12cbadea4d24ea24c312a60b04127a65b8b64eed",
+      "sha256": "9567ab2821d300c9e0928c9c32d998232f2f093a9db15b20cdac044f92b2acd6",
       "version": 1
     },
     {
@@ -152,21 +152,21 @@
       "version": 1
     },
     {
-      "bytes": 699,
+      "bytes": 1562,
       "id": "tools/node.add.tool.json",
-      "sha256": "fe9541a2af386746dd6a3832cb0ef04de9f1e157688646cf6221e3f77e7bc811",
+      "sha256": "e92d9c24a80fda1c8801930acef4f3f55fba01399760e464de43ddc458a902d0",
       "version": 1
     },
     {
-      "bytes": 722,
+      "bytes": 1040,
       "id": "tools/node.modify.tool.json",
-      "sha256": "28b95d2c16065a34b0a32bd943606512d54bc539ca4a844f3a179f753c125a10",
+      "sha256": "4716e0c88e15418437627f7a47c9bd8531dfb81f55041811c608a561057231b2",
       "version": 1
     },
     {
-      "bytes": 710,
+      "bytes": 958,
       "id": "tools/node.remove.tool.json",
-      "sha256": "c9971edd91ce6a4728149a88c52b7c9f5d2bf7746329f330b1655f75a8e999ae",
+      "sha256": "9d1d18b46de4c5907889a767c5022a9c87098fa97f9015c5dd897d7f3ab73c6c",
       "version": 1
     },
     {

@@ -1,0 +1,1 @@
+{"id":"software/script","domain":"software","title":"A declared telemetry program is evaluated with no I/O, and says so","tags":["software","script","probes","safety"],"spec":"spec.md","assertions":"assertions.json","project":"project.json"}

@@ -1,0 +1,12 @@
+{
+  "assertions": [
+    { "id": "A1", "kind": "no_error", "checker": ["node", "bench/cases/mechanics/terminal-velocity/check.mjs", "A1"],
+      "description": "A body falling through the declared fluid runs to completion." },
+    { "id": "A2", "kind": "within", "checker": ["node", "bench/cases/mechanics/terminal-velocity/check.mjs", "A2"],
+      "description": "The settled speed matches sqrt(2mg/(rho Cd A)) to within 5% of the declared coefficients." },
+    { "id": "A3", "kind": "within", "checker": ["node", "bench/cases/mechanics/terminal-velocity/check.mjs", "A3"],
+      "description": "The descent is monotone after settling: no speed is gained." },
+    { "id": "A4", "kind": "telemetry_mean", "checker": ["node", "bench/cases/mechanics/terminal-velocity/check.mjs", "A4"],
+      "description": "The speed channel carries quality 'measured', never 'assumed' or 'derived'." }
+  ]
+}

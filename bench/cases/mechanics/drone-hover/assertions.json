@@ -1,0 +1,10 @@
+{
+  "assertions": [
+    { "id": "A1", "kind": "within", "checker": ["node", "bench/cases/mechanics/drone-hover/check.mjs", "A1"],
+      "description": "A quadrotor holds its declared altitude setpoint to within 3% using four declared rotors and a declared altitude-hold law." },
+    { "id": "A2", "kind": "equals", "checker": ["node", "bench/cases/mechanics/drone-hover/check.mjs", "A2"],
+      "description": "Rotor thrust equals Ct*rho_air*A*v_tip^2 recomputed from the MEASURED rpm, to within 2%." },
+    { "id": "A3", "kind": "telemetry_max", "checker": ["node", "bench/cases/mechanics/drone-hover/check.mjs", "A3"],
+      "description": "The force the airframe must fight against 2, 5 and 9 m/s winds matches 0.5*rho*Cd*A*v^2 within 2% and rises monotonically." }
+  ]
+}

@@ -13,6 +13,228 @@
       "note": ""
     },
     {
+      "id": "environment/recorded-weather",
+      "assertion": "A1 (no_error)",
+      "status": "pass",
+      "note": ""
+    },
+    {
+      "id": "environment/recorded-weather",
+      "assertion": "A2 (equals)",
+      "status": "pass",
+      "note": ""
+    },
+    {
+      "id": "environment/recorded-weather",
+      "assertion": "A3 (equals)",
+      "status": "pass",
+      "note": ""
+    },
+    {
+      "id": "environment/recorded-weather",
+      "assertion": "A4 (equals)",
+      "status": "pass",
+      "note": ""
+    },
+    {
+      "id": "environment/recorded-weather",
+      "assertion": "A5 (capability_declared)",
+      "status": "pass",
+      "note": ""
+    },
+    {
+      "id": "environment/recorded-weather",
+      "assertion": "A6 (capability_declared)",
+      "status": "pass",
+      "note": ""
+    },
+    {
+      "id": "environment/recorded-weather",
+      "assertion": "A7 (capability_declared)",
+      "status": "pass",
+      "note": ""
+    },
+    {
+      "id": "environment/recorded-weather",
+      "assertion": "A8 (equals)",
+      "status": "pass",
+      "note": ""
+    },
+    {
+      "id": "mechanics/boat-speed",
+      "assertion": "A1 (no_error)",
+      "status": "pass",
+      "note": ""
+    },
+    {
+      "id": "mechanics/boat-speed",
+      "assertion": "A2 (equals)",
+      "status": "pass",
+      "note": ""
+    },
+    {
+      "id": "mechanics/boat-speed",
+      "assertion": "A3 (within)",
+      "status": "pass",
+      "note": ""
+    },
+    {
+      "id": "mechanics/boat-speed",
+      "assertion": "A4 (within)",
+      "status": "pass",
+      "note": ""
+    },
+    {
+      "id": "mechanics/boat-speed",
+      "assertion": "A5 (telemetry_mean)",
+      "status": "pass",
+      "note": ""
+    },
+    {
+      "id": "mechanics/boat-speed",
+      "assertion": "A6 (telemetry_max)",
+      "status": "pass",
+      "note": ""
+    },
+    {
+      "id": "mechanics/buoyancy",
+      "assertion": "A1 (no_error)",
+      "status": "fail",
+      "note": "Node.js v22.13.0"
+    },
+    {
+      "id": "mechanics/buoyancy",
+      "assertion": "A2 (within)",
+      "status": "pass",
+      "note": ""
+    },
+    {
+      "id": "mechanics/buoyancy",
+      "assertion": "A3 (within)",
+      "status": "fail",
+      "note": "Node.js v22.13.0"
+    },
+    {
+      "id": "mechanics/buoyancy",
+      "assertion": "A4 (within)",
+      "status": "fail",
+      "note": "Node.js v22.13.0"
+    },
+    {
+      "id": "mechanics/buoyancy",
+      "assertion": "A5 (within)",
+      "status": "fail",
+      "note": "Node.js v22.13.0"
+    },
+    {
+      "id": "mechanics/coupling",
+      "assertion": "A1 (no_error)",
+      "status": "fail",
+      "note": "Node.js v22.13.0"
+    },
+    {
+      "id": "mechanics/coupling",
+      "assertion": "A2 (equals)",
+      "status": "fail",
+      "note": "Node.js v22.13.0"
+    },
+    {
+      "id": "mechanics/coupling",
+      "assertion": "A3 (equals)",
+      "status": "fail",
+      "note": "Node.js v22.13.0"
+    },
+    {
+      "id": "mechanics/coupling",
+      "assertion": "A4 (within)",
+      "status": "fail",
+      "note": "Node.js v22.13.0"
+    },
+    {
+      "id": "mechanics/coupling",
+      "assertion": "A5 (equals)",
+      "status": "fail",
+      "note": "Node.js v22.13.0"
+    },
+    {
+      "id": "mechanics/determinism",
+      "assertion": "A1 (no_error)",
+      "status": "pass",
+      "note": ""
+    },
+    {
+      "id": "mechanics/determinism",
+      "assertion": "A2 (equals)",
+      "status": "pass",
+      "note": ""
+    },
+    {
+      "id": "mechanics/determinism",
+      "assertion": "A3 (equals)",
+      "status": "pass",
+      "note": ""
+    },
+    {
+      "id": "mechanics/drone-hover",
+      "assertion": "A1 (within)",
+      "status": "pass",
+      "note": ""
+    },
+    {
+      "id": "mechanics/drone-hover",
+      "assertion": "A2 (equals)",
+      "status": "pass",
+      "note": ""
+    },
+    {
+      "id": "mechanics/drone-hover",
+      "assertion": "A3 (telemetry_max)",
+      "status": "pass",
+      "note": ""
+    },
+    {
+      "id": "mechanics/terminal-velocity",
+      "assertion": "A1 (no_error)",
+      "status": "pass",
+      "note": ""
+    },
+    {
+      "id": "mechanics/terminal-velocity",
+      "assertion": "A2 (within)",
+      "status": "pass",
+      "note": ""
+    },
+    {
+      "id": "mechanics/terminal-velocity",
+      "assertion": "A3 (within)",
+      "status": "pass",
+      "note": ""
+    },
+    {
+      "id": "mechanics/terminal-velocity",
+      "assertion": "A4 (telemetry_mean)",
+      "status": "pass",
+      "note": ""
+    },
+    {
+      "id": "meta/capability",
+      "assertion": "A1_capability_claims_have_a_generated_source (capability_declared)",
+      "status": "pass",
+      "note": ""
+    },
+    {
+      "id": "meta/capability",
+      "assertion": "A2_documented_limits_are_preserved (capability_declared)",
+      "status": "pass",
+      "note": ""
+    },
+    {
+      "id": "meta/capability",
+      "assertion": "A3_solver_registry_is_unique_and_confidence_is_earned (capability_declared)",
+      "status": "pass",
+      "note": ""
+    },
+    {
       "id": "meta/contracts",
       "assertion": "A1_contracts_are_current (schema_valid)",
       "status": "pass",
@@ -47,9 +269,357 @@
       "assertion": "A6_ports_are_closed (schema_valid)",
       "status": "pass",
       "note": ""
+    },
+    {
+      "id": "meta/telemetry",
+      "assertion": "A1_metrics_match_hand_calculated_series (schema_valid)",
+      "status": "pass",
+      "note": ""
+    },
+    {
+      "id": "meta/telemetry",
+      "assertion": "A2_insufficient_data_never_passes (schema_valid)",
+      "status": "pass",
+      "note": ""
+    },
+    {
+      "id": "meta/telemetry",
+      "assertion": "A3_telemetry_quality_is_enforced (schema_valid)",
+      "status": "pass",
+      "note": ""
+    },
+    {
+      "id": "meta/telemetry",
+      "assertion": "A4_recordings_are_byte_deterministic (schema_valid)",
+      "status": "pass",
+      "note": ""
+    },
+    {
+      "id": "meta/telemetry",
+      "assertion": "A5_telemetry_overflow_is_reported (schema_valid)",
+      "status": "pass",
+      "note": ""
+    },
+    {
+      "id": "meta/telemetry",
+      "assertion": "A6_truncated_recording_is_rejected (schema_valid)",
+      "status": "pass",
+      "note": ""
+    },
+    {
+      "id": "meta/telemetry",
+      "assertion": "A7_sweep_is_stable_and_isolates_solver_errors (schema_valid)",
+      "status": "pass",
+      "note": ""
+    },
+    {
+      "id": "meta/telemetry",
+      "assertion": "A8_cancellation_cannot_pass (schema_valid)",
+      "status": "pass",
+      "note": ""
+    },
+    {
+      "id": "meta/telemetry",
+      "assertion": "A9_probe_parser_rejects_hostile_expressions (schema_valid)",
+      "status": "pass",
+      "note": ""
+    },
+    {
+      "id": "meta/telemetry",
+      "assertion": "A10_runtime_tokens_never_enter_results (schema_valid)",
+      "status": "pass",
+      "note": ""
+    },
+    {
+      "id": "meta/tool-bus",
+      "assertion": "A3_tokens_are_scrubbed_from_results_errors_and_events (schema_valid)",
+      "status": "pass",
+      "note": ""
+    },
+    {
+      "id": "meta/tool-bus",
+      "assertion": "A4_registry_rejects_missing_handlers (schema_valid)",
+      "status": "pass",
+      "note": ""
+    },
+    {
+      "id": "meta/tool-bus",
+      "assertion": "A5_unavailable_services_name_their_phase (schema_valid)",
+      "status": "pass",
+      "note": ""
+    },
+    {
+      "id": "meta/tool-bus",
+      "assertion": "A6_review_scope_is_authoritatively_checked (schema_valid)",
+      "status": "pass",
+      "note": ""
+    },
+    {
+      "id": "meta/tool-bus",
+      "assertion": "A7_stale_mutation_does_not_apply (schema_valid)",
+      "status": "pass",
+      "note": ""
+    },
+    {
+      "id": "meta/tool-bus",
+      "assertion": "A8_concurrent_mutations_have_no_lost_updates (schema_valid)",
+      "status": "pass",
+      "note": ""
+    },
+    {
+      "id": "meta/tool-bus",
+      "assertion": "A9_invalid_arguments_return_contract_errors (schema_valid)",
+      "status": "pass",
+      "note": ""
+    },
+    {
+      "id": "orchestrator/honesty",
+      "assertion": "H1 (capability_declared)",
+      "status": "pass",
+      "note": ""
+    },
+    {
+      "id": "orchestrator/honesty",
+      "assertion": "H1b (capability_declared)",
+      "status": "fail",
+      "note": "Node.js v22.13.0"
+    },
+    {
+      "id": "orchestrator/honesty",
+      "assertion": "H1c (capability_declared)",
+      "status": "fail",
+      "note": "Node.js v22.13.0"
+    },
+    {
+      "id": "orchestrator/honesty",
+      "assertion": "H2 (within)",
+      "status": "pass",
+      "note": ""
+    },
+    {
+      "id": "orchestrator/honesty",
+      "assertion": "H4 (capability_declared)",
+      "status": "pass",
+      "note": ""
+    },
+    {
+      "id": "orchestrator/honesty",
+      "assertion": "H5 (capability_declared)",
+      "status": "pass",
+      "note": ""
+    },
+    {
+      "id": "orchestrator/honesty",
+      "assertion": "H6 (capability_declared)",
+      "status": "pass",
+      "note": ""
+    },
+    {
+      "id": "orchestrator/honesty",
+      "assertion": "H7 (equals)",
+      "status": "pass",
+      "note": ""
+    },
+    {
+      "id": "orchestrator/honesty",
+      "assertion": "A3 (capability_declared)",
+      "status": "pass",
+      "note": ""
+    },
+    {
+      "id": "orchestrator/honesty",
+      "assertion": "A4 (equals)",
+      "status": "pass",
+      "note": ""
+    },
+    {
+      "id": "orchestrator/honesty",
+      "assertion": "A5 (equals)",
+      "status": "pass",
+      "note": ""
+    },
+    {
+      "id": "orchestrator/honesty",
+      "assertion": "A6 (within)",
+      "status": "pass",
+      "note": ""
+    },
+    {
+      "id": "orchestrator/honesty",
+      "assertion": "A8 (no_error)",
+      "status": "pass",
+      "note": ""
+    },
+    {
+      "id": "orchestrator/honesty",
+      "assertion": "A7 (within)",
+      "status": "pass",
+      "note": ""
+    },
+    {
+      "id": "orchestrator/honesty",
+      "assertion": "A9 (capability_declared)",
+      "status": "pass",
+      "note": ""
+    },
+    {
+      "id": "software/dom-assert",
+      "assertion": "A1 (capability_declared)",
+      "status": "pass",
+      "note": ""
+    },
+    {
+      "id": "software/dom-assert",
+      "assertion": "A2 (capability_declared)",
+      "status": "pass",
+      "note": ""
+    },
+    {
+      "id": "software/dom-assert",
+      "assertion": "A3 (equals)",
+      "status": "pass",
+      "note": ""
+    },
+    {
+      "id": "software/dom-assert",
+      "assertion": "A4 (no_error)",
+      "status": "pass",
+      "note": ""
+    },
+    {
+      "id": "software/dom-assert",
+      "assertion": "A5 (equals)",
+      "status": "pass",
+      "note": ""
+    },
+    {
+      "id": "software/escape",
+      "assertion": "A1 (capability_declared)",
+      "status": "pass",
+      "note": ""
+    },
+    {
+      "id": "software/escape",
+      "assertion": "A2 (capability_declared)",
+      "status": "pass",
+      "note": ""
+    },
+    {
+      "id": "software/escape",
+      "assertion": "A3 (capability_declared)",
+      "status": "pass",
+      "note": ""
+    },
+    {
+      "id": "software/escape",
+      "assertion": "A4 (capability_declared)",
+      "status": "pass",
+      "note": ""
+    },
+    {
+      "id": "software/escape",
+      "assertion": "A5 (capability_declared)",
+      "status": "pass",
+      "note": ""
+    },
+    {
+      "id": "software/escape",
+      "assertion": "A6 (capability_declared)",
+      "status": "pass",
+      "note": ""
+    },
+    {
+      "id": "software/hello-app",
+      "assertion": "A1 (no_error)",
+      "status": "pass",
+      "note": ""
+    },
+    {
+      "id": "software/hello-app",
+      "assertion": "A2 (equals)",
+      "status": "pass",
+      "note": ""
+    },
+    {
+      "id": "software/hello-app",
+      "assertion": "A3 (capability_declared)",
+      "status": "pass",
+      "note": ""
+    },
+    {
+      "id": "software/hello-app",
+      "assertion": "A4 (capability_declared)",
+      "status": "pass",
+      "note": ""
+    },
+    {
+      "id": "software/hello-app",
+      "assertion": "A5 (equals)",
+      "status": "pass",
+      "note": ""
+    },
+    {
+      "id": "software/hello-app",
+      "assertion": "A6 (capability_declared)",
+      "status": "pass",
+      "note": ""
+    },
+    {
+      "id": "software/limit",
+      "assertion": "A1 (capability_declared)",
+      "status": "pass",
+      "note": ""
+    },
+    {
+      "id": "software/limit",
+      "assertion": "A2 (equals)",
+      "status": "pass",
+      "note": ""
+    },
+    {
+      "id": "software/limit",
+      "assertion": "A3 (within)",
+      "status": "pass",
+      "note": ""
+    },
+    {
+      "id": "software/limit",
+      "assertion": "A4 (capability_declared)",
+      "status": "pass",
+      "note": ""
+    },
+    {
+      "id": "software/limit",
+      "assertion": "A5 (capability_declared)",
+      "status": "pass",
+      "note": ""
+    },
+    {
+      "id": "software/limit",
+      "assertion": "A6 (equals)",
+      "status": "pass",
+      "note": ""
+    },
+    {
+      "id": "software/script",
+      "assertion": "A1 (no_error)",
+      "status": "pass",
+      "note": ""
+    },
+    {
+      "id": "software/script",
+      "assertion": "A2 (equals)",
+      "status": "pass",
+      "note": ""
+    },
+    {
+      "id": "software/script",
+      "assertion": "A3 (capability_declared)",
+      "status": "pass",
+      "note": ""
     }
   ],
-  "passed": 8,
-  "failed": 0,
+  "passed": 92,
+  "failed": 11,
   "skipped": 0
 }

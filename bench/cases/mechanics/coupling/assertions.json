@@ -1,0 +1,14 @@
+{
+  "assertions": [
+    { "id": "A1", "kind": "no_error", "checker": ["node", "bench/cases/mechanics/coupling/check.mjs", "A1"],
+      "description": "A graph with a physics sensor, a declared control law and a force actuator runs end to end." },
+    { "id": "A2", "kind": "equals", "checker": ["node", "bench/cases/mechanics/coupling/check.mjs", "A2"],
+      "description": "REVERSE DIRECTION: the barometer reading equals p0 + rho*g*keel-depth at both the peak and the trough of the run, and it actually moves." },
+    { "id": "A3", "kind": "equals", "checker": ["node", "bench/cases/mechanics/coupling/check.mjs", "A3"],
+      "description": "FORWARD DIRECTION: the commanded PWM saturates while the hull is far from its setpoint, and in steady state equals the declared law evaluated on the MEASURED depth (max deviation < 0.02)." },
+    { "id": "A4", "kind": "within", "checker": ["node", "bench/cases/mechanics/coupling/check.mjs", "A4"],
+      "description": "The loop closes: the hull settles at the declared setpoint to within 5%." },
+    { "id": "A5", "kind": "equals", "checker": ["node", "bench/cases/mechanics/coupling/check.mjs", "A5"],
+      "description": "The commanded PWM becomes a force on the same body in the same run, equal to the declared transfer function applied to the measured signal." }
+  ]
+}

@@ -53,6 +53,12 @@ property is claimed.
 implemented or proven. An environment allowlist can remove inherited secrets but does not by
 itself prevent a child process from opening network sockets. Implementing only process spawning,
 timeouts, or output limits would therefore leave the required network boundary unenforced.
+Node `v22.13.0`'s `--permission` mode was tested against a local HTTP server: the child process
+successfully fetched the loopback endpoint and received `HTTP 200 local-ok`. This experimentally
+confirms that the available Node permission mode does not provide the required network denial.
+WSL2 is installed, but a direct `unshare --net` check returned `Operation not permitted`, so an
+isolated Linux network namespace is not available to this user process either. No firewall policy
+was changed. The available mechanisms therefore do not establish the required egress denial.
 Because the brief says to stop if A7 or A8 cannot be fully satisfied, no executable headless worker
 was shipped.
 
@@ -71,7 +77,7 @@ only runtime path.
 | A5 Timeout and `RUNTIME_LIMIT_EXCEEDED` | NOT IMPLEMENTED | No worker supervisor |
 | A6 Crash isolation and API responsiveness | NOT IMPLEMENTED | No worker supervisor |
 | A7 Environment scrub assertions | NOT IMPLEMENTED | No worker process or leak test |
-| A8 Enforced network restriction and blocked-egress assertion | NOT IMPLEMENTED | No verified enforcement mechanism |
+| A8 Enforced network restriction and blocked-egress assertion | FAIL / BLOCKED | Node `v22.13.0 --permission` child successfully fetched a loopback-only test endpoint (`HTTP 200 local-ok`); WSL2 `unshare --net` returned `Operation not permitted` |
 | A9 Four-run concurrency limit | NOT IMPLEMENTED | No worker supervisor |
 | A10 ESP32 known-failure refusal | PARTIAL, declaration only | Existing limitation documented; no v07 lane |
 | A11 Existing Playwright and pytest counts unchanged | NOT RUN | No tests run |
@@ -91,6 +97,8 @@ stop condition and the product's credential-secrecy invariant.
 
 - Select and implement a verifiable OS-level network restriction for worker processes before
   enabling untrusted firmware execution. A child-process environment scrub is not a substitute.
+- Do not use Node `--permission` as the egress boundary: the measured `v22.13.0` localhost probe
+  succeeded.
 - Extract the existing emulator driver into a runtime-agnostic module without changing browser
   behavior, or use the prompt's narrowly scoped DOM shim and prove browser parity.
 - Reconcile the phase brief's TypeScript service/tool paths with the repository's current ESM

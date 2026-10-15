@@ -1,0 +1,9 @@
+{
+  "id": "environment/recorded-weather",
+  "domain": "environment",
+  "title": "The recorded weather dataset replays deterministically, with provenance on every sample",
+  "tags": ["environment", "weather", "provenance", "allowlist", "network-denial"],
+  "spec": "spec.md",
+  "assertions": "assertions.json",
+  "project": "project.json"
+}

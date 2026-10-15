@@ -1,0 +1,1 @@
+{"id":"software/escape","domain":"software","title":"The escape corpus is refused by construction: nothing is ever executed","tags":["software","security","sandbox","red"],"spec":"spec.md","assertions":"assertions.json","project":"project.json"}

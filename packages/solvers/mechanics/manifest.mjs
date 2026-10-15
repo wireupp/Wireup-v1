@@ -1,11 +1,9 @@
-import { declaredUnavailableSolver } from '../legacy-adapter.mjs';
+/**
+ * Backwards-compatible entry point.
+ *
+ * Before v11 this module exported a solver that refused every request, which was the
+ * honest state of the platform then. It now re-exports the real solver; the refusal lives
+ * in the solver's `unavailable` manifest, where an agent can read it.
+ */
 
-export const mechanicsSolver = declaredUnavailableSolver({
-  id: 'mechanics',
-  version: '1',
-  unavailable: [{
-    feature: 'mechanics simulation',
-    reason: 'No verified mechanics solver is registered.',
-    requiredToSupport: 'A deterministic, verified mechanics solver and actuator coupling.',
-  }],
-});
+export { mechanicsSolver } from './solver.mjs';

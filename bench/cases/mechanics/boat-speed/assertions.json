@@ -1,0 +1,16 @@
+{
+  "assertions": [
+    { "id": "A1", "kind": "no_error", "checker": ["node", "bench/cases/mechanics/boat-speed/check.mjs", "A1"],
+      "description": "The full boat graph (hull, two thrusters, a declared PWM source, a water body) runs to completion with no solver error." },
+    { "id": "A2", "kind": "equals", "checker": ["node", "bench/cases/mechanics/boat-speed/check.mjs", "A2"],
+      "description": "Each thruster applies exactly the force its declared transfer function gives for the declared duty, to within 1%." },
+    { "id": "A3", "kind": "within", "checker": ["node", "bench/cases/mechanics/boat-speed/check.mjs", "A3"],
+      "description": "THE HEADLINE: the hull's steady surge speed over the final 30% of the run is within 5% of sqrt(thrust/k) computed from the declared coefficients." },
+    { "id": "A4", "kind": "within", "checker": ["node", "bench/cases/mechanics/boat-speed/check.mjs", "A4"],
+      "description": "The hull accelerates from rest and its steady-state window has a spread below 2% of the mean." },
+    { "id": "A5", "kind": "telemetry_mean", "checker": ["node", "bench/cases/mechanics/boat-speed/check.mjs", "A5"],
+      "description": "Speed and actuator signal carry quality 'measured'; nothing about the commanded force is presented as an observation." },
+    { "id": "A6", "kind": "telemetry_max", "checker": ["node", "bench/cases/mechanics/boat-speed/check.mjs", "A6"],
+      "description": "Froude number and metacentric height are reported as 'derived' with derivations entries, and the declared planing discontinuity did not fire inside the measured window." }
+  ]
+}

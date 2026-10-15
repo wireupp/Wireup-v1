@@ -1,0 +1,47 @@
+{
+  "schema_version": 3,
+  "id": "b000000000000000000000000000001",
+  "project_id": "11111111111111111111111111111111",
+  "domain": "mechanics",
+  "revision": 0,
+  "created_at": "2026-01-01T00:00:00Z",
+  "updated_at": "2026-01-01T00:00:00Z",
+  "nodes": [
+    {
+      "id": "env_water_body_1",
+      "kind": "env.water_body",
+      "properties": {
+        "surface_z": 0.0,
+        "density": 1000.0,
+        "wave_model": "flat",
+        "flow": { "x": 0.0, "y": 0.0, "z": 0.0 }
+      }
+    },
+    {
+      "id": "mech_float_1",
+      "kind": "mech.float",
+      "properties": {
+        "mass_kg": 1.0,
+        "volume": 0.0015,
+        "length": 0.1,
+        "beam": 0.1,
+        "draft": 0.15,
+        "samples": [1, 1, 96],
+        "diameter_m": 0.1,
+        "cd_surge": 0.47,
+        "cd_sway": 0.47,
+        "cd_heave": 0.47,
+        "cd_area_surge_m2": 0.00785,
+        "cd_area_sway_m2": 0.00785,
+        "cd_area_heave_m2": 0.00785,
+        "heave_damping": 0.0,
+        "added_mass": { "x": 0.0, "y": 0.0, "z": 0.0 },
+        "linear_damping": 0.05,
+        "duration_s": 12.0,
+        "sample_rate_hz": 200.0,
+        "position": { "x": 0.0, "y": 0.0, "z": -0.05 }
+      }
+    }
+  ],
+  "edges": []
+}

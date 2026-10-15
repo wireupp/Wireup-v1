@@ -1,0 +1,16 @@
+{
+  "assertions": [
+    { "id": "A1", "kind": "capability_declared", "checker": ["node", "bench/cases/software/limit/check.mjs", "A1"],
+      "description": "An over-sized declared file is refused with SANDBOX_LIMIT_EXCEEDED naming the per-file byte cap." },
+    { "id": "A2", "kind": "equals", "checker": ["node", "bench/cases/software/limit/check.mjs", "A2"],
+      "description": "The request cap answers 429 with zero bytes returned, rather than hanging." },
+    { "id": "A3", "kind": "within", "checker": ["node", "bench/cases/software/limit/check.mjs", "A3"],
+      "description": "A probe whose data source never resolves fails with PROBE_TIMEOUT well inside the declared bound." },
+    { "id": "A4", "kind": "capability_declared", "checker": ["node", "bench/cases/software/limit/check.mjs", "A4"],
+      "description": "The expression language refuses oversized, over-nested and loop-shaped programs: there is no way to write a non-terminating program." },
+    { "id": "A5", "kind": "capability_declared", "checker": ["node", "bench/cases/software/limit/check.mjs", "A5"],
+      "description": "The CSP denies defaults, connections, objects, base URIs, form actions and framing." },
+    { "id": "A6", "kind": "equals", "checker": ["node", "bench/cases/software/limit/check.mjs", "A6"],
+      "description": "A tight wall-clock budget still returns a governed response with the CSP header, never an ungoverned one." }
+  ]
+}

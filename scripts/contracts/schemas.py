@@ -302,6 +302,76 @@ def derivations() -> dict:
             {"channel": "analog.branch_current",
              "formula": "arithmetic mean of the samples in a telemetry query bucket",
              "inputs": ["analog.branch_current"], "solver": "telemetry", "confidence": "exact"},
+            # ---- physics (v11) -------------------------------------------------
+            # Every quantity below is computed from a declared coefficient rather than
+            # observed. Listing them here is what lets the recorder accept a
+            # quality:"derived" sample at all, and it is the list a reviewer reads to
+            # find out what the simulation is actually assuming.
+            {"channel": "body.speed_mps", "formula": "sqrt(vx^2 + vy^2 + vz^2)",
+             "inputs": ["body.velocity.x", "body.velocity.y", "body.velocity.z"],
+             "solver": "mechanics", "confidence": "exact",
+             "note": "Euclidean norm of the integrated body velocity."},
+            {"channel": "hull.displaced_m3",
+             "formula": "sum(volume_i for sample points with world_z < surface_z)",
+             "inputs": ["body.position.z", "env.water_density_kg_m3"],
+             "solver": "mechanics", "confidence": "approximate",
+             "note": "Quantised by the declared sample grid. Increase `samples` to converge."},
+            {"channel": "hull.drag_force_n",
+             "formula": "0.5 * rho * Cd_i * A_i * |v_i| * v_i per body axis",
+             "inputs": ["body.velocity.x", "env.water_density_kg_m3"],
+             "solver": "mechanics", "confidence": "approximate",
+             "note": "Cd and reference area are DECLARED per hull, never measured. A declared "
+                      "planing multiplier multiplies the result above the Froude threshold."},
+            {"channel": "hull.froude", "formula": "v_surge / sqrt(g * L)",
+             "inputs": ["hull.speed_surge_mps"], "solver": "mechanics", "confidence": "approximate",
+             "note": "L is the declared waterline length. The drag multiplier is a declared STEP at "
+                      "this number, not a smooth blend."},
+            {"channel": "hull.gm_m", "formula": "KB + BM - KG with BM = I_waterplane / V_displaced",
+             "inputs": ["hull.displaced_m3"], "solver": "mechanics", "confidence": "approximate",
+             "note": "Computed from the declared rectangular waterplane, once, at build time. A "
+                      "negative GM is reported as a warning and never suppressed."},
+            {"channel": "hull.added_mass_ratio", "formula": "declared Ca on the surge axis",
+             "inputs": [], "solver": "mechanics", "confidence": "approximate",
+             "note": "A declared coefficient, not a fitted one. Linear added mass is credible below "
+                      "Ca = 1.0 only."},
+            {"channel": "thruster.thrust_n",
+             "formula": "gain * shaped((signal - deadband) / (1 - deadband)), clamped at saturation",
+             "inputs": ["actuator.signal"], "solver": "mechanics", "confidence": "exact",
+             "note": "The declared transfer function. Exact given the declared curve, gain and "
+                      "deadband; the physical truth of those declarations is a separate question."},
+            {"channel": "actuator.torque_nm", "formula": "same transfer function, torque units",
+             "inputs": ["actuator.signal"], "solver": "mechanics", "confidence": "exact",
+             "note": "Bidirectional actuators centre the signal at 0.5."},
+            {"channel": "rotor.thrust_n", "formula": "Ct * rho_air * A_blade * v_tip^2, v_tip = omega * R",
+             "inputs": ["rotor.rpm", "env.air_density_kg_m3"], "solver": "mechanics",
+             "confidence": "approximate",
+             "note": "Free-air disc model. Ct and blade area are declared. Ground effect and "
+                      "rotor-rotor interaction are declared unavailable."},
+            {"channel": "airframe.drag_n",
+             "formula": "|0.5 * rho_air * Cd * A * |v - v_wind| * (v - v_wind)|",
+             "inputs": ["body.velocity.x", "env.wind_speed_mps"], "solver": "mechanics",
+             "confidence": "approximate",
+             "note": "Cd and reference area are declared. The force the airframe must fight to "
+                      "hold station in a wind; this model has no attitude or position controller, "
+                      "so it is NOT a prediction of how much extra hover thrust a real drone needs."},
+            {"channel": "env.air_density_kg_m3", "formula": "p / (R * T) from the ISA troposphere",
+             "inputs": ["env.air_temperature_c"], "solver": "environment", "confidence": "exact",
+             "note": "Exact within the ISA troposphere by definition. It is the reference the "
+                      "recorded readings are compared against, not the real atmosphere."},
+            # ---- software (v12) ------------------------------------------------
+            {"channel": "web.load_ms", "formula": "elapsed wall clock of the loopback fetch",
+             "inputs": [], "solver": "software", "confidence": "exact",
+             "note": "A local loopback fetch. NOT a real page-load metric: no browser renders the "
+                      "page, so this measures the supervisor, not a user's experience."},
+            {"channel": "web.http_status", "formula": "HTTP status of the loopback fetch",
+             "inputs": [], "solver": "software", "confidence": "exact"},
+            {"channel": "web.document_bytes", "formula": "byte length of the served document",
+             "inputs": [], "solver": "software", "confidence": "exact"},
+            {"channel": "script.probe_value", "formula": "the declared DOM operation's result",
+             "inputs": [], "solver": "software", "confidence": "exact",
+             "note": "A named operation over the served markup (exists, count, text, attr, value, "
+                      "has_class, title). Client-side JavaScript does not run, so this is the "
+                      "document, never a rendered DOM."},
         ],
     }
 

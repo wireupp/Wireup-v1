@@ -1,0 +1,20 @@
+{
+  "assertions": [
+    { "id": "A1", "kind": "no_error", "checker": ["node", "bench/cases/environment/recorded-weather/check.mjs", "A1"],
+      "description": "The bundled recorded dataset replays all 24 hourly observations without error." },
+    { "id": "A2", "kind": "equals", "checker": ["node", "bench/cases/environment/recorded-weather/check.mjs", "A2"],
+      "description": "Replay order is dataset order (index-addressed), never wall-clock order." },
+    { "id": "A3", "kind": "equals", "checker": ["node", "bench/cases/environment/recorded-weather/check.mjs", "A3"],
+      "description": "EVERY published sample carries a source object naming the dataset, its provider, its licence and its observation timestamp." },
+    { "id": "A4", "kind": "equals", "checker": ["node", "bench/cases/environment/recorded-weather/check.mjs", "A4"],
+      "description": "Two independent replays are byte-identical and wrap cleanly at the end of the series." },
+    { "id": "A5", "kind": "capability_declared", "checker": ["node", "bench/cases/environment/recorded-weather/check.mjs", "A5"],
+      "description": "Live weather is disabled by default and refuses with a requiredToSupport; enabling it with an empty allowlist is also refused." },
+    { "id": "A6", "kind": "capability_declared", "checker": ["node", "bench/cases/environment/recorded-weather/check.mjs", "A6"],
+      "description": "A non-allowlisted host is refused WITHOUT any network call, and the refusal is recorded in the provider audit log." },
+    { "id": "A7", "kind": "capability_declared", "checker": ["node", "bench/cases/environment/recorded-weather/check.mjs", "A7"],
+      "description": "An unknown provider name is refused rather than defaulted to something." },
+    { "id": "A8", "kind": "equals", "checker": ["node", "bench/cases/environment/recorded-weather/check.mjs", "A8"],
+      "description": "With no configuration at all the environment solver resolves to the recorded dataset and can describe its provenance." }
+  ]
+}

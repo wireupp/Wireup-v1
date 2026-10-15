@@ -1,0 +1,9 @@
+{
+  "id": "mechanics/terminal-velocity",
+  "domain": "mechanics",
+  "title": "A falling body reaches the declared terminal velocity",
+  "tags": ["mechanics", "drag", "closed-form"],
+  "spec": "spec.md",
+  "assertions": "assertions.json",
+  "project": "project.json"
+}

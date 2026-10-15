@@ -37,10 +37,19 @@ assert.equal(projectCapability.nodes.find((node) => node.id === 'board')?.simula
 assert.equal(projectCapability.nodes.find((node) => node.id === 'motor-driver')?.simulated, false);
 assert.equal(projectCapability.can_run, false);
 assert.ok(explainCapability('board.esp32-c3').limitations.some((entry) => entry.reason.includes('0x514c26')));
-assert.equal(boatCapability.can_run, false);
-assert.ok(boatCapability.blockers.some((entry) =>
-  entry.reason === 'No verified mechanics solver is registered.'
-  && entry.required_to_support.includes('deterministic, verified mechanics solver')));
+// Phase v11 flipped this. The platform no longer refuses mechanics work wholesale: a hull is
+// simulated. What it still refuses is the SPECIFIC residual physics, and that is what an agent
+// must be told. An empty mechanics project still cannot run — it has nothing to simulate —
+// which is a different, honest refusal from "no solver exists".
+assert.equal(boatCapability.can_run, false, 'an empty mechanics project has nothing to simulate');
+assert.equal(boatCapability.blockers.every((entry) =>
+  entry.reason !== 'No verified mechanics solver is registered.'), true,
+'capability must no longer claim mechanics has no solver at all');
+assert.equal(capability.kinds.find((kind) => kind.id === 'mech.hull')?.simulated, true);
+assert.equal(capability.kinds.find((kind) => kind.id === 'mech.thruster'), undefined);
+assert.equal(capability.kinds.find((kind) => kind.id === 'actuator.thruster')?.simulated, true);
+assert.equal(capability.kinds.find((kind) => kind.id === 'env.water_body')?.simulated, true);
+assert.equal(capability.kinds.find((kind) => kind.id === 'software.web_app')?.simulated, true);
 for (const [, , legacyType] of availability.matchAll(/^\|\s*([^|]+?)\s*\|\s*`([^`]+)`\s*\|/gm)) {
   const kind = kinds.find((entry) => entry.legacy_type === legacyType || entry.id.endsWith(`.${legacyType}`));
   assert.ok(
@@ -73,9 +82,19 @@ assert.equal(
 assert.ok(capability.kinds
   .filter((kind) => kind.id.startsWith('board.esp32'))
   .every((kind) => !kind.simulated));
-assert.ok(capability.unsupported.some((entry) => entry.feature === 'mechanics simulation'));
-assert.ok(capability.unsupported.some((entry) => entry.feature === 'environment simulation'));
-assert.ok(capability.unsupported.some((entry) => entry.feature === 'software simulation'));
+// The residual limits are the point. Each is named, so "I cannot do that" is a sentence with a
+// subject rather than a shrug.
+for (const feature of [
+  'computational fluid dynamics',
+  'cavitation',
+  'ground effect',
+  'client-side JavaScript execution in a web app',
+  'agent-authored script execution',
+  'live weather by default',
+]) {
+  assert.ok(capability.unsupported.some((entry) => entry.feature === feature),
+    `capability must still declare: ${feature}`);
+}
 
 assert.throws(() => validateManifest({
   id: 'dishonest',

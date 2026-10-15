@@ -61,6 +61,7 @@ export async function runTrial(graph, goal, parameters, envOverrides, seed, serv
         baseGraph,
         combination,
         goal,
+        graphHash,
         graphRevision,
         index,
         seed: seed + index,
@@ -93,7 +94,7 @@ export async function runTrial(graph, goal, parameters, envOverrides, seed, serv
   };
   return {
     id: trialId,
-    project_id: graph.project_id,
+    project_id: projectIdOf(graph),
     goal: clone(goal),
     parameters: clone([...parameters].sort((left, right) =>
       compareText(left.node, right.node) || compareText(left.property, right.property))),
@@ -140,7 +141,7 @@ export function evaluateGoal(goal, value) {
 }
 
 async function executeRun({
-  baseGraph, combination, goal, graphRevision, index, seed, services, trialId,
+  baseGraph, combination, goal, graphHash, graphRevision, index, seed, services, trialId,
 }) {
   const runId = `${trialId}-run-${index}`;
   const graph = clone(baseGraph);
@@ -150,7 +151,7 @@ async function executeRun({
   try {
     recorder = await services.recorder.create({
       trial_id: runId,
-      project_id: graph.project_id,
+      project_id: projectIdOf(graph),
       graph_revision: graphRevision,
       graph_hash: graphHash,
       firmware_revision: graph.firmware?.revision ?? null,
@@ -173,7 +174,7 @@ async function executeRun({
     for await (const sourceSample of telemetry) {
       if (isCancelled(services)) throw cancellationError();
       const sample = { ...sourceSample, trial_id: runId };
-      if (sample.project_id !== graph.project_id) {
+      if (sample.project_id !== projectIdOf(graph)) {
         throw Object.assign(new Error('Solver emitted telemetry for a different project.'), {
           code: 'PROJECT_MISMATCH',
         });
@@ -189,7 +190,7 @@ async function executeRun({
     });
     finished = true;
     await verifyRecording(services.recorder, runId, metadata);
-    const queried = services.telemetry.query({ projectId: graph.project_id, trialId: runId });
+    const queried = services.telemetry.query({ projectId: projectIdOf(graph), trialId: runId });
     if (queried.some((entry) => entry.dropped > 0)) {
       throw Object.assign(new Error('Telemetry overflowed before the goal metric could be computed.'), {
         code: 'TELEMETRY_DROPPED',
@@ -235,6 +236,10 @@ async function executeRun({
     ]);
     const code = recordingFailed || error?.code === 'RECORDING_TRUNCATED' ? 'RECORDING_FAILED'
       : safeCodes.has(error?.code) ? error.code : 'SOLVER_FAILED';
+    // The reported message stays generic on purpose: it goes to an agent. With
+    // WIREUP_TRIAL_DEBUG the raw cause goes to stderr for the operator instead, so a
+    // swallowed error is diagnosable without being publishable.
+    if (process.env.WIREUP_TRIAL_DEBUG) console.error(`trial run ${index}: ${error?.stack ?? error}`);
     return {
       index,
       seed,
@@ -260,39 +265,39 @@ function validateServices(services) {
   ]) {
     if (typeof method !== 'function') throw new TypeError(`Trial service '${name}' is required.`);
   }
-
-  async function verifyRecording(recorderService, trialId, metadata) {
-    const recording = await recorderService.openRecording(trialId);
-    if (!recording || !recording.metadata || typeof recording[Symbol.asyncIterator] !== 'function') {
-      throw Object.assign(new Error('Recorder returned an invalid recording reader.'), {
-        code: 'RECORDING_TRUNCATED',
-      });
-    }
-    try {
-      for await (const _sample of recording) {
-        // Iteration validates each recorded sample and verifies the final count.
-      }
-      if (recording.truncated || recording.error
-          || recording.sampleCount !== metadata.sample_count
-          || recording.metadata.sample_count !== metadata.sample_count
-          || recording.metadata.trial_id !== trialId) {
-        throw Object.assign(new Error('Trial recording failed integrity verification.'), {
-          code: 'RECORDING_TRUNCATED',
-        });
-      }
-    } finally {
-      recording.close?.();
-    }
-  }
   if (services.runtimeToken !== undefined
       && (typeof services.runtimeToken !== 'string' || !services.runtimeToken.length)) {
     throw new TypeError('Trial runtimeToken must be a non-empty string when provided.');
   }
 }
 
+async function verifyRecording(recorderService, trialId, metadata) {
+  const recording = await recorderService.openRecording(trialId);
+  if (!recording || !recording.metadata || typeof recording[Symbol.asyncIterator] !== 'function') {
+    throw Object.assign(new Error('Recorder returned an invalid recording reader.'), {
+      code: 'RECORDING_TRUNCATED',
+    });
+  }
+  try {
+    for await (const _sample of recording) {
+      // Iteration validates each recorded sample and verifies the final count.
+    }
+    if (recording.truncated || recording.error
+        || recording.sampleCount !== metadata.sample_count
+        || recording.metadata.sample_count !== metadata.sample_count
+        || recording.metadata.trial_id !== trialId) {
+      throw Object.assign(new Error('Trial recording failed integrity verification.'), {
+        code: 'RECORDING_TRUNCATED',
+      });
+    }
+  } finally {
+    recording.close?.();
+  }
+}
+
 function validateInputs(graph, goal, parameters, envOverrides, seed) {
   if (!graph || typeof graph !== 'object' || !Array.isArray(graph.nodes)
-      || !/^[a-f0-9]{32}$/.test(graph.project_id ?? '')
+      || !/^[a-f0-9]{32}$/.test(projectIdOf(graph) ?? '')
       || !Number.isInteger(graph.revision) || graph.revision < 0) {
     throw new TypeError('Trial requires a contract-shaped graph with project_id and revision.');
   }
@@ -358,6 +363,16 @@ function applyParameters(graph, combination) {
     if (!node) throw new TypeError(`Sweep parameter refers to unknown node '${nodeId}'.`);
     node.properties = { ...(node.properties ?? {}), ...properties };
   }
+}
+
+/**
+ * The project id a run is scoped to.
+ *
+ * A v3 graph carries it as id; older callers pass it as project_id. Both are accepted because
+ * contracts/graph.schema.json rejects an unknown graph property, so the id has exactly one legal home.
+ */
+function projectIdOf(graph) {
+  return graph?.project_id ?? graph?.id;
 }
 
 function isCancelled(services) {

@@ -21,6 +21,35 @@ COMMON_ERRORS = [
 REVISION_ERROR = {"code": "REVISION_STALE", "retryable": False,
                   "when": "expected_revision does not match the current project revision"}
 
+# The graph shapes a mutation carries. Loose on purpose: the authoritative rules live in
+# packages/core/graph/store.mjs and a violation there names the offending node or port, which
+# is a far better error than a schema rejection that only knows the field names.
+_NODE_OBJECT = {
+    "type": "object",
+    "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "kind": {"type": "string", "minLength": 1,
+                 "description": "A kind id from contracts/kinds.json."},
+        "parent": {"type": "string"},
+        "properties": {"type": "object"},
+    },
+    "required": ["id", "kind"],
+    "additionalProperties": True,
+}
+
+_EDGE_OBJECT = {
+    "type": "object",
+    "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "kind": {"type": "string", "minLength": 1,
+                 "description": "A port type id from contracts/port-types.json."},
+        "from": {"type": "object"},
+        "to": {"type": "object"},
+    },
+    "required": ["from", "to"],
+    "additionalProperties": True,
+}
+
 
 def errors_for(name: str) -> list:
     if name == "compile_firmware":
@@ -132,6 +161,62 @@ def build_tool_contracts() -> list:
         ("room.list", "List the stations available in the room.", False),
         ("session.create", "Create an agent session bound to one project.", False),
     ]
+    # The graph mutation tools declare their arguments. They did not until v09, and the
+    # orchestrator needs them: invariant I1 says every state change goes through the tool bus,
+    # and a tool that accepts no arguments cannot be the path for anything. `expected_revision`
+    # is REQUIRED on every mutating call (invariant I2), so the revision argument is part of
+    # the shape rather than an optional convenience.
+    graph_args = {
+        "node.add": {
+            "type": "object",
+            "properties": {
+                "node": _NODE_OBJECT,
+                "expected_revision": {"type": "integer", "minimum": 0,
+                                      "description": "The revision this call expects. A stale "
+                                                     "revision is rejected with REVISION_STALE."},
+            },
+            "required": ["node", "expected_revision"],
+            "additionalProperties": False,
+        },
+        "node.modify": {
+            "type": "object",
+            "properties": {
+                "node_id": {"type": "string", "minLength": 1},
+                "patch": {"type": "object"},
+                "expected_revision": {"type": "integer", "minimum": 0},
+            },
+            "required": ["node_id", "patch", "expected_revision"],
+            "additionalProperties": False,
+        },
+        "edge.connect": {
+            "type": "object",
+            "properties": {
+                "edge": _EDGE_OBJECT,
+                "expected_revision": {"type": "integer", "minimum": 0},
+            },
+            "required": ["edge", "expected_revision"],
+            "additionalProperties": False,
+        },
+        "node.remove": {
+            "type": "object",
+            "properties": {
+                "node_id": {"type": "string", "minLength": 1},
+                "expected_revision": {"type": "integer", "minimum": 0},
+            },
+            "required": ["node_id", "expected_revision"],
+            "additionalProperties": False,
+        },
+        "edge.remove": {
+            "type": "object",
+            "properties": {
+                "edge_id": {"type": "string", "minLength": 1},
+                "expected_revision": {"type": "integer", "minimum": 0},
+            },
+            "required": ["edge_id", "expected_revision"],
+            "additionalProperties": False,
+        },
+    }
+
     for name, summary, mutating in future:
         # Every mutating tool declares revision conflict, per invariant I2. The checker
         # enforces this: a mutation whose contract omits it would be a silent-overwrite hole.
@@ -143,7 +228,8 @@ def build_tool_contracts() -> list:
             "summary": summary,
             "mutating": mutating,
             "requires_review": False,
-            "args": {"type": "object", "properties": {}, "additionalProperties": False},
+            "args": graph_args.get(
+                name, {"type": "object", "properties": {}, "additionalProperties": False}),
             "result": {"type": "object"},
             "errors": errors,
             "see_also": [],

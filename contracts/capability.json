@@ -1,9 +1,39 @@
 {
   "environments": [],
-  "generated_at": "sha256:3d90517862a83809486fe6931c5a278102c07675378adf564972472188d1f5b1",
+  "generated_at": "sha256:df6655603ea7c04cd837cdb927689857812ad620394d0595949442930237e108",
   "generator_status": "generated",
   "generator_version": 3,
   "kinds": [
+    {
+      "id": "actuator.force",
+      "exists": true,
+      "solver": "mechanics",
+      "simulated": true,
+      "confidence": "partial",
+      "exercised_by_cases": [
+        "mechanics/coupling"
+      ]
+    },
+    {
+      "id": "actuator.servo",
+      "exists": true,
+      "solver": "mechanics",
+      "simulated": true,
+      "confidence": "partial",
+      "exercised_by_cases": []
+    },
+    {
+      "id": "actuator.thruster",
+      "exists": true,
+      "solver": "mechanics",
+      "simulated": true,
+      "confidence": "partial",
+      "exercised_by_cases": [
+        "mechanics/boat-speed",
+        "mechanics/boat-speed",
+        "mechanics/determinism"
+      ]
+    },
     {
       "id": "board.arduino-mega",
       "exists": true,
@@ -147,6 +177,43 @@
       "simulated": false,
       "confidence": "experimental",
       "exercised_by_cases": []
+    },
+    {
+      "id": "env.airspace",
+      "exists": true,
+      "solver": "environment",
+      "simulated": true,
+      "confidence": "partial",
+      "exercised_by_cases": [
+        "environment/recorded-weather",
+        "mechanics/determinism",
+        "mechanics/drone-hover"
+      ]
+    },
+    {
+      "id": "env.ground",
+      "exists": true,
+      "solver": "environment",
+      "simulated": true,
+      "confidence": "partial",
+      "exercised_by_cases": [
+        "mechanics/drone-hover"
+      ]
+    },
+    {
+      "id": "env.water_body",
+      "exists": true,
+      "solver": "environment",
+      "simulated": true,
+      "confidence": "partial",
+      "exercised_by_cases": [
+        "environment/recorded-weather",
+        "mechanics/boat-speed",
+        "mechanics/buoyancy",
+        "mechanics/coupling",
+        "mechanics/determinism",
+        "mechanics/terminal-velocity"
+      ]
     },
     {
       "id": "input.analog-joystick",
@@ -667,6 +734,121 @@
       "simulated": true,
       "confidence": "partial",
       "exercised_by_cases": []
+    },
+    {
+      "id": "mech.airframe",
+      "exists": true,
+      "solver": "mechanics",
+      "simulated": true,
+      "confidence": "partial",
+      "exercised_by_cases": [
+        "mechanics/drone-hover"
+      ]
+    },
+    {
+      "id": "mech.barometer",
+      "exists": true,
+      "solver": "mechanics",
+      "simulated": true,
+      "confidence": "partial",
+      "exercised_by_cases": [
+        "mechanics/coupling",
+        "mechanics/determinism"
+      ]
+    },
+    {
+      "id": "mech.body",
+      "exists": true,
+      "solver": "mechanics",
+      "simulated": true,
+      "confidence": "partial",
+      "exercised_by_cases": [
+        "mechanics/terminal-velocity"
+      ]
+    },
+    {
+      "id": "mech.compass",
+      "exists": true,
+      "solver": "mechanics",
+      "simulated": true,
+      "confidence": "partial",
+      "exercised_by_cases": []
+    },
+    {
+      "id": "mech.control_law",
+      "exists": true,
+      "solver": "mechanics",
+      "simulated": true,
+      "confidence": "partial",
+      "exercised_by_cases": [
+        "mechanics/coupling",
+        "mechanics/drone-hover"
+      ]
+    },
+    {
+      "id": "mech.depth_sensor",
+      "exists": true,
+      "solver": "mechanics",
+      "simulated": true,
+      "confidence": "partial",
+      "exercised_by_cases": [
+        "mechanics/coupling",
+        "mechanics/drone-hover"
+      ]
+    },
+    {
+      "id": "mech.float",
+      "exists": true,
+      "solver": "mechanics",
+      "simulated": true,
+      "confidence": "partial",
+      "exercised_by_cases": [
+        "mechanics/buoyancy"
+      ]
+    },
+    {
+      "id": "mech.hull",
+      "exists": true,
+      "solver": "mechanics",
+      "simulated": true,
+      "confidence": "partial",
+      "exercised_by_cases": [
+        "mechanics/boat-speed",
+        "mechanics/coupling",
+        "mechanics/determinism"
+      ]
+    },
+    {
+      "id": "mech.imu",
+      "exists": true,
+      "solver": "mechanics",
+      "simulated": true,
+      "confidence": "partial",
+      "exercised_by_cases": []
+    },
+    {
+      "id": "mech.pwm_source",
+      "exists": true,
+      "solver": "mechanics",
+      "simulated": true,
+      "confidence": "partial",
+      "exercised_by_cases": [
+        "mechanics/boat-speed",
+        "mechanics/determinism"
+      ]
+    },
+    {
+      "id": "mech.rotor",
+      "exists": true,
+      "solver": "mechanics",
+      "simulated": true,
+      "confidence": "partial",
+      "exercised_by_cases": [
+        "mechanics/drone-hover",
+        "mechanics/drone-hover",
+        "mechanics/drone-hover",
+        "mechanics/drone-hover"
+      ]
     },
     {
       "id": "output.7segment",
@@ -1309,6 +1491,44 @@
       "exercised_by_cases": []
     },
     {
+      "id": "software.computer",
+      "exists": true,
+      "solver": "software",
+      "simulated": true,
+      "confidence": "partial",
+      "exercised_by_cases": [
+        "software/dom-assert",
+        "software/escape",
+        "software/hello-app",
+        "software/limit",
+        "software/script"
+      ]
+    },
+    {
+      "id": "software.script",
+      "exists": true,
+      "solver": "software",
+      "simulated": true,
+      "confidence": "partial",
+      "exercised_by_cases": [
+        "software/script"
+      ]
+    },
+    {
+      "id": "software.web_app",
+      "exists": true,
+      "solver": "software",
+      "simulated": true,
+      "confidence": "partial",
+      "exercised_by_cases": [
+        "software/dom-assert",
+        "software/escape",
+        "software/hello-app",
+        "software/limit",
+        "software/script"
+      ]
+    },
+    {
       "id": "source.signal-generator",
       "exists": true,
       "solver": null,
@@ -1326,13 +1546,19 @@
     }
   ],
   "limits": {
-    "max_nodes": 512,
+    "max_nodes": 64,
     "max_sim_seconds": 300,
-    "max_substeps": 200000,
+    "max_substeps": 64,
     "max_payload_bytes": 200000
   },
   "telemetry_channels": [],
   "unsupported": [
+    {
+      "feature": "Documented component limitation: Servo (servo)",
+      "kind": "actuator.servo",
+      "reason": "The historical inventory lists 'servo', but that limitation does not apply to its currently verified scopes; other combinations remain unverified.",
+      "required_to_support": "Additional verified runtime fixtures for 'servo' on any board/peripheral combinations beyond its current tested scope."
+    },
     {
       "feature": "Documented component limitation: ESP32-C3 DevKitM-1 (esp32-c3)",
       "kind": "board.esp32-c3",
@@ -1518,6 +1744,42 @@
       "kind": "electromech.stepper-motor",
       "reason": "No registered solver claims this kind.",
       "required_to_support": "Register a solver with a passing prepare self-test and verified test coverage for 'electromech.stepper-motor'."
+    },
+    {
+      "feature": "fetched weather at all, without configuration",
+      "kind": "env.airspace",
+      "reason": "This solver refuses every weather request that is not the bundled recorded dataset or an explicitly allowlisted live host.",
+      "required_to_support": "An explicit enable_live_weather setting together with a host allowlist."
+    },
+    {
+      "feature": "live weather by default",
+      "kind": "env.airspace",
+      "reason": "Live weather is disabled. The recorded dataset is the only source used unless a reviewed allowlist is configured.",
+      "required_to_support": "A licensed, attributed upstream host added to an explicit allowlist, with its terms recorded."
+    },
+    {
+      "feature": "Documented component limitation: SPICE Ground (ground)",
+      "kind": "env.ground",
+      "reason": "The historical inventory lists 'ground', but that limitation does not apply to its currently verified scopes; other combinations remain unverified.",
+      "required_to_support": "Additional verified runtime fixtures for 'ground' on any board/peripheral combinations beyond its current tested scope."
+    },
+    {
+      "feature": "terrain elevation data",
+      "kind": "env.ground",
+      "reason": "Ground is a declared height, friction and restitution. No DEM, no terrain profile.",
+      "required_to_support": "A sourced elevation model with a stated resolution and licence."
+    },
+    {
+      "feature": "breaking waves and run-up",
+      "kind": "env.water_body",
+      "reason": "The surface is a sum of declared sinusoids or flat. No shoaling, breaking, run-up or overtopping.",
+      "required_to_support": "A free-surface solver validated against a wave basin."
+    },
+    {
+      "feature": "ocean current fields",
+      "kind": "env.water_body",
+      "reason": "Water bodies declare a single uniform flow vector. No tidal, geostrophic or eddy fields.",
+      "required_to_support": "A current field model (tidal harmonic or regional ocean model) with cited data."
     },
     {
       "feature": "Documented component limitation: Analog Joystick (analog-joystick)",
@@ -2204,16 +2466,52 @@
       "required_to_support": "Additional verified runtime fixtures for 'zener-1n4733' on any board/peripheral combinations beyond its current tested scope."
     },
     {
+      "feature": "a hull is less than one sample-point spacing above the keel",
+      "kind": null,
+      "reason": "The buoyancy integral is quantised by the declared sample count; increase `samples`.",
+      "required_to_support": "Resolve and verify failure SHALLOW_DRAFT_DISCRETISATION."
+    },
+    {
+      "feature": "a web app renders its content with client-side JavaScript",
+      "kind": null,
+      "reason": "Probes see the served markup, not a rendered DOM. Such an app is unverifiable here, not broken.",
+      "required_to_support": "Resolve and verify failure STATIC_DOM_ONLY."
+    },
+    {
       "feature": "ac sweep",
       "kind": null,
       "reason": "The analog engine supports DC operating point and transient analysis only.",
       "required_to_support": "ngspice AC sweep implementation"
     },
     {
+      "feature": "altitude above 11 km",
+      "kind": null,
+      "reason": "The ISA troposphere is refused rather than extrapolated.",
+      "required_to_support": "Resolve and verify failure STD_ATMOSPHERE_ABOVE_TROPOSPHERE."
+    },
+    {
+      "feature": "cavitation",
+      "kind": null,
+      "reason": "Propeller cavitation, shaft and thruster erosion are not modelled.",
+      "required_to_support": "Cavitation inception modelling validated against cavitation tunnel data."
+    },
+    {
+      "feature": "compiled firmware execution",
+      "kind": null,
+      "reason": "Actuator commands come from declared control laws and open-loop PWM sources, not from compiled MCU firmware.",
+      "required_to_support": "A sandboxed headless runtime worker with an enforced network boundary (blocked in v07)."
+    },
+    {
       "feature": "Compiler isolation",
       "kind": null,
       "reason": "Native compilation is not sandboxed.",
       "required_to_support": "Process-isolated compilation with resource and filesystem limits."
+    },
+    {
+      "feature": "computational fluid dynamics",
+      "kind": null,
+      "reason": "No CFD. Free-surface VOF, spray, breaking waves and boundary layers are not modelled.",
+      "required_to_support": "A validated CFD solver plus a convergence study against measured hull resistance."
     },
     {
       "feature": "Distribution licensing",
@@ -2258,18 +2556,6 @@
       "required_to_support": "Verified runtime fixtures for 'source-sine-voltage' on the intended board and wiring."
     },
     {
-      "feature": "Documented component limitation: SPICE Ground (ground)",
-      "kind": null,
-      "reason": "The component availability document lists 'ground' outside any explicitly verified board/peripheral scope.",
-      "required_to_support": "Verified runtime fixtures for 'ground' on the intended board and wiring."
-    },
-    {
-      "feature": "environment simulation",
-      "kind": null,
-      "reason": "No verified environment solver is registered.",
-      "required_to_support": "A verified environmental solver with measured-quality outputs."
-    },
-    {
       "feature": "ESP32-C3 execution using the vendor RiscVCore adapter.",
       "kind": null,
       "reason": "Vendor RiscVCore adapter fails at PC 0x514c26 after 2,666,667 cycles.",
@@ -2282,22 +2568,40 @@
       "required_to_support": "A verified mechanics solver with motor, drivetrain, contact, and vehicle telemetry models."
     },
     {
+      "feature": "ground effect",
+      "kind": null,
+      "reason": "Rotor thrust uses the free-air disc model at every altitude; proximity to a surface is ignored.",
+      "required_to_support": "A ground-effect model validated against rotor stand measurements."
+    },
+    {
       "feature": "Headless simulation",
       "kind": null,
       "reason": "Simulation currently depends on the connected browser runtime.",
       "required_to_support": "A headless runtime worker with equivalent emulator behavior and verified deterministic fixtures."
     },
     {
-      "feature": "mechanics simulation",
+      "feature": "heave added-mass coefficient exceeds 1.0",
       "kind": null,
-      "reason": "No verified mechanics solver is registered.",
-      "required_to_support": "A deterministic, verified mechanics solver and actuator coupling."
+      "reason": "Linear heave added mass is only credible below Ca 1.0; above that the hull is not slender.",
+      "required_to_support": "Resolve and verify failure PISTON_ADDED_MASS."
+    },
+    {
+      "feature": "hull speed crosses the declared planing threshold",
+      "kind": null,
+      "reason": "Drag multiplier steps at Fn 0.4. Results within 5% of the threshold are not converged.",
+      "required_to_support": "Resolve and verify failure FRONDE_STEP_DISCONTINUITY."
     },
     {
       "feature": "Mechanics, environment, and software domains",
       "kind": null,
       "reason": "No verified solvers are registered for these domains.",
       "required_to_support": "The mechanics, environment, and sandboxed software solver phases."
+    },
+    {
+      "feature": "multi-hull hydrodynamics",
+      "kind": null,
+      "reason": "One body couples to one fluid at a time. Formation, interaction and wake are not modelled.",
+      "required_to_support": "A free-surface solver supporting multiple simultaneous hulls."
     },
     {
       "feature": "noise analysis",
@@ -2312,6 +2616,12 @@
       "required_to_support": "Resolve and verify failure PICO_W_CYW43_UNSUPPORTED."
     },
     {
+      "feature": "planing regime continuity",
+      "kind": null,
+      "reason": "The Froude switch at Fn 0.4 is a declared STEP in the drag multiplier, not a smooth blend.",
+      "required_to_support": "A resistance curve validated across the hull-speed range; the step is a placeholder."
+    },
+    {
       "feature": "Project authentication",
       "kind": null,
       "reason": "Shared-token reference authorization is not per-user identity or project authorization.",
@@ -2324,16 +2634,28 @@
       "required_to_support": "Keep the release blockers represented by a solver failure or static unsupported entry."
     },
     {
-      "feature": "software simulation",
+      "feature": "rotor inflow and rotational flow",
       "kind": null,
-      "reason": "No verified sandboxed software solver is registered.",
-      "required_to_support": "A sandboxed, resource-limited website runtime and verified device bridge."
+      "reason": "Rotors do not disturb each other and there is no blade-element inflow.",
+      "required_to_support": "A blade-element or vortex lattice model validated against rotor test data."
+    },
+    {
+      "feature": "structural deformation",
+      "kind": null,
+      "reason": "Bodies are rigid. No bending, no compliance, no fracture, no slamming loads.",
+      "required_to_support": "A structural solver coupled to the rigid-body state."
     },
     {
       "feature": "temperature sweep",
       "kind": null,
       "reason": "Temperature sweeps are not implemented.",
       "required_to_support": "ngspice temperature sweep implementation and verified fixtures"
+    },
+    {
+      "feature": "wave model",
+      "kind": null,
+      "reason": "The seeded wave model is a sum of declared sinusoids, not a JONSWAP or Pierson-Moskowitz spectrum.",
+      "required_to_support": "A spectrum model with a declared directional spread, validated against a wave tank."
     },
     {
       "feature": "Website-to-device runtime",
@@ -2900,16 +3222,52 @@
       "required_to_support": "Additional verified runtime fixtures for 'pir-motion-sensor' on any board/peripheral combinations beyond its current tested scope."
     },
     {
-      "feature": "Documented component limitation: Servo (servo)",
-      "kind": "sensor.servo",
-      "reason": "The historical inventory lists 'servo', but that limitation does not apply to its currently verified scopes; other combinations remain unverified.",
-      "required_to_support": "Additional verified runtime fixtures for 'servo' on any board/peripheral combinations beyond its current tested scope."
-    },
-    {
       "feature": "Documented component limitation: Small Sound Sensor (small-sound-sensor)",
       "kind": "sensor.small-sound-sensor",
       "reason": "The historical inventory lists 'small-sound-sensor', but that limitation does not apply to its currently verified scopes; other combinations remain unverified.",
       "required_to_support": "Additional verified runtime fixtures for 'small-sound-sensor' on any board/peripheral combinations beyond its current tested scope."
+    },
+    {
+      "feature": "device bridge to a live microcontroller",
+      "kind": "software.computer",
+      "reason": "The serial/USB/Wi-Fi device bridge needs a running MCU session. No headless runtime worker exists (v07 blocker), so the bridge refuses.",
+      "required_to_support": "A sandboxed headless runtime worker with an enforced network boundary."
+    },
+    {
+      "feature": "persistent storage across runs",
+      "kind": "software.computer",
+      "reason": "A run keeps only its telemetry recording. Nothing persists beyond the recording.",
+      "required_to_support": "A declared, inspectable persistence layer with a migration and retention policy."
+    },
+    {
+      "feature": "agent-authored script execution",
+      "kind": "software.script",
+      "reason": "A script child process has no enforced network boundary on this platform, so arbitrary agent-authored code is refused rather than sandboxed.",
+      "required_to_support": "An OS-enforced network namespace or seccomp filter for worker processes (blocked in v07)."
+    },
+    {
+      "feature": "dependency installation",
+      "kind": "software.script",
+      "reason": "An agent cannot cause a package install. There is no vendored wheel set and no installer.",
+      "required_to_support": "A hash-pinned, reviewed vendor directory plus an audited resolver."
+    },
+    {
+      "feature": "native compilation",
+      "kind": "software.script",
+      "reason": "Nothing is compiled or built inside the sandbox.",
+      "required_to_support": "A hermetic build toolchain with no network access."
+    },
+    {
+      "feature": "client-side JavaScript execution in a web app",
+      "kind": "software.web_app",
+      "reason": "No script engine runs inside the sandbox. Probes read the served markup as data; behaviour that only appears after a script runs is not observable.",
+      "required_to_support": "A headless browser renderer running under the same confinement, or an OS-enforced network namespace for the renderer process."
+    },
+    {
+      "feature": "screenshots and rendered previews",
+      "kind": "software.web_app",
+      "reason": "A screenshot needs a renderer that executes the page. The renderer is unavailable, so no screenshot artifact is produced.",
+      "required_to_support": "A confined headless renderer; see the client-side JavaScript entry above."
     },
     {
       "feature": "Documented component limitation: Signal Generator (signal-generator)",

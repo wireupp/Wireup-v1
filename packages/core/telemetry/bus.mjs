@@ -185,45 +185,45 @@ function matchesFilter(sample, filter) {
     && (filter.sinceSeq === undefined || sample.seq >= filter.sinceSeq);
 }
 
+function validateQuery(query) {
+  if (!query || typeof query.projectId !== 'string' || !/^[a-f0-9]{32}$/.test(query.projectId)) {
+    throw new TypeError('Telemetry query requires a 32-character lowercase hexadecimal projectId.');
+  }
+  if (query.trialId !== undefined && query.trialId !== null && typeof query.trialId !== 'string') {
+    throw new TypeError('Telemetry query trialId must be a string or null.');
+  }
+  for (const key of ['channels', 'nodes']) {
+    if (query[key] !== undefined
+        && (!Array.isArray(query[key]) || query[key].some((value) => typeof value !== 'string'))) {
+      throw new TypeError(`Telemetry query ${key} must be an array of strings.`);
+    }
+  }
+  for (const key of ['tFrom', 'tTo']) {
+    if (query[key] !== undefined && (!Number.isFinite(query[key]) || query[key] < 0)) {
+      throw new TypeError(`Telemetry query ${key} must be a non-negative finite number.`);
+    }
+  }
+  if (query.tFrom !== undefined && query.tTo !== undefined && query.tFrom > query.tTo) {
+    throw new RangeError('Telemetry query tFrom cannot exceed tTo.');
+  }
+  if (query.maxSamples !== undefined
+      && (!Number.isInteger(query.maxSamples) || query.maxSamples < 1)) {
+    throw new RangeError('Telemetry query maxSamples must be a positive integer.');
+  }
+  if (query.sinceSeq !== undefined && (!Number.isInteger(query.sinceSeq) || query.sinceSeq < 0)) {
+    throw new RangeError('Telemetry query sinceSeq must be a non-negative integer.');
+  }
+  if (query.downsample !== undefined && !['none', 'minmax', 'mean'].includes(query.downsample)) {
+    throw new TypeError(`Unknown telemetry downsample mode '${query.downsample}'.`);
+  }
+}
+
 function downsample(samples, maxSamples, mode) {
   if (!['none', 'minmax', 'mean'].includes(mode)) throw new TypeError(`Unknown telemetry downsample mode '${mode}'.`);
   if (maxSamples === undefined || samples.length <= maxSamples) return samples;
   if (mode === 'none') return samples.slice(-maxSamples);
   if (!samples.every((sample) => typeof sample.value === 'number' && Number.isFinite(sample.value))) {
     return samples.slice(-maxSamples);
-  }
-
-  function validateQuery(query) {
-    if (!query || typeof query.projectId !== 'string' || !/^[a-f0-9]{32}$/.test(query.projectId)) {
-      throw new TypeError('Telemetry query requires a 32-character lowercase hexadecimal projectId.');
-    }
-    if (query.trialId !== undefined && query.trialId !== null && typeof query.trialId !== 'string') {
-      throw new TypeError('Telemetry query trialId must be a string or null.');
-    }
-    for (const key of ['channels', 'nodes']) {
-      if (query[key] !== undefined
-          && (!Array.isArray(query[key]) || query[key].some((value) => typeof value !== 'string'))) {
-        throw new TypeError(`Telemetry query ${key} must be an array of strings.`);
-      }
-    }
-    for (const key of ['tFrom', 'tTo']) {
-      if (query[key] !== undefined && (!Number.isFinite(query[key]) || query[key] < 0)) {
-        throw new TypeError(`Telemetry query ${key} must be a non-negative finite number.`);
-      }
-    }
-    if (query.tFrom !== undefined && query.tTo !== undefined && query.tFrom > query.tTo) {
-      throw new RangeError('Telemetry query tFrom cannot exceed tTo.');
-    }
-    if (query.maxSamples !== undefined
-        && (!Number.isInteger(query.maxSamples) || query.maxSamples < 1)) {
-      throw new RangeError('Telemetry query maxSamples must be a positive integer.');
-    }
-    if (query.sinceSeq !== undefined && (!Number.isInteger(query.sinceSeq) || query.sinceSeq < 0)) {
-      throw new RangeError('Telemetry query sinceSeq must be a non-negative integer.');
-    }
-    if (query.downsample !== undefined && !['none', 'minmax', 'mean'].includes(query.downsample)) {
-      throw new TypeError(`Unknown telemetry downsample mode '${query.downsample}'.`);
-    }
   }
   const result = [];
   if (maxSamples === 1) return [samples.at(-1)];

@@ -1,7 +1,20 @@
 {
   "args": {
     "additionalProperties": false,
-    "properties": {},
+    "properties": {
+      "expected_revision": {
+        "minimum": 0,
+        "type": "integer"
+      },
+      "node_id": {
+        "minLength": 1,
+        "type": "string"
+      }
+    },
+    "required": [
+      "node_id",
+      "expected_revision"
+    ],
     "type": "object"
   },
   "errors": [

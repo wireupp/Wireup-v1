@@ -1,0 +1,1 @@
+{"id":"software/limit","domain":"software","title":"Resource limits are reported as SANDBOX_LIMIT_EXCEEDED, not as a hang","tags":["software","sandbox","limits"],"spec":"spec.md","assertions":"assertions.json","project":"project.json"}

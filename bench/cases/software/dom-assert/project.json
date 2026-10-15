@@ -1,0 +1,49 @@
+{
+  "schema_version": 3,
+  "id": "b000000000000000000000000000009",
+  "project_id": "99999999999999999999999999999999",
+  "domain": "software",
+  "revision": 0,
+  "created_at": "2026-01-01T00:00:00Z",
+  "updated_at": "2026-01-01T00:00:00Z",
+  "nodes": [
+    {
+      "id": "software_computer_1",
+      "kind": "software.computer",
+      "properties": {
+        "memory_mb": 8192,
+        "cores": 4,
+        "os": "linux",
+        "network": { "allowlist": [], "deny_internet": true }
+      }
+    },
+    {
+      "id": "software_web_app_1",
+      "kind": "software.web_app",
+      "parent": "software_computer_1",
+      "properties": {
+        "entry": "index.html",
+        "framework": "vanilla",
+        "files": {
+          "index.html": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>WireUp Bench (draft)</title>\n<link rel=\"stylesheet\" href=\"style.css\">\n</head>\n<body>\n<main id=\"readout\">\n<h1>WireUp bench (draft)</h1>\n<p id=\"status\">warming up</p>\n<ul class=\"telemetry\">\n<li data-channel=\"hull.speed_surge_mps\">1.200 m/s</li>\n<li data-channel=\"hull.draft_m\">0.072 m</li>\n</ul>\n</main>\n</body>\n</html>\n",
+          "style.css": "body { font-family: system-ui, sans-serif; }\n#status { color: rgb(0, 128, 0); }\n"
+        },
+        "dom_operations": [
+          { "id": "title", "op": "title", "expression": "value", "expect": { "op": "eq", "value": "WireUp Bench" } },
+          { "id": "status-exists", "op": "exists", "selector": "#status", "expression": "value", "expect": { "op": "eq", "value": true } },
+          { "id": "status-text", "op": "text", "selector": "#status", "expression": "value", "expect": { "op": "eq", "value": "ready" } },
+          { "id": "telemetry-count", "op": "count", "selector": "li", "expression": "value", "expect": { "op": "eq", "value": 2 } },
+          { "id": "status-attr", "op": "attr", "selector": "#status", "attribute": "id", "expression": "value", "expect": { "op": "eq", "value": "status" } }
+        ]
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "wire_apps_1",
+      "kind": "data.stream",
+      "from": { "node": "software_web_app_1", "port": "asset" },
+      "to": { "node": "software_computer_1", "port": "apps" }
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "id": "software/hello-app",
+  "domain": "software",
+  "title": "A web app is served from a loopback sandbox under a strict CSP and probed by DOM assertion",
+  "tags": ["software", "sandbox", "web", "csp", "probes"],
+  "spec": "spec.md",
+  "assertions": "assertions.json",
+  "project": "project.json"
+}

@@ -1,0 +1,9 @@
+{
+  "id": "mechanics/determinism",
+  "domain": "mechanics",
+  "title": "Ten identical-seed mechanics runs produce byte-identical telemetry",
+  "tags": ["mechanics", "determinism", "invariant-i9"],
+  "spec": "spec.md",
+  "assertions": "assertions.json",
+  "project": "project.json"
+}

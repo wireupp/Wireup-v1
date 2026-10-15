@@ -101,6 +101,150 @@
         "analog.branch_current"
       ],
       "solver": "telemetry"
+    },
+    {
+      "channel": "body.speed_mps",
+      "confidence": "exact",
+      "formula": "sqrt(vx^2 + vy^2 + vz^2)",
+      "inputs": [
+        "body.velocity.x",
+        "body.velocity.y",
+        "body.velocity.z"
+      ],
+      "note": "Euclidean norm of the integrated body velocity.",
+      "solver": "mechanics"
+    },
+    {
+      "channel": "hull.displaced_m3",
+      "confidence": "approximate",
+      "formula": "sum(volume_i for sample points with world_z < surface_z)",
+      "inputs": [
+        "body.position.z",
+        "env.water_density_kg_m3"
+      ],
+      "note": "Quantised by the declared sample grid. Increase `samples` to converge.",
+      "solver": "mechanics"
+    },
+    {
+      "channel": "hull.drag_force_n",
+      "confidence": "approximate",
+      "formula": "0.5 * rho * Cd_i * A_i * |v_i| * v_i per body axis",
+      "inputs": [
+        "body.velocity.x",
+        "env.water_density_kg_m3"
+      ],
+      "note": "Cd and reference area are DECLARED per hull, never measured. A declared planing multiplier multiplies the result above the Froude threshold.",
+      "solver": "mechanics"
+    },
+    {
+      "channel": "hull.froude",
+      "confidence": "approximate",
+      "formula": "v_surge / sqrt(g * L)",
+      "inputs": [
+        "hull.speed_surge_mps"
+      ],
+      "note": "L is the declared waterline length. The drag multiplier is a declared STEP at this number, not a smooth blend.",
+      "solver": "mechanics"
+    },
+    {
+      "channel": "hull.gm_m",
+      "confidence": "approximate",
+      "formula": "KB + BM - KG with BM = I_waterplane / V_displaced",
+      "inputs": [
+        "hull.displaced_m3"
+      ],
+      "note": "Computed from the declared rectangular waterplane, once, at build time. A negative GM is reported as a warning and never suppressed.",
+      "solver": "mechanics"
+    },
+    {
+      "channel": "hull.added_mass_ratio",
+      "confidence": "approximate",
+      "formula": "declared Ca on the surge axis",
+      "inputs": [],
+      "note": "A declared coefficient, not a fitted one. Linear added mass is credible below Ca = 1.0 only.",
+      "solver": "mechanics"
+    },
+    {
+      "channel": "thruster.thrust_n",
+      "confidence": "exact",
+      "formula": "gain * shaped((signal - deadband) / (1 - deadband)), clamped at saturation",
+      "inputs": [
+        "actuator.signal"
+      ],
+      "note": "The declared transfer function. Exact given the declared curve, gain and deadband; the physical truth of those declarations is a separate question.",
+      "solver": "mechanics"
+    },
+    {
+      "channel": "actuator.torque_nm",
+      "confidence": "exact",
+      "formula": "same transfer function, torque units",
+      "inputs": [
+        "actuator.signal"
+      ],
+      "note": "Bidirectional actuators centre the signal at 0.5.",
+      "solver": "mechanics"
+    },
+    {
+      "channel": "rotor.thrust_n",
+      "confidence": "approximate",
+      "formula": "Ct * rho_air * A_blade * v_tip^2, v_tip = omega * R",
+      "inputs": [
+        "rotor.rpm",
+        "env.air_density_kg_m3"
+      ],
+      "note": "Free-air disc model. Ct and blade area are declared. Ground effect and rotor-rotor interaction are declared unavailable.",
+      "solver": "mechanics"
+    },
+    {
+      "channel": "airframe.drag_n",
+      "confidence": "approximate",
+      "formula": "|0.5 * rho_air * Cd * A * |v - v_wind| * (v - v_wind)|",
+      "inputs": [
+        "body.velocity.x",
+        "env.wind_speed_mps"
+      ],
+      "note": "Cd and reference area are declared. The force the airframe must fight to hold station in a wind; this model has no attitude or position controller, so it is NOT a prediction of how much extra hover thrust a real drone needs.",
+      "solver": "mechanics"
+    },
+    {
+      "channel": "env.air_density_kg_m3",
+      "confidence": "exact",
+      "formula": "p / (R * T) from the ISA troposphere",
+      "inputs": [
+        "env.air_temperature_c"
+      ],
+      "note": "Exact within the ISA troposphere by definition. It is the reference the recorded readings are compared against, not the real atmosphere.",
+      "solver": "environment"
+    },
+    {
+      "channel": "web.load_ms",
+      "confidence": "exact",
+      "formula": "elapsed wall clock of the loopback fetch",
+      "inputs": [],
+      "note": "A local loopback fetch. NOT a real page-load metric: no browser renders the page, so this measures the supervisor, not a user's experience.",
+      "solver": "software"
+    },
+    {
+      "channel": "web.http_status",
+      "confidence": "exact",
+      "formula": "HTTP status of the loopback fetch",
+      "inputs": [],
+      "solver": "software"
+    },
+    {
+      "channel": "web.document_bytes",
+      "confidence": "exact",
+      "formula": "byte length of the served document",
+      "inputs": [],
+      "solver": "software"
+    },
+    {
+      "channel": "script.probe_value",
+      "confidence": "exact",
+      "formula": "the declared DOM operation's result",
+      "inputs": [],
+      "note": "A named operation over the served markup (exists, count, text, attr, value, has_class, title). Client-side JavaScript does not run, so this is the document, never a rendered DOM.",
+      "solver": "software"
     }
   ],
   "description": "How each derived channel is computed. A telemetry sample with quality='derived' MUST name an entry here, or the recorder rejects it. This is invariant I5 expressed as data.",

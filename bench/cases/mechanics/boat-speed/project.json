@@ -1,0 +1,95 @@
+{
+  "schema_version": 3,
+  "id": "b000000000000000000000000000003",
+  "project_id": "33333333333333333333333333333333",
+  "domain": "mechanics",
+  "revision": 0,
+  "created_at": "2026-01-01T00:00:00Z",
+  "updated_at": "2026-01-01T00:00:00Z",
+  "nodes": [
+    {
+      "id": "env_water_body_1",
+      "kind": "env.water_body",
+      "properties": {
+        "surface_z": 0.0,
+        "density": 1000.0,
+        "wave_model": "flat",
+        "flow": { "x": 0.0, "y": 0.0, "z": 0.0 }
+      }
+    },
+    {
+      "id": "mech_hull_1",
+      "kind": "mech.hull",
+      "properties": {
+        "mass_kg": 12.0,
+        "volume": 0.02,
+        "length": 0.9,
+        "beam": 0.24,
+        "draft": 0.12,
+        "samples": [2, 2, 32],
+        "cd_surge": 0.006,
+        "cd_sway": 0.45,
+        "cd_heave": 0.9,
+        "cd_area_surge_m2": 0.216,
+        "cd_area_sway_m2": 1.08,
+        "cd_area_heave_m2": 1.08,
+        "waterline_length_m": 0.9,
+        "planing_threshold": 0.6,
+        "planing_drag_factor": 1.35,
+        "heave_damping": 40.0,
+        "added_mass": { "x": 0.1, "y": 0.8, "z": 1.0 },
+        "linear_damping": 0.0,
+        "duration_s": 120.0,
+        "sample_rate_hz": 10.0,
+        "position": { "x": 0.0, "y": 0.0, "z": -0.03 }
+      }
+    },
+    {
+      "id": "mech_pwm_source_1",
+      "kind": "mech.pwm_source",
+      "properties": { "duty": 0.087, "channel": "esc.pwm" }
+    },
+    {
+      "id": "actuator_thruster_1",
+      "kind": "actuator.thruster",
+      "properties": {
+        "target_node": "mech_hull_1",
+        "channel": "esc.pwm",
+        "axis": "x",
+        "mode": "force",
+        "transfer": { "curve": "linear", "deadband": 0.05, "saturation": 0.95, "gain": 12.0 }
+      }
+    },
+    {
+      "id": "actuator_thruster_2",
+      "kind": "actuator.thruster",
+      "properties": {
+        "target_node": "mech_hull_1",
+        "channel": "esc.pwm",
+        "axis": "x",
+        "mode": "force",
+        "transfer": { "curve": "linear", "deadband": 0.05, "saturation": 0.95, "gain": 12.0 }
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "wire_pwm_1",
+      "kind": "signal.pwm",
+      "from": { "node": "mech_pwm_source_1", "port": "pwm" },
+      "to": { "node": "actuator_thruster_1", "port": "pwm" }
+    },
+    {
+      "id": "wire_force_1",
+      "kind": "mech.force",
+      "from": { "node": "actuator_thruster_1", "port": "force" },
+      "to": { "node": "mech_hull_1", "port": "thrust" }
+    },
+    {
+      "id": "wire_force_2",
+      "kind": "mech.force",
+      "from": { "node": "actuator_thruster_2", "port": "force" },
+      "to": { "node": "mech_hull_1", "port": "thrust" }
+    }
+  ]
+}
