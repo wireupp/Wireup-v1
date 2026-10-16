@@ -67,7 +67,7 @@ class SecurityMiddleware:
         self.production = (deployment in ('preview', 'production', 'hosted')
                            if production is None else bool(production))
         token = os.getenv('WIREUP_ACCESS_TOKEN', '') if access_token is None else access_token
-        if token and (not isinstance(token, str) or re.fullmatch(r'[A-Za-z0-9._~+/-]+=*', token) is None):
+        if token and (not isinstance(token, str) or re.fullmatch(r'[\x21-\x7E]+', token) is None):
             raise ValueError('WIREUP_ACCESS_TOKEN must be a valid bearer token.')
         if self.production and not token:
             raise ValueError('WIREUP_ACCESS_TOKEN is required in production.')
