@@ -11,9 +11,11 @@ import { AllProjects } from '@/components/all-projects'
 import { ExamplesGallery } from '@/components/examples-gallery'
 import { PlatformHome } from '@/components/platform-home'
 import { WorkspaceLoading } from '@/components/ui/workspace-loading'
+import { AuthProvider } from '@/lib/auth-context'
 import './ui-theme.css'
 
 const Preview = lazy(() => import('@/components/demo'))
+const AdminApp = lazy(() => import('@/components/admin/admin-app').then(module => ({ default: module.AdminApp })))
 const SchematicStudio = lazy(() => import('@/components/schematic-studio').then(module => ({ default: module.SchematicStudio })))
 const HardwareInstruments = lazy(() => import('@/components/hardware-instruments').then(module => ({ default: module.HardwareInstruments })))
 const HardwareWorkspace = lazy(() => loadWorkspaceModule().then(module => ({ default: module.HardwareWorkspace })))
@@ -96,6 +98,7 @@ function ProjectPage() {
 export default function App() {
   return (
     <BrowserRouter>
+      <AuthProvider>
       <HostedAuthGate>
       <Routes>
         <Route path="/orb" element={<Suspense fallback={<div className="h-svh bg-[#0a0a0a]" />}><Preview /></Suspense>} />
@@ -105,9 +108,11 @@ export default function App() {
         <Route path="/examples" element={<ExamplesGallery />} />
         <Route path="/assistant" element={<ChatApp />} />
         <Route path="/project/:projectId" element={<ProjectPage />} />
+        <Route path="/admin/*" element={<Suspense fallback={<div className="h-svh bg-[#0b0c0e]" />}><AdminApp /></Suspense>} />
         <Route path="*" element={<div className="flex h-svh items-center justify-center bg-neutral-950 text-white"><a href="/">Page not found. Return to WireUp.</a></div>} />
       </Routes>
       </HostedAuthGate>
+      </AuthProvider>
     </BrowserRouter>
   )
 }

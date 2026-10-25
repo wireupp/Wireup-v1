@@ -5,16 +5,17 @@ import { defineConfig, loadEnv } from 'vite'
 
 export default defineConfig(({ mode }) => ({
   server: {
+    allowedHosts: ['guidance-delete-diminish.ngrok-free.dev'],
     proxy: {
       '/api': {
-        target: `http://127.0.0.1:${loadEnv(mode, process.cwd(), '').BACKEND_PORT || '8000'}`,
+        target: `http://localhost:${loadEnv(mode, process.cwd(), '').BACKEND_PORT || '8000'}`,
         ws: true,
       },
     },
   },
   plugins: [react(), tailwindcss()],
   assetsInclude: ['**/*.wasm'],
-  optimizeDeps: { include: ['avr8js', 'rp2040js', '@wokwi/elements', 'littlefs'] },
+  optimizeDeps: { include: ['avr8js', 'rp2040js'] },
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),

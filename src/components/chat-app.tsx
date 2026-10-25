@@ -12,7 +12,7 @@ import type { ActivityEvent } from './ui/agent-activity-feed'
 import { isFeasibility, isQuestions, readChats, storageKey, streamReply } from '@/lib/chat'
 import type { Conversation, Message } from '@/lib/chat'
 import { projectTitle } from '@/lib/project-title'
-import { defaultModels, modelOptionKey, readSelectedModel } from '@/lib/model-selection'
+import { zenllmModels, modelOptionKey, readSelectedModel } from '@/lib/model-selection'
 import type { ModelOption, ModelProvider } from '@/lib/model-selection'
 
 export function ChatApp({ projectId, runtimeToken, embedded = false, initialPrompt, setupGuidance }: { projectId?: string; runtimeToken?: string; embedded?: boolean; initialPrompt?: string; setupGuidance?: string } = {}) {
@@ -29,12 +29,11 @@ export function ChatApp({ projectId, runtimeToken, embedded = false, initialProm
   const [drawer, setDrawer] = useState(false)
   const [busy, setBusy] = useState<string | null>(null)
   const [health, setHealth] = useState<{ configured: boolean; model: string; providers?: ModelOption[] } | null>(null)
-  const provider: ModelProvider = 'azure'
+  const provider: ModelProvider = 'zenllm'
   const [modelId, setModelId] = useState(readSelectedModel)
-  const providerModels = health?.providers || defaultModels.map(option => option.id === 'groq' && health ? { ...option, model: health.model, configured: health.configured } : option)
-  const accessibleModelIds = ['gpt-5.6-luna', 'gpt-5.6-sol', 'gpt-5.6-terra', 'gpt-6-astra', 'gpt-6-luna', 'gpt-6-sol', 'gpt-6.1-sol']
-  const models: ModelOption[] = accessibleModelIds.map(model => ({ id: 'azure', label: 'Azure', model, configured: providerModels.find(option => option.id === 'azure')?.configured ?? false }))
-  const selectedModel = models.find(option => option.model === modelId) || models.find(option => option.model === 'gpt-6.1-sol')!
+  const zenllmConfigured = health?.providers?.find(option => option.id === 'zenllm')?.configured ?? true
+  const models: ModelOption[] = zenllmModels.map(option => ({ ...option, configured: zenllmConfigured }))
+  const selectedModel = models.find(option => option.model === modelId) || models[0]
   const selectionKey = modelOptionKey(selectedModel)
   const changeModel = (key: string) => {
     const option = models.find(option => modelOptionKey(option) === key)
@@ -42,7 +41,7 @@ export function ChatApp({ projectId, runtimeToken, embedded = false, initialProm
     setModelId(option.model)
     try { localStorage.setItem('wireup.model-provider', option.id); localStorage.setItem('wireup.model-id', option.model) } catch { /* Selection remains available for this page. */ }
   }
-  const selectedKeyName = { groq: 'GROQ_API_KEY', nvidia: 'NVIDIA_API_KEY', bedrock: 'BEDROCK_API_KEY', azure: 'AZURE_API_KEY' }[provider]
+  const selectedKeyName = 'ZENLLM_API_KEY'
   const [connectionError, setConnectionError] = useState('')
   const [rename, setRename] = useState<{ id: string; value: string } | null>(null)
   const [deleting, setDeleting] = useState<string | null>(null)

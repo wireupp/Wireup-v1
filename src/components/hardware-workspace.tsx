@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import type { CSSProperties, PointerEvent as ReactPointerEvent, ReactNode } from 'react'
 import { Link, useParams, useSearchParams } from 'react-router-dom'
-import { ListChecks, Wifi, Copy, RotateCw, Cable, ArrowLeft, Check, ChevronDown, ChevronRight, CircuitBoard, Code2, Cpu, FolderOpen, LoaderCircle, Maximize, Minus, Play, Plus, RefreshCw, Save, Search, Square, Terminal, Trash2, Undo2, Waves, Wrench, X, Zap } from 'lucide-react'
+import { ListChecks, Wifi, Copy, RotateCw, Cable, ArrowLeft, Check, ChevronDown, ChevronRight, CircuitBoard, Code2, Cpu, FolderOpen, Image as ImageIcon, LayoutGrid, LoaderCircle, Maximize, Minus, Play, Plus, RefreshCw, Save, Search, Square, Terminal, Trash2, Undo2, Waves, Wrench, X, Zap } from 'lucide-react'
 import { ComponentRegistry } from '../../vendor/velxio/frontend/src/services/ComponentRegistry'
 import { artifactIsCurrent, catalogPins, catalogType, hardwareApi, HardwareApiError, isHardwareProject } from '../lib/hardware'
 import type { CatalogComponent, CompilerResult, Firmware, HardwareCommand, HardwareComponent, HardwarePin, HardwareProject, WireEndpoint } from '../lib/hardware'
@@ -130,6 +130,9 @@ export function HardwareWorkspace({ chatSlot, children, onProjectChange, schemat
   const [componentsOpen, setComponentsOpen] = useState(true)
   const [detailsOpen, setDetailsOpen] = useState(false)
   const [connectionCheckOpen, setConnectionCheckOpen] = useState(false)
+  const [moreOpen, setMoreOpen] = useState(false)
+  const [canvasTab, setCanvasTab] = useState<'build' | 'wiring'>('build')
+  const moreRef = useRef<HTMLDivElement>(null)
   const [searchParams, setSearchParams] = useSearchParams()
   type ProjectSection = 'info' | 'guide' | 'wiring' | 'code'
   const sectionParam = searchParams.get('section')
@@ -626,16 +629,50 @@ export function HardwareWorkspace({ chatSlot, children, onProjectChange, schemat
     if (scopeOpen && dialog && !dialog.open) dialog.showModal()
     if (!scopeOpen && dialog?.open) dialog.close()
   }, [scopeOpen])
+  useEffect(() => {
+    if (!moreOpen) return
+    const close = (event: MouseEvent) => { if (!moreRef.current?.contains(event.target as Node)) setMoreOpen(false) }
+    const onKey = (event: KeyboardEvent) => { if (event.key === 'Escape') setMoreOpen(false) }
+    window.addEventListener('click', close)
+    window.addEventListener('keydown', onKey)
+    return () => { window.removeEventListener('click', close); window.removeEventListener('keydown', onKey) }
+  }, [moreOpen])
 
+  const showCanvas = (next: 'build' | 'wiring') => { setCanvasTab(next); setSection('wiring'); setTab('circuit'); setSketchOpen(false); setMoreOpen(false); changeView('circuit') }
+  const showPreview = () => { setSection('wiring'); setTab('circuit'); setSketchOpen(false); setMoreOpen(false); changeView('schematic') }
+  const showCode = () => { setSection('code'); setTab('circuit'); setSketchOpen(false); setMoreOpen(false) }
+  const showMoreSection = (next: 'info' | 'guide') => { setSection(next); setTab('circuit'); setSketchOpen(false); setMoreOpen(false) }
   const FirmwareContainer = section === 'code' ? 'section' : 'dialog'
+  const buildPressed = section === 'wiring' && activeView === 'circuit' && canvasTab === 'build'
+  const previewPressed = section === 'wiring' && activeView === 'schematic'
+  const wiringPressed = section === 'wiring' && activeView === 'circuit' && canvasTab === 'wiring'
   return <main className="hardware-workspace" data-mobile-tab={tab} onPointerDownCapture={event => { if (!(event.target as Element).closest('.hw-canvas-part, .hw-part-actions, .hw-wire-details')) hideActions() }} onKeyDownCapture={event => { if (event.key === 'Escape') hideActions() }}>
     <header className="hw-header">
-      <Link to="/" className="hw-brand" aria-label="WireUp home"><img src="/wireup-logo.png" alt="" /><span>WireUp</span></Link>
-      <span className="hw-header-divider" /><Link to="/projects" className="hw-project-link"><FolderOpen size={15} /> Projects</Link>
-      {project && <><ChevronRight size={14} className="hw-muted" /><span className="hw-project-title">{project.name}</span><span className="hw-chip">{project.board === 'unselected' ? 'Board not selected' : project.board}</span></>}
-      {project && <nav className="hw-project-tabs" aria-label="Project sections">{(['info','guide','wiring','code'] as const).map(view => <button key={view} aria-pressed={section === view} onClick={() => {setSection(view);setTab('circuit');setSketchOpen(false)}}>{view === 'wiring' ? 'Wiring / Simulation' : view === 'guide' ? 'Build Guide' : view.charAt(0).toUpperCase()+view.slice(1)}</button>)}</nav>}
-      <span className="hw-header-spacer" />{project && <button type="button" className="hw-icon-button" aria-label="Project details" title="Project details and instructions" onClick={() => setDetailsOpen(true)}><ListChecks size={16} /></button>}<span className="hw-local"><span /> Local workspace</span>
-      <Link to="/" className="hw-icon-button" aria-label="Back to chat"><ArrowLeft size={16} /></Link>
+      <div className="hw-header-lead">
+        <Link to="/" className="hw-brand" aria-label="WireUp home"><img src="/wireup-logo.png" alt="" /><span>WireUp</span></Link>
+        <span className="hw-header-divider" /><Link to="/projects" className="hw-project-link"><FolderOpen size={15} /> Projects</Link>
+        {project && <><ChevronRight size={14} className="hw-muted" /><span className="hw-project-title">{project.name}</span><span className="hw-chip">{project.board === 'unselected' ? 'Board not selected' : project.board}</span></>}
+      </div>
+      {project && <nav className="hw-project-tabs" aria-label="Project sections">
+        <div className="hw-tab-scroll">
+          <button type="button" aria-pressed={buildPressed} onClick={() => showCanvas('build')}><LayoutGrid size={15} aria-hidden="true" />Build</button>
+          <button type="button" aria-pressed={previewPressed} onClick={showPreview}><ImageIcon size={15} aria-hidden="true" />Preview</button>
+          <button type="button" aria-pressed={wiringPressed} onClick={() => showCanvas('wiring')}><Cpu size={15} aria-hidden="true" />Wiring/Simulation</button>
+          <button type="button" aria-pressed={section === 'code'} onClick={showCode}><Play size={15} aria-hidden="true" />Code</button>
+        </div>
+        <span className="hw-mode-divider" aria-hidden="true" />
+        <div className="hw-more" ref={moreRef}>
+          <button type="button" aria-expanded={moreOpen} aria-haspopup="menu" aria-pressed={section === 'info' || section === 'guide'} onClick={() => setMoreOpen(open => !open)}>More<ChevronDown size={14} aria-hidden="true" /></button>
+          {moreOpen && <div className="hw-more-menu" role="menu" aria-label="More project sections" onClick={event => event.stopPropagation()}>
+            <button type="button" role="menuitem" aria-current={section === 'info' ? 'page' : undefined} onClick={() => showMoreSection('info')}>Info</button>
+            <button type="button" role="menuitem" aria-current={section === 'guide' ? 'page' : undefined} onClick={() => showMoreSection('guide')}>Build Guide</button>
+          </div>}
+        </div>
+      </nav>}
+      <div className="hw-header-tools">
+        <span className="hw-header-spacer" />{project && <button type="button" className="hw-icon-button" aria-label="Project details" title="Project details and instructions" onClick={() => setDetailsOpen(true)}><ListChecks size={16} /></button>}<span className="hw-local"><span /> Local workspace</span>
+        <Link to="/" className="hw-icon-button" aria-label="Back to chat"><ArrowLeft size={16} /></Link>
+      </div>
     </header>
     {error && <div role="alert" className="hw-alert"><span>{error}</span>{dirty && project && <button onClick={() => { acceptProject(project, true); setError(''); setNotice('Loaded server firmware. Unsaved editor changes discarded.') }}>Load server firmware</button>}<button onClick={() => setError('')} aria-label="Dismiss error">×</button></div>}
     {notice && <div role="status" className="hw-notice">{notice}</div>}
@@ -664,7 +701,7 @@ export function HardwareWorkspace({ chatSlot, children, onProjectChange, schemat
         </aside>
         <section className="hw-center" data-section={section}>
           {section === 'info' && <ProjectDetails embedded initialTab="Info" project={project} catalog={knownCatalog} onClose={() => setSection('wiring')}/>}
-          {section === 'guide' && <BuildGuide project={project} dirty={dirty} busy={busy} results={results} running={!!results?.running} compileDisabled={compileDisabled} runDisabled={!!runBlocker} onOpenWiring={() => { setSection('wiring'); setTab('circuit') }} onOpenCode={() => { setSection('code'); setTab('circuit') }} onCompile={compileFirmware} onRun={startSimulation} onStop={stopSimulation}/> }
+          {section === 'guide' && <BuildGuide project={project} dirty={dirty} busy={busy} results={results} running={!!results?.running} compileDisabled={compileDisabled} runDisabled={!!runBlocker} onOpenWiring={() => showCanvas('wiring')} onOpenCode={() => { setSection('code'); setTab('circuit') }} onCompile={compileFirmware} onRun={startSimulation} onStop={stopSimulation}/> }
           <FirmwareContainer ref={section === 'code' ? undefined : sketchDialog} className={`hw-sketch-dialog${section === 'code' ? ' hw-code-inline' : ''}`} open={section === 'code' ? undefined : false} aria-label="Sketch firmware editor" onCancel={() => setSketchOpen(false)} onClose={() => setSketchOpen(false)}><section className="hw-firmware-panel"><div className="hw-panel-heading"><Code2 size={15} /> {project.firmware.filename}<span>{dirty ? 'Unsaved edits' : `Saved · r${project.firmware.revision}`}</span><button hidden={section === 'code'} aria-label="Close Sketch" onClick={() => setSketchOpen(false)}><X size={16} /></button></div><div className="hw-code-editor"><div aria-hidden="true" className="hw-line-numbers">{source.split('\n').map((_, index) => <div key={index}>{index + 1}</div>)}</div><textarea aria-label="Firmware source" value={source} spellCheck={false} disabled={!!results?.running} onChange={event => { if (sourceRef.current === savedSource.current) draftRevision.current = projectRef.current?.revision ?? null; const next = event.currentTarget.value; sourceRef.current = next; setSource(next) }} onKeyDown={event => { if (event.key === 'Tab') { event.preventDefault(); const start = event.currentTarget.selectionStart; const end = event.currentTarget.selectionEnd; const next = source.slice(0, start) + '  ' + source.slice(end); if (sourceRef.current === savedSource.current) draftRevision.current = projectRef.current?.revision ?? null; sourceRef.current = next; setSource(next); const textarea = event.currentTarget; requestAnimationFrame(() => { textarea.setSelectionRange(start + 2, start + 2) }) } }} /></div><footer className="hw-sketch-footer"><span>Arduino C++ · Canonical server firmware</span><button aria-label="Save sketch" disabled={!!busy || !!results?.running} onClick={() => void perform('Saving firmware', async () => { await saveSource(); setSketchOpen(false); setTab('circuit'); setNotice('Firmware saved to the canonical project.') })}><Save size={14} /> Save sketch</button></footer></section></FirmwareContainer>
       <nav className="hw-toolbar" hidden={section !== 'wiring'} aria-label="Hardware actions">
         {activeView === 'circuit' && <button type="button" aria-label={componentsOpen ? 'Hide components panel' : 'Open components panel'} aria-expanded={componentsOpen} aria-controls="workspace-components" onClick={() => setComponentsOpen(open => !open)}><Cpu size={14}/>Components</button>}
@@ -728,7 +765,7 @@ export function HardwareWorkspace({ chatSlot, children, onProjectChange, schemat
         <aside className="hw-agent-panel">{!agent && <div className="hw-panel-heading"><Zap size={15} /> WireUp agent</div>}{agent ?? <div className="hw-agent-empty"><div className="hw-agent-symbol"><Zap size={24} /></div><h2>A collaborator for your circuit.</h2><p>Ask the project agent to add parts, write firmware, and inspect the real compiler and simulator.</p><div className="hw-agent-context"><Cpu size={14} /> {project.name}<small>Canonical project · revision {project.revision}</small></div><p className="hw-muted">The agent panel is supplied by the host application. Manual tools remain available below the editor.</p></div>}</aside>
       </div>
       {connectionCheckOpen && <ConnectionCheck key={project.id} project={project} dirty={dirty} repairDisabled={mutationDisabled} onProjectChange={acceptProject} onClose={() => setConnectionCheckOpen(false)} onShowPart={id => { setConnectionCheckOpen(false); setSection('wiring'); setTab('circuit'); setSelected(id); const endpoint = project.wires.flatMap(wire => [wire.from, wire.to]).find(endpoint => endpoint.component === id); if (endpoint) revealPin(endpoint) }}/>}
-      {detailsOpen && <ProjectDetails project={project} catalog={knownCatalog} onClose={() => setDetailsOpen(false)} onOpenPart={id => { setDetailsOpen(false); setSection('wiring'); setTab('parts'); setComponentsOpen(true); setSelected(id); requestAnimationFrame(() => document.querySelector<HTMLTextAreaElement>('.hw-inspector textarea')?.focus()) }} onOpenWiring={() => { setDetailsOpen(false); setSection('wiring'); setTab('circuit') }} onOpenCode={() => { setDetailsOpen(false); setSection('code'); setTab('circuit') }}/>}
+      {detailsOpen && <ProjectDetails project={project} catalog={knownCatalog} onClose={() => setDetailsOpen(false)} onOpenPart={id => { setDetailsOpen(false); setSection('wiring'); setTab('parts'); setComponentsOpen(true); setSelected(id); requestAnimationFrame(() => document.querySelector<HTMLTextAreaElement>('.hw-inspector textarea')?.focus()) }} onOpenWiring={() => { setDetailsOpen(false); showCanvas('wiring') }} onOpenCode={() => { setDetailsOpen(false); setSection('code'); setTab('circuit') }}/>}
       {networkOpen && <EspNetworkDialog projectId={project.id} board={project.board} running={!!results?.running} onClose={() => setNetworkOpen(false)}/>}
       {flashOpen && <BoardFlashDialog project={project} dirty={dirty} running={!!results?.running} onClose={() => setFlashOpen(false)}/>}
 

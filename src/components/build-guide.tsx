@@ -55,6 +55,7 @@ export function BuildGuide({ project, dirty, busy, results, onOpenWiring, onOpen
   const locked = useRef(false)
   const mounted = useRef(true)
   const heading = useRef<HTMLHeadingElement>(null)
+  const stepsRef = useRef<HTMLOListElement>(null)
   const titleId = useId()
   const checklistId = useId()
 
@@ -130,6 +131,12 @@ export function BuildGuide({ project, dirty, busy, results, onOpenWiring, onOpen
   }
 
   const currentIndex = guide ? Math.max(0, guide.steps.findIndex(step => step.id === guide.progress.current_step)) : 0
+  useEffect(() => {
+    const list = stepsRef.current
+    if (!list || !window.matchMedia('(max-width: 680px)').matches) return
+    const active = list.querySelector<HTMLButtonElement>('[aria-current="step"]')
+    if (active) list.scrollLeft += active.getBoundingClientRect().left - list.getBoundingClientRect().left - 4
+  }, [currentIndex, guide?.project_id])
   const step = guide?.steps[currentIndex]
   const disabled = loading || saving || !!busy
   const projectStale = !!guide && (guide.project_revision !== project.revision || guide.firmware_revision !== project.firmware.revision)
@@ -169,7 +176,7 @@ export function BuildGuide({ project, dirty, busy, results, onOpenWiring, onOpen
 
   return <section className="build-guide" aria-labelledby={titleId} aria-busy={loading || saving}>
     <header className="build-guide-header">
-      <div><p className="build-guide-eyebrow">Build workspace</p><h1 id={titleId}>Interactive Build Guide</h1><p>Build your project one step at a time. Check off only what you’ve done.</p></div>
+      <div><p className="build-guide-eyebrow">Project instructions <span aria-hidden="true">/</span> {project.name}</p><h1 id={titleId}>Interactive Build Guide</h1><p>Follow the instructions, inspect the saved code, and confirm each step as you build.</p></div>
       <button type="button" disabled={saving || loading} onClick={() => setReload(value => value + 1)}>Reload guide</button>
     </header>
     {dirty && <p className="build-guide-banner" role="status">Unsaved firmware changes are present. This guide and its evidence refer to saved source, not your editor draft. Open Code to save your changes before compiling or verifying.</p>}
@@ -183,11 +190,12 @@ export function BuildGuide({ project, dirty, busy, results, onOpenWiring, onOpen
         <div className="build-guide-progress-track" role="progressbar" aria-label="Build checklist progress" aria-valuemin={0} aria-valuemax={checklist.length || 1} aria-valuenow={confirmed} aria-valuetext={`${confirmed} of ${checklist.length} checklist items confirmed`}><span style={{ width: `${checklist.length ? confirmed / checklist.length * 100 : 0}%` }} /></div>
       </div>
       <div className="build-guide-layout">
-        <nav className="build-guide-nav" aria-label="Build guide steps"><ol>{guide.steps.map((item, index) => <li key={item.id}><button type="button" aria-current={step?.id === item.id ? 'step' : undefined} disabled={disabled || projectStale} onClick={() => void perform({ update: { current_step: item.id } })}><span className="build-guide-stage-number" aria-hidden="true">{index + 1}</span><span><strong>{item.title}</strong><small>{stepStatus(guide, item)}</small></span></button></li>)}</ol><p>Your place is saved. Opening a stage does not complete it.</p></nav>
+        <nav className="build-guide-nav" aria-label="Build guide steps"><ol ref={stepsRef}>{guide.steps.map((item, index) => <li key={item.id}><button type="button" aria-current={step?.id === item.id ? 'step' : undefined} disabled={disabled || projectStale} onClick={() => void perform({ update: { current_step: item.id } })}><span className="build-guide-stage-number" aria-hidden="true">{index + 1}</span><span><strong>{item.title}</strong><small>{stepStatus(guide, item)}</small></span></button></li>)}</ol><p>Your place is saved. Opening a stage does not complete it.</p></nav>
         {step ? <article className="build-guide-content" aria-labelledby={`${titleId}-step`}>
           <p className="build-guide-eyebrow">Stage {currentIndex + 1} of {guide.steps.length}</p>
           <h2 id={`${titleId}-step`} ref={heading} tabIndex={-1}>{step.title}</h2>
           {guide.progress.outdated_steps[step.id] && <p className="build-guide-banner" role="status">Outdated: {guide.progress.outdated_steps[step.id]}</p>}
+          {firmwareStage && <details className="build-guide-code" open><summary>Saved sketch <span>{project.firmware.filename} · revision {project.firmware.revision}</span></summary>{dirty && <p>Editor changes are not shown until saved.</p>}<pre className="build-guide-source" aria-label="Saved firmware source"><code>{project.firmware.source || 'No firmware source has been saved.'}</code></pre></details>}
           {!step.sections?.some(section => section.title === "What you'll do") && <section><h3>What you'll do</h3><p>{step.objective}</p></section>}
           {openingSections.map((section, index) => <section key={`${step.id}-${index}`}><h3>{section.title}</h3>{section.paragraphs.map((paragraph, paragraphIndex) => <p key={paragraphIndex}>{paragraph}</p>)}{!!section.actions.length && <ol className="build-guide-instructions">{section.actions.map((instruction, actionIndex) => <li key={actionIndex}>{instruction}</li>)}</ol>}</section>)}
           {!!step.instructions.length && !(step.id === 'wiring' && step.sections?.some(section => section.actions.some(action => action.startsWith('Connect ')))) && <section><h3>Steps</h3><ol className="build-guide-instructions">{step.instructions.map((instruction, index) => <li key={index}>{instruction}</li>)}</ol></section>}
@@ -197,7 +205,6 @@ export function BuildGuide({ project, dirty, busy, results, onOpenWiring, onOpen
           {!!step.components.length && !step.sections?.length && <section><h3>Components for this stage</h3><ItemList items={step.components} /></section>}
           {!!step.pins.length && <section><h3>Pins and connections</h3><ItemList items={step.pins} /></section>}
           <div className="build-guide-actions"><button type="button" onClick={onOpenWiring}>Open Wiring</button><button type="button" onClick={onOpenCode}>Open Code</button></div>
-          {firmwareStage && <details><summary>View saved sketch</summary><p>{project.firmware.filename} · saved revision {project.firmware.revision}{dirty ? ' · editor draft is not shown' : ''}</p><pre className="build-guide-source" aria-label="Saved firmware source"><code>{project.firmware.source}</code></pre>{!project.firmware.source.trim() && <p>No firmware source has been saved.</p>}</details>}
           {connectionStage && <section><h3>Connection verification</h3><p>Check the saved diagram. Inspect physical connections separately.</p><button type="button" disabled={disabled || projectStale} onClick={() => void perform({ verify: 'connections' })}>Run connection checks</button></section>}
           {compilationStage && <section><h3>Compile saved firmware</h3><p>Build the saved sketch for your board, then test its behavior.</p><div className="build-guide-actions"><button type="button" disabled={disabled || compileDisabled || dirty} onClick={() => void action(onCompile)}>Compile firmware</button><button type="button" disabled={disabled || projectStale || dirty} onClick={() => void perform({ verify: 'compilation' })}>Verify compilation evidence</button></div>
             {compiler ? <div className="build-guide-diagnostics"><p role="status">{compilerState}</p><details><summary>Compiler diagnostics</summary>{compiler.stdout && <pre aria-label="Compiler output">{compiler.stdout}</pre>}{compiler.stderr && <pre aria-label="Compiler diagnostics">{compiler.stderr}</pre>}{!!compiler.errors?.length && <ul>{compiler.errors.map((item, index) => <li key={index}>{readable(item)}</li>)}</ul>}{compiler.artifact && <p>Built source revision: {compiler.artifact.source_revision}</p>}</details></div> : <p>No compiler result is available. Compile the saved firmware to obtain diagnostics.</p>}
