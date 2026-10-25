@@ -19,6 +19,60 @@ test('parallel cables use separate lanes around component bounds', () => {
   for (const path of paths.values()) expect(path).toContain('Q')
 })
 
+test('dense generated wires favor short paths over perimeter detours', () => {
+  const board = { id: 'board', left: 120, top: 90, right: 310, bottom: 360 }
+  const motors = Array.from({ length: 4 }, (_, index) => ({ id: `motor-${index}`, left: 990, top: 90 + index * 220, right: 1100, bottom: 165 + index * 220 }))
+  const paths = routeWirePaths(motors.flatMap((motor, index) => [
+    { id: `signal-${index}`, start: { component: 'board', x: 310, y: 130 + index * 25, direction: { x: 1, y: 0 } }, end: { component: motor.id, x: motor.left, y: motor.top + 24, direction: { x: -1, y: 0 } } },
+    { id: `ground-${index}`, start: { component: 'board', x: 310, y: 260 + index * 20, direction: { x: 1, y: 0 } }, end: { component: motor.id, x: motor.left, y: motor.top + 49, direction: { x: -1, y: 0 } } },
+  ]), [board, ...motors])
+  expect(paths.size).toBe(8)
+  for (const path of paths.values()) {
+    const numbers = [...path.matchAll(/-?\d+(?:\.\d+)?/g)].map(match => Number(match[0]))
+    expect(Math.min(...numbers)).toBeGreaterThan(-100)
+    expect(Math.max(...numbers)).toBeLessThan(1600)
+    expect((path.match(/ Q /g) ?? []).length).toBeLessThanOrEqual(10)
+  }
+})
+
+for (const width of [1440, 390]) test(`automatically placed motor connections stay readable at ${width}px`, async ({ page, request }, testInfo) => {
+  test.setTimeout(120000)
+  const project = await (await request.post('/api/hardware/projects', { data: { name: 'Automatic motor layout', board: 'arduino-uno' } })).json()
+  const command = async (name: string, args: Record<string, unknown>) => {
+    const response = await request.post(`/api/hardware/project/${project.id}/command`, { data: { name, args } })
+    expect(response.ok()).toBe(true)
+    return response.json()
+  }
+  await command('add_component', { type: 'servo', id: 'motor-1' })
+  const placed = await command('add_component', { type: 'servo', id: 'motor-2' })
+  expect(placed.components.filter((part: { type: string }) => part.type === 'servo').map((part: { x: number; y: number }) => [part.x, part.y])).toEqual([[990, 90], [990, 310]])
+  for (const [id, pin] of [['motor-1', '2'], ['motor-2', '3']]) {
+    await command('connect_wire', { from: { component: 'board', pin }, to: { component: id, pin: 'PWM' } })
+    await command('connect_wire', { from: { component: 'board', pin: 'GND' }, to: { component: id, pin: 'GND' }, color: '#111111' })
+    await command('connect_wire', { from: { component: 'board', pin: '5V' }, to: { component: id, pin: 'V+' }, color: '#ff2020' })
+  }
+  const checked = await command('check_connections', {})
+  expect(checked.validation.errors).toEqual([])
+  await page.setViewportSize({ width, height: 900 })
+  await page.goto(`/project/${project.id}`)
+  const wires = page.locator('.hw-wire-hit')
+  await expect(wires).toHaveCount(6, { timeout: 30000 })
+  await page.getByRole('button', { name: 'Fit circuit', exact: true }).click()
+  await page.screenshot({ path: testInfo.outputPath(`automatic-motors-${width}.png`) })
+  const paths = await wires.evaluateAll(elements => elements.map(element => element.getAttribute('d') ?? ''))
+  expect(paths.every(path => (path.match(/ Q /g) ?? []).length <= 10)).toBe(true)
+  await wires.first().focus()
+  await wires.first().press('Enter')
+  await expect(page.getByRole('dialog', { name: 'Wire connection details' })).toBeVisible()
+  await page.getByRole('button', { name: 'Close wire details' }).click()
+  await page.getByRole('tab', { name: 'Schematic', exact: true }).click()
+  await expect(page.getByRole('region', { name: 'Schematic view', exact: true })).toBeVisible()
+  await page.getByRole('tab', { name: 'Circuit', exact: true }).click()
+  await expect(wires).toHaveCount(6)
+  await page.reload()
+  await expect(wires).toHaveCount(6)
+})
+
 for (const width of [1440, 390]) test(`multiple cables remain traceable through editing and navigation at ${width}px`, async ({ page, request }, testInfo) => {
   test.setTimeout(120000)
   const project = await (await request.post('/api/hardware/projects', { data: { name: 'Separated cables', board: 'arduino-uno' } })).json()

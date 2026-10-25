@@ -7,6 +7,9 @@ import json
 import os
 import re
 import threading
+import secrets
+import time
+from http.cookies import SimpleCookie
 from urllib.parse import urlsplit
 
 MAX_BODY_BYTES = 600000
@@ -60,15 +63,23 @@ class SecurityMiddleware:
                  max_body_bytes=None, max_concurrent_requests=None, public_health=None,
                  body_timeout_seconds=None):
         self.app = app
-        self.production = (os.getenv('WIREUP_DEPLOYMENT', '').lower() == 'production'
+        deployment = os.getenv('WIREUP_DEPLOYMENT', '').lower()
+        self.production = (deployment in ('preview', 'production', 'hosted')
                            if production is None else bool(production))
         token = os.getenv('WIREUP_ACCESS_TOKEN', '') if access_token is None else access_token
-        if token and (not isinstance(token, str) or re.fullmatch(r'[A-Za-z0-9._~+/-]+=*', token) is None):
+        if token and (not isinstance(token, str) or re.fullmatch(r'[\x21-\x7E]+', token) is None):
             raise ValueError('WIREUP_ACCESS_TOKEN must be a valid bearer token.')
         if self.production and not token:
             raise ValueError('WIREUP_ACCESS_TOKEN is required in production.')
         self._token = token.encode('ascii') if token else None
-        origins = os.getenv('WIREUP_ALLOWED_ORIGINS', '').split(',') if allowed_origins is None else allowed_origins
+        if allowed_origins is None:
+            origins = os.getenv('WIREUP_ALLOWED_ORIGINS', '').split(',')
+            for variable in ('VERCEL_URL', 'VERCEL_BRANCH_URL', 'VERCEL_PROJECT_PRODUCTION_URL'):
+                value = os.getenv(variable, '').strip()
+                if value:
+                    origins.append(value if '://' in value else f'https://{value}')
+        else:
+            origins = allowed_origins
         self.allowed_origins = frozenset()
         normalized = []
         for value in origins:
@@ -133,6 +144,61 @@ class SecurityMiddleware:
         await send({'type': 'http.response.start', 'status': status, 'headers': headers})
         await send({'type': 'http.response.body', 'body': b'' if scope.get('method') == 'HEAD' else body})
 
+    def _session_valid(self, headers):
+        if not self._token or len(headers.get(b'cookie', [])) != 1:
+            return False
+        try:
+            cookie = SimpleCookie(headers[b'cookie'][0].decode('latin-1'))
+            value = cookie['wireup_session'].value
+            expires, nonce, signature = value.split('.')
+            payload = f'{expires}.{nonce}'
+            expected = hmac.new(self._token, payload.encode(), 'sha256').hexdigest()
+            return (int(expires) > time.time() and int(expires) <= time.time() + 43200
+                    and hmac.compare_digest(signature, expected))
+        except (KeyError, ValueError, TypeError):
+            return False
+
+    async def _session_endpoint(self, scope, receive, send, headers, trusted_origin):
+        path, method = scope['path'], scope.get('method')
+        valid = self._session_valid(headers)
+        if path == '/api/auth/session' and method == 'GET':
+            await self._response(scope, send, 200, {'required': self._token is not None, 'authenticated': valid})
+            return
+        if method != 'POST' or not trusted_origin:
+            await self._response(scope, send, 403, 'An allowed Origin is required.')
+            return
+        suffix = '; Path=/; HttpOnly; SameSite=Strict' + ('; Secure' if self.production else '')
+        if path == '/api/auth/logout':
+            await self._response(scope, send, 200, {'authenticated': False},
+                                 ((b'set-cookie', ('wireup_session=; Max-Age=0' + suffix).encode()),))
+            return
+        if not self._token:
+            await self._response(scope, send, 400, 'Private sign-in is not configured.')
+            return
+        body = b''
+        try:
+            async with asyncio.timeout(10):
+                while True:
+                    message = await receive()
+                    if message['type'] != 'http.request':
+                        raise ValueError()
+                    body += message.get('body', b'')
+                    if len(body) > 4096:
+                        raise ValueError()
+                    if not message.get('more_body'):
+                        break
+            password = json.loads(body).get('password', '')
+            valid = isinstance(password, str) and hmac.compare_digest(password.encode(), self._token)
+        except (ValueError, AttributeError, TimeoutError):
+            valid = False
+        if not valid:
+            await self._response(scope, send, 401, 'Incorrect preview password.')
+            return
+        payload = f'{int(time.time()) + 43199}.{secrets.token_hex(16)}'
+        signature = hmac.new(self._token, payload.encode(), 'sha256').hexdigest()
+        await self._response(scope, send, 200, {'authenticated': True},
+                             ((b'set-cookie', (f'wireup_session={payload}.{signature}; Max-Age=43199' + suffix).encode()),))
+
     async def __call__(self, scope, receive, send):
         if scope['type'] not in ('http', 'websocket'):
             await self.app(scope, receive, send)
@@ -151,6 +217,9 @@ class SecurityMiddleware:
             if not trusted_origin:
                 await self._response(scope, send, 403, 'Origin is not allowed.')
                 return
+        if scope['type'] == 'http' and path in ('/api/auth/session', '/api/auth/login', '/api/auth/logout'):
+            await self._session_endpoint(scope, receive, send, headers, trusted_origin)
+            return
         safe_health = (scope['type'] == 'http' and path == '/api/health'
                        and scope.get('method') in ('GET', 'HEAD') and self.production and self.public_health)
         authenticated = False
@@ -160,6 +229,8 @@ class SecurityMiddleware:
                 parts = authorization[0].split(b' ')
                 authenticated = (len(parts) == 2 and parts[0].lower() == b'bearer'
                                  and hmac.compare_digest(parts[1], self._token))
+            if not authenticated:
+                authenticated = self._session_valid(headers)
             if not authenticated:
                 await self._response(scope, send, 401, 'Bearer authentication required.',
                                      ((b'www-authenticate', b'Bearer'),))

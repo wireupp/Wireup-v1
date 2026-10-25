@@ -16,8 +16,10 @@ from backend.hardware import (
     source_text,
 )
 
-ROOT = Path(__file__).resolve().parents[1]
-EXAMPLES_PATH = ROOT / 'backend/templates/velxio-examples.json'
+MODULE_ROOT = Path(__file__).resolve().parent
+ROOT = MODULE_ROOT.parent if (MODULE_ROOT.parent / 'backend').is_dir() else MODULE_ROOT
+BACKEND_ROOT = ROOT / 'backend' if (ROOT / 'backend').is_dir() else ROOT
+EXAMPLES_PATH = BACKEND_ROOT / 'templates/velxio-examples.json'
 STARTER_IDS = ('serial-hello', 'button-led', 'nano-button-led', 'mega-blink',
                'pico-blink', 'pico-button-led')
 UPSTREAM_PATH = 'vendor/velxio/frontend/src/data/examples.ts'

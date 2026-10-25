@@ -136,17 +136,17 @@ function routeBetween(start: WirePoint, end: WirePoint, bounds: WireBounds[], oc
         if (horizontal === otherHorizontal) {
           const separation = Math.abs(horizontal ? point.y - segment.start.y : point.x - segment.start.x)
           const overlap = Math.min(high, horizontal ? Math.max(segment.start.x, segment.end.x) : Math.max(segment.start.y, segment.end.y)) - Math.max(low, horizontal ? Math.min(segment.start.x, segment.end.x) : Math.min(segment.start.y, segment.end.y))
-          if (separation < spacing && overlap > 0) penalty += overlap * (spacing - separation) * 4
+          if (separation < spacing && overlap > 0) penalty += overlap * (spacing - separation) / spacing * 2
         } else {
           const crossing = horizontal ? segment.start.x : segment.start.y
           const otherLow = horizontal ? Math.min(segment.start.y, segment.end.y) : Math.min(segment.start.x, segment.end.x)
           const otherHigh = horizontal ? Math.max(segment.start.y, segment.end.y) : Math.max(segment.start.x, segment.end.x)
           const constant = horizontal ? point.y : point.x
-          if (crossing >= low && crossing <= high && constant > otherLow && constant < otherHigh) penalty += 24
+          if (crossing >= low && crossing <= high && constant > otherLow && constant < otherHigh) penalty += 20
         }
       }
       const nextDirection = horizontal ? 1 : 2
-      const cost = current.cost + high - low + penalty + (direction && direction !== nextDirection ? 16 : 0)
+      const cost = current.cost + high - low + penalty + (direction && direction !== nextDirection ? 48 : 0)
       const state = next * 3 + nextDirection
       if (cost >= (distances.get(state) ?? Infinity)) continue
       distances.set(state, cost); previous.set(state, current.state)
@@ -161,7 +161,7 @@ export function routeWirePaths(wires: RoutedWire[], bounds: WireBounds[]): Map<s
   const paths = new Map<string, string>()
   const occupied: Segment[] = []
   const exits = new Map<string, number>()
-  for (const wire of [...wires].sort((a, b) => a.id.localeCompare(b.id))) {
+  for (const wire of [...wires].sort((a, b) => a.start.y - b.start.y || a.start.x - b.start.x || a.end.y - b.end.y || a.end.x - b.end.x || a.id.localeCompare(b.id))) {
     const exit = (port: WirePort) => {
       const key = `${port.component}:${port.x}:${port.y}`
       const count = exits.get(key) ?? 0

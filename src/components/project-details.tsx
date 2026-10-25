@@ -126,7 +126,7 @@ export function ProjectDetails({ project, catalog, onClose, initialTab = 'Info',
     } catch { setExportError('Could not download the export. Please try again.') }
   }
 
-  return <Container ref={embedded ? undefined : dialog} className={`project-details${embedded ? ' pd-embedded' : ''}`} aria-labelledby={titleId} onCancel={event => { event.preventDefault(); onClose() }}>
+  return <Container ref={embedded ? undefined : dialog} className={`project-details${embedded ? ' pd-embedded' : ''}${tab === 'Info' ? ' pd-info' : ''}`} aria-labelledby={titleId} onCancel={event => { event.preventDefault(); onClose() }}>
     <header className="pd-header">
       <div><span className="pd-eyebrow">Project details</span><h2 id={titleId}>{project.name}</h2><p>{boardName} · Project revision {project.revision}</p></div>
       {!embedded && <button type="button" className="pd-close" aria-label="Close project details" onClick={onClose} autoFocus><X size={18} aria-hidden="true" /></button>}
@@ -136,7 +136,7 @@ export function ProjectDetails({ project, catalog, onClose, initialTab = 'Info',
     </nav>}
     <section className="pd-body" aria-label={`${tab} project details`}>
       {tab === 'Info' && <>
-        <h3>Project overview</h3>
+        <div className="pd-info-heading"><div><span className="pd-eyebrow">Saved project snapshot</span><h3>Project overview</h3><p>Board, connections, firmware, and compiler status in one place.</p></div><span className="pd-board-badge">{boardName}</span></div>
         <dl className="pd-facts">
           <div><dt>Board target</dt><dd>{boardName}<code>{project.board}</code></dd></div>
           <div><dt>Project revision</dt><dd>{project.revision}</dd></div>

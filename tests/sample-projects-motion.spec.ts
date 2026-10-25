@@ -29,7 +29,7 @@ for (const width of [1440, 390]) test(`Example strip moves and opens cards at ${
  await page.screenshot({ path: `test-results/example-strip-${width}.png`, fullPage: true })
  await cards.first().press('Enter')
  await expect(page).toHaveURL(/\/project\//, { timeout: 30000 })
- await expect(page.getByRole('button', { name: 'Info', exact: true })).toBeVisible({ timeout: 30000 })
+ await expect(page.getByRole('button', { name: 'Build', exact: true })).toBeVisible({ timeout: 30000 })
  await page.goto('/')
  await page.getByRole('link', { name: 'View all examples' }).click()
  await expect(page).toHaveURL(/\/examples$/)

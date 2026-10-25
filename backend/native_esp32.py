@@ -13,7 +13,8 @@ from fastapi import APIRouter, Depends, HTTPException, Request, Response
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt
 from starlette.requests import HTTPConnection
 
-ROOT = Path(__file__).resolve().parents[1]
+MODULE_ROOT = Path(__file__).resolve().parent
+ROOT = MODULE_ROOT.parent if (MODULE_ROOT.parent / 'backend').is_dir() else MODULE_ROOT
 OUTPUT_LIMIT = 256000
 SERIAL_INPUT_LIMIT = 4096
 CLASSIC_ESP32_BOARDS = ('esp32-devkit-v1', 'esp32-devkit-c-v4')

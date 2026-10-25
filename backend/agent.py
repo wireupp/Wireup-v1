@@ -66,6 +66,9 @@ The server resolves documented limitations automatically; explain them without a
 for a second confirmation. Incompatible or blocked plans authorize no changes.
 Never invent approval or bypass the server's feasibility checks.
 After approval, add only approved parts and perform only approved operations.
+For generated builds, omit x and y from add_component so WireUp applies its clean,
+spaced automatic layout. Supply coordinates only when the user explicitly requests
+manual placement. Do not stack parts or hand-route wires around the canvas.
 Use wire_circuit for validated atomic batches of exact
 connections, then check_connections and fix proven errors before writing firmware.
 Use check_connections again after corrections. Its repair=true mode only performs
@@ -211,7 +214,7 @@ _DESCRIPTIONS = {
     'ask_project_questions': 'Ask exactly 10 project-specific multiple-choice requirements questions, board first when unselected; three concrete options plus fourth option ai_choose / Let AI choose. Pause for user selections without mutations.',
     'read_project': 'Read the current project, components, wires, firmware, and revision. Required before mutations.',
     'search_components': 'Search the component catalog for exact types and supported pins.',
-    'add_component': 'Add a catalog component to the current project.',
+    'add_component': 'Add a catalog component to the current project. Omit x/y for clean automatic placement; provide coordinates only when the user explicitly requests a position.',
     'remove_component': 'Remove a component and its incident wires from the current project.',
     'modify_component': 'Change a component position, rotation, or properties.',
     'connect_wire': 'Connect two known component pins in the current project.',

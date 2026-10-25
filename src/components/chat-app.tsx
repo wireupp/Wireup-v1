@@ -12,7 +12,7 @@ import type { ActivityEvent } from './ui/agent-activity-feed'
 import { isFeasibility, isQuestions, readChats, storageKey, streamReply } from '@/lib/chat'
 import type { Conversation, Message } from '@/lib/chat'
 import { projectTitle } from '@/lib/project-title'
-import { defaultModels, modelOptionKey, readSelectedModel } from '@/lib/model-selection'
+import { zenllmModels, sarvamModels, freeaiModels, modelOptionKey, readSelectedModel } from '@/lib/model-selection'
 import type { ModelOption, ModelProvider } from '@/lib/model-selection'
 
 export function ChatApp({ projectId, runtimeToken, embedded = false, initialPrompt, setupGuidance }: { projectId?: string; runtimeToken?: string; embedded?: boolean; initialPrompt?: string; setupGuidance?: string } = {}) {
@@ -29,12 +29,15 @@ export function ChatApp({ projectId, runtimeToken, embedded = false, initialProm
   const [drawer, setDrawer] = useState(false)
   const [busy, setBusy] = useState<string | null>(null)
   const [health, setHealth] = useState<{ configured: boolean; model: string; providers?: ModelOption[] } | null>(null)
-  const provider: ModelProvider = 'azure'
   const [modelId, setModelId] = useState(readSelectedModel)
-  const providerModels = health?.providers || defaultModels.map(option => option.id === 'groq' && health ? { ...option, model: health.model, configured: health.configured } : option)
-  const accessibleModelIds = ['gpt-5.6-luna', 'gpt-5.6-sol', 'gpt-5.6-terra', 'gpt-6-astra', 'gpt-6-luna', 'gpt-6-sol', 'gpt-6.1-sol']
-  const models: ModelOption[] = accessibleModelIds.map(model => ({ id: 'azure', label: 'Azure', model, configured: providerModels.find(option => option.id === 'azure')?.configured ?? false }))
-  const selectedModel = models.find(option => option.model === modelId) || models.find(option => option.model === 'gpt-6.1-sol')!
+  const providerConfigured = (id: ModelProvider) => health?.providers?.find(option => option.id === id)?.configured ?? true
+  const models: ModelOption[] = [
+    ...zenllmModels.map(option => ({ ...option, configured: providerConfigured('zenllm') })),
+    ...sarvamModels.map(option => ({ ...option, configured: providerConfigured('sarvam') })),
+    ...freeaiModels.map(option => ({ ...option, configured: providerConfigured('freeai') })),
+  ]
+  const selectedModel = models.find(option => option.model === modelId && option.model) || models[0]
+  const provider: ModelProvider = selectedModel.id
   const selectionKey = modelOptionKey(selectedModel)
   const changeModel = (key: string) => {
     const option = models.find(option => modelOptionKey(option) === key)
@@ -42,7 +45,7 @@ export function ChatApp({ projectId, runtimeToken, embedded = false, initialProm
     setModelId(option.model)
     try { localStorage.setItem('wireup.model-provider', option.id); localStorage.setItem('wireup.model-id', option.model) } catch { /* Selection remains available for this page. */ }
   }
-  const selectedKeyName = { groq: 'GROQ_API_KEY', nvidia: 'NVIDIA_API_KEY', bedrock: 'BEDROCK_API_KEY', azure: 'AZURE_API_KEY' }[provider]
+  const selectedKeyName = { groq: 'GROQ_API_KEY', nvidia: 'NVIDIA_API_KEY', bedrock: 'BEDROCK_API_KEY', azure: 'AZURE_API_KEY', zenllm: 'ZENLLM_API_KEY', sarvam: 'SARVAM_API_KEY', freeai: 'FREEAI_API_KEY' }[provider]
   const [connectionError, setConnectionError] = useState('')
   const [rename, setRename] = useState<{ id: string; value: string } | null>(null)
   const [deleting, setDeleting] = useState<string | null>(null)
@@ -140,7 +143,7 @@ export function ChatApp({ projectId, runtimeToken, embedded = false, initialProm
         } else if (event.type === 'notice') {
           setWarning(event.message || '')
         }
-      }, { projectId, runtimeToken, answers, provider, model: selectedModel.model, approval })
+      }, { projectId, runtimeToken, answers, provider, model: selectedModel.model || undefined, approval })
       updateMessage(chat.id, reply.id, message => ({ ...message, status: message.error ? 'error' : message.run?.status === 'cancelled' ? 'stopped' : 'done', blocks: message.blocks?.map(block => block.type === 'step' && block.status === 'running' ? { ...block, status: 'stopped', output: 'The run ended without a completion event for this tool.' } : block) }))
     } catch (error) {
       updateMessage(chat.id, reply.id, message => ({

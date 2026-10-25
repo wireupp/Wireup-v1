@@ -6,6 +6,9 @@ from backend.bedrock_model import bedrock_configured, build_bedrock
 
 NVIDIA_BASE_URL = 'https://integrate.api.nvidia.com/v1'
 AZURE_BASE_URL = 'https://project-t3-resource.services.ai.azure.com/openai/v1'
+ZENLLM_BASE_URL = 'https://api.zenllm.org/v1'
+SARVAM_BASE_URL = 'https://api.sarvam.ai/v1'
+FREEAI_BASE_URL = 'https://api.free.ai/v1'
 
 
 def model_options():
@@ -14,6 +17,9 @@ def model_options():
         {'id': 'nvidia', 'label': 'NVIDIA', 'model': os.getenv('NVIDIA_MODEL', 'z-ai/glm-5.3'), 'configured': bool(os.getenv('NVIDIA_API_KEY', '').strip())},
         {'id': 'bedrock', 'label': 'Amazon Bedrock', 'model': os.getenv('BEDROCK_MODEL_ID', 'moonshotai.kimi-k2.5'), 'configured': bedrock_configured()},
         {'id': 'azure', 'label': 'Azure', 'model': os.getenv('AZURE_MODEL_ID', 'gpt-6.1-sol'), 'configured': bool(os.getenv('AZURE_API_KEY', '').strip())},
+        {'id': 'zenllm', 'label': 'ZenLLM', 'model': os.getenv('ZENLLM_MODEL', 'claude-sonnet-5'), 'configured': bool(os.getenv('ZENLLM_API_KEY', '').strip())},
+        {'id': 'sarvam', 'label': 'Sarvam AI', 'model': os.getenv('SARVAM_MODEL', 'sarvam-m'), 'configured': bool(os.getenv('SARVAM_API_KEY', '').strip())},
+        {'id': 'freeai', 'label': 'Free AI', 'model': os.getenv('FREEAI_MODEL', 'gpt-4o-mini'), 'configured': bool(os.getenv('FREEAI_API_KEY', '').strip())},
     ]
 
 
@@ -41,6 +47,21 @@ def build_model(provider, key, model_name):
         return ChatOpenAI(model=model_name, api_key=key, base_url=NVIDIA_BASE_URL,
                           temperature=0.5, max_retries=0, timeout=20, streaming=True,
                           max_tokens=_max_tokens('NVIDIA_MAX_TOKENS'),
+                          stream_usage=False)
+    if provider == 'zenllm':
+        return ChatOpenAI(model=model_name, api_key=key, base_url=ZENLLM_BASE_URL,
+                          temperature=0.5, max_retries=0, timeout=60, streaming=True,
+                          max_tokens=_max_tokens('ZENLLM_MAX_TOKENS'),
+                          stream_usage=False)
+    if provider == 'sarvam':
+        return ChatOpenAI(model=model_name, api_key=key, base_url=os.getenv('SARVAM_BASE_URL', SARVAM_BASE_URL).rstrip('/'),
+                          temperature=0.5, max_retries=0, timeout=60, streaming=True,
+                          max_tokens=_max_tokens('SARVAM_MAX_TOKENS'),
+                          stream_usage=False)
+    if provider == 'freeai':
+        return ChatOpenAI(model=model_name, api_key=key, base_url=os.getenv('FREEAI_BASE_URL', FREEAI_BASE_URL).rstrip('/'),
+                          temperature=0.5, max_retries=0, timeout=30, streaming=True,
+                          max_tokens=_max_tokens('FREEAI_MAX_TOKENS'),
                           stream_usage=False)
     options = {}
     if model_name in ('openai/gpt-oss-120b', 'openai/gpt-oss-20b'):

@@ -24,7 +24,9 @@ from starlette.requests import HTTPConnection
 from fastapi.responses import PlainTextResponse
 from pydantic import BaseModel, Field
 
-ROOT = Path(__file__).resolve().parents[1]
+MODULE_ROOT = Path(__file__).resolve().parent
+ROOT = MODULE_ROOT.parent if (MODULE_ROOT.parent / 'backend').is_dir() else MODULE_ROOT
+BACKEND_ROOT = ROOT / 'backend' if (ROOT / 'backend').is_dir() else ROOT
 DEFAULT_SOURCE = '''void setup() {
   pinMode(LED_BUILTIN, OUTPUT);
 }
@@ -149,7 +151,7 @@ PIN_ALIASES = {
 
 
 def load_component_pins(path=None):
-    path = Path(path) if path else ROOT / 'backend/catalog/component-pins.json'
+    path = Path(path) if path else BACKEND_ROOT / 'catalog/component-pins.json'
     if not path.is_file():
         return {}
     data = json.loads(path.read_text(encoding='utf-8'))
@@ -341,7 +343,15 @@ def validate_spice_properties(entry, supplied, existing=None):
 
 class ComponentCatalog:
     def __init__(self, path=None):
-        path = Path(path) if path else ROOT / 'vendor/velxio/frontend/public/components-metadata.json'
+        if path:
+            path = Path(path)
+        else:
+            candidates = (
+                ROOT / 'vendor/velxio/frontend/public/components-metadata.json',
+                ROOT / 'public/components-metadata.json',
+                BACKEND_ROOT / 'catalog/components-metadata.json',
+            )
+            path = next((candidate for candidate in candidates if candidate.is_file()), candidates[-1])
         self.origin = str(path) if path.is_file() else 'builtin-fallback'
         if path.is_file():
             items = json.loads(path.read_text(encoding='utf-8')).get('components', [])
@@ -749,7 +759,15 @@ class RuntimeBridge:
 
 class HardwareService:
     def __init__(self, data_dir=None, compiler=None, runtime=None, catalog=None, native=None):
-        self.data_dir = Path(data_dir) if data_dir else ROOT / 'backend/data/hardware'
+        configured_data_dir = os.getenv('WIREUP_DATA_DIR')
+        if data_dir is not None:
+            self.data_dir = Path(data_dir)
+        elif configured_data_dir:
+            self.data_dir = Path(configured_data_dir)
+        elif os.getenv('VERCEL'):
+            self.data_dir = Path(tempfile.gettempdir()) / 'wireup-hardware'
+        else:
+            self.data_dir = BACKEND_ROOT / 'data/hardware'
         self.compiler = compiler or ArduinoCompiler()
         self.runtime = runtime or RuntimeBridge()
         from backend.native_esp32 import NativeESP32
@@ -958,9 +976,21 @@ class HardwareService:
                     fail(409, 'Component identifier already exists.')
                 properties = copy.deepcopy(self.catalog.components[kind].get('defaultValues', {}))
                 properties.update(self._properties(kind, args.get('properties', {})))
-                placement_index = max(0, len(project['components']) - 1)
-                project['components'].append({'id': component_id, 'type': kind, 'x': numeric(args.get('x', 380 + (placement_index % 3) * 180)),
-                                               'y': numeric(args.get('y', 100 + (placement_index // 3) * 140)), 'rotation': numeric(args.get('rotation', 0)),
+                def placement_lane(part_type):
+                    category = self.catalog.components[part_type].get('category', 'other')
+                    if part_type == 'analog-joystick' or category in ('input', 'sensors', 'analog'):
+                        return 'input'
+                    if category in ('output', 'motors', 'displays'):
+                        return 'output'
+                    return 'middle'
+
+                lane = placement_lane(kind)
+                lane_parts = [part for part in project['components']
+                              if part['id'] != 'board' and placement_lane(part['type']) == lane]
+                automatic_x = {'input': 430, 'middle': 710, 'output': 990}[lane] + (len(lane_parts) // 4) * 840
+                automatic_y = 90 + (len(lane_parts) % 4) * 220
+                project['components'].append({'id': component_id, 'type': kind, 'x': numeric(args.get('x', automatic_x)),
+                                               'y': numeric(args.get('y', automatic_y)), 'rotation': numeric(args.get('rotation', 0)),
                                                'properties': properties})
             elif name in ('remove_component', 'modify_component'):
                 component = self._component(project, args.get('id'))

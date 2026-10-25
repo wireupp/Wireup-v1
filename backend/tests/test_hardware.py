@@ -48,6 +48,24 @@ def command(client, project, name, args=None, token=None):
                        json={'name': name, 'args': args or {}, 'runtime_token': token})
 
 
+def test_vercel_uses_writable_temporary_project_storage(monkeypatch, tmp_path):
+    monkeypatch.setenv('VERCEL', '1')
+    monkeypatch.delenv('WIREUP_DATA_DIR', raising=False)
+    monkeypatch.setattr('backend.hardware.tempfile.gettempdir', lambda: str(tmp_path))
+    hosted = HardwareService(compiler=FakeCompiler(), runtime=RuntimeBridge(timeout=0.2))
+    project = hosted.create_project('Hosted project', 'arduino-uno')
+    assert hosted.data_dir == tmp_path / 'wireup-hardware'
+    assert hosted.get_project(project['id'])['name'] == 'Hosted project'
+
+
+def test_configured_project_storage_overrides_vercel_temporary_storage(monkeypatch, tmp_path):
+    configured = tmp_path / 'configured-projects'
+    monkeypatch.setenv('VERCEL', '1')
+    monkeypatch.setenv('WIREUP_DATA_DIR', str(configured))
+    hosted = HardwareService(compiler=FakeCompiler(), runtime=RuntimeBridge(timeout=0.2))
+    assert hosted.data_dir == configured
+
+
 @pytest.mark.parametrize('payload', [{}, {'board': 'unselected'}, {'board': 'arduino-uno'}])
 def test_project_creation_and_persistence(client, service, payload):
     response = client.post('/api/hardware/projects', json=payload)

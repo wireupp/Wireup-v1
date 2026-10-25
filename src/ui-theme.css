@@ -100,3 +100,39 @@ body,#root{background:#161616}
 @media(prefers-reduced-motion:reduce){#root :is(button,a){transition:none}}
 
 .hardware-workspace :is(.hw-primary,.hw-tab-active,.hw-mobile-active,.hw-connect-board){background:#414141!important;color:#f5f5f5!important;border-color:#686868!important}.hardware-workspace .hw-sidebar .hw-search{background:#252525;border-color:#484848}.hardware-workspace .hw-sidebar .hw-search input{background:transparent!important}.hardware-workspace .hw-dock header{background:#252525}.hardware-workspace .hw-dock :is(pre,textarea){background:#171717;color:#dddddd}.hardware-workspace .hw-canvas-hint{background:#1b1b1b;color:#aaaaaa}.hardware-workspace .hw-wire-details{background:#242424;color:#eeeeee;border-color:#555555;box-shadow:0 8px 24px #0005}.hardware-workspace .hw-wire-details p span,.hardware-workspace .hw-wire-details small{color:#cccccc}
+
+/* Auth trigger + signed-in strip on the warm home theme */
+#root .nova-home.dark:not(.hardware-workspace) .auth-trigger{background:var(--nova-ink)!important;color:var(--nova-paper)!important;border-color:var(--nova-ink)!important;box-shadow:3px 3px 0 var(--nova-shadow)!important}
+#root .nova-home.dark:not(.hardware-workspace) .auth-trigger:hover{background:#5c5348!important;color:var(--nova-paper)!important;box-shadow:2px 2px 0 var(--nova-shadow)!important}
+#root .nova-home.dark:not(.hardware-workspace) .auth-user__name{color:var(--nova-ink)!important}
+#root .nova-home.dark:not(.hardware-workspace) .auth-user__initials{background:var(--nova-ink)!important;color:var(--nova-paper)!important}
+#root .nova-home.dark:not(.hardware-workspace) .auth-user__signout{border-color:#b3a489!important;color:#8a7a5f!important}
+#root .nova-home.dark:not(.hardware-workspace) .auth-user__signout:hover{background:var(--nova-ink)!important;color:var(--nova-paper)!important}
+
+/* Auth modal — match the warm home theme */
+#root .nova-home.dark:not(.hardware-workspace) .auth-modal{background:#fdf6e9!important;border:2px solid var(--nova-ink)!important;border-radius:14px!important;box-shadow:8px 8px 0 var(--nova-shadow)!important}
+#root .nova-home.dark:not(.hardware-workspace) .auth-modal__close{background:transparent!important;border:1.5px solid #c9b98f!important;color:#8a7a5f!important;box-shadow:none!important}
+#root .nova-home.dark:not(.hardware-workspace) .auth-modal__close:hover{background:var(--nova-ink)!important;color:var(--nova-paper)!important}
+#root .nova-home.dark:not(.hardware-workspace) .auth-modal__brand h2{color:var(--nova-ink)!important}
+#root .nova-home.dark:not(.hardware-workspace) .auth-modal__brand p{color:#8a7a5f!important}
+#root .nova-home.dark:not(.hardware-workspace) .auth-form{background:var(--nova-paper)!important;border:0!important;box-shadow:none!important;color:var(--nova-ink)}
+#root .nova-home.dark:not(.hardware-workspace) .auth-form label{color:#8a7a5f!important}
+#root .nova-home.dark:not(.hardware-workspace) .auth-field input{border-color:#c9b98f!important;background:#fffdf6!important;background-color:#fffdf6!important}
+#root .nova-home.dark:not(.hardware-workspace) .auth-field input:focus{border-color:var(--nova-ink)!important;box-shadow:0 0 0 3px rgba(174,172,120,.25)!important}
+#root .nova-home.dark:not(.hardware-workspace) .auth-google{background:#fffdf6!important;border:1.5px solid #c9b98f!important;color:var(--nova-ink)!important;box-shadow:none!important}
+#root .nova-home.dark:not(.hardware-workspace) .auth-google:hover{background:#f7edd8!important}
+#root .nova-home.dark:not(.hardware-workspace) .auth-divider::before,#root .nova-home.dark:not(.hardware-workspace) .auth-divider::after{background:#d8cdb4!important}
+#root .nova-home.dark:not(.hardware-workspace) .auth-divider span{color:#a39879!important}
+#root .nova-home.dark:not(.hardware-workspace) .auth-forgot{color:#8a7a5f!important}
+#root .nova-home.dark:not(.hardware-workspace) .auth-forgot:hover{color:var(--nova-ink)!important}
+#root .nova-home.dark:not(.hardware-workspace) .auth-submit{background:var(--nova-ink)!important;color:var(--nova-paper)!important;border:2px solid var(--nova-ink)!important;box-shadow:3px 3px 0 var(--nova-shadow)!important;margin-top:6px}
+#root .nova-home.dark:not(.hardware-workspace) .auth-submit:hover{background:#5c5348!important}
+#root .nova-home.dark:not(.hardware-workspace) .auth-submit:disabled{background:#e3dac6!important;color:#b0a48c!important;border-color:#d8cdb4!important;box-shadow:none!important}
+#root .nova-home.dark:not(.hardware-workspace) .auth-spinner{border-color:rgba(252,240,218,.35)!important;border-top-color:var(--nova-paper)!important}
+#root .nova-home.dark:not(.hardware-workspace) .auth-switch{color:#a39879!important}
+#root .nova-home.dark:not(.hardware-workspace) .auth-switch>button{color:#8a6d1f!important}
+#root .nova-home.dark:not(.hardware-workspace) .auth-switch>button:hover{color:var(--nova-ink)!important}
+#root .nova-home.dark:not(.hardware-workspace) .auth-terms{color:#a39879!important}
+#root .nova-home.dark:not(.hardware-workspace) .auth-terms a{color:#8a6d1f!important}
+#root .nova-home.dark:not(.hardware-workspace) .auth-terms a:hover{color:var(--nova-ink)!important}
+#root .nova-home.dark:not(.hardware-workspace) .auth-error{background:#fbeae7!important;border-color:#e0b3ac!important;color:#8b2020!important}
