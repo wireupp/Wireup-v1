@@ -51,7 +51,7 @@ export function ChatModelPicker({ models, value, onChange, disabled }: { models:
         aria-haspopup="listbox" aria-expanded={open}
         disabled={disabled || !onChange}
         onClick={() => setOpen(!open)}>
-        <span>{selected?.model || 'Select model'}</span>
+        <span>{selected?.model || selected?.label || 'Select model'}</span>
         {selected?.rate && <span className="chat-model-picker__rate">{selected.rate}</span>}
         <ChevronDown size={14}/>
       </button>
@@ -68,7 +68,7 @@ export function ChatModelPicker({ models, value, onChange, disabled }: { models:
                       disabled={!model.configured}
                       onClick={() => { onChange?.(modelOptionKey(model)); setOpen(false); trigger.current?.focus() }}>
                       <span className="chat-model-picker__check">{modelOptionKey(model) === value && <Check size={16}/>}</span>
-                      <span className="chat-model-picker__model-name">{model.model}</span>
+                      <span className="chat-model-picker__model-name">{model.model || model.label}</span>
                       {model.rate && <span className="chat-model-picker__rate">{model.rate}</span>}
                       {!model.configured && <small>API key required</small>}
                     </button>
@@ -81,7 +81,7 @@ export function ChatModelPicker({ models, value, onChange, disabled }: { models:
                   disabled={!model.configured}
                   onClick={() => { onChange?.(modelOptionKey(model)); setOpen(false); trigger.current?.focus() }}>
                   <span className="chat-model-picker__check">{modelOptionKey(model) === value && <Check size={16}/>}</span>
-                  <span className="chat-model-picker__model-name">{model.model}</span>
+                  <span className="chat-model-picker__model-name">{model.model || model.label}</span>
                   {model.rate && <span className="chat-model-picker__rate">{model.rate}</span>}
                   {!model.configured && <small>API key required</small>}
                 </button>

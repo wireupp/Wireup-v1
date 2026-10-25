@@ -48,7 +48,7 @@ class ChatRequest(BaseModel):
     runtime_token: str | None = Field(default=None, max_length=128)
     project_answers: dict[str, str] | None = None
     approval: FeasibilityApproval | None = None
-    provider: Literal['groq', 'nvidia', 'bedrock', 'zenllm'] = 'zenllm'
+    provider: Literal['groq', 'nvidia', 'bedrock', 'zenllm', 'sarvam', 'freeai'] = 'zenllm'
     model: str | None = Field(default=None, min_length=1, max_length=256, pattern=r'^[^\s\x00-\x1f]+$')
 
     @field_validator('project_answers')
@@ -156,11 +156,11 @@ def create_app(model_factory=None, api_key=None):
             raise HTTPException(403, 'The local hardware agent is restricted to loopback clients.')
         reload_settings()
         provider = payload.provider
-        key_name = {'azure': 'AZURE_API_KEY', 'nvidia': 'NVIDIA_API_KEY', 'bedrock': 'BEDROCK_API_KEY', 'groq': 'GROQ_API_KEY', 'zenllm': 'ZENLLM_API_KEY'}[provider]
+        key_name = {'azure': 'AZURE_API_KEY', 'nvidia': 'NVIDIA_API_KEY', 'bedrock': 'BEDROCK_API_KEY', 'groq': 'GROQ_API_KEY', 'zenllm': 'ZENLLM_API_KEY', 'sarvam': 'SARVAM_API_KEY', 'freeai': 'FREEAI_API_KEY'}[provider]
         key = api_key if api_key is not None else os.getenv(key_name, '')
         if not key.strip() and not (provider == 'bedrock' and bedrock_configured()):
             raise HTTPException(503, f'Add {key_name} to .env, then retry to enable {provider.upper()} replies.')
-        model_name = os.getenv('AZURE_MODEL_ID', 'gpt-6.1-sol') if provider == 'azure' else os.getenv('BEDROCK_MODEL_ID', 'moonshotai.kimi-k2.5') if provider == 'bedrock' else os.getenv('NVIDIA_MODEL', 'z-ai/glm-5.3') if provider == 'nvidia' else os.getenv('ZENLLM_MODEL', 'claude-sonnet-5') if provider == 'zenllm' else os.getenv('GROQ_MODEL', 'openai/gpt-oss-120b')
+        model_name = os.getenv('AZURE_MODEL_ID', 'gpt-6.1-sol') if provider == 'azure' else os.getenv('BEDROCK_MODEL_ID', 'moonshotai.kimi-k2.5') if provider == 'bedrock' else os.getenv('NVIDIA_MODEL', 'z-ai/glm-5.3') if provider == 'nvidia' else os.getenv('ZENLLM_MODEL', 'claude-sonnet-5') if provider == 'zenllm' else os.getenv('SARVAM_MODEL', 'sarvam-m') if provider == 'sarvam' else os.getenv('FREEAI_MODEL', 'gpt-4o-mini') if provider == 'freeai' else os.getenv('GROQ_MODEL', 'openai/gpt-oss-120b')
         model_name = payload.model or model_name
         selected = []
         count = 0
@@ -209,8 +209,8 @@ def create_app(model_factory=None, api_key=None):
                             return
                         if await request.is_disconnected():
                             return
-                        if provider in ('nvidia', 'azure', 'zenllm') and item.get('type') == 'text' and item.get('channel') == 'narration':
-                            text = item.get('text', '').replace('Groq', 'NVIDIA' if provider == 'nvidia' else 'ZenLLM' if provider == 'zenllm' else 'Azure')
+                        if provider in ('nvidia', 'azure', 'zenllm', 'sarvam', 'freeai') and item.get('type') == 'text' and item.get('channel') == 'narration':
+                            text = item.get('text', '').replace('Groq', {'nvidia': 'NVIDIA', 'zenllm': 'ZenLLM', 'azure': 'Azure', 'sarvam': 'Sarvam AI', 'freeai': 'Free AI'}[provider])
                             if provider == 'nvidia' and 'model could not complete' in text.lower():
                                 text = 'NVIDIA could not complete this request. Check your key and model access in the NVIDIA API catalog.'
                             if provider == 'zenllm' and 'model could not complete' in text.lower():

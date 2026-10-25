@@ -1,4 +1,4 @@
-export type ModelProvider = 'groq' | 'nvidia' | 'bedrock' | 'azure' | 'zenllm'
+export type ModelProvider = 'groq' | 'nvidia' | 'bedrock' | 'azure' | 'zenllm' | 'sarvam' | 'freeai'
 export type ModelOption = { id: ModelProvider; label: string; model: string; configured: boolean; rate?: string; group?: string }
 export const defaultModels: ModelOption[] = [
   { id: 'groq', label: 'Groq', model: 'Configured Groq model', configured: false },
@@ -33,6 +33,20 @@ export const zenllmModels: ModelOption[] = [
   { id: 'zenllm', label: 'ZenLLM', group: 'Qwen',      model: 'qwen-3-7-plus',       rate: '$0.25 / $1.00',  configured: true },
 ]
 
+// Sarvam AI — Indic LLM provider, OpenAI-compatible endpoint (api.sarvam.ai).
+// Rates are simulated demo values until verified with the provider.
+export const sarvamModels: ModelOption[] = [
+  { id: 'sarvam', label: 'Sarvam AI', group: 'Sarvam AI', model: 'sarvam-m', rate: '₹8 / ₹24', configured: true },
+  { id: 'sarvam', label: 'Sarvam AI', group: 'Sarvam AI', model: 'sarvam-m-lite', rate: '₹2 / ₹8', configured: true },
+  { id: 'sarvam', label: 'Sarvam AI', group: 'Sarvam AI', model: 'mayura-v2', rate: '₹3 / ₹9', configured: true },
+]
+
+// Free AI — free OpenAI-compatible gateway. The model list is served by the
+// gateway; the entry below uses the FREEAI_MODEL server default.
+export const freeaiModels: ModelOption[] = [
+  { id: 'freeai', label: 'Free AI', group: 'Free AI', model: '', configured: true },
+]
+
 export function modelOptionKey(option: ModelOption): string {
   return `${option.id}::${option.model}`
 }
@@ -42,7 +56,7 @@ export function readSelectedModel(): string {
 export function readModelSelection(): ModelProvider {
   try {
     const saved = localStorage.getItem('wireup.model-provider')
-    if (saved === 'azure' || saved === 'bedrock' || saved === 'nvidia' || saved === 'zenllm') return saved
+    if (saved === 'azure' || saved === 'bedrock' || saved === 'nvidia' || saved === 'zenllm' || saved === 'sarvam' || saved === 'freeai') return saved
     return 'zenllm'
   }
   catch { return 'zenllm' }

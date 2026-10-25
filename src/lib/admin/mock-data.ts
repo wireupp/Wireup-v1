@@ -34,6 +34,7 @@ const int = (rng: () => number, min: number, max: number): number => Math.floor(
 const PROVIDERS: ProviderConfig[] = [
   { id: 'sarvam', name: 'Sarvam AI', status: 'connected', website: 'https://sarvam.ai', note: 'Primary AI provider for all WireUp AI features. Mock connectivity status — no live API call is made.' },
   { id: 'zenllm-gateway', name: 'ZenLLM Gateway', status: 'planned', website: '', note: 'Planned multi-model gateway for fallback routing. Not connected — configuration shown for planning only.' },
+  { id: 'freeai', name: 'Free AI', status: 'planned', website: '', note: 'Free OpenAI-compatible gateway (free.ai) planned as a zero-cost fallback tier. Not connected — configuration shown for planning only.' },
 ]
 
 const MODELS: ModelConfig[] = [
